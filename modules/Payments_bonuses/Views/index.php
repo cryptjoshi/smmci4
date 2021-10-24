@@ -1,3 +1,5 @@
+<?= $this->extend('template/layout') ?>
+<?=$this->section('content');?>
 <div class="row justify-content-md-center">
   <div class="col-md-8">
     <div class="page-header">
@@ -53,7 +55,7 @@
             ?>
             <tr class="tr_<?=$row->id?>">
               <td class="w-1"><?php echo$i; ?></td>
-              <td style="width: 30%;"><strong><?php echo $this->model->get('name', PAYMENTS_METHOD,['id' => $row->payment_id])->name; ?></strong></td>
+              <td style="width: 30%;"><strong><?php echo $model->get('name', PAYMENTS_METHOD,['id' => $row->payment_id])->name; ?></strong></td>
               <td style="width: 15%;"><?php echo $row->percentage; ?></td>
               <td style="width: 15%;"><?php echo $row->bonus_from; ?></td>
   
@@ -84,3 +86,4 @@
 <div class="row m-t-30" id="result_notification">
 
 </div>
+<?=$this->endSection()?>

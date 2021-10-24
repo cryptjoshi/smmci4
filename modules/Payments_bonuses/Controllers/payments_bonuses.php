@@ -1,7 +1,8 @@
 <?php
-
- 
-class payments_bonuses extends MX_Controller {
+namespace Modules\Payments_bonuses\Controllers;
+use App\Controllers\BaseController;
+use Modules\Payments_bonuses\Models\payments_bonuses_model;
+class Payments_bonuses extends BaseController {
 	public $tb_payments;
 	public $tb_payments_bonuses;
 	public $columns;
@@ -9,8 +10,9 @@ class payments_bonuses extends MX_Controller {
 	public $module_icon;
 
 	public function __construct(){
-		parent::__construct();
-		$this->load->model(get_class($this).'_model', 'model');
+		//parent::__construct();
+		//$this->load->model(get_class($this).'_model', 'model');
+		$this->model = new payments_bonuses_model();
 		$this->tb_payments               = PAYMENTS_METHOD;
 		$this->tb_payments_bonuses       = PAYMENTS_BONUSES;
 		$this->columns = array(
@@ -24,21 +26,22 @@ class payments_bonuses extends MX_Controller {
 	public function index(){
 		$payments_bonuses = $this->model->fetch('*', $this->tb_payments_bonuses);
 		$data = array(
-			"module"              => get_class($this),
+			"module"              => "Payments_bonuses",
+			"model"				=> $this->model,
 			"columns"             => $this->columns,
 			"payments_bonuses"    => $payments_bonuses,
 		);
-		$this->template->build('index', $data);
+		return view('Modules\Payments_bonuses\Views\index', $data);
 	}
 
 	public function update($ids = ""){
 		$payments_bonus    = $this->model->get("*", $this->tb_payments_bonuses, ['ids' => $ids]);
 		$data = array(
-			"module"   		 => get_class($this),
+			"module"   		 => "Payments_bonuses",
 			"payments_bonus" => $payments_bonus,
 			"payments"       => $this->model->fetch('id, name', $this->tb_payments),
 		);
-		$this->load->view('update', $data);
+		return view('Modules\Payments_bonuses\Views\index\update', $data);
 	}
 
 	public function ajax_update($ids = ""){
@@ -69,11 +72,11 @@ class payments_bonuses extends MX_Controller {
 
 		$item  = $this->model->get("id", $this->tb_payments_bonuses, ['ids' => $ids, 'status' => 1]);
 		if ($item) {
-			$this->db->update($this->tb_payments_bonuses, $data_bonus, ['ids' => $ids]);
+			$this->model->common_update($this->tb_payments_bonuses, $data_bonus, ['ids' => $ids]);
 		}else{
 			$data_bonus['ids']        = ids();
 			$data_bonus['payment_id'] = $payment->id;
-			$this->db->insert($this->tb_payments_bonuses, $data_bonus);
+			$this->model->common_insert($this->tb_payments_bonuses, $data_bonus);
 		}
 		_validation('success', lang("Update_successfully"));
 
@@ -84,7 +87,7 @@ class payments_bonuses extends MX_Controller {
 		$status  = post('status');
 		$item  = $this->model->get("id", $this->tb_payments_bonuses, ['id' => $id]);
 		if ($item ) {
-			$this->db->update($this->tb_payments_bonuses, ['status' => (int)$status], ['id' => $id]);
+			$this->model->common_update($this->tb_payments_bonuses, ['status' => (int)$status], ['id' => $id]);
 			_validation('success', lang("Update_successfully"));
 		}
 	}

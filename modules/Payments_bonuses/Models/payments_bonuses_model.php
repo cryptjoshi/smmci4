@@ -1,7 +1,8 @@
 <?php
+namespace Modules\Payments_bonuses\Models;
+use App\Models\ExtendModel;
 
-
-class payments_bonuses_model extends MY_Model {
+class payments_bonuses_model extends ExtendModel {
 	public $tb_payments;
 	
 	public function __construct(){
@@ -10,11 +11,9 @@ class payments_bonuses_model extends MY_Model {
 	}
 
 	function get_paymnets_lists(){
-		$this->db->select("*");
-		$this->db->from($this->tb_api_providers);
-		$this->db->order_by("id", 'ASC');
-		$query = $this->db->get();
-		$result = $query->result();
+		$builder = $this->db->table($this->tb_api_providers)->select("*")->orderBy("id", 'ASC');
+		$query = $builder->get();
+		$result = $query->getResult();
 		return $result;
 	}
 
