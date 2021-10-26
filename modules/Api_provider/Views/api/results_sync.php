@@ -1,7 +1,7 @@
 
 <div class="col-md-12">
   <div class="title text-center text-info">
-    <h3><?=lang("synchronization_results")?> <?="- ".$api_name?> </h3>
+    <h3><?=lang("app.synchronization_results")?> <?="- ".$api_name?> </h3>
   </div>
 </div>
 <?php if(!empty($services_new) || !empty($services_disabled)){
@@ -9,7 +9,7 @@
 <div class="col-md-12">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title"><?=lang("lists")?></h3>
+      <h3 class="card-title"><?=lang("app.lists")?></h3>
       <div class="card-options">
         
         <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
@@ -20,10 +20,10 @@
       <table class="table table-hover table-bordered table-vcenter card-table">
         <thead>
           <tr>
-            <th class="text-center w-1"><?=lang("No_")?></th>
-            <th><?=lang("service_id")?></th>
-            <th><?=lang("Name")?></th>
-            <th><?=lang("Status")?></th>
+            <th class="text-center w-1"><?=lang("app.no_")?></th>
+            <th><?=lang("app.service_id")?></th>
+            <th><?=lang("app.name")?></th>
+            <th><?=lang("app.status")?></th>
           </tr>
         </thead>
         <tbody>
@@ -37,7 +37,7 @@
             <td  class="text-center"><?=$i?></td>
             <td><?=$row_new->service?></td>
             <td><div class="title"><?=$row_new->name?></div></td>
-            <td><span class="btn round btn-info btn-sm"><?=lang("New")?></span></td>
+            <td><span class="btn round btn-info btn-sm"><?=lang("app.new")?></span></td>
           </tr>
           <?php }}?>
           <?php 
@@ -49,7 +49,7 @@
             <td  class="text-center"><?=$i?></td>
             <td><?=$row_disabled->service?></td>
             <td><div class="title"><?=$row_disabled->name?></div></td>
-            <td><span class="btn round btn-warning btn-sm"><?=lang("Disabled")?></span></td>
+            <td><span class="btn round btn-warning btn-sm"><?=lang("app.disabled")?></span></td>
           </tr>
           <?php }}?>
         </tbody>

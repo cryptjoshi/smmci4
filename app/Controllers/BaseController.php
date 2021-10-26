@@ -40,16 +40,31 @@ class BaseController extends Controller
     /**
      * Constructor.
      */
+
+    protected $viewData = [];
+
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
+        //$session = \Config\Services::session();
+        //$language = \Config\Services::language();
+       // print_r($session->langCurrent);
+        //  if(!is_null($session->langCurrent))
+        //  $language->setLocale($session->langCurrent->code);
+        //  else
+        //  $language->setLocale("en");
         //echo session("uid");
+        $this->viewData['locale'] = $request->getLocale();
+        //$this->viewData['locale'] = $this->request->getLocale();
+        //$this->viewData['supportedLocales'] = $this->request->config->supportedLocales;
         // Preload any models, libraries, etc, here.
         // if(!session("uid")){
         //     redirect()->to(BASE."/auth/login");
         // }
         // E.g.: $this->session = \Config\Services::session();
+        //
+        //$this->viewData['supportedLocales'] = $request->config->supportedLocales;
     }
 
      

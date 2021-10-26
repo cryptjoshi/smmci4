@@ -4,7 +4,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("Lists")?></h3>
+        <h3 class="card-title"><?=lang("app.lists")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -53,12 +53,12 @@
                       <?php
                         if (get_role("admin")) {
                       ?>
-                      <li><?=lang("Type")?>: <?=(!empty($row->api_service_id) && $row->api_service_id > 0)? lang("API")." (".$row->api_name.")" : lang("Manual")?></li>
+                      <li><?=lang("app.type")?>: <?=(!empty($row->api_service_id) && $row->api_service_id > 0)? lang("app.api")." (".$row->api_name.")" : lang("app.manual")?></li>
                       <?php }?>
-                      <li><?=lang("Username")?>: <strong><?=$row->username?></strong></li>
-                      <li><?=lang("Quantity")?>: <strong><?=$row->sub_min?>/<?=$row->sub_max?></strong></li>
+                      <li><?=lang("app.username")?>: <strong><?=$row->username?></strong></li>
+                      <li><?=lang("app.quantity")?>: <strong><?=$row->sub_min?>/<?=$row->sub_max?></strong></li>
                       <li>
-                        <?=lang("Posts")?>: 
+                        <?=lang("app.posts")?>: 
                         <strong>
                           <?php
                             $real_posts =($row->sub_response_posts > 0) ? $row->sub_response_posts : 0; 
@@ -67,8 +67,8 @@
                           / <?=($row->sub_posts == -1) ? "&infin;" : $row->sub_posts?>
                         </strong>
                       </li>
-                      <li><?=lang("Delay")?>: <strong><?=($row->sub_delay == "" || $row->sub_delay == 0)? lang("No_delay") : $row->sub_delay . " ".lang("minutes")?></strong></li>
-                      <li><?=lang("Expiry")?>: <strong><?=$expiry?></strong></li>
+                      <li><?=lang("app.delay")?>: <strong><?=($row->sub_delay == "" || $row->sub_delay == 0)? lang("app.no_delay") : $row->sub_delay . " ".lang("app.minutes")?></strong></li>
+                      <li><?=lang("app.expiry")?>: <strong><?=$expiry?></strong></li>
                     </ul>
                   </small>
                 </div>

@@ -54,7 +54,7 @@
                       if ($row->type == 'manual') {
                         echo lang($row->transaction_id);
                       }else{
-                        echo lang($row->transaction_id)." ".lang("transaction_id_was_sent_to_your_email");
+                        echo lang($row->transaction_id)." ".lang("app.transaction_id_was_sent_to_your_email");
                       }
                       break;
 
@@ -101,7 +101,7 @@
                       break;
 
                     case 0:
-                        echo '<span class="badge badge-warning">'.lang("waiting_for_buyer_funds").'</span>';
+                        echo '<span class="badge badge-warning">'.lang("app.waiting_for_buyer_funds").'</span>';
                       break; 
 
                     case -1:

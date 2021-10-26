@@ -49,14 +49,14 @@ public function ajax_sign_in(){
      if($email == ""){
         ms(array(
             "status"  => "error",
-            "message" => lang("email_is_required")
+            "message" => lang("app.email_is_required")
         ));
     }
 
     if($password == ""){
         ms(array(
             "status"  => "error",
-            "message" => lang("Password_is_required")
+            "message" => lang("app.password_is_required")
         ));
     }
     if (isset($_POST['g-recaptcha-response']) && get_option("enable_goolge_recapcha", '')  &&  get_option('google_capcha_site_key') != "" && get_option('google_capcha_secret_key') != "") {
@@ -65,7 +65,7 @@ public function ajax_sign_in(){
         if (!$resp->isSuccess()) {
             ms(array(
                 'status'  => 'error',
-                'message' => lang("please_verify_recaptcha"),
+                'message' => lang("app.please_verify_recaptcha"),
             ));
         }
     }
@@ -88,7 +88,7 @@ public function ajax_sign_in(){
 	if($user->status != 1){
 				ms(array(
 					"status"  => "error",
-					"message" => lang("your_account_has_not_been_activated")
+					"message" => lang("app.your_account_has_not_been_activated")
 				));
 			}
 			set_session("uid", $user->id);
@@ -121,7 +121,7 @@ public function ajax_sign_in(){
 
 			 ms(array(
 			 	"status"  => "success",
-			 	"message" => lang("Login_successfully")
+			 	"message" => lang("app.login_successfully")
 			 ));
 	 
     // echo_json_string($user);

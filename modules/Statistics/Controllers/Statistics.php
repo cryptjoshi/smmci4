@@ -40,10 +40,11 @@ private $user_model;
 
 	public function index(){
 
-		$this->cachePage(30);
+	//	$this->cachePage(30);
 		$data = array(
 			"module"         => get_class($this),
 			"data_log"       => $this->model->get_data_logs(),
+			"locale"         => $this->viewData['locale'] 
 		);
 		//$this->load->model('order/order_model');
 		 

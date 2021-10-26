@@ -254,7 +254,7 @@ class ExtendModel extends Model
 				if($total_size > $data->max_storage_size){
 					ms(array(
 						"status" => "error",
-						"message" => lang("you_have_exceeded_the_storage_limit")
+						"message" => lang("app.you_have_exceeded_the_storage_limit")
 					));
 				}
 				break;
@@ -264,7 +264,7 @@ class ExtendModel extends Model
 				if($size > $data->max_file_size){
 					ms(array(
 						"status" => "error",
-						"message" => lang("you_have_exceeded_the_file_limit")
+						"message" => lang("app.you_have_exceeded_the_file_limit")
 					));
 				}
 
@@ -272,7 +272,7 @@ class ExtendModel extends Model
 				if($total_size > $data->max_storage_size){
 					ms(array(
 						"status" => "error",
-						"message" => lang("you_have_exceeded_the_storage_limit")
+						"message" => lang("app.you_have_exceeded_the_storage_limit")
 					));
 				}
 				break;

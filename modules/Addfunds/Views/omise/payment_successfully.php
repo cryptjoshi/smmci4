@@ -6,7 +6,7 @@
       <div class="col-md-5">
         <div class="card">
           <div class="card-header d-flex align-items-center">
-            <h3 class="m-t-10"><i class="fe fe-check-circle text-primary"></i> <?=lang("payment_sucessfully")?></h3>
+            <h3 class="m-t-10"><i class="fe fe-check-circle text-primary"></i> <?=lang("app.payment_sucessfully")?></h3>
           </div>
           <div class="card-body">
             <?php if(!empty($transaction) && $transaction->type == 'paypal'){?>
@@ -22,10 +22,10 @@
             <?php }?>
 
           	<div class="detail">
-	            <p class="p-t-10"><?=lang("your_payment_has_been_checked for_approve_here_are_the_details_of_this_transaction_for_your_reference")?></p>
+	            <p class="p-t-10"><?=lang("app.your_payment_has_been_checked for_approve_here_are_the_details_of_this_transaction_for_your_reference")?></p>
 	            <ul>
-	            	<li><?=lang("Transaction_ID")?>: <strong><?=(!empty($transaction) && $transaction->transaction_id == 'empty') ? lang($transaction->transaction_id)." ".lang("transaction_id_was_sent_to_your_email") : $transaction->transaction_id?></strong></li>
-	            	<li><?=lang("Amount_paid_includes_fee")?>: <strong><?=(!empty($transaction)) ? $transaction->amount : ''?> <?=get_option("currency_code", "USD")?></strong> </li>
+	            	<li><?=lang("app.transaction_ID")?>: <strong><?=(!empty($transaction) && $transaction->transaction_id == 'empty') ? lang($transaction->transaction_id)." ".lang("app.transaction_id_was_sent_to_your_email") : $transaction->transaction_id?></strong></li>
+	            	<li><?=lang("app.amount_paid_includes_fee")?>: <strong><?=(!empty($transaction)) ? $transaction->amount : ''?> <?=get_option("currency_code", "USD")?></strong> </li>
 	            </ul>
           	</div>
           </div>

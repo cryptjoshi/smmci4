@@ -16,10 +16,10 @@ class Payments_bonuses extends BaseController {
 		$this->tb_payments               = PAYMENTS_METHOD;
 		$this->tb_payments_bonuses       = PAYMENTS_BONUSES;
 		$this->columns = array(
-			"method"           => lang("method"),
-			"bonus"            => lang("bonus_percentage"),
-			"from"             => lang("bonus_from"),
-			"status"           => lang("Status"),
+			"method"           => lang("app.method"),
+			"bonus"            => lang("app.bonus_percentage"),
+			"from"             => lang("app.bonus_from"),
+			"status"           => lang("app.status"),
 		);
 	}
 
@@ -78,7 +78,7 @@ class Payments_bonuses extends BaseController {
 			$data_bonus['payment_id'] = $payment->id;
 			$this->model->common_insert($this->tb_payments_bonuses, $data_bonus);
 		}
-		_validation('success', lang("Update_successfully"));
+		_validation('success', lang("app.update_successfully"));
 
 	}
 	
@@ -88,7 +88,7 @@ class Payments_bonuses extends BaseController {
 		$item  = $this->model->get("id", $this->tb_payments_bonuses, ['id' => $id]);
 		if ($item ) {
 			$this->model->common_update($this->tb_payments_bonuses, ['status' => (int)$status], ['id' => $id]);
-			_validation('success', lang("Update_successfully"));
+			_validation('success', lang("app.update_successfully"));
 		}
 	}
 	

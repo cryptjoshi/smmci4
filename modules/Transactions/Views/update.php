@@ -18,7 +18,7 @@
 
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="form-group">
-                    <label ><?=lang("User")?></label>
+                    <label ><?=lang("app.user")?></label>
                     <input type="hidden" name="uid" value="<?=(!empty($transaction->uid))? $transaction->uid : ''?>">
                     <input type="hidden" name="ids" value="<?=(!empty($transaction->ids))? $transaction->ids : ''?>">
                     <input type="text" class="form-control square" value="<?=(!empty($transaction->uid))? get_field('general_users', ["id" => $transaction->uid], "email"): ''?>">
@@ -27,7 +27,7 @@
 
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="form-group">
-                    <label ><?=lang("Transaction_ID")?></label>
+                    <label ><?=lang("app.transaction_ID")?></label>
                     <input type="text" name="transaction_id" class="form-control square" value="<?=(!empty($transaction->transaction_id))? $transaction->transaction_id: ''?>">
                   </div>
                 </div>
@@ -76,8 +76,8 @@
           </div>
           <div class="modal-footer">
             
-            <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1"><?=lang("Submit")?></button>
-            <button type="button" class="btn round btn-default btn-min-width mr-1 mb-1" data-dismiss="modal"><?=lang("Cancel")?></button>
+            <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1"><?=lang("app.submit")?></button>
+            <button type="button" class="btn round btn-default btn-min-width mr-1 mb-1" data-dismiss="modal"><?=lang("app.cancel")?></button>
           </div>
         </form>
       </div>

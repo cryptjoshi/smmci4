@@ -3,7 +3,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("Lists")?></h3>
+        <h3 class="card-title"><?=lang("app.lists")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -74,9 +74,9 @@
                       <?php
                         if (get_role("admin")) {
                       ?>
-                      <li><?=lang("Type")?>: <?=(!empty($row->api_service_id) && $row->api_service_id != "")? lang("API")." (".$row->api_name.")" : lang("Manual")?></li>
+                      <li><?=lang("app.type")?>: <?=(!empty($row->api_service_id) && $row->api_service_id != "")? lang("app.api")." (".$row->api_name.")" : lang("app.manual")?></li>
                       <?php }?>
-                      <li><?=lang("Link")?>:
+                      <li><?=lang("app.link")?>:
                         <?php
                           if (filter_var($row->link, FILTER_VALIDATE_URL)) {
                             echo '<a href="https://anon.ws/?'.$row->link.'" target="_blank">'.truncate_string($row->link, 60).'</a>';
@@ -85,8 +85,8 @@
                           }
                         ?>
                       </li>
-                      <li><?=lang("Quantity")?>: <?=$row->quantity?></li>
-                      <li><?=lang("Charge")?>: 
+                      <li><?=lang("app.quantity")?>: <?=$row->quantity?></li>
+                      <li><?=lang("app.charge")?>: 
                         <?php 
                           echo $currency_symbol.currency_format($row->charge, $decimal_places, $decimalpoint, $separator);
                         ?>
@@ -96,8 +96,8 @@
                           }
                         ?>
                       </li>
-                      <li><?=lang("Start_counter")?>: <?=(!empty($row->start_counter)) ? $row->start_counter : ""?></li>
-                      <li><?=lang("Remains")?>: <?=(!empty($row->remains)) ? $row->remains : ""?></li>
+                      <li><?=lang("app.start_counter")?>: <?=(!empty($row->start_counter)) ? $row->start_counter : ""?></li>
+                      <li><?=lang("app.remains")?>: <?=(!empty($row->remains)) ? $row->remains : ""?></li>
                       <?php
                         $mention_list = get_list_custom_mention($row);
                         if($mention_list->exists_list){

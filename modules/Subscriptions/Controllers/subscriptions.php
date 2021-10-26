@@ -22,24 +22,24 @@ class subscriptions extends MX_Controller {
 		$this->module_icon            = "fa ft-users";
 
 		$this->columns = array(
-			"order_id"                  => lang("order_id"),
-			"order_basic_details"       => lang("order_basic_details"),
-			"created"                   => lang("Created"),
-			"updated"                   => lang("Updated"),
-			"status"                    => lang("Status"),
+			"order_id"                  => lang("app.order_id"),
+			"order_basic_details"       => lang("app.order_basic_details"),
+			"created"                   => lang("app.created"),
+			"updated"                   => lang("app.updated"),
+			"status"                    => lang("app.status"),
 		);
 
 		if (get_role("admin") || get_role('supporter')) {
 			$this->columns = array(
-				"order_id"                  => lang("order_id"),
-				"api_order_id"              => lang("api_orderid"),
-				"uid"                       => lang("User"),
-				"order_basic_details"       => lang("order_basic_details"),
-				"created"                   => lang("Created"),
-				"updated"                   => lang("Updated"),
-				"status"                    => lang("Status"),
-				"response"                  => lang("API_Response"),
-				"action"                    => lang("Action"),
+				"order_id"                  => lang("app.order_id"),
+				"api_order_id"              => lang("app.api_orderid"),
+				"uid"                       => lang("app.user"),
+				"order_basic_details"       => lang("app.order_basic_details"),
+				"created"                   => lang("app.created"),
+				"updated"                   => lang("app.updated"),
+				"status"                    => lang("app.status"),
+				"response"                  => lang("app.api_response"),
+				"action"                    => lang("app.action"),
 			);
 		}
 	}
@@ -98,7 +98,7 @@ class subscriptions extends MX_Controller {
 		if($sub_status == ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("please_fill_in_the_required_fields")
+				"message" => lang("app.please_fill_in_the_required_fields")
 			));
 		}
 
@@ -130,12 +130,12 @@ class subscriptions extends MX_Controller {
 			
 			ms(array(
 				"status"  => "success",
-				"message" => lang("Update_successfully")
+				"message" => lang("app.update_successfully")
 			));
 		}else{
 			ms(array(
 				"status"  => "error",
-				"message" => lang("There_was_an_error_processing_your_request_Please_try_again_later")
+				"message" => lang("app.there_was_an_error_processing_your_request_Please_try_again_later")
 			));
 		}
 	}
@@ -197,26 +197,26 @@ class subscriptions extends MX_Controller {
 			if ($status == "" || !in_array($status, array('Active', 'Cancelled', 'Paused'))) {
 				ms(array(
 					"status"  => "error",
-					"message" => lang("There_was_an_error_processing_your_request_Please_try_again_later")
+					"message" => lang("app.there_was_an_error_processing_your_request_Please_try_again_later")
 				));
 			}
 			$this->db->update($this->tb_order, ["sub_status" => $status, "changed" => NOW], ["ids" => $ids]);
 			if ($this->db->affected_rows() > 0) {
 				ms(array(
 					"status"  => "success",
-					"message" => lang("Update_successfully")
+					"message" => lang("app.update_successfully")
 				));
 			}else{
 				ms(array(
 					"status"  => "error",
-					"message" => lang("There_was_an_error_processing_your_request_Please_try_again_later")
+					"message" => lang("app.there_was_an_error_processing_your_request_Please_try_again_later")
 				));
 			}
 
 		}else{
 			ms(array(
 				"status"  => "error",
-				"message" => lang("There_was_an_error_processing_your_request_Please_try_again_later")
+				"message" => lang("app.there_was_an_error_processing_your_request_Please_try_again_later")
 			));
 		}
 	}

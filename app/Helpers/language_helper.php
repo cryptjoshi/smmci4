@@ -27,15 +27,15 @@ if (!function_exists('get_lang_code_defaut')) {
             }
         }
         // Create lang file if it doesn't exists
-        if (session('langCurrent')) {
-            $current_lang = session('langCurrent');
-            $lang_path = APPPATH."./language/data/". $current_lang->code ."_lang.php";
-            if (!file_exists($lang_path)) {
+        // if (session('langCurrent')) {
+        //     $current_lang = session('langCurrent');
+        //     $lang_path = APPPATH."./language/data/". $current_lang->code ."_lang.php";
+        //     if (!file_exists($lang_path)) {
 
-                lang_builder(APPPATH.'../', $data);
-                create_lang_file($lang_path, $data);
-            }
-        }
+        //         lang_builder(APPPATH.'../', $data);
+        //         create_lang_file($lang_path, $data);
+        //     }
+        // }
         return session('langCurrent');
     }
 }
@@ -43,7 +43,7 @@ if (!function_exists('get_lang_code_defaut')) {
 // if(!function_exists('lang')){
 //     function lang( $slug ){
 //         $slug = strtolower($slug);
-//         $CI = &get_instance();
+//         //$CI = &get_instance();
 //         if (!session('langCurrent')) {
 //             get_lang_code_defaut();
 //         }

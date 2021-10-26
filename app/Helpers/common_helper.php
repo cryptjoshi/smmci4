@@ -308,6 +308,8 @@ function get_option($key, $value = ""){
 
 if (!function_exists('cn')) {
 	function cn($module=""){
+		$locale = service('request')->getLocale();
+		
 		return PATH."/".$module;
 	};
 }
@@ -1261,67 +1263,67 @@ if(!function_exists("order_status_title")){
 	function order_status_title($key){
 		switch ($key) {
 			case 'completed':
-				return lang("Completed");
+				return lang("app.completed");
 				break;			
 			case 'processing':
-				return lang("Processing");
+				return lang("app.processing");
 				break;			
 			case 'inprogress':
-				return lang("In_progress");
+				return lang("app.in_progress");
 				break;			
 			case 'pending':
-				return lang('Pending');
+				return lang('app.pending');
 				break;			
 			case 'partial':
-				return lang("Partial");
+				return lang("app.partial");
 				break;			
 			case 'canceled':
-				return lang("Canceled");
+				return lang("app.canceled");
 				break;	
 
 			case 'refunded':
-				return lang("Refunded");
+				return lang("app.refunded");
 				break;	
 
 			case 'active':
-				return lang("Active");
+				return lang("app.active");
 				break;	
 
 			case 'awaiting':
-				return lang("Awaiting");
+				return lang("app.awaiting");
 				break;	
 			case 'rejected':
-					return lang("Rejected");
+					return lang("app.rejected");
 					break;
 	
 			/*----------  subscriptions  ----------*/
 
 			case 'Active':
-				return lang("Active");
+				return lang("app.active");
 				break;
 
 			case 'Completed':
-				return lang("Completed");
+				return lang("app.completed");
 				break;
 
 			case 'Paused':
-				return lang("Paused");
+				return lang("app.paused");
 				break;
 
 			case 'Expired':
-				return lang("Expired");
+				return lang("app.expired");
 				break;
 
 			case 'Canceled':
-				return lang("Canceled");
+				return lang("app.canceled");
 				break;
 
 			case 'fail':
-				return lang("Fail");
+				return lang("app.fail");
 				break;	
 
 			case 'error':
-				return lang("Error");
+				return lang("app.error");
 				break;						
 		}
 	}
@@ -1378,7 +1380,7 @@ if (!function_exists('get_list_custom_mention')) {
 			case 'custom_comments':
 				$result = (object)array(
 					'exists_list'     => true,
-					'title'		      => lang('comments'),
+					'title'		      => lang('app.comments'),
 					'list'	          => json_decode($order->comments)
 				);
 				break;
@@ -1386,7 +1388,7 @@ if (!function_exists('get_list_custom_mention')) {
 			case 'comment_likes':
 				$result = (object)array(
 					'exists_list'     => true,
-					'title'		      => lang('username'),
+					'title'		      => lang('app.username'),
 					'list'	          => $order->username
 				);
 				break;
@@ -1394,7 +1396,7 @@ if (!function_exists('get_list_custom_mention')) {
 			case 'mentions_hashtag':
 				$result = (object)array(
 					'exists_list'     => true,
-					'title'		      => lang('hashtag'),
+					'title'		      => lang('app.hashtag'),
 					'list'	          => $order->hashtag
 				);
 				break;	
@@ -1402,7 +1404,7 @@ if (!function_exists('get_list_custom_mention')) {
 			case 'mentions_user_followers':
 				$result = (object)array(
 					'exists_list'     => true,
-					'title'		      => lang('username'),
+					'title'		      => lang('app.username'),
 					'list'	          => $order->hashtag
 				);
 				break;
@@ -1643,7 +1645,75 @@ if (!function_exists('push_message')){
          $pusher->trigger('my-channel','my-event',$charge);
 		}
 	}
- 
+
+	if (!function_exists('get_json_content')) {
+		function get_json_content($path , $data = []) {
+			if ($data) {
+				return json_decode(file_get_contents($path.'?'.http_build_query($data)));
+			}else{
+				if (file_exists($path)) {
+					return json_decode(file_get_contents($path));
+				}else{
+					return false;
+				}
+			}
+		}
+	}
+
+	
+if (!function_exists("ticket_status_array")) {
+	function ticket_status_array(){
+		$data = array('new','pending','closed');
+		return $data;
+	}
+}
+
+if(!function_exists("ticket_status_title")){
+	function ticket_status_title($key){
+		switch ($key) {
+			case 'new':
+				return lang('New');
+				break;			
+			case 'pending':
+				return lang('Pending');
+				break;	
+
+			case 'closed':
+				return lang('Closed');
+				break;
+
+			case 'answered':
+				return lang('Answered');
+				break;			
+		
+		}
+	}
+}
+
+if(!function_exists("childpanel_status_title")){
+	function childpanel_status_title($key){
+		switch ($key) {
+			case 'active':
+				return lang('Active');
+				break;			
+			case 'processing':
+				return lang('Processing');
+				break;	
+
+			case 'refunded':
+				return lang('Refunded');
+				break;
+
+			case 'disabled':
+				return lang('Disabled');
+				break;			
+		    case 'terminated':
+				return lang('Terminated');
+				break;	
+		}
+	}
+}
+
 /********************************* */
 
 	if(strpos(current_url(), "cron") === FALSE && get_option('enable_https', 0) == 1){

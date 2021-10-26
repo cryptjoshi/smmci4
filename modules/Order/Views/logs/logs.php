@@ -21,9 +21,9 @@
 <div class="page-header">
   <h1 class="page-title">
     <a href="<?=cn("$module/add")?>">
-      <span class="add-new" data-toggle="tooltip" data-placement="bottom" data-original-title="<?=lang("add_new")?>"><i class="fa fa-plus-square text-primary" aria-hidden="true"></i></span>
+      <span class="add-new" data-toggle="tooltip" data-placement="bottom" data-original-title="<?=lang("app.add_new")?>"><i class="fa fa-plus-square text-primary" aria-hidden="true"></i></span>
     </a>
-    <?=lang("order_logs")?>
+    <?=lang("app.order_logs")?>
   </h1>
 
   <div class="page-options d-flex">
@@ -56,7 +56,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("Lists")?></h3>
+        <h3 class="card-title"><?=lang("app.lists")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -105,8 +105,11 @@
                   break;
               }
               $i = 0;
+              
               foreach ($order_logs as $key => $row) {
+
               $i++;
+               
             ?>
             <tr class="tr_<?=$row->ids?>">
               <td><?=$row->id?></td>
@@ -128,7 +131,7 @@
                         if (get_role("admin")) {
                       ?>
                       <li>
-                        <?php echo lang("Type")?>: 
+                        <?php echo lang("app.type")?>: 
                         <?php 
                           if (!empty($row->api_service_id) && $row->api_service_id != "") {
                             if ($row->type == 'api') {
@@ -137,13 +140,13 @@
                               echo $row->api_name." (ID".$row->api_service_id. ")";
                             }
                           }else{
-                            echo lang("Manual");
+                            echo lang("app.manual");
                           }
                         ?>
                       </li>
                       <?php }?>
 
-                      <li><?=lang("Link")?>:
+                      <li><?=lang("app.link")?>:
                         <?php
                           if (filter_var($row->link, FILTER_VALIDATE_URL)) {
                             echo '<a href="https://anon.ws/?'.$row->link.'" target="_blank">'.truncate_string($row->link, 60).'</a>';
@@ -152,8 +155,8 @@
                           }
                         ?>
                       </li> 
-                      <li><?=lang("Quantity")?>: <?=$row->quantity?></li>
-                      <li><?=lang("Charge")?>: 
+                      <li><?=lang("app.quantity")?>: <?=$row->quantity?></li>
+                      <li><?=lang("app.charge")?>: 
                         <?php 
                           echo $currency_symbol.currency_format($row->charge, $decimal_places, $decimalpoint, $separator);
                         ?>
@@ -164,8 +167,8 @@
                           }
                         ?>
                       </li>
-                      <li><?=lang("Start_counter")?>: <?=(!empty($row->start_counter)) ? $row->start_counter : ""?></li>
-                      <li><?=lang("Remains")?>: <?=(!empty($row->remains)) ? $row->remains : ""?></li>
+                      <li><?=lang("app.start_counter")?>: <?=(!empty($row->start_counter)) ? $row->start_counter : ""?></li>
+                      <li><?=lang("app.remains")?>: <?=(!empty($row->remains)) ? $row->remains : ""?></li>
                       <?php
                         $mention_list = get_list_custom_mention($row);
                         if($mention_list->exists_list){
@@ -242,7 +245,7 @@
                 <div class="item-action dropdown">
                   <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
                   <div class="dropdown-menu">
-                    <a href="<?=cn("$module/log_update/".$row->ids)?>" class="dropdown-item ajaxModal"><i class="dropdown-icon fe fe-edit"></i> <?=lang('Edit')?> </a>
+                    <a href="<?=cn("$module/log_update/".$row->ids)?>" class="dropdown-item ajaxModal"><i class="dropdown-icon fe fe-edit"></i> <?=lang('app.edit')?> </a>
                     <?php
                       if (get_role('admin')) {
                     ?>
@@ -252,7 +255,7 @@
                     <a href="<?=cn("$module/change_status/resend_order/".$row->ids)?>" class="dropdown-item"><i class="dropdown-icon fe fe-send"></i> Resend Order </a>
                     <?php }; ?>
 
-                    <a href="<?=cn("$module/ajax_log_delete_item/".$row->ids)?>" class="dropdown-item ajaxDeleteItem"><i class="dropdown-icon fe fe-trash"></i> <?=lang('Delete')?> </a>
+                    <a href="<?=cn("$module/ajax_log_delete_item/".$row->ids)?>" class="dropdown-item ajaxDeleteItem"><i class="dropdown-icon fe fe-trash"></i> <?=lang('app.delete')?> </a>
                     <?php } ?>
                   </div>
                 </div>
@@ -272,7 +275,7 @@
     </div>
   </div>
   <?php }else{
-   view("Modules\Blocks\Views\\empty_data");
+   echo view("Modules\Blocks\Views\\empty_data");
   }?>
 </div>
 <style>

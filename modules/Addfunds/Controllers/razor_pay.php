@@ -46,7 +46,7 @@ class razor_pay extends MX_Controller {
 		if(!empty($token)){
 			$users = session('user_current_info');
 			// Item info
-			$description   = lang("Balance_recharge")." - ".  $users['email'];
+			$description   = lang("app.balance_recharge")." - ".  $users['email'];
 			$itemNumber    = 'SMMPANEL9271';
 			$orderID       = "ORDS" . strtotime(NOW);
 

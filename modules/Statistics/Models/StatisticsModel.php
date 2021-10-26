@@ -68,13 +68,13 @@ class StatisticsModel extends ExtendModel {
 			"refunded"    		=> $this->stats_log($this->tb_orders, 'refunded')->value,
 		);
 		$data_orders_chart_spline = json_encode($data_orders_chart_spline);
-		$data_orders_chart_spline = str_replace("completed", lang("Completed"), $data_orders_chart_spline);
-		$data_orders_chart_spline = str_replace("processing", lang("Processing"), $data_orders_chart_spline);
-		$data_orders_chart_spline = str_replace("in progress", lang("In_progress"), $data_orders_chart_spline);
-		$data_orders_chart_spline = str_replace("pending", lang("Pending"), $data_orders_chart_spline);
-		$data_orders_chart_spline = str_replace("partial", lang("Partial"), $data_orders_chart_spline);
-		$data_orders_chart_spline = str_replace("canceled", lang("Canceled"), $data_orders_chart_spline);
-		$data_orders_chart_spline = str_replace("refunded", lang("Refunded"), $data_orders_chart_spline);
+		$data_orders_chart_spline = str_replace("completed", lang("app.completed"), $data_orders_chart_spline);
+		$data_orders_chart_spline = str_replace("processing", lang("app.processing"), $data_orders_chart_spline);
+		$data_orders_chart_spline = str_replace("in progress", lang("app.in_progress"), $data_orders_chart_spline);
+		$data_orders_chart_spline = str_replace("pending", lang("app.pending"), $data_orders_chart_spline);
+		$data_orders_chart_spline = str_replace("partial", lang("app.partial"), $data_orders_chart_spline);
+		$data_orders_chart_spline = str_replace("canceled", lang("app.canceled"), $data_orders_chart_spline);
+		$data_orders_chart_spline = str_replace("refunded", lang("app.refunded"), $data_orders_chart_spline);
 
 		$data_orders_chart_pie_tmp =  array(
 			"completed"  		=> $this->get_count_field_status($this->tb_orders, 'completed'),
@@ -87,13 +87,13 @@ class StatisticsModel extends ExtendModel {
 		);
 
 		$data_orders_chart_pie 	 = json_encode($data_orders_chart_pie_tmp);
-		$data_orders_chart_pie 	 = str_replace("completed", lang("Completed"), $data_orders_chart_pie);
-		$data_orders_chart_pie   = str_replace("processing", lang("Processing"), $data_orders_chart_pie);
-		$data_orders_chart_pie   = str_replace("inprogress", lang("In_progress"), $data_orders_chart_pie);
-		$data_orders_chart_pie   = str_replace("pending", lang("Pending"), $data_orders_chart_pie);
-		$data_orders_chart_pie   = str_replace("partial", lang("Partial"), $data_orders_chart_pie);
-		$data_orders_chart_pie   = str_replace("canceled", lang("Canceled"), $data_orders_chart_pie);
-		$data_orders_chart_pie   = str_replace("refunded", lang("Refunded"), $data_orders_chart_pie);
+		$data_orders_chart_pie 	 = str_replace("completed", lang("app.completed"), $data_orders_chart_pie);
+		$data_orders_chart_pie   = str_replace("processing", lang("app.processing"), $data_orders_chart_pie);
+		$data_orders_chart_pie   = str_replace("inprogress", lang("app.in_progress"), $data_orders_chart_pie);
+		$data_orders_chart_pie   = str_replace("pending", lang("app.pending"), $data_orders_chart_pie);
+		$data_orders_chart_pie   = str_replace("partial", lang("app.partial"), $data_orders_chart_pie);
+		$data_orders_chart_pie   = str_replace("canceled", lang("app.canceled"), $data_orders_chart_pie);
+		$data_orders_chart_pie   = str_replace("refunded", lang("app.refunded"), $data_orders_chart_pie);
 		$data_orders = (object)array_merge($data_orders_chart_pie_tmp, array(
 			"total"  					=> $this->get_count_field_status($this->tb_orders,''),
 			"data_orders_chart_pie" 	=> $data_orders_chart_pie,
@@ -109,9 +109,9 @@ class StatisticsModel extends ExtendModel {
 		);
 		
 		$data_tickets_chart_spline = json_encode($data_tickets_chart_spline);
-		$data_tickets_chart_spline = str_replace("closed", lang("Closed"), $data_tickets_chart_spline);
-		$data_tickets_chart_spline = str_replace("new", lang("New"), $data_tickets_chart_spline);
-		$data_tickets_chart_spline = str_replace("pending", lang("Pending"), $data_tickets_chart_spline);
+		$data_tickets_chart_spline = str_replace("closed", lang("app.closed"), $data_tickets_chart_spline);
+		$data_tickets_chart_spline = str_replace("new", lang("app.new"), $data_tickets_chart_spline);
+		$data_tickets_chart_spline = str_replace("pending", lang("app.pending"), $data_tickets_chart_spline);
 
 		$data_tickets_chart_pie_tmp =  array(
 			'closed' 	=> $this->get_count_field_status($this->tb_tickets, 'closed'),
@@ -120,9 +120,9 @@ class StatisticsModel extends ExtendModel {
 		);
 
 		$data_tickets_chart_pie = json_encode($data_tickets_chart_pie_tmp);
-		$data_tickets_chart_pie = str_replace("closed", lang("Closed"), $data_tickets_chart_pie);
-		$data_tickets_chart_pie = str_replace("new", lang("New"), $data_tickets_chart_pie);
-		$data_tickets_chart_pie = str_replace("pending", lang("Pending"), $data_tickets_chart_pie);
+		$data_tickets_chart_pie = str_replace("closed", lang("app.closed"), $data_tickets_chart_pie);
+		$data_tickets_chart_pie = str_replace("new", lang("app.new"), $data_tickets_chart_pie);
+		$data_tickets_chart_pie = str_replace("pending", lang("app.pending"), $data_tickets_chart_pie);
 
 		$data_tickets 					= (object)array_merge($data_tickets_chart_pie_tmp, array(
 			"total"  					=> $this->get_count_field_status($this->tb_tickets,''),

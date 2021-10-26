@@ -6,7 +6,7 @@
       <tr>
         
         <th class="text-center w-1">ID</th>
-        <th><?php echo lang("Name"); ?></th>
+        <th><?php echo lang("app.name"); ?></th>
         <?php if (!empty($columns)) {
           foreach ($columns as $key => $row) {
         ?>
@@ -39,7 +39,7 @@
         </td>
         <td class="text-center" style="width: 8%;"><?=$row->min?> / <?=$row->max?></td>
         <td style="width: 6%;">
-          <button class="btn btn-info btn-sm" type="button" class="dash-btn" data-toggle="modal" data-target="#service-<?php echo $row->id; ?>"><?=lang("Details")?></button>
+          <button class="btn btn-info btn-sm" type="button" class="dash-btn" data-toggle="modal" data-target="#service-<?php echo $row->id; ?>"><?=lang("app.details")?></button>
           <div id="<?php echo 'service-' . $row->id; ?>" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <?php
               echo view('\Modules\Services\Views/descriptions', ['service' => $row]);

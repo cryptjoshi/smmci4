@@ -4,10 +4,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1><?=lang("congratulations_your_registration_is_now_complete")?></h1>
+                <h1><?=lang("app.congratulations_your_registration_is_now_complete")?></h1>
                 <p><?=lang('congratulations_desc')?></p>
                 <div class="form-footer">
-                  <a href="<?=cn("auth/login")?>" class="btn btn-primary round btn-pill"><?=lang("get_start_now")?></a>
+                  <a href="<?=cn("auth/login")?>" class="btn btn-primary round btn-pill"><?=lang("app.get_start_now")?></a>
                 </div>
             </div>
         </div>

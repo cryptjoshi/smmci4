@@ -8,10 +8,10 @@
                 <div class="for-group text-center">
                     <img src="<?=BASE?>/assets/images/omise.svg" width="50%" alt="omise icon">
                     <p class="p-t-10">
-                        <small><?=sprintf(lang("you_can_deposit_funds_with_paypal_they_will_be_automaticly_added_into_your_account"), 'omise')?></small>
+                        <small><?=sprintf(lang("app.you_can_deposit_funds_with_paypal_they_will_be_automaticly_added_into_your_account"), 'omise')?></small>
                     </p>
                 </div>
-                <label><?=sprintf(lang("select_amount")) ?></label>
+                <label><?=sprintf(lang("app.select_amount")) ?></label>
                 <div id="amount_toggle" class="btn-group special btn-group-toggle " data-toggle="buttons">
                     <?php 
                     
@@ -22,7 +22,7 @@
                   <?php endforeach ?>
               </div>
               <div class=" form-group">
-                        <label><?=sprintf(lang("amount")) ?>(<?=get_option('currency_code')?>)</label>
+                        <label><?=sprintf(lang("app.amount")) ?>(<?=get_option('currency_code')?>)</label>
                         <input class="form-control square" type="number" id="amount" name="amount" placeholder="0"
                             id="omise_amount">
                         <input type="hidden" name="payment_method" value="omise">
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-group">
-                    <small class=""><?=lang("transaction_fee")?>:
+                    <small class=""><?=lang("app.transaction_fee")?>:
                         <strong><?=json_decode($payment->params)->option->tnx_fee?>%</strong></small>
                 </div>
 
@@ -38,13 +38,13 @@
                     <label class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" name="agree" value="1">
                         <span
-                            class="custom-control-label"><?=lang("yes_i_understand_after_the_funds_added_i_will_not_ask_fraudulent_dispute_or_chargeback")?></span>
+                            class="custom-control-label"><?=lang("app.yes_i_understand_after_the_funds_added_i_will_not_ask_fraudulent_dispute_or_chargeback")?></span>
                     </label>
                 </div>
 
                 <div class="form-actions left">
                     <button id="pay-button-thb" type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1">
-                        <?=lang("Pay")?>
+                        <?=lang("app.pay")?>
                     </button>
                 </div>
 

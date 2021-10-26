@@ -1,5 +1,5 @@
   <input type="hidden" name="total_charge" value="<?=$total?>">
-  <p class="btn btn-info"><?=lang("total_charge")?> $<?=$total?></p>
+  <p class="btn btn-info"><?=lang("app.total_charge")?> $<?=$total?></p>
   <?php if(!empty($message))
     {
   ?>

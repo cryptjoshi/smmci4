@@ -35,12 +35,12 @@ class Users extends BaseController {
 		$this->module                   = get_class($this);
 		$this->module_icon              = "fa ft-users";
 		$this->columns = array(
-			"name"           => lang("User_profile"),
-			"balance"        => lang('Funds'),
-			"custom_rate"    => lang("custom_rate"),
-			"desc"           => lang('Description'),
-			"created"        => lang("Created"),
-			"status"         => lang('Status'),
+			"name"           => lang("app.user_profile"),
+			"balance"        => lang('app.funds'),
+			"custom_rate"    => lang("app.custom_rate"),
+			"desc"           => lang('app.description'),
+			"created"        => lang("app.created"),
+			"status"         => lang('app.status'),
 		);
 	}
 
@@ -140,7 +140,7 @@ class Users extends BaseController {
 		if ($ids == "" || empty($checkUser)) {
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("the_account_does_not_exists"),
+				'message' => lang("app.the_account_does_not_exists"),
 			));
 		}
 		
@@ -194,7 +194,7 @@ class Users extends BaseController {
 		if($this->model->common_update( $this->tb_users, $data , ['ids' => $ids] )){
 			ms(array(
 				'status'  => 'success',
-				'message' => lang("Update_successfully"),
+				'message' => lang("app.update_successfully"),
 			));
 		}
 	}
@@ -214,7 +214,7 @@ class Users extends BaseController {
 		if($first_name == '' || $last_name == ''){
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("please_fill_in_the_required_fields"),
+				'message' => lang("app.please_fill_in_the_required_fields"),
 			));
 		}
 
@@ -233,21 +233,21 @@ class Users extends BaseController {
 			if($password == ''){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("Password_is_required"),
+					'message' => lang("app.password_is_required"),
 				));
 			}
 
 			if(strlen($password) < 6){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("Password_must_be_at_least_6_characters_long"),
+					'message' => lang("app.password_must_be_at_least_6_characters_long"),
 				));
 			}
 
 			if($re_password!= $password){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("Password_does_not_match_the_confirm_password"),
+					'message' => lang("app.password_does_not_match_the_confirm_password"),
 				));
 			}
 			$data['password'] = $this->model->app_password_hash($password);
@@ -259,7 +259,7 @@ class Users extends BaseController {
 			if(empty($checkUser)){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("There_was_an_error_processing_your_request_Please_try_again_later"),
+					'message' => lang("app.there_was_an_error_processing_your_request_Please_try_again_later"),
 				));
 			}
 
@@ -274,7 +274,7 @@ class Users extends BaseController {
 			if($this->model->update( $this->tb_users, $data ,array("ids" =>$ids))){
 				ms(array(
 					'status'  => 'success',
-					'message' => lang("Update_successfully"),
+					'message' => lang("app.update_successfully"),
 				));
 			}
 		}else{
@@ -282,14 +282,14 @@ class Users extends BaseController {
 			if($email == ''){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("email_is_required"),
+					'message' => lang("app.email_is_required"),
 				));
 			}
 
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		      	ms(array(
 					'status'  => 'error',
-					'message' => lang("invalid_email_format"),
+					'message' => lang("app.invalid_email_format"),
 				));
 		    }
 
@@ -310,7 +310,7 @@ class Users extends BaseController {
 			if($this->db->insert( $this->tb_users,$data)){
 				ms(array(
 					'status'  => 'success',
-					'message' => lang("Update_successfully"),
+					'message' => lang("app.update_successfully"),
 				));
 			}
 		}
@@ -326,14 +326,14 @@ class Users extends BaseController {
 		if($subject == ''){
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("subject_is_required"),
+				'message' => lang("app.subject_is_required"),
 			));
 		}
 
 		if($email_content == ''){
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("message_is_required"),
+				'message' => lang("app.message_is_required"),
 			));
 		}
 
@@ -363,12 +363,12 @@ class Users extends BaseController {
 
 			ms(array(
 				"status"  => "success",
-				"message" => lang("your_email_has_been_successfully_sent_to_user"),
+				"message" => lang("app.your_email_has_been_successfully_sent_to_user"),
 			));
 		}else{
 			ms(array(
 				"status"  => "error",
-				"message" => lang("the_account_does_not_exists"),
+				"message" => lang("app.the_account_does_not_exists"),
 			));
 		}
 	}
@@ -402,20 +402,20 @@ class Users extends BaseController {
 			if(empty($checkUser)){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("There_was_an_error_processing_your_request_Please_try_again_later"),
+					'message' => lang("app.there_was_an_error_processing_your_request_Please_try_again_later"),
 				));
 			}
 
 			if($this->db->common_update($this->tb_users, $data,array("ids" =>$ids))){
 				ms(array(
 					'status'  => 'success',
-					'message' => lang("Update_successfully"),
+					'message' => lang("app.update_successfully"),
 				));
 			}
 		}else{
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("There_was_an_error_processing_your_request_Please_try_again_later"),
+				'message' => lang("app.there_was_an_error_processing_your_request_Please_try_again_later"),
 			));
 		}
 	}
@@ -429,7 +429,7 @@ class Users extends BaseController {
 		if ($ids == "" || empty($checkUser)) {
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("the_account_does_not_exists"),
+				'message' => lang("app.the_account_does_not_exists"),
 			));
 		}
 		
@@ -454,7 +454,7 @@ class Users extends BaseController {
 		if($this->model->common_update( $this->tb_users, $data ,array("ids" =>$ids))){
 			ms(array(
 				'status'  => 'success',
-				'message' => lang("Update_successfully"),
+				'message' => lang("app.update_successfully"),
 			));
 		}
 	}
@@ -510,7 +510,7 @@ class Users extends BaseController {
 		$item  = $this->model->get("id", $this->tb_users, ['id' => $id]);
 		if ( $item ) {
 			$this->model->common_update($this->tb_users, ['status' => (int)$status], ['id' => $id]);
-			_validation('success', lang("Update_successfully"));
+			_validation('success', lang("app.update_successfully"));
 		}
 	}
 
@@ -521,7 +521,7 @@ class Users extends BaseController {
 		 if (empty($user)) {
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("There_was_an_error_processing_your_request_Please_try_again_later"),
+				'message' => lang("app.there_was_an_error_processing_your_request_Please_try_again_later"),
 			));
 		}
 		set_session('uid_tmp', $user->id);
@@ -529,7 +529,7 @@ class Users extends BaseController {
 		if (session('uid_tmp')) {
 			ms(array(
 				'status'  => 'success',
-				'message' => lang("processing_"),
+				'message' => lang("app.processing_"),
 			));
 		 }
 	}
@@ -663,6 +663,6 @@ class Users extends BaseController {
 		}else{
 			$this->db->delete($this->tb_users_price, ['uid' => $user->id]);
 		}
-		_validation( 'success', lang("Update_successfully") );
+		_validation( 'success', lang("app.update_successfully") );
 	}
 }

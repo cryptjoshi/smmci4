@@ -406,14 +406,18 @@ function General(){
             _ids      = _that.val();
             _action   = _that.data("url") + _ids;
             _redirect = _that.data("redirect");
+            
             _data     = $.param({token:token, redirect:_redirect});
-            $.post(_action, _data, function(_result){
+            $.post(_action, _data).done(function(_result){
+              
                 pageOverlay.show();
                 setTimeout(function () {
                     pageOverlay.hide();
                     location.reload();
                 }, 1000);
-            },'json')
+            },'json').fail(function(error){
+                _redirect = '';
+            })
         })
 
         // ajaxChangeStatus ticket

@@ -50,7 +50,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_log->total_users?></h4>
-                <small class="text-muted "><?=lang("total_users")?></small>
+                <small class="text-muted "><?=lang("app.app.total_users")?></small>
               </div>
             </div>
           </div>
@@ -65,8 +65,8 @@
             </span>
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
-                <h4 class="m-0 text-right number"><?=get_option('currency_symbol',"$")?><?=(!empty($data_log->user_balance)) ? currency_format($data_log->user_balance, get_option('currency_decimal', 2), $decimalpoint, $separator) : 0?></h4>
-                <small class="text-muted "><?=lang("your_balance")?></small>
+                <h4 class="m-0 text-right number"><?=get_option('app.currency_symbol',"$")?><?=(!empty($data_log->user_balance)) ? currency_format($data_log->user_balance, get_option('currency_decimal', 2), $decimalpoint, $separator) : 0?></h4>
+                <small class="text-muted "><?=lang("app.your_balance")?></small>
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=get_option('currency_symbol',"$")?><?=(!empty($data_log->total_spent_receive)) ? currency_format($data_log->total_spent_receive, get_option('currency_decimal', 2), $decimalpoint, $separator) : 0?></h4>
                 <small class="text-muted ">
-                  <?=(get_role("admin") ? lang("total_amount_recieved") : lang("total_amount_spent"))?>
+                  <?=(get_role("admin") ? lang("app.total_amount_recieved") : lang("app.total_amount_spent"))?>
                 </small>
               </div>
             </div>
@@ -101,7 +101,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_orders_log->total?></h4>
-                <small class="text-muted "><?=lang("total_orders")?></small>
+                <small class="text-muted "><?=lang("app.total_orders")?></small>
               </div>
             </div>
           </div>
@@ -117,7 +117,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_tickets_log->total?></h4>
-                <small class="text-muted "><?=lang("total_tickets")?></small>
+                <small class="text-muted "><?=lang("app.total_tickets")?></small>
               </div>
             </div>
           </div>
@@ -138,7 +138,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?php echo $currency_symbol.number_format($data_log->users_balance, 2, '.', ','); ?></h4>
-                <small class="text-muted "><?php echo lang("total_users_balance"); ?> </small>
+                <small class="text-muted "><?php echo lang("app.total_users_balance"); ?> </small>
               </div>
             </div>
           </div>
@@ -154,7 +154,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?php echo $currency_symbol.number_format($data_log->providers_balance, 2, '.', ','); ?></h4>
-                <small class="text-muted "><?php echo lang("total_providers_balance"); ?> </small>
+                <small class="text-muted "><?php echo lang("app.total_providers_balance"); ?> </small>
               </div>
             </div>
           </div>
@@ -170,7 +170,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?php echo $currency_symbol.number_format($data_log->last_profit_30_days, 2, '.', ','); ?></h4>
-                <small class="text-muted "><?php echo lang("total_profit_30_days"); ?></small>
+                <small class="text-muted "><?php echo lang("app.total_profit_30_days"); ?></small>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?php echo $currency_symbol.number_format($data_log->profit_today, 2, '.', ','); ?></h4>
-                <small class="text-muted "><?php echo lang("total_profit_today"); ?></small>
+                <small class="text-muted "><?php echo lang("app.total_profit_today"); ?></small>
               </div>
             </div>
           </div>
@@ -199,7 +199,7 @@
       <div class="col-sm-12 charts">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title"><?=lang("recent_orders")?></h3>
+            <h3 class="card-title"><?=lang("app.recent_orders")?></h3>
           </div>
           <div class="row">
             <div class="col-sm-8">
@@ -225,7 +225,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_orders_log->total?></h4>
-                <small class="text-muted "><?=lang("total_orders")?></small>
+                <small class="text-muted "><?=lang("app.total_orders")?></small>
               </div>
             </div>
           </div>
@@ -241,7 +241,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 number"><?=$data_orders_log->completed?></h4>
-                <small class="text-muted"><?=lang("Completed")?></small>
+                <small class="text-muted"><?=lang("app.completed")?></small>
               </div>
             </div>
           </div>
@@ -257,7 +257,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_orders_log->processing?></h4>
-                <small class="text-muted "><?=lang("Processing")?></small>
+                <small class="text-muted "><?=lang("app.processing")?></small>
               </div>
             </div>
           </div>
@@ -273,7 +273,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_orders_log->inprogress?></h4>
-                <small class="text-muted "><?=lang("In_progress")?></small>
+                <small class="text-muted "><?=lang("app.in_progress")?></small>
               </div>
             </div>
           </div>
@@ -289,7 +289,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_orders_log->pending?></h4>
-                <small class="text-muted "><?=lang("Pending")?></small>
+                <small class="text-muted "><?=lang("app.pending")?></small>
               </div>
             </div>
           </div>
@@ -305,7 +305,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_orders_log->partial?></h4>
-                <small class="text-muted "><?=lang("Partial")?></small>
+                <small class="text-muted "><?=lang("app.partial")?></small>
               </div>
             </div>
           </div>
@@ -321,7 +321,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_orders_log->canceled?></h4>
-                <small class="text-muted "><?=lang("Canceled")?></small>
+                <small class="text-muted "><?=lang("app.canceled")?></small>
               </div>
             </div>
           </div>
@@ -337,7 +337,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_orders_log->refunded?></h4>
-                <small class="text-muted "><?=lang("Refunded")?></small>
+                <small class="text-muted "><?=lang("app.refunded")?></small>
               </div>
             </div>
           </div>
@@ -350,7 +350,7 @@
       <div class="col-sm-12 charts">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title"><?=lang("recent_tickets")?></h3>
+            <h3 class="card-title"><?=lang("app.recent_tickets")?></h3>
           </div>
           <div class="row">
             <div class="col-sm-8">
@@ -377,7 +377,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_tickets_log->total?></h4>
-                <small class="text-muted "><?=lang("total_tickets")?></small>
+                <small class="text-muted "><?=lang("app.total_tickets")?></small>
               </div>
             </div>
           </div>
@@ -393,7 +393,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 number"><?=$data_tickets_log->new?></h4>
-                <small class="text-muted"><?=lang("New")?></small>
+                <small class="text-muted"><?=lang("app.new")?></small>
               </div>
             </div>
           </div>
@@ -409,7 +409,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_tickets_log->pending?></h4>
-                <small class="text-muted "><?=lang("Pending")?></small>
+                <small class="text-muted "><?=lang("app.pending")?></small>
               </div>
             </div>
           </div>
@@ -425,7 +425,7 @@
             <div class="d-flex order-lg-2 ml-auto">
               <div class="ml-2 d-lg-block text-right">
                 <h4 class="m-0 text-right number"><?=$data_tickets_log->closed?></h4>
-                <small class="text-muted "><?=lang("Closed")?></small>
+                <small class="text-muted "><?=lang("app.closed")?></small>
               </div>
             </div>
           </div>
@@ -445,22 +445,22 @@
 
       if (get_role('admin')) {
         $columns_best_seller = array(
-          "name"             => lang("Name"),
-          "total_orders"     => lang("total_orders"),
-          "add_type"         => lang("Type"),
-          "provider"         => lang("api_provider"),
-          "api_service_id"   => lang("api_service_id"),
-          "price"            => lang("rate_per_1000")."(".get_option("currency_symbol","").")",
-          "min_max"          => lang("min__max_order"),
-          "desc"             => lang("Description"),
-          "status"           => lang("Status"),
+          "name"             => lang("app.name"),
+          "total_orders"     => lang("app.total_orders"),
+          "add_type"         => lang("app.type"),
+          "provider"         => lang("app.api_provider"),
+          "api_service_id"   => lang("app.api_service_id"),
+          "price"            => lang("app.rate_per_1000")."(".get_option("currency_symbol","").")",
+          "min_max"          => lang("app.min__max_order"),
+          "desc"             => lang("app.description"),
+          "status"           => lang("app.status"),
         );
       }else{
         $columns_best_seller = array(
-          "name"             => lang("Name"),
-          "price"            => lang("rate_per_1000")."(".get_option("currency_symbol","").")",
-          "min_max"          => lang("min__max_order"),
-          "desc"             => lang("Description"),
+          "name"             => lang("app.name"),
+          "price"            => lang("app.rate_per_1000")."(".get_option("currency_symbol","").")",
+          "min_max"          => lang("app.min__max_order"),
+          "desc"             => lang("app.description"),
         );
       } 
       $data = array(
@@ -480,13 +480,13 @@
       $data = array(
         'users' => $last_5_users,
         'columns'  => array(
-            "name"                   => lang("name"),
-            "Email"                  => lang("Email"),
-            "type"                   => lang("Type"),
-            "balance"                => lang('Funds'),
+            "name"                   => lang("app.name"),
+            "Email"                  => lang("app.email"),
+            "type"                   => lang("app.type"),
+            "balance"                => lang('app.funds'),
             "last_ip_address"        => 'Last IP Address',
-            "created"                => lang("Created"),
-            "status"                 => lang('Status'),
+            "created"                => lang("app.created"),
+            "status"                 => lang('app.status'),
           )
       );
       view('Modules\Statistics\Views\last_5_users', $data);
@@ -499,15 +499,15 @@
       $data = array(
         'order_logs' => $last_5_orders,
         'columns'  => array(
-            "order_id"            => lang("order_id"),
-            "uid"                 => lang("User"),
-            "name"                => lang("name"),
-            "type"                => lang("Type"),
-            "link"                => lang("Link"),
-            "quantity"            => lang("Quantity"),
-            "amount"              => lang("Amount"),
-            "created"             => lang("Created"),
-            "status"              => lang("Status"),
+            "order_id"            => lang("app.order_id"),
+            "uid"                 => lang("app.user"),
+            "name"                => lang("app.name"),
+            "type"                => lang("app.type"),
+            "link"                => lang("app.link"),
+            "quantity"            => lang("app.quantity"),
+            "amount"              => lang("app.amount"),
+            "created"             => lang("app.created"),
+            "status"              => lang("app.status"),
           )
       );
       view('Modules\Statistics\Views\last_5_orders', $data);

@@ -12,7 +12,7 @@
         ?>
                 <form class="form actionForm" action="<?=$url?>" method="POST">
                     <div class="modal-header bg-pantone">
-                        <h4 class="modal-title"><i class="fa fa-edit"></i> <?=lang("edit_service")?></h4>
+                        <h4 class="modal-title"><i class="fa fa-edit"></i> <?=lang("app.edit_service")?></h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         </button>
                     </div>
@@ -21,14 +21,14 @@
                             <div class="row justify-content-md-center">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group emoji-picker-container">
-                                        <label><?=lang("package_name")?></label>
+                                        <label><?=lang("app.package_name")?></label>
                                         <input type="text" data-emojiable="true" class="form-control square" name="name"
                                             value="<?=(!empty($service->name))? $service->name: ''?>">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label><?=lang("choose_a_category")?></label>
+                                        <label><?=lang("app.choose_a_category")?></label>
                                         <select name="category" class="form-control square">
                                             <?php if(!empty($categories)){
                         foreach ($categories as $key => $category) {
@@ -43,19 +43,19 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <div class="form-label"><?php echo lang("Type"); ?></div>
+                                        <div class="form-label"><?php echo lang("app.type"); ?></div>
                                         <div class="custom-controls-stacked">
                                             <label class="custom-control custom-radio custom-control-inline">
                                                 <input type="radio" class="custom-control-input" name="add_type"
                                                     value="manual"
                                                     <?php echo (isset($service->add_type) && $service->add_type == 'manual')? 'checked': ''?>>
-                                                <span class="custom-control-label"><?php echo lang('Manual'); ?></span>
+                                                <span class="custom-control-label"><?php echo lang('app.manual'); ?></span>
                                             </label>
                                             <label class="custom-control custom-radio custom-control-inline">
                                                 <input type="radio" class="custom-control-input" name="add_type"
                                                     value="api"
                                                     <?php echo (isset($service->add_type) && $service->add_type == 'api')? 'checked': ''?>>
-                                                <span class="custom-control-label"><?php echo lang('API'); ?></span>
+                                                <span class="custom-control-label"><?php echo lang('app.api'); ?></span>
                                             </label>
 
                                         </div>
@@ -67,11 +67,11 @@
                                     class="col-md-12 service-type <?php echo (isset($service->add_type) && $service->add_type == 'api')? '' : 'd-none'?>">
                                     <fieldset class="form-fieldset">
                                         <div class="form-group">
-                                            <label><?php echo lang("api_provider_name"); ?></label>
+                                            <label><?php echo lang("app.api_provider_name"); ?></label>
                                             <select name="api_provider_id"
                                                 class="form-control square ajaxGetServicesFromAPI"
                                                 data-url="<?php echo cn($module.'/ajax_get_services_from_api/'); ?>">
-                                                <option value="0"> <?php echo lang('choose_a_api_provider'); ?></option>
+                                                <option value="0"> <?php echo lang('app.choose_a_api_provider'); ?></option>
                                                 <?php
                           if (!empty($api_providers)) {
                           foreach ($api_providers as $type => $api_provider) {
@@ -87,9 +87,9 @@
                                             <div class="dimmer">
                                                 <div class="loader"></div>
                                                 <div class="dimmer-content">
-                                                    <label><?php echo lang('list_of_api_services'); ?></label>
+                                                    <label><?php echo lang('app.list_of_api_services'); ?></label>
                                                     <select name="api_service_id" class="form-control square">
-                                                        <option value="0"> <?php echo lang('choose_a_service'); ?>
+                                                        <option value="0"> <?php echo lang('app.choose_a_service'); ?>
                                                         </option>
                                                     </select>
                                                     <input type="hidden" class="form-control square"
@@ -158,14 +158,14 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label><?=lang("dripfeed")?></label>
+                                                    <label><?=lang("app.dripfeed")?></label>
                                                     <select name="dripfeed" class="form-control square">
                                                         <option value="0"
                                                             <?=(isset($service->dripfeed) && $service->dripfeed != 1)? 'selected': ''?>>
-                                                            <?=lang("Deactive")?></option>
+                                                            <?=lang("app.deactive")?></option>
                                                         <option value="1"
                                                             <?=(!empty($service->dripfeed) && $service->dripfeed == 1)? 'selected': ''?>>
-                                                            <?=lang("Active")?></option>
+                                                            <?=lang("app.active")?></option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -175,7 +175,7 @@
 
                                 <div class="col-md-4 col-sm-6 col-xs-6">
                                     <div class="form-group">
-                                        <label><?=lang("minimum_amount")?></label>
+                                        <label><?=lang("app.minimum_amount")?></label>
                                         <input type="number" class="form-control square" name="min"
                                             value="<?=(!empty($service->min))? $service->min :  get_option('default_min_order',"")?>">
                                     </div>
@@ -183,7 +183,7 @@
 
                                 <div class="col-md-4 col-sm-6 col-xs-6">
                                     <div class="form-group">
-                                        <label><?=lang("maximum_amount")?></label>
+                                        <label><?=lang("app.maximum_amount")?></label>
                                         <input type="number" class="form-control square" name="max"
                                             value="<?=(!empty($service->max))? $service->max : get_option('default_max_order',"")?>">
                                     </div>
@@ -191,7 +191,7 @@
 
                                 <div class="col-md-4 col-sm-6 col-xs-6">
                                     <div class="form-group">
-                                        <label><?=lang("rate_per_1000")?></label>
+                                        <label><?=lang("app.rate_per_1000")?></label>
                                         <input type="text" class="form-control square" name="price"
                                             value="<?=(!empty($service->price))? $service->price: currency_format(get_option('default_price_per_1k',"0.80"),2)?>">
                                     </div>
@@ -199,21 +199,21 @@
 
                                 <div class="col-md-12 col-sm-6 col-xs-6">
                                     <div class="form-group">
-                                        <label><?=lang("Status")?></label>
+                                        <label><?=lang("app.status")?></label>
                                         <select name="status" class="form-control square">
                                             <option value="1"
                                                 <?=(!empty($service->status) && $service->status == 1)? 'selected': ''?>>
-                                                <?=lang("Active")?></option>
+                                                <?=lang("app.active")?></option>
                                             <option value="0"
                                                 <?=(isset($service->status) && $service->status != 1)? 'selected': ''?>>
-                                                <?=lang("Deactive")?></option>
+                                                <?=lang("app.deactive")?></option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <label><?=lang("Description")?></label>
+                                        <label><?=lang("app.description")?></label>
                                         <textarea rows="10" class="form-control square text-emoji" id="1text-emoji"
                                             name="desc"><?=(!empty($service->desc))? html_entity_decode($service->desc, ENT_QUOTES): ''?></textarea>
                                     </div>
@@ -223,13 +223,13 @@
                     </div>
                     <div class="modal-footer">
                         <a href="<?=cn("api_provider/services")?>"
-                            class="btn round btn-info btn-min-width mr-1 mb-1"><?=lang("add_new_service_via_api")?></a>
-                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>"
-                            value="<?php echo $this->security->get_csrf_hash(); ?>">
+                            class="btn round btn-info btn-min-width mr-1 mb-1"><?=lang("app.add_new_service_via_api")?></a>
+                        <input type="hidden" name="{csrf_token}"
+                            value="{csrf_hash}">
                         <button type="submit"
-                            class="btn round btn-primary btn-min-width mr-1 mb-1"><?=lang("Submit")?></button>
+                            class="btn round btn-primary btn-min-width mr-1 mb-1"><?=lang("app.submit")?></button>
                         <button type="button" class="btn round btn-default btn-min-width mr-1 mb-1"
-                            data-dismiss="modal"><?=lang("Cancel")?></button>
+                            data-dismiss="modal"><?=lang("app.cancel")?></button>
                     </div>
                 </form>
             </div>

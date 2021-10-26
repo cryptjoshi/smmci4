@@ -17,7 +17,7 @@
                             <!--pricing table-->
 
                             <label class="form-label">
-                                <h1 class="page-title"><?=lang("account_number")?><?=sprintf(": %s",$user_info->account_number)?>
+                                <h1 class="page-title"><?=lang("app.account_number")?><?=sprintf(": %s",$user_info->account_number)?>
                                 </h1>
                             </label>
 
@@ -37,9 +37,9 @@
                         <div class="custom-file mb-3">
                             <input type="file" class="custom-file-input" id="customFile" name="imagefile"
                                 accept="image/*">
-                            <label class="custom-file-label" for="customFile"><?=lang("choose_file")?></label>
+                            <label class="custom-file-label" for="customFile"><?=lang("app.choose_file")?></label>
                         </div>
-                        <button id="submit" class="btn"><b><?=lang("send_now")?></b></button>
+                        <button id="submit" class="btn"><b><?=lang("app.send_now")?></b></button>
 
                     </div>
 

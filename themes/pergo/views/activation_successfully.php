@@ -23,7 +23,7 @@
       </div>
 
       <div class="form-footer">
-        <a href="<?=cn("auth/login")?>" class="btn btn-pill btn-2 btn-block btn-submit btn-gradient"><?=lang("get_start_now")?></a>
+        <a href="<?=cn("auth/login")?>" class="btn btn-pill btn-2 btn-block btn-submit btn-gradient"><?=lang("app.get_start_now")?></a>
       </div>
     </div>
   </div>

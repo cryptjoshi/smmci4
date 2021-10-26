@@ -35,7 +35,7 @@ class Profile extends BaseController {
 		if($first_name == '' || $last_name == ''){
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("please_fill_in_the_required_fields"),
+				'message' => lang("app.please_fill_in_the_required_fields"),
 			));
 		}
 
@@ -50,21 +50,21 @@ class Profile extends BaseController {
 			if($password == ''){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("Password_is_required"),
+					'message' => lang("app.password_is_required"),
 				));
 			}
 
 			if(strlen($password) < 6){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("Password_must_be_at_least_6_characters_long"),
+					'message' => lang("app.password_must_be_at_least_6_characters_long"),
 				));
 			}
 
 			if($re_password!= $password){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("Password_does_not_match_the_confirm_password"),
+					'message' => lang("app.password_does_not_match_the_confirm_password"),
 				));
 			}
 			
@@ -77,7 +77,7 @@ class Profile extends BaseController {
 			if(empty($checkUser)){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("There_was_an_error_processing_your_request_Please_try_again_later"),
+					'message' => lang("app.there_was_an_error_processing_your_request_Please_try_again_later"),
 				));
 			}
 
@@ -86,14 +86,14 @@ class Profile extends BaseController {
 			if($email == ''){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("email_is_required"),
+					'message' => lang("app.email_is_required"),
 				));
 			}
 
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		      	ms(array(
 					'status'  => 'error',
-					'message' => lang("invalid_email_format"),
+					'message' => lang("app.invalid_email_format"),
 				));
 		    }
 
@@ -102,7 +102,7 @@ class Profile extends BaseController {
 			if(!empty($checkUserEmail)){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("An_account_for_the_specified_email_address_already_exists_Try_another_email_address"),
+					'message' => lang("app.an_account_for_the_specified_email_address_already_exists_Try_another_email_address"),
 				));
 			}
 
@@ -117,7 +117,7 @@ class Profile extends BaseController {
 		}else{
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("There_was_an_error_processing_your_request_Please_try_again_later"),
+				'message' => lang("app.there_was_an_error_processing_your_request_Please_try_again_later"),
 			));
 		}
 	}
@@ -151,7 +151,7 @@ class Profile extends BaseController {
 			if(empty($checkUser)){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("There_was_an_error_processing_your_request_Please_try_again_later"),
+					'message' => lang("app.there_was_an_error_processing_your_request_Please_try_again_later"),
 				));
 			}
 
@@ -164,7 +164,7 @@ class Profile extends BaseController {
 		}else{
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("There_was_an_error_processing_your_request_Please_try_again_later"),
+				'message' => lang("app.there_was_an_error_processing_your_request_Please_try_again_later"),
 			));
 		}
 	}
@@ -186,7 +186,7 @@ class Profile extends BaseController {
 		 	if(empty($checkUser) || !empty($checkApi_key)){
 		 		ms(array(
 		 			'status'  => 'error',
-					'message' => lang("There_was_an_error_processing_your_request_Please_try_again_later"),
+					'message' => lang("app.there_was_an_error_processing_your_request_Please_try_again_later"),
 		 		));
 		 	}
 
@@ -199,7 +199,7 @@ class Profile extends BaseController {
 		}else{
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("No Id There_was_an_error_processing_your_request_Please_try_again_later"),
+				'message' => lang("app.no Id There_was_an_error_processing_your_request_Please_try_again_later"),
 			));
 		}
 	}

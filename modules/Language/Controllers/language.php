@@ -1,41 +1,45 @@
 <?php
+namespace Modules\Language\Controllers;
+use App\Controllers\BaseController;
+use Modules\Language\Models\language_model;
 
- 
-class language extends MX_Controller {
+class Language extends BaseController {
 	public $table;
 	public $columns;
 	public $module_name;
 	public $module_icon;
 
 	public function __construct(){
-		parent::__construct();
-		$this->load->model(get_class($this).'_model', 'model');
-
+		//parent::__construct();
+		//$this->load->model(get_class($this).'_model', 'model');
+		helper('language');
+		$this->model = new language_model();
 		//Config Module
 		$this->tb_language_list       = LANGUAGE_LIST;
 		$this->tb_language           = LANGUAGE;
 		$this->module_icon = "fa fa-language";
+		
 		$this->columns = array(
-			"name"      => lang("Name"),
-			"code"      => lang("Code"),
-			"icon"      => lang("Icon"),
-			"default"   => lang("Default"),
-			"created"   => lang("Created"),
-			"status"    => lang("Status"),
+			"name"      => lang("app.name"),
+			"code"      => lang("app.code"),
+			"icon"      => lang("app.icon"),
+			"default"   => lang("app.default"),
+			"created"   => lang("app.created"),
+			"status"    => lang("app.status"),
 		);
 	}
 
 	public function index(){
 		if (get_role('user') || get_role('supporter')) {
-			redirect(cn('statistics'));
+			redirect()->to(cn('statistics'));
 		}
 
 		$data = array(
 			"columns" 	=> $this->columns,
-			"module"  	=> get_class($this),
+			"module"  	=> "language",
 			"languages" => $this->model->fetch("*", $this->tb_language_list),
 		);
-		$this->template->build('index', $data);
+		return view('Modules\Language\Views\index', $data);
 	}
 
 	public function update($ids = ''){
@@ -44,7 +48,7 @@ class language extends MX_Controller {
 		// create_language();
 
 		$data = array(
-			"module"  		 => get_class($this),
+			"module"  	=> "language",
 			"module_icon"    => $this->module_icon,
 			"default_lang"   => create_default_lang(),
 		);
@@ -69,7 +73,7 @@ class language extends MX_Controller {
 				load_404();
 			}
 		}
-		$this->template->build('update', $data);
+		return view('Modules\Language\Views\update', $data);
 	}
 
 	public function ajax_update($ids = ""){
@@ -91,7 +95,7 @@ class language extends MX_Controller {
 		if(!language_codes($language_code)){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("language_code_does_not_exists")
+				"message" => lang("app.language_code_does_not_exists")
 			));
 		}
 
@@ -99,7 +103,7 @@ class language extends MX_Controller {
 		if($default == 1){
 			$checkLangDefault = $this->model->fetch('*',$this->tb_language_list, "is_default = 1");
 			if(!empty($checkLangDefault)){
-				$this->db->update($this->tb_language_list, array('is_default' => 0));
+				$this->model->common_update($this->tb_language_list, array('is_default' => 0));
 			}
 		}
 		
@@ -107,7 +111,7 @@ class language extends MX_Controller {
 			// check lang exists
 			$checkLangList = $this->model->get('code, ids', $this->tb_language_list, "ids = '{$ids}'");
 			if(!empty($checkLangList)){
-				$this->db->update($this->tb_language_list, $data, ['ids' => $ids]);
+				$this->model->common_update($this->tb_language_list, $data, ['ids' => $ids]);
 				//creating array of language file
 	            $lang_path = FCPATH."app/language/data/".$language_code ."_lang.php";
 	            create_lang_file($lang_path, $langs);
@@ -124,7 +128,7 @@ class language extends MX_Controller {
 				
 				ms(array(
 					'status'  => 'success',
-					'message' => lang("Update_successfully"),
+					'message' => lang("app.update_successfully"),
 				));
 			}
 
@@ -133,12 +137,12 @@ class language extends MX_Controller {
 			if(!empty($checklang)){
 				ms(array(
 					'status'  => 'error',
-					'message' => lang("language_code_already_exists"),
+					'message' => lang("app.language_code_already_exists"),
 				));
 			}
 			$data['ids']     = ids();
 			$data['created'] = NOW;
-			$this->db->insert($this->tb_language_list, $data);
+			$this->model->common_insert($this->tb_language_list, $data);
 
 			//create language file
 			if(is_array($langs) && !empty($langs)){
@@ -147,14 +151,14 @@ class language extends MX_Controller {
 	            create_lang_file($lang_path, $langs);
 				ms(array(
 					'status'  => 'success',
-					'message' => lang("Update_successfully"),
+					'message' => lang("app.update_successfully"),
 				));
 			}
 		}
 	}
 
 	public function export(){
-		export_csv($this->table);
+		export_csv($this->table,"export");
 	}
 
 	public function ajax_delete_item($ids = ""){
@@ -162,14 +166,18 @@ class language extends MX_Controller {
 	}
 
 	public function set_language($ids = ""){
+		$ids=segment(3);
 		$checkLang = $this->model->get('*', $this->tb_language_list, "ids = '{$ids}'");
-
+		
 		if(!empty($checkLang)){
 			unset_session('langCurrent');
+			unset_session('locale');
 			set_session('langCurrent',$checkLang);
+			set_session('locale',$checkLang->code);
+			$this->request->setLocale($checkLang->code);
 			ms(array(
 				'status'  => 'success',
-				'message' => lang("Update_successfully"),
+				'message' => lang("update_successfully"),
 			));
 		}
 	}

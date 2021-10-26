@@ -15,7 +15,7 @@
 
                         <div class="d-flex flex-row align-items-center">
                             <label
-                                class="form-label"><?=sprintf(lang("total_amount_XX_includes_fee"), get_option('currency_code'))?></label>
+                                class="form-label"><?=sprintf(lang("app.total_amount_XX_includes_fee"), get_option('currency_code'))?></label>
                             <input title="TXN_AMOUNT" tabindex="10" type="hidden" name="TXN_AMOUNT"
                                 value="<?=$amount?>">
                             <input type="text" class="form-control taxamount" value="<?=$amount?>" disabled>
@@ -33,7 +33,7 @@
 
                 <div class="card">
                     <div class="card-header pl-5 d-flex align-items-center">
-                        <h1 class="page-title"><?=lang("choose_payment_method")?></h1>
+                        <h1 class="page-title"><?=lang("app.choose_payment_method")?></h1>
                     </div>
                     <div class="">
                         <div class="card-header d-flex align-items-center">
@@ -52,7 +52,7 @@
                     <div class="card-header d-flex align-items-center">
                         <input type="radio" class="mr-5" id="payment_method2" value="creditcard" name="payment_method">
                         <h1 class="page-title"><i class="fa fa-credit-card fa-2x text-primary" aria-hidden="true"></i>
-                            <?=lang("Credit Card")?>
+                            <?=lang("app.credit Card")?>
                         </h1>
                     </div>
                     <?php if(count($creditcards)==0):?>
@@ -63,7 +63,7 @@
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLongTitle"><i
                                             class="fa fa-credit-card fa-2x text-primary"
-                                            aria-hidden="true"></i>&nbsp&nbsp<?=lang("Credit Card")?></h5>
+                                            aria-hidden="true"></i>&nbsp&nbsp<?=lang("app.credit Card")?></h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
                                     </button>
@@ -114,9 +114,9 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal"><?=lang("cancel")?></button>
+                                        data-dismiss="modal"><?=lang("app.cancel")?></button>
                                     <button type="button" class="btn btn-primary"
-                                        data-dismiss="modal"><?=lang("save")?></button>
+                                        data-dismiss="modal"><?=lang("app.save")?></button>
                                 </div>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
                                     </span>
                                 </div>
                                 <div class="d-flex flex-column ml-3">
-                                    <button id="change_card" class="btn m-btn btn-info btn-small"><?=lang("Delete")?>
+                                    <button id="change_card" class="btn m-btn btn-info btn-small"><?=lang("app.delete")?>
                                     </button>
                                 </div>
                                 <!-- <input type="text" class="form-control cvv" name="selected_cvc" placeholder="CVC"> -->
@@ -148,17 +148,17 @@
                         <div class="modal-dialog modal-sm">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title"><?=lang("warning_modal")?></h5>
+                                    <h5 class="modal-title"><?=lang("app.warning_modal")?></h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p><?=lang("are_you_sure_you_want_to_delete_this_card")?></p>
+                                    <p><?=lang("app.are_you_sure_you_want_to_delete_this_card")?></p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" id="credit_del_yes" class="btn m-btn btn-secondary  btn-sm"><?=lang("Yes")?></button>
-                                    <button type="button" class="btn m-btn btn-primary btn-sm" data-dismiss="modal"><?=lang("Cancel")?></button>
+                                    <button type="button" id="credit_del_yes" class="btn m-btn btn-secondary  btn-sm"><?=lang("app.yes")?></button>
+                                    <button type="button" class="btn m-btn btn-primary btn-sm" data-dismiss="modal"><?=lang("app.cancel")?></button>
                                 </div>
                             </div>
                         </div>
@@ -171,7 +171,7 @@
                             <input type="radio" class="mr-5" value="qrcode" id="payment_method3" name="payment_method">
                             <h1 class="page-title"><i class="pr-2 fa fa-qrcode fa-2x text-primary"
                                     aria-hidden="true"></i>
-                                <?=lang("qrcode")?></h1>
+                                <?=lang("app.qrcode")?></h1>
                         </div>
 
                     </div>
@@ -179,13 +179,13 @@
                         <div class="card-header d-flex align-items-center">
                             <input type="radio" class="mr-5" value="offline" id="payment_method4" name="payment_method">
                             <h1 class="page-title"><i class="pr-2 fa fa-bank fa-2x text-primary" aria-hidden="true"></i>
-                                <?=lang("Offline pay")?></h1>
+                                <?=lang("app.offline pay")?></h1>
                         </div>
 
                     </div>
                     <div class="mt-5">
                         <button id="submit" class="btn d-flex mx-auto"
-                            <?= !isset($seleted_creditcard) ? 'disabled' : '' ?>><b><?=lang("payment")?></b></button>
+                            <?= !isset($seleted_creditcard) ? 'disabled' : '' ?>><b><?=lang("app.payment")?></b></button>
                     </div>
                 </div>
             </div>

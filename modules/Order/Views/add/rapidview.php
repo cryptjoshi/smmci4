@@ -35,10 +35,10 @@
             <div class="modal-footer">
                 <!-- <input type="hidden" name="prev_cursor" value=""> -->
                 <input type="hidden" name="_cursor" value="0">
-                <button type="button" class="btn btn-secondary" id="load_more"><?=lang("load_more")?></button>
-                <!-- <button type="button" class="btn btn-secondary" id="prev_cursor"><?=lang("Prev")?></button>
-                <button type="button" class="btn btn-secondary" id="next_cursor"><?=lang("next")?></button> -->
-                <button type="button" class="btn btn-primary" id="savemodal"><?=lang("save_changes")?></button>
+                <button type="button" class="btn btn-secondary" id="load_more"><?=lang("app.load_more")?></button>
+                <!-- <button type="button" class="btn btn-secondary" id="prev_cursor"><?=lang("app.prev")?></button>
+                <button type="button" class="btn btn-secondary" id="next_cursor"><?=lang("app.next")?></button> -->
+                <button type="button" class="btn btn-primary" id="savemodal"><?=lang("app.save_changes")?></button>
             </div>
         </div>
     </div>

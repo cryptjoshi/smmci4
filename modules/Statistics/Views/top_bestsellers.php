@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title"><?php echo lang("top_bestsellers"); ?> </h3>
+    <h3 class="card-title"><?php echo lang("app.top_bestsellers"); ?> </h3>
     <div class="card-options">
       <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
       <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -67,7 +67,7 @@
           ?>
           <td class="w-5"><?php echo $row->total_orders; ?></td>
 
-          <td class="text-muted w-5"><?=(!empty($row->add_type) && $row->add_type == "api")? lang("API"): lang('Manual')?></td>
+          <td class="text-muted w-5"><?=(!empty($row->add_type) && $row->add_type == "api")? lang("app.api"): lang('Manual')?></td>
           <td class="text-muted" style="width: 10%;"><?=(!empty($row->api_name))? truncate_string($row->api_name, 20) : ""?></td>
           <td class="text-muted w-5"><?=(!empty($row->api_service_id))? $row->api_service_id: ""?></td>
           <?php }?>
@@ -81,7 +81,7 @@
           <td style="width: 8%;"><?=$row->min?> / <?=$row->max?></td>
           <td style="width: 6%;">
             <a href="javascript:void(0);" data-ids="<?php echo $row->ids; ?>" class="ajaxGetServiceDescription">
-              <span class="btn btn-info btn-sm"><?=lang("Details")?></span> 
+              <span class="btn btn-info btn-sm"><?=lang("app.details")?></span> 
             </a>
           </td>
           <?php
@@ -89,9 +89,9 @@
           ?>
           <td class="w-1" >
             <?php if(!empty($row->status) && $row->status == 1){?>
-              <span class="badge badge-info"><?=lang("Active")?></span>
+              <span class="badge badge-info"><?=lang("app.active")?></span>
               <?php }else{?>
-              <span class="badge badge-warning"><?=lang("Deactive")?></span>
+              <span class="badge badge-warning"><?=lang("app.deactive")?></span>
             <?php }?>
           </td>  
           <?php }?>

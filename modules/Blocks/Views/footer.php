@@ -7,63 +7,50 @@
           <a href="<?=cn()?>" class="m-r-20">
             <img src="<?=get_option('website_logo_white', BASE."assets/images/logo-white.png")?>" alt="Website logo">
           </a>
-          <?php
-            $redirect = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-          ?>
-          <?php 
-            if (!empty($languages)) {
-          ?>
-          <select class="footer-lang-selector ajaxChangeLanguage" name="ids" data-url="<?=cn('language/set_language/')?>" data-redirect="<?=$redirect?>">
-            <?php 
-              foreach ($languages as $key => $row) {
-            ?>
-            <option value="<?=$row->ids?>" <?=(!empty($lang_current) && $lang_current->code == $row->code) ? 'selected' : '' ?> ><?=language_codes($row->code)?></option>
-            <?php }?>
-          </select>
-          <?php }?>
+         
         </div>
       </div>
       <div class="col-lg-8 m-t-30  mt-lg-0">
-        <h4 class="title"><?=lang("Quick_links")?></h4>
+        <h4 class="title"><?=lang("app.quick_links")?></h4>
         <div class="row">
           <div class="col-6 col-md-3  mt-lg-0">
             <ul class="list-unstyled quick-link mb-0">
-              <li><a href="<?=cn()?>"><?=lang("Home")?></a></li>
+              <li><a href="<?=cn('{locale}')?>"><?=lang("app.home")?></a></li>
               <?php 
                 if (!session('uid')) {
               ?>
-              <li><a href="<?=cn('auth/login')?>"><?=lang("Login")?></a></li>
-              <li><a href="<?=cn('auth/signup')?>"><?=lang("Sign_Up")?></a></li>
+              <li><a href="<?=cn('auth/login')?>"><?=lang("app.login")?></a></li>
+              <li><a href="<?=cn('auth/signup')?>"><?=lang("app.sign_up")?></a></li>
               <?php }else{?>
-              <li><a href="<?=cn('services')?>"><?=lang("Services")?></a></li>
-              <li><a href="<?=cn('tickets')?>"><?=lang("Tickets")?></a></li>  
+              <li><a href="<?=cn('services')?>"><?=lang("app.services")?></a></li>
+              <li><a href="<?=cn('tickets')?>"><?=lang("app.tickets")?></a></li>  
               <?php }?>
             </ul>
           </div>
           <div class="col-6 col-md-3">
             <ul class="list-unstyled quick-link mb-0">
-              <li><a href="<?=cn('terms')?>"><?=lang("terms__conditions")?></a></li>
+              <li><a href="<?=cn('terms')?>"><?=lang("app.terms__conditions")?></a></li>
               <?php 
                 if (get_option('is_cookie_policy_page')) {
               ?>
-              <li><a href="<?=cn('cookie-policy')?>"><?=lang("Cookie_Policy")?></a></li>
+              <li><a href="<?=cn('cookie-policy')?>"><?=lang("app.cookie_Policy")?></a></li>
               <?php }?>
               <?php 
                 if (get_option('enable_api_tab')) {
               ?>
-              <li><a href="<?=cn('api/docs')?>"><?=lang("api_documentation")?></a></li>
+              <li><a href="<?=cn('api/docs')?>"><?=lang("app.api_documentation")?></a></li>
               <?php }?>
-              <li><a href="<?=cn('faq')?>"><?=lang("FAQs")?></a></li>
+              <li><a href="<?=cn('faq')?>"><?=lang("app.faqs")?></a></li>
             </ul>
           </div>
         </div>
       </div>
       <div class="col-lg-4 m-t-30 mt-lg-0">
-        <h4 class="title"><?=lang("contact_informations")?></h4>
+        <h4 class="title"><?=lang("app.contact_informations")?></h4>
         <ul class="list-unstyled">
-          <li><?=lang("Tel")?>: <?=get_option('contact_tel',"+12345678")?> </li>
-          <li><?=lang("Email")?>: <?=get_option('contact_email',"do-not-reply@smartpanel.com")?> </li>
-          <li><?=lang("working_hour")?>: <?=get_option('contact_work_hour',"Mon - Sat 09 am - 10 pm")?> </li>
+          <li><?=lang("app.tel")?>: <?=get_option('contact_tel',"+12345678")?> </li>
+          <li><?=lang("app.email")?>: <?=get_option('contact_email',"do-not-reply@smartpanel.com")?> </li>
+          <li><?=lang("app.working_hour")?>: <?=get_option('contact_work_hour',"Mon - Sat 09 am - 10 pm")?> </li>
         </ul>
       </div>
     </div>

@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn round btn-default btn-min-width mr-1 mb-1" data-dismiss="modal"><?=lang("Cancel")?></button>
+          <button type="button" class="btn round btn-default btn-min-width mr-1 mb-1" data-dismiss="modal"><?=lang("app.cancel")?></button>
         </div>
       </div>
     </div>

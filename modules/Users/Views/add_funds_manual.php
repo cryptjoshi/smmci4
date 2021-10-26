@@ -12,7 +12,7 @@
         ?>
         <form class="form actionForm" action="<?=$url?>" data-redirect="<?=cn($module)?>" method="POST">
           <div class="modal-header bg-pantone">
-            <h4 class="modal-title"><i class="fe fe-edit"></i> <?=lang("Add_Funds")?></h4>
+            <h4 class="modal-title"><i class="fe fe-edit"></i> <?=lang("app.add_Funds")?></h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             </button>
           </div>
@@ -29,14 +29,14 @@
 
                 <div class="col-md-6 col-sm-12 col-xs-12">
                   <div class="form-group">
-                    <label><?=lang("first_name")?></label>
+                    <label><?=lang("app.first_name")?></label>
                     <input type="text" class="form-control square" name="first_name" value="<?=(!empty($user->first_name) && $user->first_name != "") ? $user->first_name : ''?>" disabled>
                   </div>
                 </div> 
 
                 <div class="col-md-6 col-sm-12 col-xs-12">
                   <div class="form-group">
-                    <label><?=lang("last_name")?></label>
+                    <label><?=lang("app.last_name")?></label>
                     <input type="text" class="form-control square" name="last_name" value="<?=(!empty($user->last_name) && $user->last_name != "") ? $user->last_name : ''?>" disabled>
                   </div>
                 </div> 
@@ -60,7 +60,7 @@
 
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="form-group">
-                    <label><?=lang("Funds")?></label>
+                    <label><?=lang("app.funds")?></label>
                     <input type="text" class="form-control square" name="funds">
                   </div>
                 </div> 

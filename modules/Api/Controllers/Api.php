@@ -102,7 +102,7 @@ class Api extends BaseController
 		$api_key = get_field(USERS, ['id' => session('uid')], "api_key");
 
 		$signup = array(
-			//"key"            => lang("your_api_key"),
+			//"key"            => lang("app.your_api_key"),
 			"action"         => "signup",
 			"method"		=> "Post",
 			"user"          => "{<br>`first_name`:``,<br>`last_name`:``,<br>`password`:``,<br>`email`:``<br>}",
@@ -110,32 +110,32 @@ class Api extends BaseController
 		
 
 		$status_order = array(
-			"key"            => lang("your_api_key"),
+			"key"            => lang("app.your_api_key"),
 			"action"         => "status",
-			"order"          => lang("order_id"),
+			"order"          => lang("app.order_id"),
 		);
 
 		$status_orders = array(
-			"key"            => lang("your_api_key"),
+			"key"            => lang("app.your_api_key"),
 			"action"         => "status",
-			"orders"         => lang("order_ids_separated_by_comma_array_data"),
+			"orders"         => lang("app.order_ids_separated_by_comma_array_data"),
 		);
 
 		$services = array(
-			"key"            => lang("your_api_key"),
+			"key"            => lang("app.your_api_key"),
 			"action"         => "services",
 		);
 
 		$balance = array(
-			"key"            => lang("your_api_key"),
+			"key"            => lang("app.your_api_key"),
 			"action"         => "balance",
 		);
 		$transaction = array(
-			"key"            => lang("your_api_key"),
+			"key"            => lang("app.your_api_key"),
 			"action"         => "transaction"
 		);
 		$addfunds = array(
-			"key"            => lang("your_api_key"),
+			"key"            => lang("app.your_api_key"),
 			"action"         => "addfunds",
 			"data"         => "{<br>
 				'type': 'truewallet', # offline,qrcode,creditcard,truewallet<br>
@@ -180,7 +180,7 @@ class Api extends BaseController
 		$uid_exists = get_field($this->tb_users, ["api_key" => $this->api_key, "status" => 1], "id");
 		if (($this->api_key == "" || empty($uid_exists)) && $action!="signup") {
 			echo_json_string(array(
-				'error' => lang("api_is_disable_for_this_user_or_user_not_found_contact_the_support"),
+				'error' => lang("app.api_is_disable_for_this_user_or_user_not_found_contact_the_support"),
 			));
 		}
 		$this->uid = $uid_exists;
@@ -188,7 +188,7 @@ class Api extends BaseController
 		$action_allowed = array('add', 'status', 'services', 'balance','signup','transaction','addfunds');
 		if ($action == "" || !in_array($action, $action_allowed)) {
 			echo_json_string(array(
-				'error' => lang("this_action_is_invalid"),
+				'error' => lang("app.this_action_is_invalid"),
 			));
 		}
 
@@ -226,7 +226,7 @@ class Api extends BaseController
 
 			default:
 				echo_json_string(array(
-					'error' => lang("this_action_is_invalid"),
+					'error' => lang("app.this_action_is_invalid"),
 				));
 				break;
 			case "signup":
@@ -265,28 +265,28 @@ class Api extends BaseController
 			if($first_name == '' || $last_name == '' || $password == ''|| $email == ''){
 				echo_json_string(array(
 					'status'  => 'error',
-					'message' => lang("please_fill_in_the_required_fields"),
+					'message' => lang("app.please_fill_in_the_required_fields"),
 				));
 			}
 	
 			if (!preg_match("/^[a-zA-Z ]*$/", $first_name)) {
 				echo_json_string(array(
 					'status'  => 'error',
-					'message' => lang("only_letters_and_white_space_allowed"),
+					'message' => lang("app.only_letters_and_white_space_allowed"),
 				));
 			}
 	
 			if (!preg_match("/^[a-zA-Z ]*$/", $last_name)) {
 				echo_json_string(array(
 					'status'  => 'error',
-					'message' => lang("only_letters_and_white_space_allowed"),
+					'message' => lang("app.only_letters_and_white_space_allowed"),
 				));
 			}
 	
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				echo_json_string(array(
 					'status'  => 'error',
-					'message' => lang("invalid_email_format"),
+					'message' => lang("app.invalid_email_format"),
 				));
 			}
 	
@@ -294,14 +294,14 @@ class Api extends BaseController
 				if(strlen($password) < 6){
 					echo_json_string(array(
 						'status'  => 'error',
-						'message' => lang("Password_must_be_at_least_6_characters_long"),
+						'message' => lang("app.password_must_be_at_least_6_characters_long"),
 					));
 				}
 	
 				if($re_password!= $password){
 					echo_json_string(array(
 						'status'  => 'error',
-						'message' => lang("Password_must_be_at_least_6_characters_long"),
+						'message' => lang("app.password_must_be_at_least_6_characters_long"),
 					));
 				}
 			}
@@ -309,7 +309,7 @@ class Api extends BaseController
 			// if (!$terms) {
 			// 	ms(array(
 			// 		'status'  => 'error',
-			// 		'message' => lang("oops_you_must_agree_with_the_terms_of_services_or_privacy_policy"),
+			// 		'message' => lang("app.oops_you_must_agree_with_the_terms_of_services_or_privacy_policy"),
 			// 	));
 			// }
 	
@@ -326,7 +326,7 @@ class Api extends BaseController
 			// 	if (!$resp->isSuccess()) {
 			// 		ms(array(
 			// 			'status'  => 'error',
-			// 			'message' => lang("please_verify_recaptcha"),
+			// 			'message' => lang("app.please_verify_recaptcha"),
 			// 		));
 			// 	}
 			// }
@@ -360,7 +360,7 @@ class Api extends BaseController
 				if(!empty($checkUserEmail)){
 					ms(array(
 						'status'  => 'error',
-						'message' => lang("An_account_for_the_specified_email_address_already_exists_Try_another_email_address"),
+						'message' => lang("app.an_account_for_the_specified_email_address_already_exists_Try_another_email_address"),
 					));
 				}
 	
@@ -445,13 +445,13 @@ class Api extends BaseController
 				}else{
 					echo_json_string(array(
 						"status"  => "Failed",
-						"message" => lang("There_was_an_error_processing_your_request_Please_try_again_later")
+						"message" => lang("app.there_was_an_error_processing_your_request_Please_try_again_later")
 					));
 				}
 			}else {
 				echo_json_string(array(
 					"status"  => "Failed",
-					"message" => lang("superkey is invalid")
+					"message" => lang("app.superkey is invalid")
 				));
 			}
 			}
@@ -594,13 +594,13 @@ class Api extends BaseController
 		 	));
 		 } else {
 		 	echo_json_string(array(
-		 		"error"  => lang("the_account_does_not_exists"),
+		 		"error"  => lang("app.the_account_does_not_exists"),
 		 	));
 		 }
 		}else  {
 			echo_json_string(array(
 				"status"  => "Failed",
-				"message" => lang("superkey is invalid")
+				"message" => lang("app.superkey is invalid")
 			));
 		}
 	}
@@ -612,14 +612,14 @@ class Api extends BaseController
 
 		if (!$service_id) {
 			echo_json_string(array(
-				'error' => lang("there_are_missing_required_parameters_please_check_your_api_manual"),
+				'error' => lang("app.there_are_missing_required_parameters_please_check_your_api_manual"),
 			));
 		}
 
 		$check_service  = $this->model->check_record("*", $this->tb_services, $service_id, false, true);
 		if (empty($check_service)) {
 			echo_json_string(array(
-				"error" => lang("service_id_does_not_exists")
+				"error" => lang("app.service_id_does_not_exists")
 			));
 		}
 		$service_type = $check_service->type;
@@ -629,7 +629,7 @@ class Api extends BaseController
 				$comments     = post('comments');//(isset($params["comments"])) ? strip_tags(urldecode($params["comments"])) : '';
 				if ($comments == "") {
 					echo_json_string(array(
-						"error" => lang("comments_field_is_required")
+						"error" => lang("app.comments_field_is_required")
 					));
 				}
 				$comments     = str_replace("\r\n", ",", $comments);
@@ -655,13 +655,13 @@ class Api extends BaseController
 
 					if ($runs != '' && $interval == '') {
 						echo_json_string(array(
-							'error' => lang("interval_time_is_required"),
+							'error' => lang("app.interval_time_is_required"),
 						));
 					}
 
 					if ($runs == '' && $interval != '') {
 						echo_json_string(array(
-							'error' => lang("runs_is_required"),
+							'error' => lang("app.runs_is_required"),
 						));
 					}
 					$interval     = (int)$interval;
@@ -675,7 +675,7 @@ class Api extends BaseController
 
 					if ($quantity == '') {
 						echo_json_string(array(
-							'error' => lang("quantity_is_required"),
+							'error' => lang("app.quantity_is_required"),
 						));
 					}
 					$is_drip_feed      = 1;
@@ -695,7 +695,7 @@ class Api extends BaseController
 
 		if ($quantity == '') {
 			echo_json_string(array(
-				'error' => lang("quantity_is_required"),
+				'error' => lang("app.quantity_is_required"),
 			));
 		}
 
@@ -705,13 +705,13 @@ class Api extends BaseController
 
 		if ($quantity <= 0 || $quantity < $min) {
 			echo_json_string(array(
-				"error" => lang("quantity_must_to_be_greater_than_or_equal_to_minimum_amount") . ' ' . $min
+				"error" => lang("app.quantity_must_to_be_greater_than_or_equal_to_minimum_amount") . ' ' . $min
 			));
 		}
 
 		if ($quantity > $max) {
 			echo_json_string(array(
-				"error" => lang("quantity_must_to_be_less_than_or_equal_to_maximum_amount") . ' ' . $max
+				"error" => lang("app.quantity_must_to_be_less_than_or_equal_to_maximum_amount") . ' ' . $max
 			));
 		}
 
@@ -726,7 +726,7 @@ class Api extends BaseController
 
 		if ((!empty($user->balance) && $user->balance < $total_charge) || empty($user->balance)) {
 			echo_json_string(array(
-				"error" => lang("not_enough_funds_on_balance")
+				"error" => lang("app.not_enough_funds_on_balance")
 			));
 		}
 
@@ -782,7 +782,7 @@ class Api extends BaseController
 			}
 		} else {
 			echo_json_string(array(
-				"error" => lang("There_was_an_error_processing_your_request_Please_try_again_later")
+				"error" => lang("app.there_was_an_error_processing_your_request_Please_try_again_later")
 			));
 		}
 	}
@@ -798,7 +798,7 @@ class Api extends BaseController
 			));
 		} else {
 			echo_json_string(array(
-				"error"  => lang("the_account_does_not_exists"),
+				"error"  => lang("app.the_account_does_not_exists"),
 			));
 		}
 	}
@@ -807,13 +807,13 @@ class Api extends BaseController
 	{
 		if ($order_id == "") {
 			echo_json_string(array(
-				'error' => lang("order_id_is_required_parameter_please_check_your_api_manual")
+				'error' => lang("app.order_id_is_required_parameter_please_check_your_api_manual")
 			));
 		}
 
 		if (!is_numeric($order_id)) {
 			echo_json_string(array(
-				'error' => lang("incorrect_order_id"),
+				'error' => lang("app.incorrect_order_id"),
 			));
 		}
 
@@ -821,7 +821,7 @@ class Api extends BaseController
 
 		if (empty($exists_order)) {
 			echo_json_string(array(
-				'error' => lang("incorrect_order_id"),
+				'error' => lang("app.incorrect_order_id"),
 			));
 		} else {
 
@@ -878,7 +878,7 @@ class Api extends BaseController
 
 		if ($order_ids == "") {
 			echo_json_string(array(
-				'error' => lang("order_id_is_required_parameter_please_check_your_api_manual"),
+				'error' => lang("app.order_id_is_required_parameter_please_check_your_api_manual"),
 			));
 		}
 		if (is_string($order_ids)) {
@@ -942,7 +942,7 @@ class Api extends BaseController
 		}
 
 		echo_json_string(array(
-			'error' => lang("incorrect_order_id"),
+			'error' => lang("app.incorrect_order_id"),
 		));
 	}
 

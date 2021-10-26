@@ -41,8 +41,8 @@
       var token = '<?=csrf_hash()?>',
           PATH  = '<?=APPPATH?>',
           BASE  = '<?=base_url()?>';
-      var    deleteItem = '<?=lang("Are_you_sure_you_want_to_delete_this_item")?>';
-      var    deleteItems = '<?=lang("Are_you_sure_you_want_to_delete_all_items")?>';
+      var    deleteItem = '<?=lang("app.are_you_sure_you_want_to_delete_this_item")?>';
+      var    deleteItems = '<?=lang("app.are_you_sure_you_want_to_delete_all_items")?>';
     </script>
     <?=htmlspecialchars_decode(get_option('embed_head_javascript', ''), ENT_QUOTES)?>
   </head>
@@ -80,18 +80,18 @@
             <ul class="navbar-nav ml-auto">
 
               <li class="nav-item active">
-                <a class="nav-link js-scroll-trigger" href="#home"><?=lang("Home")?></a>
+                <a class="nav-link js-scroll-trigger" href="#home"><?=lang("app.home")?></a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#features"><?=lang("What_we_offer")?></a>
+                <a class="nav-link js-scroll-trigger" href="#features"><?=lang("app.what_we_offer")?></a>
               </li>
 
               <?php
                 if (get_option("enable_service_list_no_login") == 1) {
               ?>
               <li class="nav-item">
-                <a class="nav-link" href="<?=cn("services")?>"><?=lang("Services")?></a>
+                <a class="nav-link" href="<?=cn("services")?>"><?=lang("app.services")?></a>
               </li>
               <?php }?>
 
@@ -100,12 +100,12 @@
               <?php 
                 if (!session('uid')) {
               ?>
-              <a class="link btn-login" href="<?=cn('auth/login')?>"><?=lang("Login")?></a>
+              <a class="link btn-login" href="<?=cn('auth/login')?>"><?=lang("app.login")?></a>
               <?php if(!get_option('disable_signup_page')){ ?>
-              <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-outline-primary sign-up"><?=lang("Sign_Up")?></a>
+              <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-outline-primary sign-up"><?=lang("app.sign_Up")?></a>
               <?php }; ?>
               <?php }else{?>
-              <a href="<?=cn('statistics')?>" class="btn btn-pill btn-outline-primary btn-statistics text-uppercase"><?=lang("statistics")?></a>
+              <a href="<?=cn('statistics')?>" class="btn btn-pill btn-outline-primary btn-statistics text-uppercase"><?=lang("app.statistics")?></a>
               <?php }?>
             </div>
           </div>

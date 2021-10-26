@@ -62,11 +62,11 @@ class toyyibpay extends MX_Controller
         $amount = $data_payment['amount'];
 
         if (!$amount) {
-            _validation('error', lang('There_was_an_error_processing_your_request_Please_try_again_later'));
+            _validation('error', lang('app.there_was_an_error_processing_your_request_Please_try_again_later'));
         }
 
         if (!$this->secret_key || !$this->category_code) {
-            _validation('error', lang('this_payment_is_not_active_please_choose_another_payment_or_contact_us_for_more_detail'));
+            _validation('error', lang('app.this_payment_is_not_active_please_choose_another_payment_or_contact_us_for_more_detail'));
         }
 
         $users = session('user_current_info');
@@ -76,7 +76,7 @@ class toyyibpay extends MX_Controller
         $secret_key = $this->secret_key;
         $category_code = $this->category_code;
         $billName = lang('Deposit_to_') . get_option('website_name');
-        $billDescription = lang("Balance_recharge") . " - " . $users['email'];
+        $billDescription = lang("app.balance_recharge") . " - " . $users['email'];
         $billExternalReferenceNo = session("uid") . time();
 
         $txn_fee = $amount * ($this->payment_fee / 100);

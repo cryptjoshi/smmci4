@@ -28,32 +28,32 @@ function getCallbackUrl()
       <div class="col-md-5">
         <div class="card">
           <div class="card-header d-flex align-items-center">
-            <h3 class="card-title"> <?=lang("payumoney_confirm_form")?></h3>
+            <h3 class="card-title"> <?=lang("app.payumoney_confirm_form")?></h3>
           </div>
           <div class="card-body">
             <div class="tab-content">
               <form id="payment_form" method="post" action="#">
 
                 <div class="form-group">
-                  <label class="form-label"><?=sprintf(lang("total_amount_XX_includes_fee"), 'INR')?></label>
+                  <label class="form-label"><?=sprintf(lang("app.total_amount_XX_includes_fee"), 'INR')?></label>
                   <input type="text" class="form-control" value="<?=$amount?>" disabled>
                   <input type="hidden" id="udf5" name="udf5" value="BOLT_KIT_PHP7" />
                   <input type="hidden" id="surl" name="surl" value="<?php echo $payumoney->response_url; ?>" />
                 </div>
                 <div class="form-group">
-                  <label class="form-label"><?=lang("user_information")?></label>
+                  <label class="form-label"><?=lang("app.user_information")?></label>
                   <div class="input-icon">
                     <span class="input-icon-addon">
                       <i class="fe fe-user"></i>
                     </span>
-                    <input class="form-control" type="text" id="fname" name="fname" placeholder="<?=lang("Your_name")?>" value="" required>
+                    <input class="form-control" type="text" id="fname" name="fname" placeholder="<?=lang("app.your_name")?>" value="" required>
                   </div>    
 
                   <div class="input-icon m-t-20">
                     <span class="input-icon-addon">
                       <i class="fe fe-mail"></i>
                     </span>
-                    <input class="form-control" type="text" id="email" name="email" placeholder="<?=lang("Email")?>" value="" />
+                    <input class="form-control" type="text" id="email" name="email" placeholder="<?=lang("app.email")?>" value="" />
                   </div>
 
                   <div class="input-icon m-t-20">
@@ -65,7 +65,7 @@ function getCallbackUrl()
 
                 </div>
                 <div class="form-group">
-                  <span class="small"><?=lang("note")?> 
+                  <span class="small"><?=lang("app.note")?> 
                     <ul>
                       <li>The system will convert automatically from INR to USD and add funds to your blance when payment is made</li>
                       <li>Clicking <strong class="text-danger">Return to Shop (Merchant)</strong> after payment successfully completed</li>
@@ -81,7 +81,7 @@ function getCallbackUrl()
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
 
                 <!-- submit button -->
-                <input type="submit" value="Pay" class="btn btn-primary btn-lg btn-block" onclick="launchBOLT(); return false;" value="<?=lang("Submit")?>">
+                <input type="submit" value="Pay" class="btn btn-primary btn-lg btn-block" onclick="launchBOLT(); return false;" value="<?=lang("app.submit")?>">
               </form>
             </div>
           </div>

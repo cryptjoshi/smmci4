@@ -13,15 +13,15 @@
                   <img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="website-logo" class="website-logo">
                 </a>
               </div>
-              <h4><?=lang("forgot_password")?></h4>
+              <h4><?=lang("app.forgot_password")?></h4>
             </div>
-            <p class="text-muted"><?=lang("enter_your_registration_email_address_to_receive_password_reset_instructions")?></p>
+            <p class="text-muted"><?=lang("app.enter_your_registration_email_address_to_receive_password_reset_instructions")?></p>
             <div class="form-group">
               <div class="input-icon mb-5">
                 <span class="input-icon-addon">
                   <i class="fe fe-mail"></i>
                 </span>
-                <input type="email" class="form-control" name="email" placeholder="<?=lang("Email")?>" required>
+                <input type="email" class="form-control" name="email" placeholder="<?=lang("app.email")?>" required>
               </div>    
             </div>
 
@@ -34,7 +34,7 @@
             <?php } ?> 
             
             <div class="form-footer">
-              <button type="submit" class="btn btn-primary btn-block"><?=lang("Submit")?></button>
+              <button type="submit" class="btn btn-primary btn-block"><?=lang("app.submit")?></button>
             </div>
           </div>
         </form>

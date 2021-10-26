@@ -4,6 +4,8 @@ use App\Controllers\BaseController;
 use Modules\Langueage\Controllers;
 use Modules\Langueage\Controllers\Language;
 
+use function PHPUnit\Framework\isNull;
+
 require_once (APPPATH.'/libraries/unirest-php/src/Unirest.php');
 class Blocks extends BaseController  {
 	public $model;
@@ -38,7 +40,10 @@ class Blocks extends BaseController  {
 		$data = array(
 			'total_unread_tickets' => $unread_tickets,
 		);
+		$data['lang_current'] =get_lang_code_defaut();
+		$data['languages']    = $this->model->fetch('*', LANGUAGE_LIST,'status = 1');
 		$data['module'] = $this;
+		$data['locale'] = isNull(session('langCurrent'))?"en":session('langCurrent')->code;
 		return view('Modules\Blocks\Views\header', $data);
 	}
 	
@@ -120,7 +125,7 @@ class Blocks extends BaseController  {
 		if (empty($user)) {
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("There_was_an_error_processing_your_request_Please_try_again_later"),
+				'message' => lang("app.there_was_an_error_processing_your_request_Please_try_again_later"),
 			));
 		}
 		unset_session("uid_tmp");
@@ -128,7 +133,7 @@ class Blocks extends BaseController  {
 		if (!session('uid_tmp')) {
 			ms(array(
 				'status'  => 'success',
-				'message' => lang("processing_"),
+				'message' => lang("app.processing_"),
 			));
 		}
 	}

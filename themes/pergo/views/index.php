@@ -11,13 +11,13 @@
           <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
             <div class="contents">
               <h2 class="head-title">
-                <?=lang("get_your_social_accounts_followers_and_likes_at_one_place_instantly")?>
+                <?=lang("app.get_your_social_accounts_followers_and_likes_at_one_place_instantly")?>
               </h2>
               <p>
-                <?=lang("save_time_managing_your_social_account_in_one_panel_where_people_buy_smm_services_such_as_facebook_ads_management_instagram_youtube_twitter_soundcloud_website_ads_and_many_more")?>
+                <?=lang("app.save_time_managing_your_social_account_in_one_panel_where_people_buy_smm_services_such_as_facebook_ads_management_instagram_youtube_twitter_soundcloud_website_ads_and_many_more")?>
               </p>
               <div class="head-button m-t-40">
-                <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-outline-primary sign-up btn-lg"><?=lang("get_start_now")?></a>
+                <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-outline-primary sign-up btn-lg"><?=lang("app.get_start_now")?></a>
               </div>
             </div>
           </div>          
@@ -55,13 +55,13 @@
           <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12" data-aos="fade-right" data-aos-easing="ease-in" data-aos-delay="200">
             <div class="contents">
               <h2 class="head-title">
-                <?=lang("best_smm_marketing_services")?>
+                <?=lang("app.best_smm_marketing_services")?>
               </h2>
               <p>
-                <?=lang("best_smm_marketing_services_desc")?>
+                <?=lang("app.best_smm_marketing_services_desc")?>
               </p>
               <div class="head-button">
-                <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-signin btn-gradient btn-lg"><?=lang("get_start_now")?></a>
+                <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-signin btn-gradient btn-lg"><?=lang("app.get_start_now")?></a>
               </div>
             </div>
           </div>          
@@ -75,7 +75,7 @@
           <div class="col-md-12 mx-auto" data-aos="fade-down" data-aos-easing="ease-in" data-aos-delay="200">
             <div class="contents">
               <div class="head-title">
-                <?=lang("What_we_offer")?>
+                <?=lang("app.what_we_offer")?>
               </div>
               <div class="border-line">
                 <hr>
@@ -88,8 +88,8 @@
               <div class="animation-box">
                 <i class="fe fe-calendar icon"></i>
               </div>
-              <h3><?=lang("Resellers")?></h3>
-              <p class="text-muted"><?=lang("you_can_resell_our_services_and_grow_your_profit_easily_resellers_are_important_part_of_smm_panel")?>
+              <h3><?=lang("app.resellers")?></h3>
+              <p class="text-muted"><?=lang("app.you_can_resell_our_services_and_grow_your_profit_easily_resellers_are_important_part_of_smm_panel")?>
               </p>
             </div>
           </div>
@@ -99,8 +99,8 @@
               <div class="animation-box">
                 <i class="fe fe-phone-call icon"></i>
               </div>
-              <h3><?=lang("Supports")?></h3>
-              <p class="text-muted"><?=lang("technical_support_for_all_our_services_247_to_help_you")?></p>
+              <h3><?=lang("app.supports")?></h3>
+              <p class="text-muted"><?=lang("app.technical_support_for_all_our_services_247_to_help_you")?></p>
             </div>
           </div>
 
@@ -110,8 +110,8 @@
                 <i class="fe fe-star icon"></i>
               </div>
               
-              <h3><?=lang("high_quality_services")?></h3>
-              <p class="text-muted"><?=lang("get_the_best_high_quality_services_and_in_less_time_here")?></p>
+              <h3><?=lang("app.high_quality_services")?></h3>
+              <p class="text-muted"><?=lang("app.get_the_best_high_quality_services_and_in_less_time_here")?></p>
             </div>
           </div>
 
@@ -120,8 +120,8 @@
               <div class="animation-box">
                 <i class="fe fe-upload-cloud icon"></i>
               </div>
-              <h3><?=lang("Updates")?></h3>
-              <p class="text-muted"><?=lang("services_are_updated_daily_in_order_to_be_further_improved_and_to_provide_you_with_best_experience")?></p>
+              <h3><?=lang("app.updates")?></h3>
+              <p class="text-muted"><?=lang("app.services_are_updated_daily_in_order_to_be_further_improved_and_to_provide_you_with_best_experience")?></p>
             </div>
           </div>
 
@@ -130,8 +130,8 @@
               <div class="animation-box">
                 <i class="fe fe-share-2 icon"></i>
               </div>
-              <h3><?=lang("api_support")?></h3>
-              <p class="text-muted"><?=lang("we_have_api_support_for_panel_owners_so_you_can_resell_our_services_easily")?></p>
+              <h3><?=lang("app.api_support")?></h3>
+              <p class="text-muted"><?=lang("app.we_have_api_support_for_panel_owners_so_you_can_resell_our_services_easily")?></p>
             </div>
           </div>
 
@@ -140,8 +140,8 @@
               <div class="animation-box">
                 <i class="fe fe-dollar-sign icon"></i>
               </div>
-              <h3><?=lang("secure_payments")?></h3>
-              <p class="text-muted"><?=lang("we_have_a_popular_methods_as_paypal_and_many_more_can_be_enabled_upon_request")?></p>
+              <h3><?=lang("app.secure_payments")?></h3>
+              <p class="text-muted"><?=lang("app.we_have_a_popular_methods_as_paypal_and_many_more_can_be_enabled_upon_request")?></p>
             </div>
           </div>
 
@@ -155,9 +155,9 @@
           <div class="col-md-12 mx-auto">
             <div class="contents">
               <div class="head-title">
-                <?=lang("what_people_say_about_us")?>
+                <?=lang("app.what_people_say_about_us")?>
               </div>
-              <span class="text-muted"><?=lang("our_service_has_an_extensive_customer_roster_built_on_years_worth_of_trust_read_what_our_buyers_think_about_our_range_of_service")?></span>
+              <span class="text-muted"><?=lang("app.our_service_has_an_extensive_customer_roster_built_on_years_worth_of_trust_read_what_our_buyers_think_about_our_range_of_service")?></span>
               <div class="border-line">
                 <hr>
               </div>
@@ -167,8 +167,8 @@
           <div class="col-md-4">
             <div class="card item">
               <div class="person-info">
-                <h3 class="name"><?=lang("client_one")?></h3>
-                <span class="text-muted"><?=lang("client_one_jobname")?></span>
+                <h3 class="name"><?=lang("app.client_one")?></h3>
+                <span class="text-muted"><?=lang("app.client_one_jobname")?></span>
               </div>
               <div class="card-body">
                 <p class="desc">
@@ -237,13 +237,13 @@
           <div class="col-md-6">
             <form class="form actionFormWithoutToast" action="<?php echo cn("client/subscriber"); ?>" data-redirect="<?php echo cn(); ?>" method="POST">
               <div class="content text-center">
-                <h1 class="title"><?php echo lang("newsletter"); ?></h1>
-                <p><?php echo lang("fill_in_the_ridiculously_small_form_below_to_receive_our_ridiculously_cool_newsletter"); ?></p>
+                <h1 class="title"><?php echo lang("app.newsletter"); ?></h1>
+                <p><?php echo lang("app.fill_in_the_ridiculously_small_form_below_to_receive_our_ridiculously_cool_newsletter"); ?></p>
               </div>
               <div class="input-group">
                 <input type="email" name="email" class="form-control email" placeholder="Enter Your email" required>
                 <button class="input-group-append btn btn-pill btn-gradient btn-signin btn-submit" type="submit">
-                  <?php echo lang("subscribe_now"); ?>
+                  <?php echo lang("app.subscribe_now"); ?>
                 </button>
               </div>
               <div class="form-group m-t-20">
@@ -261,7 +261,7 @@
           <div class="modal-content">
 
             <div class="modal-header">
-              <h4 class="modal-title"><i class="fe fe-bell"></i> <?=lang("Notification")?></h4>
+              <h4 class="modal-title"><i class="fe fe-bell"></i> <?=lang("app.notification")?></h4>
               <button type="button" class="close" data-dismiss="modal"></button>
             </div>
 
@@ -270,7 +270,7 @@
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal"><?=lang("Close")?></button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><?=lang("app.close")?></button>
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("api_documentation")?></h3>
+        <h3 class="card-title"><?=lang("app.api_documentation")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -20,17 +20,17 @@
       </div>
       <div class="card-body collapse show">
         <div class="x_content">
-          <p class="note"><?=lang("note_please_read_the_api_intructions_carefully_its_your_solo_responsability_what_you_add_by_our_api")?></p>
+          <p class="note"><?=lang("app.note_please_read_the_api_intructions_carefully_its_your_solo_responsability_what_you_add_by_our_api")?></p>
           <table class="table table-hover table-bordered projects">
             <thead>
               <tr>
-                <td><?=lang("http_method")?></td>
+                <td><?=lang("app.http_method")?></td>
                 <td>POST</td>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><?=lang("response_format")?></td>
+                <td><?=lang("app.response_format")?></td>
                 <td>Json</td>
               </tr>
               <tr>
@@ -39,14 +39,14 @@
               </tr>
 
               <tr>
-                <td><?=lang("api_key")?></td>
+                <td><?=lang("app.api_key")?></td>
                 <td><?=$api_key?></td>
               </tr>
           </table>
           <div class="card-footer">
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <a href="<?=BASE?>example.txt" class="btn btn-round btn-primary" target="_blank"><?=lang("download_php_code_examples")?></a>
+                <a href="<?=BASE?>example.txt" class="btn btn-round btn-primary" target="_blank"><?=lang("app.download_php_code_examples")?></a>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("place_new_order")?></h3>
+        <h3 class="card-title"><?=lang("app.place_new_order")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -82,8 +82,8 @@
           <table class="table table-hover table-bordered service-default">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -122,8 +122,8 @@
           <table class="table table-hover table-bordered service-package d-none">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -152,8 +152,8 @@
           <table class="table table-hover table-bordered service-custom-comments d-none">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -184,8 +184,8 @@
           <table class="table table-hover table-bordered service-mentions-with-hashtags d-none">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -224,8 +224,8 @@
           <table class="table table-hover table-bordered service-mentions-custom-list d-none">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -256,8 +256,8 @@
           <table class="table table-hover table-bordered service-mentions-hashtag d-none">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -296,8 +296,8 @@
           <table class="table table-hover table-bordered service-mentions-user-followers d-none">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -333,8 +333,8 @@
           <table class="table table-hover table-bordered service-custom-comments-package d-none">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -366,8 +366,8 @@
           <table class="table table-hover table-bordered service-mentions-media-likers d-none">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -396,8 +396,8 @@
           <table class="table table-hover table-bordered service-comment-likes d-none">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -432,8 +432,8 @@
           <table class="table table-hover table-bordered service-subscriptions d-none">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -473,7 +473,7 @@
             </tbody>
           </table>
 
-          <div class="title"><h4><?=lang("example_response")?></h4></div>
+          <div class="title"><h4><?=lang("app.example_response")?></h4></div>
           <div class="card-body">
             <pre>
 {
@@ -653,7 +653,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("status_order")?></h3>
+        <h3 class="card-title"><?=lang("app.status_order")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -665,8 +665,8 @@
           <table class="table table-hover table-bordered projects">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -683,7 +683,7 @@
           </table>
 
 
-          <div class="title"><h4><?=lang("example_response")?></h4></div>
+          <div class="title"><h4><?=lang("app.example_response")?></h4></div>
           <div class="card-body">
             <pre>
 {
@@ -704,7 +704,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"> <?=lang("multiple_orders_status")?></h3>
+        <h3 class="card-title"> <?=lang("app.multiple_orders_status")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -715,8 +715,8 @@
           <table class="table table-hover table-bordered projects">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -733,7 +733,7 @@
           </table>
 
 
-          <div class="title"><h4><?=lang("example_response")?></h4></div>
+          <div class="title"><h4><?=lang("app.example_response")?></h4></div>
           <div class="card-body">
             <pre>
   {
@@ -764,7 +764,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("services_lists")?></h3>
+        <h3 class="card-title"><?=lang("app.services_lists")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -775,8 +775,8 @@
           <table class="table table-hover table-bordered projects">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -791,7 +791,7 @@
               <?php }} ?>
             </tbody>
           </table>
-          <div class="title"><h4><?=lang("example_response")?></h4></div>
+          <div class="title"><h4><?=lang("app.example_response")?></h4></div>
           <div class="card-body">
             <pre>
 [
@@ -839,7 +839,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("Balance")?></h3>
+        <h3 class="card-title"><?=lang("app.balance")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -851,8 +851,8 @@
           <table class="table table-hover table-bordered projects">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -867,7 +867,7 @@
               <?php }} ?>
             </tbody>
           </table>
-          <div class="title"><h4><?=lang("example_response")?></h4></div>
+          <div class="title"><h4><?=lang("app.example_response")?></h4></div>
           <div class="card-body">
             <pre>
             {
@@ -884,7 +884,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("Signup")?></h3>
+        <h3 class="card-title"><?=lang("app.signup")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -896,8 +896,8 @@
           <table class="table table-hover table-bordered projects">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -912,7 +912,7 @@
               <?php }} ?>
             </tbody>
           </table>
-          <div class="title"><h4><?=lang("example_response")?></h4></div>
+          <div class="title"><h4><?=lang("app.example_response")?></h4></div>
           <div class="card-body">
             <pre>
               { 
@@ -931,7 +931,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("transaction")?></h3>
+        <h3 class="card-title"><?=lang("app.transaction")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -943,8 +943,8 @@
           <table class="table table-hover table-bordered projects">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -959,7 +959,7 @@
               <?php }} ?>
             </tbody>
           </table>
-          <div class="title"><h4><?=lang("example_response")?></h4></div>
+          <div class="title"><h4><?=lang("app.example_response")?></h4></div>
           <div class="card-body">
             <pre>
             {
@@ -982,7 +982,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("addfunds")?></h3>
+        <h3 class="card-title"><?=lang("app.addfunds")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -994,8 +994,8 @@
           <table class="table table-hover table-bordered projects">
             <thead>
               <tr>
-                <th><?=lang("parameter")?></th>
-                <th><?=lang("Description")?></th>
+                <th><?=lang("app.parameter")?></th>
+                <th><?=lang("app.description")?></th>
               </tr>
             </thead>
             <tbody>
@@ -1010,7 +1010,7 @@
               <?php }} ?>
             </tbody>
           </table>
-          <div class="title"><h4><?=lang("example_response")?></h4></div>
+          <div class="title"><h4><?=lang("app.example_response")?></h4></div>
           <div class="card-body">
             <pre>
             {

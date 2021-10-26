@@ -14,10 +14,10 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="omise_phonenumber" class="form-label"><?=lang("phone_number")?>:</label>
+                                <label for="omise_phonenumber" class="form-label"><?=lang("app.phone_number")?>:</label>
                                 <input type="text" id="omise_phonenumber" class="form-control" name="omise_phonenumber">
                                 <input type="hidden" name="payment_method" value="<?=$payment_method?>" />
-                                <button id="submit" class="btn btn-primary"><b><?=lang("send_now")?></b></button>
+                                <button id="submit" class="btn btn-primary"><b><?=lang("app.send_now")?></b></button>
                                 <?=lang( 'one_time' ); ?>
                             </div>
                          

@@ -126,7 +126,7 @@ class OrderModel extends ExtendModel {
 		if ($limit != "" && $start >= 0) {
 			$builder->limit($limit, $start);
 		}
-		$builder->select('o.uid,o.ids as ids,o.refill_status,o.charge,o.link,o.comments,o.created,o.is_refill,o.status,o.is_drip_feed,o.id,o.quantity,o.service_type,o.api_provider_id,o.start_counter,o.remains,o.service_id,u.email as user_email, s.name as service_name, api.name as api_name');
+		$builder->select('o.uid,o.ids as ids,o.refill_status,o.charge,o.link,o.comments,o.created,o.is_refill,o.status,o.is_drip_feed,o.id,o.quantity,o.service_type,o.api_provider_id,o.start_counter,o.remains,o.service_id,o.api_order_id,o.formal_charge,o.profit,u.email as user_email, s.name as service_name, api.name as api_name');
 		$builder->join($this->tb_users." u", "u.id = o.uid", 'left');
 		$builder->join($this->tb_services." s", "s.id = o.service_id", 'left');
 		$builder->join($this->tb_api_providers." api", "api.id = o.api_provider_id", 'left');

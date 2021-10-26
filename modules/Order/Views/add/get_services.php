@@ -1,8 +1,8 @@
 
 
-<label><?=lang("order_service")?></label>
+<label><?=lang("app.order_service")?></label>
 <select name="service_id" class="chosen-select form-control square ajaxChangeService" data-url="<?=cn($module."/get_service/")?>">
-  <option> <?=lang("choose_a_service")?></option>
+  <option> <?=lang("app.choose_a_service")?></option>
   <?php
     if (!empty($services)) {
       $service_item_default = $services[0];

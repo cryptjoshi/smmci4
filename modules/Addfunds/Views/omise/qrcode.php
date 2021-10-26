@@ -4,7 +4,7 @@
             <div class="card p-5">
                 <div class="card-header d-flex align-items-center">
                     <h1 class="page-title">
-                        <div class="d-flex flex-row align-items-center"><i class="fa fa-qrcode text-primary" aria-hidden="true"></i><?=lang("qrcode")?></div>
+                        <div class="d-flex flex-row align-items-center"><i class="fa fa-qrcode text-primary" aria-hidden="true"></i><?=lang("app.qrcode")?></div>
 
                     </h1>
                 </div>
@@ -13,7 +13,7 @@
                         <!-- <label for="omise_qrcode" class="form-label">QRCode:</label> -->
                         <img width="100%" src="<?= $qr ?>" alt="">
                         <!-- <input type="text" id="omise_qrcode" class="form-control" name="omise_otp">
-                                <button id="submit" class="btn"><b><?= lang("process") ?></b></button> -->
+                                <button id="submit" class="btn"><b><?= lang("app.process") ?></b></button> -->
 
                     </div>
                     <div class="footer animated slow fadeInUp">

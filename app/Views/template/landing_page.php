@@ -38,8 +38,8 @@
       var token = '<?=csrf_hash()?>',
           PATH  = '<?=APPPATH?>',
           BASE  = '<?=base_url()?>';
-      var    deleteItem = '<?=lang("Are_you_sure_you_want_to_delete_this_item")?>';
-      var    deleteItems = '<?=lang("Are_you_sure_you_want_to_delete_all_items")?>';
+      var    deleteItem = '<?=lang("app.are_you_sure_you_want_to_delete_this_item")?>';
+      var    deleteItems = '<?=lang("app.are_you_sure_you_want_to_delete_all_items")?>';
     </script>
     <?=htmlspecialchars_decode(get_option('embed_head_javascript', ''), ENT_QUOTES)?>
   </head>
@@ -55,25 +55,25 @@
           <ul class="navbar-nav list-inline ml-auto">
 
             <li class="nav-item list-inline-item">
-              <a class="nav-link js-scroll-trigger" href="#home"><?=lang("Home")?></a>
+              <a class="nav-link js-scroll-trigger" href="#home"><?=lang("app.home")?></a>
             </li>
 
             <li class="nav-item list-inline-item">
-              <a class="nav-link js-scroll-trigger" href="#features"><?=lang("What_we_offer")?></a>
+              <a class="nav-link js-scroll-trigger" href="#features"><?=lang("app.what_we_offer")?></a>
             </li>
 
             <?php
               if (get_option("enable_service_list_no_login") == 1) {
             ?>
             <li class="nav-item list-inline-item">
-              <a class="nav-link js-scroll-trigger" href="<?=cn("services")?>"><?=lang("Services")?></a>
+              <a class="nav-link js-scroll-trigger" href="<?=cn("services")?>"><?=lang("app.services")?></a>
             </li>
             <?php }?>
             
           </ul>
           <div class="nav-item d-md-flex btn-login">
-            <a class="link" href="<?=cn('auth/login')?>"><?=lang("Login")?></a>
-            <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-outline-primary sign-up"><?=lang("Sign_Up")?></a>
+            <a class="link" href="<?=cn('auth/login')?>"><?=lang("app.login")?></a>
+            <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-outline-primary sign-up"><?=lang("app.sign_Up")?></a>
           </div>
         </div>
       </div>
@@ -85,13 +85,13 @@
           <div class="col-md-6 mx-auto">
             <div class="content">
               <h1 class="m-b-50 m-t-50">
-                <?=lang("resellers_1_destination_for_smm_services")?>
+                <?=lang("app.resellers_1_destination_for_smm_services")?>
               </h1>
               <div class="desc">
-                <?=lang("save_time_managing_your_social_account_in_one_panel_where_people_buy_smm_services_such_as_facebook_ads_management_instagram_youtube_twitter_soundcloud_website_ads_and_many_more")?>
+                <?=lang("app.save_time_managing_your_social_account_in_one_panel_where_people_buy_smm_services_such_as_facebook_ads_management_instagram_youtube_twitter_soundcloud_website_ads_and_many_more")?>
               </div>
               <div class="btn m-t-50">
-                <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-outline-primary sign-up btn-lg"><?=lang("get_start_now")?></a>
+                <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-outline-primary sign-up btn-lg"><?=lang("app.get_start_now")?></a>
               </div>
             </div>
           </div>
@@ -105,10 +105,10 @@
           <div class="col-md-8 mx-auto">
             <div class="content">
               <div class="title p-b-30">
-                <?=lang("best_smm_marketing_services")?>
+                <?=lang("app.best_smm_marketing_services")?>
               </div>
               <div class="desc">
-                <?=lang("best_smm_marketing_services_desc")?>
+                <?=lang("app.best_smm_marketing_services_desc")?>
               </div>
             </div>
           </div>
@@ -122,7 +122,7 @@
           <div class="col-md-12 mx-auto">
             <div class="content">
               <div class="title">
-                <?=lang("What_we_offer")?>
+                <?=lang("app.what_we_offer")?>
               </div>
               <div class="border-line">
                 <hr>
@@ -133,48 +133,48 @@
           <div class="col-lg-4">
             <div class="feature-item">
               <i class="fe fe-calendar text-primary"></i>
-              <h3><?=lang("Resellers")?></h3>
-              <p class="text-muted"><?=lang("you_can_resell_our_services_and_grow_your_profit_easily_resellers_are_important_part_of_smm_panel")?></p>
+              <h3><?=lang("app.resellers")?></h3>
+              <p class="text-muted"><?=lang("app.you_can_resell_our_services_and_grow_your_profit_easily_resellers_are_important_part_of_smm_panel")?></p>
             </div>
           </div>
 
           <div class="col-lg-4">
             <div class="feature-item">
               <i class="fe fe-phone-call text-primary"></i>
-              <h3><?=lang("Supports")?></h3>
-              <p class="text-muted"><?=lang("technical_support_for_all_our_services_247_to_help_you")?></p>
+              <h3><?=lang("app.supports")?></h3>
+              <p class="text-muted"><?=lang("app.technical_support_for_all_our_services_247_to_help_you")?></p>
             </div>
           </div>
 
           <div class="col-lg-4">
             <div class="feature-item">
               <i class="fe fe-star text-primary"></i>
-              <h3><?=lang("high_quality_services")?></h3>
-              <p class="text-muted"><?=lang("get_the_best_high_quality_services_and_in_less_time_here")?></p>
+              <h3><?=lang("app.high_quality_services")?></h3>
+              <p class="text-muted"><?=lang("app.get_the_best_high_quality_services_and_in_less_time_here")?></p>
             </div>
           </div>
 
           <div class="col-lg-4">
             <div class="feature-item">
               <i class="fe fe-upload-cloud text-primary"></i>
-              <h3><?=lang("Updates")?></h3>
-              <p class="text-muted"><?=lang("services_are_updated_daily_in_order_to_be_further_improved_and_to_provide_you_with_best_experience")?></p>
+              <h3><?=lang("app.updates")?></h3>
+              <p class="text-muted"><?=lang("app.services_are_updated_daily_in_order_to_be_further_improved_and_to_provide_you_with_best_experience")?></p>
             </div>
           </div>
 
           <div class="col-lg-4">
             <div class="feature-item">
               <i class="fe fe-share-2 text-primary"></i>
-              <h3><?=lang("api_support")?></h3>
-              <p class="text-muted"><?=lang("we_have_api_support_for_panel_owners_so_you_can_resell_our_services_easily")?></p>
+              <h3><?=lang("app.api_support")?></h3>
+              <p class="text-muted"><?=lang("app.we_have_api_support_for_panel_owners_so_you_can_resell_our_services_easily")?></p>
             </div>
           </div>
 
           <div class="col-lg-4">
             <div class="feature-item">
               <i class="fe fe-dollar-sign text-primary"></i>
-              <h3><?=lang("secure_payments")?></h3>
-              <p class="text-muted"><?=lang("we_have_a_popular_methods_as_paypal_and_many_more_can_be_enabled_upon_request")?></p>
+              <h3><?=lang("app.secure_payments")?></h3>
+              <p class="text-muted"><?=lang("app.we_have_a_popular_methods_as_paypal_and_many_more_can_be_enabled_upon_request")?></p>
             </div>
           </div>
 
@@ -189,11 +189,11 @@
             <div class="row">
               <div class="col-md-8 ">
                 <div class="content">
-                  <h1 class="title"><?=lang("ready_to_start_with_us")?></h1>
+                  <h1 class="title"><?=lang("app.ready_to_start_with_us")?></h1>
                 </div>
               </div>
               <div class="col-md-4">
-                <a href="<?=cn("auth/signup")?>" class="btn btn-primary btn-pill btn-lg"><?=lang("get_start_now")?></a>
+                <a href="<?=cn("auth/signup")?>" class="btn btn-primary btn-pill btn-lg"><?=lang("app.get_start_now")?></a>
               </div>
             </div>
           </div>
@@ -207,7 +207,7 @@
           <div class="modal-content">
 
             <div class="modal-header">
-              <h4 class="modal-title"><i class="fe fe-bell"></i> <?=lang("Notification")?></h4>
+              <h4 class="modal-title"><i class="fe fe-bell"></i> <?=lang("app.notification")?></h4>
               <button type="button" class="close" data-dismiss="modal"></button>
             </div>
 
@@ -216,7 +216,7 @@
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal"><?=lang("Close")?></button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><?=lang("app.close")?></button>
             </div>
           </div>
         </div>

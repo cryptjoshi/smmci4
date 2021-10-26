@@ -3,7 +3,7 @@
 <div class="page-header d-md-none">
   <h1 class="page-title">
     <i class="fe fe-calendar" aria-hidden="true"> </i> 
-    <?=lang("Transaction_logs")?>
+    <?=lang("app.transaction_logs")?>
   </h1>
 </div>
 <?php //require_once("proof_transaction.php") ?>
@@ -13,7 +13,7 @@
   <div class="col-md-12 col-xl-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang('Lists')?></h3>
+        <h3 class="card-title"><?=lang('app.lists')?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -23,7 +23,7 @@
         <table class="table table-hover table-bordered table-outline table-vcenter card-table">
           <thead>
             <tr>
-              <th class="text-center w-1"><?=lang('No_')?></th>
+              <th class="text-center w-1"><?=lang('app.no_')?></th>
               <?php if (!empty($columns)) {
                 $i=0;
                 foreach ($columns as $key => $row) {
@@ -34,7 +34,7 @@
               <?php
                 if (get_role("admin")) {
               ?>
-              <th class="text-center"><?=lang('Action')?></th>
+              <th class="text-center"><?=lang('app.action')?></th>
               <?php }?>
             </tr>
           </thead>
@@ -63,9 +63,9 @@
                   switch ($row->transaction_id) {
                     case 'empty':
                       if ($row->type == 'manual') {
-                        echo lang($row->transaction_id);
+                        echo lang('app.'.$row->transaction_id);
                       }else{
-                        echo lang($row->transaction_id)." ".lang("transaction_id_was_sent_to_your_email");
+                        echo lang('app.'.$row->transaction_id)." ".lang("app.transaction_id_was_sent_to_your_email");
                       }
                       break;
                     default:
@@ -113,15 +113,15 @@
                 <?php
                   switch ($row->status) {
                     case 1:
-                        echo '<span class="badge badge-default">'.lang('Paid').'</span>';
+                        echo '<span class="badge badge-default">'.lang('app.aid').'</span>';
                       break;
 
                     case 0:
-                        echo '<span class="badge badge-warning">'.lang("waiting_for_buyer_funds").'</span>';
+                        echo '<span class="badge badge-warning">'.lang("app.waiting_for_buyer_funds").'</span>';
                       break; 
 
                     case -1:
-                        echo '<span class="badge badge-danger">'.lang('cancelled_timed_out').'</span>';
+                        echo '<span class="badge badge-danger">'.lang('app.cancelled_timed_out').'</span>';
                       break;
                   }
                 ?>
@@ -134,8 +134,8 @@
                 <div class="item-action dropdown">
                   <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a href="<?=cn("$module/update/".$row->ids)?>" class="dropdown-item ajaxModal"><i class="dropdown-icon fe fe-edit"></i> <?=lang('Edit')?> </a>
-                    <a href="<?=cn("$module/ajax_delete_item/".$row->ids)?>" class="dropdown-item ajaxDeleteItem"><i class="dropdown-icon fe fe-trash"></i> <?=lang('Delete')?> </a>
+                    <a href="<?=cn("$module/update/".$row->ids)?>" class="dropdown-item ajaxModal"><i class="dropdown-icon fe fe-edit"></i> <?=lang('app.edit')?> </a>
+                    <a href="<?=cn("$module/ajax_delete_item/".$row->ids)?>" class="dropdown-item ajaxDeleteItem"><i class="dropdown-icon fe fe-trash"></i> <?=lang('app.delete')?> </a>
                   </div>
                 </div>
               </td>

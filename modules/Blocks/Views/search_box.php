@@ -1,7 +1,7 @@
 <form class="<?php echo $requests['class']; ?>" method="<?php echo $requests['method']; ?>" action="<?php echo $requests['action']; ?>">
 	<div class="form-group">
 	  <div class="input-group">
-	    <input type="text" class="form-control" name="query" placeholder="<?=lang("Search_for_")?>" value="<?php echo get('query'); ?>">
+	    <input type="text" class="form-control" name="query" placeholder="<?=lang("app.search_for_")?>" value="<?php echo get('query'); ?>">
 	    <div class="input-group-append">
 
 	     	<?php

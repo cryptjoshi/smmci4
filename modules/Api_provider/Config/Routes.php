@@ -1,5 +1,5 @@
 <?php 
-$routes->group('api_provider',['namespace' => 'Modules\Api_provider\Controllers'], function ($routes) {
+$routes->group('api_provider',['filter'=>'auth','namespace' => 'Modules\Api_provider\Controllers'], function ($routes) {
     $routes->add('/', 'Api_provider::index');
     //$routes->add('docs', 'Api_provider::docs');
     //$routes->post('ajax_sign_in', 'Auth::ajax_sign_in');

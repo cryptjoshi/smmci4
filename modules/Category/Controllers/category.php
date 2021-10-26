@@ -19,10 +19,10 @@ class category extends BaseController {
 		$this->module_name   = 'Category';
 		$this->module_icon   = "fa ft-users";
 		$this->columns = array(
-			"name"             => lang("Name"),
-			"desc"             => lang("Description"),
-			"sort"             => lang("Sorting"),
-			"status"           => lang("Status"),
+			"name"             => lang("app.name"),
+			"desc"             => lang("app.description"),
+			"sort"             => lang("app.sorting"),
+			"status"           => lang("app.status"),
 			
 		);
 	}
@@ -90,14 +90,14 @@ class category extends BaseController {
 		if($name == ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("name_is_required")
+				"message" => lang("app.name_is_required")
 			));
 		}
 
 		if($sort == "" || $sort <= 0){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("sort_number_must_to_be_greater_than_zero")
+				"message" => lang("app.sort_number_must_to_be_greater_than_zero")
 			));
 		}
 
@@ -133,7 +133,7 @@ class category extends BaseController {
 		
 		ms(array(
 			"status"  => "success",
-			"message" => lang("Update_successfully")
+			"message" => lang("app.update_successfully")
 		));
 	}
 	
@@ -152,14 +152,14 @@ class category extends BaseController {
 		if ($type == '') {
 			ms(array(
 				"status"  => "error",
-				"message" => lang('There_was_an_error_processing_your_request_Please_try_again_later')
+				"message" => lang('app.there_was_an_error_processing_your_request_Please_try_again_later')
 			));
 		}
 
 		if (in_array($type, ['delete', 'deactive', 'active']) && empty($idss)) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("please_choose_at_least_one_item"),
+				"message" => lang("app.please_choose_at_least_one_item"),
 				"idss"=>$idss
 			));
 		}
@@ -175,7 +175,7 @@ class category extends BaseController {
 				}
 				ms(array(
 					"status"  => "success",
-					"message" => lang("Deleted_successfully")
+					"message" => lang("app.deleted_successfully")
 				));
 				break;
 			case 'deactive':
@@ -190,7 +190,7 @@ class category extends BaseController {
 				}
 				ms(array(
 					"status"  => "success",
-					"message" => lang("Updated_successfully")
+					"message" => lang("app.updated_successfully")
 				));
 				break;
 
@@ -206,7 +206,7 @@ class category extends BaseController {
 				}
 				ms(array(
 					"status"  => "success",
-					"message" => lang("Updated_successfully")
+					"message" => lang("app.updated_successfully")
 				));
 				break;
 
@@ -216,7 +216,7 @@ class category extends BaseController {
 				if (empty($categories)) {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("failed_to_delete_there_are_no_deactivate_category_now")
+						"message" => lang("app.failed_to_delete_there_are_no_deactivate_category_now")
 					));
 				}
 
@@ -231,7 +231,7 @@ class category extends BaseController {
 				$this->db->delete($this->tb_categories, ['status' => 0]);
 				ms(array(
 					"status"  => "success",
-					"message" => lang("Deleted_successfully")
+					"message" => lang("app.deleted_successfully")
 				));
 
 				break;
@@ -239,7 +239,7 @@ class category extends BaseController {
 			default:
 				ms(array(
 					"status"  => "error",
-					"message" => lang('There_was_an_error_processing_your_request_Please_try_again_later')
+					"message" => lang('app.here_was_an_error_processing_your_request_Please_try_again_later')
 				));
 				break;
 		}

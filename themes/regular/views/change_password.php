@@ -13,7 +13,7 @@
                   <img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="website-logo" class="website-logo">
                 </a>
               </div>
-              <h5><?=lang("new_password")?></h5>
+              <h5><?=lang("app.new_password")?></h5>
             </div>
             <div class="form-group">
                     
@@ -21,19 +21,19 @@
                 <span class="input-icon-addon">
                   <i class="fa fa-key"></i>
                 </span>
-                <input type="password" class="form-control" name="password" placeholder="<?=lang("new_password")?>" required>
+                <input type="password" class="form-control" name="password" placeholder="<?=lang("app.new_password")?>" required>
               </div>    
 
               <div class="input-icon mb-5">
                 <span class="input-icon-addon">
                   <i class="fa fa-key"></i>
                 </span>
-                <input type="password" class="form-control" name="re_password" placeholder="<?=lang("Confirm_password")?>" required>
+                <input type="password" class="form-control" name="re_password" placeholder="<?=lang("app.confirm_password")?>" required>
               </div>
 
             </div>
             <div class="form-footer">
-              <button type="submit" class="btn btn-primary btn-block"><?=lang("Submit")?></button>
+              <button type="submit" class="btn btn-primary btn-block"><?=lang("app.submit")?></button>
             </div>
           </div>
         </form>

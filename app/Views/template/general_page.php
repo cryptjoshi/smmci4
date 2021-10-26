@@ -38,8 +38,8 @@
       var token = '<?=csrf_hash()?>',
           PATH  = '<?=APPPATH?>',
           BASE  = '<?=base_url()?>';
-      var    deleteItem = '<?=lang("Are_you_sure_you_want_to_delete_this_item")?>';
-      var    deleteItems = '<?=lang("Are_you_sure_you_want_to_delete_all_items")?>';
+      var    deleteItem = '<?=lang("app.are_you_sure_you_want_to_delete_this_item")?>';
+      var    deleteItems = '<?=lang("app.are_you_sure_you_want_to_delete_all_items")?>';
     </script>
     <?=htmlspecialchars_decode(get_option('embed_head_javascript', ''), ENT_QUOTES)?>
   </head>
@@ -64,7 +64,7 @@
     <header class="header fixed-top" id="headerNav">
       <div class="container">
         <nav class="navbar navbar-expand-lg ">
-          <a class="navbar-brand" href="<?=cn()?>">
+          <a class="navbar-brand" href="<?=cn('{locale}')?>">
             <img class="site-logo" src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="Webstie logo">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,17 +75,17 @@
             <ul class="navbar-nav ml-auto">
 
               <li class="nav-item ">
-                <a class="nav-link js-scroll-trigger" href="<?=cn()?>#home"><?=lang("Home")?></a>
+                <a class="nav-link js-scroll-trigger" href="<?=cn()?>#home"><?=lang("app.home")?></a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="<?=cn()?>#features"><?=lang("What_we_offer")?></a>
+                <a class="nav-link js-scroll-trigger" href="<?=cn()?>#features"><?=lang("app.what_we_offer")?></a>
               </li>
               <?php
                 if (get_option("enable_service_list_no_login") == 1) {
               ?>
               <li class="nav-item <?=(segment(1) == 'services') ? 'active' : ''?>">
-                <a class="nav-link" href="<?=cn("services")?>"><?=lang("Services")?></a>
+                <a class="nav-link" href="<?=cn("{locale}/services")?>"><?=lang("app.services")?></a>
               </li>
               <?php }?>
             </ul> 
@@ -93,10 +93,10 @@
               <?php 
                 if (!session('uid')) {
               ?>
-              <a class="link btn-login" href="<?=cn('auth/login')?>"><?=lang("Login")?></a>
-              <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-outline-primary sign-up"><?=lang("Sign_Up")?></a>
+              <a class="link btn-login" href="<?=cn('auth/login')?>"><?=lang("app.login")?></a>
+              <a href="<?=cn('{locale}/auth/signup')?>" class="btn btn-pill btn-outline-primary sign-up"><?=lang("app.sign_up")?></a>
               <?php }else{?>
-              <a href="<?=cn('statistics')?>" class="btn btn-pill btn-outline-primary btn-statistics text-uppercase"><?=lang("statistics")?></a>
+              <a href="<?=cn('{locale}/statistics')?>" class="btn btn-pill btn-outline-primary btn-statistics text-uppercase"><?=lang("app.statistics")?></a>
               <?php }?>
             </div>
           </div>

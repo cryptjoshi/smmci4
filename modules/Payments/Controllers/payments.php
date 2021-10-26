@@ -18,12 +18,12 @@ class payments extends BaseController {
 		$this->tb_payments       = PAYMENTS_METHOD;
 		$this->module            = "payments";
 		$this->columns = array(
-			"method"           => lang("method"),
-			"name"             => lang("Name"),
-			"min"              => lang("Min"),
-			"max"              => lang("Max"),
-			"new users"        => lang("new_users"),
-			"status"           => lang("Status"),
+			"method"           => lang("app.method"),
+			"name"             => lang("app.name"),
+			"min"              => lang("app.min"),
+			"max"              => lang("app.max"),
+			"new users"        => lang("app.new_users"),
+			"status"           => lang("app.status"),
 		);
 
 	}
@@ -86,7 +86,7 @@ class payments extends BaseController {
 		//echo $this->model->db->getLastQuery();
 		ms(array(
 			"status"  => "success",
-			"message" => lang("Update_successfully")
+			"message" => lang("app.update_successfully")
 		));
 	}
 	
@@ -98,7 +98,7 @@ class payments extends BaseController {
 		$item  = $this->model->get("id", $this->tb_payments, ['id' => $id]);
 		if ($item ) {
 			$this->model->common_update($this->tb_payments, ['status' => (int)$status], ['id' => $id]);
-			_validation('success', lang("Update_successfully"));
+			_validation('success', lang("app.update_successfully"));
 		}
 	}
 

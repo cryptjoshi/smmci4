@@ -12,28 +12,28 @@
                   if (!get_option("is_active_paypal") && !get_option("is_active_stripe") && !get_option("is_active_2checkout") && !get_option("is_active_manual")) {
                 ?>
                 <li class="m-t-10">
-                  <a class="active show" data-toggle="tab" href="#payment_null"><?=lang("payment_gateway")?></a>
+                  <a class="active show" data-toggle="tab" href="#payment_null"><?=lang("app.payment_gateway")?></a>
                 </li>
                 <?php }?>
                 <?php
                 if (get_option("is_active_paypal")) {
                 ?>
                 <li class="m-t-10">
-                  <a class="active show" data-toggle="tab" href="#paypal"><i class="fab fa-cc-paypal"></i> <?=lang("Paypal")?></a>
+                  <a class="active show" data-toggle="tab" href="#paypal"><i class="fab fa-cc-paypal"></i> <?=lang("app.paypal")?></a>
                 </li>
                 <?php }?>
                 <?php
                 if (get_option("is_active_omise")) {
                 ?>
                 <li class="m-t-10">
-                  <a data-toggle="tab" href="#omise"><i class="fa fa-credit-card"></i> <?=lang("Omise")?></a>
+                  <a data-toggle="tab" href="#omise"><i class="fa fa-credit-card"></i> <?=lang("app.omise")?></a>
                 </li>
                 <?php }?>
                 <?php
                 if (get_option("is_active_stripe")) {
                 ?>
                 <li class="m-t-10">
-                  <a data-toggle="tab" href="#stripe"><i class="fab fa-cc-stripe"></i> <?=lang("Stripe")?></a>
+                  <a data-toggle="tab" href="#stripe"><i class="fab fa-cc-stripe"></i> <?=lang("app.stripe")?></a>
                 </li>
                 <?php }?>
                 
@@ -41,7 +41,7 @@
                 if (get_option("is_active_razor_pay")) {
                 ?>
                 <li class="m-t-10">
-                  <a data-toggle="tab" href="#razor_pay"><i class="fa fa-credit-card"></i> <?=lang("Razor_pay")?></a>
+                  <a data-toggle="tab" href="#razor_pay"><i class="fa fa-credit-card"></i> <?=lang("app.razor_pay")?></a>
                 </li>
                 <?php }?>
 
@@ -49,7 +49,7 @@
                 if (get_option("is_active_2checkout")) {
                 ?>
                 <li class="m-t-10">
-                  <a data-toggle="tab" href="#2checkout"><i class="fa fa-credit-card"></i> <?=lang("2Checkout")?></a>
+                  <a data-toggle="tab" href="#2checkout"><i class="fa fa-credit-card"></i> <?=lang("app.2checkout")?></a>
                 </li> 
                 <?php }?>
               
@@ -69,7 +69,7 @@
                 if (get_option("is_active_manual")) {
                 ?>
                 <li class="m-t-10">
-                  <a data-toggle="tab" href="#manual"><i class="fa fa-hand-o-right"></i> <?=lang("manual_payment")?></a>
+                  <a data-toggle="tab" href="#manual"><i class="fa fa-hand-o-right"></i> <?=lang("app.manual_payment")?></a>
                 </li>
                 <?php }?>
 
@@ -89,7 +89,7 @@
                         
                         <div class="form-group">
                           <div class="alert alert-danger p-t-10" role="alert">
-                            <?=lang("there_is_no_any_payment_gateway_at_the_present")?>
+                            <?=lang("app.there_is_no_any_payment_gateway_at_the_present")?>
                           </div>
                         </div>
 
@@ -110,39 +110,39 @@
                       ?>
                       <div class="for-group text-center">
                         <img src="<?=BASE?>/assets/images/paypal.svg" alt="Paypay icon">
-                        <p class="p-t-10"><small><?=sprintf(lang("you_can_deposit_funds_with_paypal_they_will_be_automaticly_added_into_your_account"), 'Paypal')?></small></p>
+                        <p class="p-t-10"><small><?=sprintf(lang("app.you_can_deposit_funds_with_paypal_they_will_be_automaticly_added_into_your_account"), 'Paypal')?></small></p>
                       </div>
 
                       <div class="form-group">
-                        <label><?=sprintf(lang("amount_usd"), get_option("currency_code",'USD'))?></label>
+                        <label><?=sprintf(lang("app.amount_usd"), get_option("currency_code",'USD'))?></label>
                         <input class="form-control square" type="number" name="amount" placeholder="<?=get_option('payment_transaction_min')?>">
                         <input type="hidden" name="payment_method" value="paypal">
                       </div>                      
 
                       <div class="form-group">
                         <ul>
-                          <li><?=lang("transaction_fee")?>: <strong><?=(get_option("paypal_chagre_fee", 4))?>%</strong></li>
-                          <li><?php echo lang("clicking_return_to_shop_merchant_after_payment_successfully_completed"); ?></li>
+                          <li><?=lang("app.transaction_fee")?>: <strong><?=(get_option("paypal_chagre_fee", 4))?>%</strong></li>
+                          <li><?php echo lang("app.clicking_return_to_shop_merchant_after_payment_successfully_completed"); ?></li>
                         </ul>
                       </div>
 
                       <div class="form-group">
                         <label class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input" name="agree" value="1">
-                          <span class="custom-control-label text-uppercase"><?=lang("yes_i_understand_after_the_funds_added_i_will_not_ask_fraudulent_dispute_or_chargeback")?></span>
+                          <span class="custom-control-label text-uppercase"><?=lang("app.yes_i_understand_after_the_funds_added_i_will_not_ask_fraudulent_dispute_or_chargeback")?></span>
                         </label>
                       </div>
                       
                       <div class="form-actions left">
                         <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1">
-                          <?=lang("Pay")?>
+                          <?=lang("app.pay")?>
                         </button>
                       </div>
 
                       <?php }else{?>
                       <div class="form-group">
                         <div class="alert alert-danger p-t-10" role="alert">
-                          <?=lang("this_payment_gateway_is_not_already_active_at_the_present")?>
+                          <?=lang("app.this_payment_gateway_is_not_already_active_at_the_present")?>
                         </div>
                       </div>
                       <?php }?>
@@ -165,35 +165,35 @@
                       ?>
                       <div class="for-group text-center">
                         <img src="<?=BASE?>/assets/images/payments/stripe-dark.svg" alt="Stripe icon">
-                        <p class="p-t-10"><small><?=sprintf(lang("you_can_deposit_funds_with_paypal_they_will_be_automaticly_added_into_your_account"), 'Stripe')?></small></p>
+                        <p class="p-t-10"><small><?=sprintf(lang("app.you_can_deposit_funds_with_paypal_they_will_be_automaticly_added_into_your_account"), 'Stripe')?></small></p>
                       </div>
 
                       <div class="form-group">
-                        <label><?=sprintf(lang("amount_usd"), get_option("currency_code",'USD'))?></label>
+                        <label><?=sprintf(lang("app.amount_usd"), get_option("currency_code",'USD'))?></label>
                         <input class="form-control square" type="number" name="amount" placeholder="<?=get_option('payment_transaction_min')?>" id="">
                         <input type="hidden" name="payment_method" value="stripe">
                       </div>
 
                       <div class="form-group">
-                        <small class=""><?=lang("transaction_fee")?>: <strong><?=(get_option("stripe_chagre_fee", 4))?>%</strong></small>
+                        <small class=""><?=lang("app.transaction_fee")?>: <strong><?=(get_option("stripe_chagre_fee", 4))?>%</strong></small>
                       </div>
 
                       <div class="form-group">
                         <label class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input" name="agree" value="1">
-                          <span class="custom-control-label text-uppercase"><?=lang("yes_i_understand_after_the_funds_added_i_will_not_ask_fraudulent_dispute_or_chargeback")?></span>
+                          <span class="custom-control-label text-uppercase"><?=lang("app.yes_i_understand_after_the_funds_added_i_will_not_ask_fraudulent_dispute_or_chargeback")?></span>
                         </label>
                       </div>
                       
                       <div class="form-actions left">
                         <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1">
-                          <?=lang("Pay")?>
+                          <?=lang("app.pay")?>
                         </button>
                       </div>
                       <?php }else{?>
                       <div class="form-group">
                         <div class="alert alert-danger p-t-10" role="alert">
-                          <?=lang("this_payment_gateway_is_not_already_active_at_the_present")?>
+                          <?=lang("app.this_payment_gateway_is_not_already_active_at_the_present")?>
                         </div>
                       </div>
                       <?php }?>
@@ -216,24 +216,24 @@
                       ?>
                       <div class="for-group text-center">
                         <img src="<?=BASE?>/assets/images/razorpay.svg" alt="Razorpay icon">
-                        <p class="p-t-10"><small><?=sprintf(lang("you_can_deposit_funds_with_paypal_they_will_be_automaticly_added_into_your_account"), 'Razorpay')?></small></p>
+                        <p class="p-t-10"><small><?=sprintf(lang("app.you_can_deposit_funds_with_paypal_they_will_be_automaticly_added_into_your_account"), 'Razorpay')?></small></p>
                       </div>
 
                       <div class="form-group">
-                        <label><?=sprintf(lang("amount_usd"), get_option("currency_code",'USD'))?></label>
+                        <label><?=sprintf(lang("app.amount_usd"), get_option("currency_code",'USD'))?></label>
                         <input class="form-control square" type="number" name="amount" placeholder="<?=get_option('payment_transaction_min')?>" id="">
                         <input type="hidden" name="payment_method" value="razor_pay">
                       </div>
 
 
                       <div class="form-group">
-                        <small class=""><?=lang("transaction_fee")?>: <strong><?=(get_option("razor_pay_chagre_fee", 4))?>%</strong></small>
+                        <small class=""><?=lang("app.transaction_fee")?>: <strong><?=(get_option("razor_pay_chagre_fee", 4))?>%</strong></small>
                       </div>
 
                       <div class="form-group">
                         <label class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input" name="agree" value="1">
-                          <span class="custom-control-label text-uppercase"><?=lang("yes_i_understand_after_the_funds_added_i_will_not_ask_fraudulent_dispute_or_chargeback")?></span>
+                          <span class="custom-control-label text-uppercase"><?=lang("app.yes_i_understand_after_the_funds_added_i_will_not_ask_fraudulent_dispute_or_chargeback")?></span>
                         </label>
                       </div>
                       
@@ -245,7 +245,7 @@
                       <?php }else{?>
                       <div class="form-group">
                         <div class="alert alert-danger p-t-10" role="alert">
-                          <?=lang("this_payment_gateway_is_not_already_active_at_the_present")?>
+                          <?=lang("app.this_payment_gateway_is_not_already_active_at_the_present")?>
                         </div>
                       </div>
                       <?php }?>

@@ -13,9 +13,9 @@
     <?php 
       if(get_role("admin")  || get_role("supporter")) {
     ?>
-    <a href="<?=cn("$module/update")?>" class="ajaxModal"><span class="add-new" data-toggle="tooltip" data-placement="bottom" title="<?=lang("add_new")?>" data-original-title="Add new"><i class="fa fa-plus-square text-primary" aria-hidden="true"></i></span></a> 
+    <a href="<?=cn("$module/update")?>" class="ajaxModal"><span class="add-new" data-toggle="tooltip" data-placement="bottom" title="<?=lang("app.add_new")?>" data-original-title="Add new"><i class="fa fa-plus-square text-primary" aria-hidden="true"></i></span></a> 
     <?php }?>
-    <?=lang("Category")?>
+    <?=lang("app.category")?>
   </h1>
   <div class="page-options d-flex">
     <?php
@@ -24,13 +24,13 @@
     <div class="form-group d-flex">
       <div class="item-action dropdown action-options">
         <button type="button" class="btn btn-pill btn-outline-info dropdown-toggle" data-toggle="dropdown">
-           <i class="fe fe-menu mr-2"></i> <?=lang("Action")?>
+           <i class="fe fe-menu mr-2"></i> <?=lang("app.action")?>
         </button>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item ajaxActionOptions" href="<?=cn($module.'/ajax_actions_option')?>" data-type="delete"><i class="fe fe-trash-2 text-danger mr-2"></i> <?=lang("Delete")?></a>
-          <a class="dropdown-item ajaxActionOptions" href="<?=cn($module.'/ajax_actions_option')?>" data-type="all_deactive"><i class="fe fe-trash-2 text-danger mr-2"></i> <?=lang("all_deactivated_categories")?></a>
-          <a class="dropdown-item ajaxActionOptions" href="<?=cn($module.'/ajax_actions_option')?>" data-type="deactive"><i class="fe fe-x-square text-danger mr-2"></i> <?=lang('Deactive')?></a>   
-          <a class="dropdown-item ajaxActionOptions" href="<?=cn($module.'/ajax_actions_option')?>" data-type="active"><i class="fe fe-check-square text-success mr-2"></i> <?=lang('Active')?></a>
+          <a class="dropdown-item ajaxActionOptions" href="<?=cn($module.'/ajax_actions_option')?>" data-type="delete"><i class="fe fe-trash-2 text-danger mr-2"></i> <?=lang("app.delete")?></a>
+          <a class="dropdown-item ajaxActionOptions" href="<?=cn($module.'/ajax_actions_option')?>" data-type="all_deactive"><i class="fe fe-trash-2 text-danger mr-2"></i> <?=lang("app.all_deactivated_categories")?></a>
+          <a class="dropdown-item ajaxActionOptions" href="<?=cn($module.'/ajax_actions_option')?>" data-type="deactive"><i class="fe fe-x-square text-danger mr-2"></i> <?=lang('app.deactive')?></a>   
+          <a class="dropdown-item ajaxActionOptions" href="<?=cn($module.'/ajax_actions_option')?>" data-type="active"><i class="fe fe-check-square text-success mr-2"></i> <?=lang('app.active')?></a>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
   <div class="col-md-12 col-xl-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("Lists")?></h3>
+        <h3 class="card-title"><?=lang("app.lists")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -66,7 +66,7 @@
                 </div>
               </th>
               <?php }?>
-              <th class="text-center w-1"><?=lang("No_")?></th>
+              <th class="text-center w-1"><?=lang("app.no_")?></th>
               <?php if (!empty($columns)) {
                 foreach ($columns as $key => $row) {
               ?>
@@ -76,7 +76,7 @@
               <?php
                 if (get_role("admin")  || get_role("supporter")) {
               ?>
-              <th class="text-center"><?=lang("Action")?></th>
+              <th class="text-center"><?=lang("app.action")?></th>
               <?php }?>
             </tr>
           </thead>
@@ -107,9 +107,9 @@
               <td><?=$row->sort?></td>
               <td>
                 <?php if(!empty($row->status) && $row->status == 1){?>
-                  <span class="badge badge-info"><?=lang("Active")?></span>
+                  <span class="badge badge-info"><?=lang("app.active")?></span>
                   <?php }else{?>
-                  <span class="badge badge-warning"><?=lang("Deactive")?></span>
+                  <span class="badge badge-warning"><?=lang("app.deactive")?></span>
                 <?php }?>
               </td>
 
@@ -121,11 +121,11 @@
                   <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
                   <div class="dropdown-menu">
                     
-                    <a href="<?=cn("$module/update/".$row->ids)?>" class="dropdown-item ajaxModal"><i class="dropdown-icon fe fe-edit"></i> <?=lang('Edit')?> </a>
+                    <a href="<?=cn("$module/update/".$row->ids)?>" class="dropdown-item ajaxModal"><i class="dropdown-icon fe fe-edit"></i> <?=lang('app.edit')?> </a>
                     <?php
                       if (get_role("admin")) {
                     ?>
-                    <a href="<?=cn("$module/ajax_delete_item/".$row->ids)?>" class="dropdown-item ajaxDeleteItem"><i class="dropdown-icon fe fe-trash"></i> <?=lang('Delete')?> </a>
+                    <a href="<?=cn("$module/ajax_delete_item/".$row->ids)?>" class="dropdown-item ajaxDeleteItem"><i class="dropdown-icon fe fe-trash"></i> <?=lang('app.delete')?> </a>
                     <?php }?>
                   </div>
                 </div>

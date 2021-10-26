@@ -2,7 +2,7 @@
 ?>
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title"><?php echo lang("last_5_orders"); ?></h3>
+    <h3 class="card-title"><?php echo lang("app.last_5_orders"); ?></h3>
     <div class="card-options">
       <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
       <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -31,7 +31,7 @@
           <td>
             <?php echo truncate_string($row->service_id." - ".$row->service_name, 37)?> 
           </td>
-          <td style="width: 10%;"><?=(!empty($row->api_service_id) && $row->api_service_id != "")? lang("API")." (".truncate_string($row->api_name, 13).")" : lang("Manual")?></td>
+          <td style="width: 10%;"><?=(!empty($row->api_service_id) && $row->api_service_id != "")? lang("app.api")." (".truncate_string($row->api_name, 13).")" : lang("app.manual")?></td>
           <td>
             <a href="<?php echo $row->link; ?>" target="_blank"><?php echo truncate_string($row->link, 47)?></a>
           <td class="text-muted w-1"><?php echo $row->quantity; ?></td>

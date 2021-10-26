@@ -21,6 +21,7 @@ class Filters extends BaseConfig
 		'honeypot' => Honeypot::class,
 		'auth' => \App\Filters\AuthFilter::class,
         "noauth" => \App\Filters\Noauth::class,
+        'locale'   => \App\Filters\Locale::class
 	];
 
     /**
@@ -31,12 +32,13 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
-            // 'honeypot',
-            // 'csrf',
+             'honeypot',
+           //  'csrf',
+             'locale'
         ],
         'after' => [
             'toolbar',
-            // 'honeypot',
+             'honeypot',
         ],
     ];
 

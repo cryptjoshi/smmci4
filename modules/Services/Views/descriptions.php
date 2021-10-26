@@ -20,7 +20,7 @@
                         $desc = str_replace("\n", "<br>", $desc);
                         echo $desc;
                       }else{
-                        echo view("\Modules\Blocks\Views\\empty_data");
+                       // echo view("\Modules\Blocks\Views\\empty_data");
                       }
                     ?>
                   </div>
@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn round btn-default btn-min-width mr-1 mb-1" data-dismiss="modal"><?=lang("Cancel")?></button>
+          <button type="button" class="btn round btn-default btn-min-width mr-1 mb-1" data-dismiss="modal"><?=lang("app.cancel")?></button>
         </div>
       </div>
     </div>

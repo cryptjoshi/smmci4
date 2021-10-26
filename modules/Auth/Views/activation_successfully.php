@@ -17,7 +17,7 @@
         </div>
 
         <div class="form-footer">
-          <a href="<?=cn("auth/login")?>" class="btn btn-primary round btn-pill"><?=lang("get_start_now")?></a>
+          <a href="<?=cn("auth/login")?>" class="btn btn-primary round btn-pill"><?=lang("app.get_start_now")?></a>
         </div>
       </div>
     </form>

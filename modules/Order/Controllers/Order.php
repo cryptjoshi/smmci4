@@ -39,24 +39,24 @@ class Order extends BaseController {
 		$this->module_icon            = "fa ft-users";
 
 		$this->columns = array(
-			"order_id"                  => lang("order_id"),
-			"order_basic_details"       => lang("order_basic_details"),
-			"created"                   => lang("Created"),
-			"status"                    => lang("Status"),
-			"refill"					=> lang("Refill"),
+			"order_id"                  => lang("app.order_id"),
+			"order_basic_details"       => lang("app.order_basic_details"),
+			"created"                   => lang("app.created"),
+			"status"                    => lang("app.status"),
+			"refill"					=> lang("app.refill"),
 		);
 		
 		if (get_role("admin") || get_role("supporter")) {
 			$this->columns = array(
-				"order_id"                  => lang("order_id"),
-				"api_order_id"              => lang("api_orderid"),
-				"uid"                       => lang("User"),
-				"order_basic_details"       => lang("order_basic_details"),
-				"created"                   => lang("Created"),
-				"status"                    => lang("Status"),
-				"refill"					=> lang("Refill"),
-				"response"                  => lang("API_Response"),
-				"action"                    => lang("Action"),
+				"order_id"                  => lang("app.order_id"),
+				"api_order_id"              => lang("app.api_orderid"),
+				"uid"                       => lang("app.user"),
+				"order_basic_details"       => lang("app.order_basic_details"),
+				"created"                   => lang("app.created"),
+				"status"                    => lang("app.status"),
+				"refill"					=> lang("app.refill"),
+				"response"                  => lang("app.api_response"),
+				"action"                    => lang("app.action"),
 			);
 		}
 
@@ -187,14 +187,14 @@ class Order extends BaseController {
 		if ($cate_id == "") {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("please_choose_a_category")
+				"message" => lang("app.please_choose_a_category")
 			));
 		}	
 
 		if ($service_id == "") {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("please_choose_a_service")
+				"message" => lang("app.please_choose_a_service")
 			));
 		}
 
@@ -203,14 +203,14 @@ class Order extends BaseController {
 		if (empty($check_category)) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("category_does_not_exists")
+				"message" => lang("app.category_does_not_exists")
 			));
 		}
 
 		if (empty($check_service)) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("service_does_not_exists")
+				"message" => lang("app.service_does_not_exists")
 			));
 		}
 		/*----------- check refill from category -------------*/
@@ -249,7 +249,7 @@ class Order extends BaseController {
 		if ($link == "") {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("invalid_link")
+				"message" => lang("app.invalid_link")
 			));
 		}
 		$link = strip_tags($link);
@@ -261,7 +261,7 @@ class Order extends BaseController {
 				if ($comments == "") {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("comments_field_is_required")
+						"message" => lang("app.comments_field_is_required")
 					));
 				}
 				$quantity = count(explode("\n", $comments));
@@ -273,7 +273,7 @@ class Order extends BaseController {
 				if ($usernames_custom == "") {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("username_field_is_required")
+						"message" => lang("app.username_field_is_required")
 					));
 				}
 				$quantity = count(explode("\n", $usernames_custom));
@@ -288,7 +288,7 @@ class Order extends BaseController {
 				if ($comments == "") {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("comments_field_is_required")
+						"message" => lang("app.comments_field_is_required")
 					));
 				}
 				$quantity = 1;
@@ -298,7 +298,7 @@ class Order extends BaseController {
 		if ($quantity == "") {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("quantity_is_required")
+				"message" => lang("app.quantity_is_required")
 			));
 		}
 		
@@ -308,21 +308,21 @@ class Order extends BaseController {
 			if ($runs == "") {
 				ms(array(
 					"status"  => "error",
-					"message" => lang("runs_is_required")
+					"message" => lang("app.runs_is_required")
 				));
 			}
 			
 			if ($interval == "") {
 				ms(array(
 					"status"  => "error",
-					"message" => lang("interval_time_is_required")
+					"message" => lang("app.interval_time_is_required")
 				));
 			}
 
 			if ($interval > 60) {
 				ms(array(
 					"status"  => "error",
-					"message" => lang("interval_time_must_to_be_less_than_or_equal_to_60_minutes")
+					"message" => lang("app.interval_time_must_to_be_less_than_or_equal_to_60_minutes")
 				));
 			}
 			$total_quantity = $runs * $quantity;
@@ -344,14 +344,14 @@ class Order extends BaseController {
 		if ($total_quantity <= 0 || ($total_quantity < $min) || $quantity < $min) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("quantity_must_to_be_greater_than_or_equal_to_minimum_amount")
+				"message" => lang("app.quantity_must_to_be_greater_than_or_equal_to_minimum_amount")
 			));
 		}	
 
 		if ($total_quantity > $max) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("quantity_must_to_be_less_than_or_equal_to_maximum_amount")
+				"message" => lang("app.quantity_must_to_be_less_than_or_equal_to_maximum_amount")
 			));
 		}
 		/*----------  Get balance ----------*/
@@ -392,14 +392,14 @@ class Order extends BaseController {
 				if ($usernames == "") {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("username_field_is_required")
+						"message" => lang("app.username_field_is_required")
 					));
 				}
 
 				if ($hashtags == "") {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("hashtag_field_is_required")
+						"message" => lang("app.hashtag_field_is_required")
 					));
 				}
 				$data["usernames"] = $usernames;
@@ -411,7 +411,7 @@ class Order extends BaseController {
 				if ($hashtag == "") {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("hashtag_field_is_required")
+						"message" => lang("app.hashtag_field_is_required")
 					));
 				}
 				$data["hashtag"] = $hashtag;
@@ -423,7 +423,7 @@ class Order extends BaseController {
 				if ($username == "") {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("username_field_is_required")
+						"message" => lang("app.username_field_is_required")
 					));
 				}
 
@@ -437,7 +437,7 @@ class Order extends BaseController {
 				if ($username == "") {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("username_field_is_required")
+						"message" => lang("app.username_field_is_required")
 					));
 				}
 
@@ -450,7 +450,7 @@ class Order extends BaseController {
 				if ($media_url == "" || !filter_var($media_url, FILTER_VALIDATE_URL)) {
 				    ms(array(
 						"status"  => "error",
-						"message" => lang("invalid_link")
+						"message" => lang("app.invalid_link")
 					));
 				}
 				$data["media"] = $media_url;
@@ -473,14 +473,14 @@ class Order extends BaseController {
 		if (!$agree) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("you_must_confirm_to_the_conditions_before_place_order")
+				"message" => lang("app.you_must_confirm_to_the_conditions_before_place_order")
 			));
 		}
 		// check balance
 		if ($user->balance != 0 && $user->balance < $total_charge || $user->balance == 0) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("not_enough_funds_on_balance")
+				"message" => lang("app.not_enough_funds_on_balance")
 			));
 		}
 
@@ -537,49 +537,49 @@ class Order extends BaseController {
 				if ($username == "") {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("username_field_is_required")
+						"message" => lang("app.username_field_is_required")
 					));
 				}
 
 				if ($min == "") {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("quantity_must_to_be_greater_than_or_equal_to_minimum_amount")
+						"message" => lang("app.quantity_must_to_be_greater_than_or_equal_to_minimum_amount")
 					));
 				}
 
 				if ($min < $check_service->min) {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("quantity_must_to_be_greater_than_or_equal_to_minimum_amount")
+						"message" => lang("app.quantity_must_to_be_greater_than_or_equal_to_minimum_amount")
 					));
 				}
 
 				if ($max < $min) {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("min_cannot_be_higher_than_max")
+						"message" => lang("app.min_cannot_be_higher_than_max")
 					));
 				}
 
 				if ($max > $check_service->max) {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("quantity_must_to_be_less_than_or_equal_to_maximum_amount")
+						"message" => lang("app.quantity_must_to_be_less_than_or_equal_to_maximum_amount")
 					));
 				}
 				
 				if (!in_array($delay, array(0, 5, 10, 15, 30, 60, 90))) {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("incorrect_delay")
+						"message" => lang("app.incorrect_delay")
 					));
 				}
 
 				if ($posts <=  0 || $posts == "") {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("new_posts_future_posts_must_to_be_greater_than_or__equal_to_1")
+						"message" => lang("app.new_posts_future_posts_must_to_be_greater_than_or__equal_to_1")
 					));
 				}
 
@@ -587,7 +587,7 @@ class Order extends BaseController {
 				if (!$agree) {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("you_must_confirm_to_the_conditions_before_place_order")
+						"message" => lang("app.you_must_confirm_to_the_conditions_before_place_order")
 					));
 				}
 				// calculate total charge
@@ -598,7 +598,7 @@ class Order extends BaseController {
 				if (($current_balance->balance != 0 && $current_balance->balance < $charge) || $current_balance->balance == 0) {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("not_enough_funds_on_balance")
+						"message" => lang("app.not_enough_funds_on_balance")
 					));
 				}
 				if ($expiry != "") {
@@ -666,12 +666,12 @@ class Order extends BaseController {
 			}
 			ms(array(
 				"status"  => "success",
-				"message" => lang("place_order_successfully")
+				"message" => lang("app.place_order_successfully")
 			));
 		}else{
 			ms(array(
 				"status"  => "error",
-				"message" => lang("There_was_an_error_processing_your_request_Please_try_again_later")
+				"message" => lang("app.there_was_an_error_processing_your_request_Please_try_again_later")
 			));
 		}
 	}
@@ -686,14 +686,14 @@ class Order extends BaseController {
 		if (!$agree) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("you_must_confirm_to_the_conditions_before_place_order")
+				"message" => lang("app.you_must_confirm_to_the_conditions_before_place_order")
 			));
 		}
 
 		if ($mass_order == "") {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("field_cannot_be_blank")
+				"message" => lang("app.field_cannot_be_blank")
 			));
 		}
 
@@ -703,7 +703,7 @@ class Order extends BaseController {
 		if ($user->balance == 0) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("you_do_not_have_enough_funds_to_place_order")
+				"message" => lang("app.you_do_not_have_enough_funds_to_place_order")
 			));
 		}
 		$total_order  = 0;
@@ -724,7 +724,7 @@ class Order extends BaseController {
 				// check format
 				$order_count = count($order);
 				//if ($order_count > 3  || $order_count <= 2) {
-				//	$error_details[$row] = lang("invalid_format_place_order");
+				//	$error_details[$row] = lang("app.invalid_format_place_order");
 				//	continue;
 				//}
 				
@@ -750,7 +750,7 @@ class Order extends BaseController {
 				// check service id
 				$check_service = $this->model->check_record("*", $this->tb_services, $service_id, false, true);
 				if (empty($check_service)) {
-					$error_details[$row] = lang("service_id_does_not_exists");
+					$error_details[$row] = lang("app.service_id_does_not_exists");
 					continue;
 				}
 
@@ -762,9 +762,9 @@ class Order extends BaseController {
 
 				if ($quantity <= 0 || $quantity < $min) {
 					if(!is_array($row)){
-					$error_details[$row] = lang("quantity_must_to_be_greater_than_or_equal_to_minimum_amount");
+					$error_details[$row] = lang("app.quantity_must_to_be_greater_than_or_equal_to_minimum_amount");
 					} else {
-						$error_details[implode("|",$row)] = lang("quantity_must_to_be_greater_than_or_equal_to_minimum_amount");
+						$error_details[implode("|",$row)] = lang("app.quantity_must_to_be_greater_than_or_equal_to_minimum_amount");
 					}
 				
 					continue;
@@ -772,9 +772,9 @@ class Order extends BaseController {
 						
 				if ($quantity > $max) {
 					if(!is_array($row)){
-					$error_details[$row] = lang("quantity_must_to_be_less_than_or_equal_to_maximum_amount");
+					$error_details[$row] = lang("app.quantity_must_to_be_less_than_or_equal_to_maximum_amount");
 					} else {
-						$error_details[implode("|",$row)] = lang("quantity_must_to_be_greater_than_or_equal_to_minimum_amount");
+						$error_details[implode("|",$row)] = lang("app.quantity_must_to_be_greater_than_or_equal_to_minimum_amount");
 					}
 					continue;
 				}
@@ -811,7 +811,7 @@ class Order extends BaseController {
 			if ($sum_charge > $user->balance) {
 				ms(array(
 					"status"  => "error",
-					"message" => lang("not_enough_funds_on_balance")
+					"message" => lang("app.not_enough_funds_on_balance")
 				));
 			}
 			if (!empty($orders)) {
@@ -826,7 +826,7 @@ class Order extends BaseController {
 		}else{
 			ms(array(
 				"status"  => "success",
-				"message" => lang("place_order_successfully")
+				"message" => lang("app.place_order_successfully")
 			));
 			//redirect(cn('order/log'));
 		}
@@ -860,7 +860,7 @@ class Order extends BaseController {
 		}
 
 		$config = array(
-			'base_url'           => cn(get_class($this)."/log/".$order_status.$query_string),
+			'base_url'           => base_url("order/log/".$order_status.$query_string),
 			'total_rows'         => $this->model->get_total_order_logs_list(true, $order_status),
 			'per_page'           => $limit_per_page,
 			'use_page_numbers'   => true,
@@ -872,14 +872,16 @@ class Order extends BaseController {
 	    $links = $this->model->pagination->makeLinks($page,$config['per_page'],$config['total_rows'],'default_full');
 
 		$order_logs = $this->model->get_order_logs_list(false, $order_status, $limit_per_page, $page * $limit_per_page);
+		
 		$data = array(
-			"module"                        => get_class($this),
+			"module"                        => "order",
 			"columns"                       => $this->columns,
-			"order_logs"                    => $order_logs,
+			"order_logs"                    => (object)$order_logs,
 			"order_status"                  => $order_status,
 			"links"                         => $links,
 			"number_error_orders"           => $number_error_orders,
 		);
+		//print_r((object)$order_logs);
 		//return view('Modules\Order\Views\logs\logs', $data);
 
 
@@ -912,7 +914,7 @@ class Order extends BaseController {
 		$orders = $this->model->get_log_details($id);
 		if (!empty($orders)) {
 			$data = array(
-				"module"     => get_class($this),
+				"module"     => "order",
 				"columns"    => $this->columns,
 				"order_logs" => $orders,
 			);
@@ -923,6 +925,7 @@ class Order extends BaseController {
 	}
 
 	public function log_update($ids = ""){
+		echo $ids;
 		$order    = $this->model->get("*", $this->tb_order, ['ids' => $ids]);
 		if (!$order ) {
 			redirect()->to(cn($this->module.'/log'));
@@ -949,7 +952,7 @@ class Order extends BaseController {
 		}
 
 		$data = array(
-			"module"   		            => get_class($this),
+			"module"   		            => "order",
 			"order" 	                => $order,
 			"order_status_array" 	    => $order_status_array,
 		);
@@ -967,21 +970,21 @@ class Order extends BaseController {
 		if($link == ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("link_is_required")
+				"message" => lang("app.link_is_required")
 			));
 		}
 
 		if(!is_numeric($start_counter) && $start_counter != ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("start_counter_is_a_number_format")
+				"message" => lang("app.start_counter_is_a_number_format")
 			));
 		}
 
 		if(!is_numeric($remains) && $remains != ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("start_counter_is_a_number_format")
+				"message" => lang("app.start_counter_is_a_number_format")
 			));
 		}
 
@@ -1026,12 +1029,12 @@ class Order extends BaseController {
 			
 			ms(array(
 				"status"  => "success",
-				"message" => lang("Update_successfully")
+				"message" => lang("app.update_successfully")
 			));
 		}else{
 			ms(array(
 				"status"  => "error",
-				"message" => lang("There_was_an_error_processing_your_request_Please_try_again_later")
+				"message" => lang("app.there_was_an_error_processing_your_request_Please_try_again_later")
 			));
 		}
 	}
@@ -1083,12 +1086,12 @@ class Order extends BaseController {
 			}
 			ms(array(
 				"status"  => "success",
-				"message" => lang("Refill_successfully")
+				"message" => lang("app.refill_successfully")
 			));
 		}else{
 			ms(array(
 				"status"  => "error",
-				"message" => lang("There_was_an_error_processing_your_request_Please_try_again_later")
+				"message" => lang("app.there_was_an_error_processing_your_request_Please_try_again_later")
 			));
 		}
 	}
@@ -1165,12 +1168,12 @@ class Order extends BaseController {
 			
 			ms(array(
 				"status"  => "success",
-				"message" => lang("Refill_successfully")
+				"message" => lang("app.refill_successfully")
 			));
 		}else{
 			ms(array(
 				"status"  => "error",
-				"message" => lang("There_was_an_error_processing_your_request_Please_try_again_later")
+				"message" => lang("app.there_was_an_error_processing_your_request_Please_try_again_later")
 			));
 		}
 	}
@@ -1204,7 +1207,7 @@ class Order extends BaseController {
 
 		$order_logs = $this->model->search_logs_by_get_method($data_search, $limit_per_page, $page * $limit_per_page);
 		$data = array(
-			"module"       => get_class($this),
+			"module"       => "order",
 			"columns"      => $this->columns,
 			"order_logs"   => $order_logs,
 			"order_status" => '',
@@ -1217,7 +1220,7 @@ class Order extends BaseController {
 		if (!empty($status) && $status !="" ) {
 			$order_logs = $this->model->get_order_logs_list(false, $status);
 			$data = array(
-				"module"     => get_class($this),
+				"module"     =>"order",
 				"columns"    => $this->columns,
 				"order_logs" => $order_logs,
 			);
@@ -1233,7 +1236,7 @@ class Order extends BaseController {
 			$mentions = get_list_custom_mention($order);
             if($mentions->exists_list){
 				$data = array(
-					"module"   		=> get_class($this),
+					"module"   		=> "order",
 					"title" 	    => $mentions->title,
 					"list" 	        => $mentions->list,
 				);
@@ -1289,7 +1292,7 @@ class Order extends BaseController {
 	$val = post('key');
 	$check_service    = $this->model->get_service_search($val);
 	$data = array(
-		"module"   		=> get_class($this),
+		"module"   		=> "order",
 		"service" 		=> $check_service,
 		
 	);
@@ -1304,7 +1307,7 @@ class Order extends BaseController {
 	$id=post("id");
 	$check_service    = $this->model->get_service_item_byid($id);
 	$data = array(
-		"module"   		=> get_class($this),
+		"module"   		=> "order",
 		"service" 		=> $check_service,
 		
 	);
@@ -1317,7 +1320,7 @@ class Order extends BaseController {
 	$check_service    = $this->model->get_service_item($id);
 	
 	$data = array(
-		"module"   		=> get_class($this),
+		"module"   		=> "order",
 		"service" 		=> $check_service,
 		
 	);

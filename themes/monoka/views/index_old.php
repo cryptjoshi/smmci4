@@ -14,14 +14,14 @@
                       if (get_option("enable_service_list_no_login") == 1) {
                     ?>
                     <li class="nav-item">
-                      <a class="nav-link page-scroll" href="<?=cn("services")?>"><?=lang("Services")?></a>
+                      <a class="nav-link page-scroll" href="<?=cn("services")?>"><?=lang("app.services")?></a>
                     </li>
                     <?php }?>
                     <?php 
                         if (get_option('enable_api_tab')) {
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="<?php echo cn('api/docs')?>"><?php echo lang("api"); ?></a>
+                        <a class="nav-link page-scroll" href="<?php echo cn('api/docs')?>"><?php echo lang("app.api"); ?></a>
                     </li>
                     <?php }?>
                 </ul>
@@ -32,10 +32,10 @@
                   ?>
                   <?php if(!get_option('disable_signup_page')){ ?>
                   
-                  <a class="btn-outline-sm" href="<?=cn('auth/signup')?>"><?=lang("Sign_Up")?></a>
+                  <a class="btn-outline-sm" href="<?=cn('auth/signup')?>"><?=lang("app.sign_Up")?></a>
                   <?php }; ?>
                   <?php }else{?>
-                    <a class="btn-outline-sm" href="<?=cn('statistics')?>"><?=lang("dashboard")?></a>
+                    <a class="btn-outline-sm" href="<?=cn('statistics')?>"><?=lang("app.dashboard")?></a>
                   <?php }?>
                 </span>
             </div>
@@ -57,8 +57,8 @@
                 <div class="row text-container">
                     <div class="col-lg-8 col-xl-7">
                         <div class="">
-                            <h1><?php echo lang("boost_your_social_media_marketing"); ?></h1>
-                            <p class="p-large"><?php echo lang("header_top_desc"); ?></p> 
+                            <h1><?php echo lang("app.boost_your_social_media_marketing"); ?></h1>
+                            <p class="p-large"><?php echo lang("app.header_top_desc"); ?></p> 
                         </div> 
                     </div>
                     <div class="col-lg-4 col-xl-5">
@@ -66,10 +66,10 @@
                         <div class="form-container logInForm">
                             <form class="actionFormWithoutToast" action="<?=cn("auth/ajax_sign_in")?>" data-redirect="<?=cn('statistics')?>" method="POST">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" name="email" placeholder="<?=lang("Email")?>" value="<?=(isset($cookie_email) && $cookie_email != "") ? $cookie_email : ""?>" required>
+                                    <input type="email" class="form-control" name="email" placeholder="<?=lang("app.email")?>" value="<?=(isset($cookie_email) && $cookie_email != "") ? $cookie_email : ""?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password" placeholder="<?=lang("Password")?>" value="<?=(isset($cookie_pass) && $cookie_pass != "") ? $cookie_pass : ""?>" required>
+                                    <input type="password" class="form-control" name="password" placeholder="<?=lang("app.password")?>" value="<?=(isset($cookie_pass) && $cookie_pass != "") ? $cookie_pass : ""?>" required>
                                 </div>
 
                                 <div class="form-group mt-20">
@@ -81,7 +81,7 @@
                                 ?>
                                 <div class="form-group checkbox">
                                     <input type="checkbox"  name="remember" <?=(isset($cookie_email) && $cookie_email != "") ? "checked" : ""?>>
-                                    <label class="text-white"><?=lang("remember_me")?></label>
+                                    <label class="text-white"><?=lang("app.remember_me")?></label>
                                 </div>
                                 <?php }?>
                                 <div class="row">
@@ -91,9 +91,9 @@
                                                 if (!session('uid')) {
                                             ?>
                                             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-                                            <button class="btn-solid-lg page-scroll btn-submit" type="submit"><?=lang("Login")?></button>
+                                            <button class="btn-solid-lg page-scroll btn-submit" type="submit"><?=lang("app.login")?></button>
                                             <?php }else{?>
-                                                <a class="btn-solid-lg" href="<?=cn('statistics')?>"><?=lang("dashboard")?></a>
+                                                <a class="btn-solid-lg" href="<?=cn('statistics')?>"><?=lang("app.dashboard")?></a>
                                             <?php }?>
                                         </div>
                                     </div>
@@ -101,14 +101,14 @@
                                         if (!session('uid')) {
                                     ?>
                                     <div class="col-md-6">
-                                        <a class="checkbox text-right" href="<?=cn("auth/forgot_password")?>"><?=lang("forgot_password")?>?</a>
+                                        <a class="checkbox text-right" href="<?=cn("auth/forgot_password")?>"><?=lang("app.forgot_password")?>?</a>
                                     </div>
                                     <?php }?>
                                 </div>
 
                                 <?php if(!get_option('disable_signup_page') && !session('uid')){ ?>
                                 <div class="form-group">
-                                    <p><?=lang("dont_have_account_yet")?> <a class="white" href="<?=cn('auth/signup')?>"><?=lang("Sign_Up")?></a></p>
+                                    <p><?=lang("app.dont_have_account_yet")?> <a class="white" href="<?=cn('auth/signup')?>"><?=lang("app.sign_Up")?></a></p>
                                 </div>
                                 <?php }; ?>
                             </form>
@@ -158,8 +158,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12" data-aos="fade-up" data-aos-duration="500">
-                    <div class="above-heading text-uppercase"><?php echo lang("why_choose_us"); ?></div>
-                    <h2 class="h2-heading"><?php echo lang("we_make_your_life_easier_by_boosting_sales"); ?></h2>
+                    <div class="above-heading text-uppercase"><?php echo lang("app.why_choose_us"); ?></div>
+                    <h2 class="h2-heading"><?php echo lang("app.we_make_your_life_easier_by_boosting_sales"); ?></h2>
                 </div> 
             </div> 
             <div class="row">
@@ -169,8 +169,8 @@
                             <img class="img-fluid" src="<?=BASE?>themes/monoka/assets/images/support247.png" alt="Website icon">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title"><?php echo lang("support_only_247"); ?></h4>
-                            <p><?php echo lang("we_are_proud_to_have_the_most_reliable_or_fastest_support_in_the_smm_world_panel_replying_to_your_tickets_247"); ?></p>
+                            <h4 class="card-title"><?php echo lang("app.support_only_247"); ?></h4>
+                            <p><?php echo lang("app.we_are_proud_to_have_the_most_reliable_or_fastest_support_in_the_smm_world_panel_replying_to_your_tickets_247"); ?></p>
                         </div>
                     </div>
 
@@ -179,8 +179,8 @@
                             <img class="img-fluid" src="<?=BASE?>themes/monoka/assets/images/delivering.png" alt="Website icon">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title"><?php echo lang("delivering_within_a_minutes"); ?></h4>
-                            <p><?php echo lang("our_delivery_is_automated_and_it_takes_minutes_if_not_seconds_to_fulfil_orders"); ?></p>
+                            <h4 class="card-title"><?php echo lang("app.delivering_within_a_minutes"); ?></h4>
+                            <p><?php echo lang("app.our_delivery_is_automated_and_it_takes_minutes_if_not_seconds_to_fulfil_orders"); ?></p>
                         </div>
                     </div>
 
@@ -189,8 +189,8 @@
                             <img class="img-fluid" src="<?=BASE?>themes/monoka/assets/images/prices.png" alt="Website icon">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title"><?php echo lang("unbelievable_prices"); ?></h4>
-                            <p><?php echo lang("our_prices_most_reasonable_in_the_market_starting_from_at_0001"); ?></p>
+                            <h4 class="card-title"><?php echo lang("app.unbelievable_prices"); ?></h4>
+                            <p><?php echo lang("app.our_prices_most_reasonable_in_the_market_starting_from_at_0001"); ?></p>
                         </div>
                     </div>
                     
@@ -204,8 +204,8 @@
         <div class="cards-1">
                 <div class="container">
                     <div class="col-lg-12 text-center header-top" data-aos="fade-up" data-aos-duration="500">
-                        <div class="above-heading text-uppercase"><?php echo lang("how_it_works"); ?></div>
-                        <h2 class="h2-heading"><?php echo lang("by_following_the_processes_below_you_can_make_any_order_you_want"); ?></h2>
+                        <div class="above-heading text-uppercase"><?php echo lang("app.how_it_works"); ?></div>
+                        <h2 class="h2-heading"><?php echo lang("app.by_following_the_processes_below_you_can_make_any_order_you_want"); ?></h2>
                     </div> 
                     <div class="row how-it-works-row justify-content-start">
                         <div class="col-md-3 how-it-works-col" data-aos="fade-up" data-aos-duration="800">
@@ -234,10 +234,10 @@
                                     <div class="how-it-works-number style-box-shadow-default style-bg-color-light"> 1 </div>
                                 </div>
                                 <div class="how-it-works-title">
-                                    <p class="text-center"><span><strong><?php echo lang("register_and_log_in"); ?></strong></span></p>
+                                    <p class="text-center"><span><strong><?php echo lang("app.register_and_log_in"); ?></strong></span></p>
                                 </div>
                                 <div class="how-it-works-description">
-                                    <p class="text-center"><span><?php echo lang("creating_an_account_is_the_first_step_then_you_need_to_log_in"); ?></span></p>
+                                    <p class="text-center"><span><?php echo lang("app.creating_an_account_is_the_first_step_then_you_need_to_log_in"); ?></span></p>
                                 </div>
                             </div>
                         </div>
@@ -268,10 +268,10 @@
                                     <div class="how-it-works-number style-box-shadow-default style-bg-color-light"> 2 </div>
                                 </div>
                                 <div class="how-it-works-title">
-                                    <p class="text-center"><span><strong><?php echo lang("add_funds"); ?></strong></span></p>
+                                    <p class="text-center"><span><strong><?php echo lang("app.add_funds"); ?></strong></span></p>
                                 </div>
                                 <div class="how-it-works-description">
-                                    <p class="text-center"><span><?php echo lang("next_pick_a_payment_method_and_add_funds_to_your_account"); ?></span></p>
+                                    <p class="text-center"><span><?php echo lang("app.next_pick_a_payment_method_and_add_funds_to_your_account"); ?></span></p>
                                 </div>
                             </div>
                         </div>
@@ -302,10 +302,10 @@
                                     <div class="how-it-works-number style-box-shadow-default style-bg-color-light"> 3 </div>
                                 </div>
                                 <div class="how-it-works-title">
-                                    <p class="text-center"><span><strong><?php echo lang("select_a_service"); ?></strong></span></p>
+                                    <p class="text-center"><span><strong><?php echo lang("app.select_a_service"); ?></strong></span></p>
                                 </div>
                                 <div class="how-it-works-description">
-                                    <p class="text-center"><span><?php echo lang("select_the_services_you_want_and_get_ready_to_receive_more_publicity"); ?></span></p>
+                                    <p class="text-center"><span><?php echo lang("app.select_the_services_you_want_and_get_ready_to_receive_more_publicity"); ?></span></p>
                                 </div>
                             </div>
                         </div>
@@ -336,10 +336,10 @@
                                     <div class="how-it-works-number style-box-shadow-default style-bg-color-light"> 4 </div>
                                 </div>
                                 <div class="how-it-works-title">
-                                    <p class="text-center"><span><strong><?php echo lang("enjoy_superb_results"); ?></strong></span></p>
+                                    <p class="text-center"><span><strong><?php echo lang("app.enjoy_superb_results"); ?></strong></span></p>
                                 </div>
                                 <div class="how-it-works-description">
-                                    <p class="text-center"><span><?php echo lang("you_can_enjoy_incredible_results_when_your_order_is_complete"); ?></span></p>
+                                    <p class="text-center"><span><?php echo lang("app.you_can_enjoy_incredible_results_when_your_order_is_complete"); ?></span></p>
                                 </div>
                             </div>
                         </div>
@@ -354,8 +354,8 @@
             <div class="row">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-offset="500" data-aos-easing="ease-in-sine">
                     <div class="text-container">
-                        <h2><?php echo lang("what_we_offer_for_your_succes_brand"); ?></h2>
-                        <p><?php echo lang("we_are_active_for_support_only_24_hours_a_day_and_seven_times_a_week_with_all_of_your_demands_and_services_around_the_day_dont_go_anywhere_else___we_are_here_ready_to_serve_you_and_help_you_with_all_of_your_smm_needs_users_or_clients_with_smm_orders_and_in_need_of_cheap_smm_services_are_more_then_welcome_in_our_smm_panel"); ?></p>
+                        <h2><?php echo lang("app.what_we_offer_for_your_succes_brand"); ?></h2>
+                        <p><?php echo lang("app.we_are_active_for_support_only_24_hours_a_day_and_seven_times_a_week_with_all_of_your_demands_and_services_around_the_day_dont_go_anywhere_else___we_are_here_ready_to_serve_you_and_help_you_with_all_of_your_smm_needs_users_or_clients_with_smm_orders_and_in_need_of_cheap_smm_services_are_more_then_welcome_in_our_smm_panel"); ?></p>
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="zoom-out-left">
@@ -371,8 +371,8 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-lg-12">
-                    <div class="above-heading"><?php echo lang("what_people_say_about_us"); ?></div>
-                    <p class="header-title"><?php echo lang("our_service_has_an_extensive_customer_roster_built_on_years_worth_of_trust_read_what_our_buyers_think_about_our_range_of_service"); ?></p>
+                    <div class="above-heading"><?php echo lang("app.what_people_say_about_us"); ?></div>
+                    <p class="header-title"><?php echo lang("app.our_service_has_an_extensive_customer_roster_built_on_years_worth_of_trust_read_what_our_buyers_think_about_our_range_of_service"); ?></p>
                 </div> 
             </div>
             <div class="row">
@@ -386,7 +386,7 @@
                                         <img class="img-fluid" src="<?=BASE?>themes/monoka/assets/images/testimonial-1.jpg" alt="Website icon">
                                     </div> 
                                     <div class="text-wrapper">
-                                        <div class="testimonial-text"><?php echo lang("client_one_comment"); ?></div>
+                                        <div class="testimonial-text"><?php echo lang("app.client_one_comment"); ?></div>
                                         <div class="testimonial-author"><?php echo lang('client_one'); ?> - <?php echo lang('client_one_jobname'); ?></div>
                                     </div>
                                 </div>
@@ -396,7 +396,7 @@
                                         <img class="img-fluid" src="<?=BASE?>themes/monoka/assets/images/testimonial-2.jpg" alt="Website icon">
                                     </div>
                                     <div class="text-wrapper">
-                                        <div class="testimonial-text"><?php echo lang("client_two_comment"); ?></div>
+                                        <div class="testimonial-text"><?php echo lang("app.client_two_comment"); ?></div>
                                         <div class="testimonial-author"><?php echo lang('client_two'); ?> - <?php echo lang('client_two_jobname'); ?></div>
                                     </div> 
                                 </div>
@@ -406,7 +406,7 @@
                                         <img class="img-fluid" src="<?=BASE?>themes/monoka/assets/images/testimonial-3.jpg" alt="Website icon">
                                     </div> 
                                     <div class="text-wrapper">
-                                        <div class="testimonial-text"><?php echo lang("client_three_comment"); ?></div>
+                                        <div class="testimonial-text"><?php echo lang("app.client_three_comment"); ?></div>
                                         <div class="testimonial-author"><?php echo lang('client_three'); ?> - <?php echo lang('client_three_jobname'); ?></div>
                                     </div>
                                 </div>
@@ -426,8 +426,8 @@
             <div class="container">
                 <div class="row text-center">
                     <div class="col-lg-12">
-                        <div class="above-heading"><?php echo lang("FAQs"); ?></div>
-                        <p class="header-desc"><?php echo lang("we_answered_some_of_the_most_frequently_asked_questions_on_our_panel"); ?></p>
+                        <div class="above-heading"><?php echo lang("app.faqs"); ?></div>
+                        <p class="header-desc"><?php echo lang("app.we_answered_some_of_the_most_frequently_asked_questions_on_our_panel"); ?></p>
                     </div> 
                 </div> 
                 <div class="row justify-content-center">
@@ -439,7 +439,7 @@
                                     <div class="card">
                                         <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-10-1" aria-expanded="false" aria-controls="#faq-block-10-1">
                                             <div class="faq-block__header-title">
-                                                <h4><i class="far fa-question-circle"></i> <?php echo lang("smm_panels__what_are_they"); ?></h4>
+                                                <h4><i class="far fa-question-circle"></i> <?php echo lang("app.smm_panels__what_are_they"); ?></h4>
                                             </div>
                                             <div class="faq-block__header-icon">
                                                 <i class="fas fa-chevron-circle-down fa-icon"></i>
@@ -447,7 +447,7 @@
                                         </div>
                                         <div class="faq-block__body collapse" id="faq-block-10-1">
                                             <div class="faq-block__body-description">
-                                                <p><?php echo lang("an_smm_panel_is_an_online_shop_that_you_can_visit_to_puchase_smm_services_at_great_prices"); ?></p>
+                                                <p><?php echo lang("app.an_smm_panel_is_an_online_shop_that_you_can_visit_to_puchase_smm_services_at_great_prices"); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -458,7 +458,7 @@
                                     <div class="card">
                                         <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-10-2" aria-expanded="false" aria-controls="#faq-block-10-2">
                                             <div class="faq-block__header-title">
-                                                <h4><i class="far fa-question-circle"></i> <?php echo lang("what_smm_services_can_i_find_on_this_panel"); ?></h4>
+                                                <h4><i class="far fa-question-circle"></i> <?php echo lang("app.what_smm_services_can_i_find_on_this_panel"); ?></h4>
                                             </div>
                                             <div class="faq-block__header-icon">
                                                 <i class="fas fa-chevron-circle-down fa-icon"></i>
@@ -466,7 +466,7 @@
                                         </div>
                                         <div class="faq-block__body collapse" id="faq-block-10-2">
                                             <div class="faq-block__body-description">
-                                                <p><?php echo lang("we_sell_different_types_of_smm_services__likes_followers_views_etc"); ?></p>
+                                                <p><?php echo lang("app.we_sell_different_types_of_smm_services__likes_followers_views_etc"); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -477,7 +477,7 @@
                                     <div class="card">
                                         <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-10-3" aria-expanded="false" aria-controls="#faq-block-10-3">
                                             <div class="faq-block__header-title">
-                                                <h4><i class="far fa-question-circle"></i> <?php echo lang("are_smm_services_on_your_panel_safe_to_buy"); ?></h4>
+                                                <h4><i class="far fa-question-circle"></i> <?php echo lang("app.are_smm_services_on_your_panel_safe_to_buy"); ?></h4>
                                             </div>
                                             <div class="faq-block__header-icon">
                                                 <i class="fas fa-chevron-circle-down fa-icon"></i>
@@ -485,7 +485,7 @@
                                         </div>
                                         <div class="faq-block__body collapse" id="faq-block-10-3">
                                             <div class="faq-block__body-description">
-                                                <p><?php echo lang("sure_your_accounts_wont_get_banned"); ?></p>
+                                                <p><?php echo lang("app.sure_your_accounts_wont_get_banned"); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -496,7 +496,7 @@
                                     <div class="card">
                                         <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-10-4" aria-expanded="false" aria-controls="#faq-block-10-4">
                                             <div class="faq-block__header-title">
-                                                <h4><i class="far fa-question-circle"></i> <?php echo lang("how_does_a_mass_order_work"); ?></h4>
+                                                <h4><i class="far fa-question-circle"></i> <?php echo lang("app.how_does_a_mass_order_work"); ?></h4>
                                             </div>
                                             <div class="faq-block__header-icon">
                                                 <i class="fas fa-chevron-circle-down fa-icon"></i>
@@ -504,7 +504,7 @@
                                         </div>
                                         <div class="faq-block__body collapse" id="faq-block-10-4">
                                             <div class="faq-block__body-description">
-                                                <p><?php echo lang("its_possible_to_place_multiple_orders_with_different_links_at_once_with_the_help_of_the_mass_order_feature"); ?></p>
+                                                <p><?php echo lang("app.its_possible_to_place_multiple_orders_with_different_links_at_once_with_the_help_of_the_mass_order_feature"); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -515,7 +515,7 @@
                                     <div class="card">
                                         <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-10-5" aria-expanded="false" aria-controls="#faq-block-10-5">
                                             <div class="faq-block__header-title">
-                                                <h4><i class="far fa-question-circle"></i> <?php echo lang("what_does_dripfeed_mean"); ?></h4>
+                                                <h4><i class="far fa-question-circle"></i> <?php echo lang("app.what_does_dripfeed_mean"); ?></h4>
                                             </div>
                                             <div class="faq-block__header-icon">
                                                 <i class="fas fa-chevron-circle-down fa-icon"></i>
@@ -523,7 +523,7 @@
                                         </div>
                                         <div class="faq-block__body collapse" id="faq-block-10-5">
                                             <div class="faq-block__body-description">
-                                                <p><?php echo lang("grow_your_accounts_as_fast_as_you_want_with_the_help_of_dripfeed_how_it_works_lets_say_you_want_2000_likes_on_your_post_instead_of_getting_all_2000_at_once_you_can_get_200_each_day_for_10_days"); ?></p>
+                                                <p><?php echo lang("app.grow_your_accounts_as_fast_as_you_want_with_the_help_of_dripfeed_how_it_works_lets_say_you_want_2000_likes_on_your_post_instead_of_getting_all_2000_at_once_you_can_get_200_each_day_for_10_days"); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -542,17 +542,17 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-container">
-                        <div class="above-heading text-uppercase"><?php echo lang("newsletter"); ?></div>
-                        <h2><?php echo lang("fill_in_the_ridiculously_small_form_below_to_receive_our_ridiculously_cool_newsletter"); ?></h2>
+                        <div class="above-heading text-uppercase"><?php echo lang("app.newsletter"); ?></div>
+                        <h2><?php echo lang("app.fill_in_the_ridiculously_small_form_below_to_receive_our_ridiculously_cool_newsletter"); ?></h2>
                         <form id="newsletterForm" class="actionFormWithoutToast" action="<?php echo cn("client/subscriber"); ?>"  method="POST">
                             <div class="form-group">
                                 <input type="email" class="form-control-input" id="nemail" name="email" required>
-                                <label class="label-control" for="nemail"><?php echo lang("email"); ?></label>
+                                <label class="label-control" for="nemail"><?php echo lang("app.email"); ?></label>
                                 <div class="help-block with-errors"></div>
                             </div>
                             
                             <div class="form-group">
-                                <button type="submit" class="form-control-submit-button btn-submit"><?php echo lang("subscribe_now"); ?></button>
+                                <button type="submit" class="form-control-submit-button btn-submit"><?php echo lang("app.subscribe_now"); ?></button>
                             </div>
                             <div class="form-group mt-20">
                                 <div id="alert-message" class="alert-message-reponse"></div>

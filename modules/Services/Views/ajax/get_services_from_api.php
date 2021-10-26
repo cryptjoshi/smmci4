@@ -1,4 +1,4 @@
-<label><?php echo lang('list_of_api_services'); ?></label>
+<label><?php echo lang('app.list_of_api_services'); ?></label>
 <select name="api_service_id" class="form-control square ajaxGetServiceDetail">
   <?php
     if (!empty($services)) {

@@ -10,7 +10,7 @@
   <div class="col-md-6">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("basic_information")?></h3>
+        <h3 class="card-title"><?=lang("app.basic_information")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -23,14 +23,14 @@
 
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="form-group">
-                  <label for="projectinput5"><?=lang("first_name")?></label>
+                  <label for="projectinput5"><?=lang("app.first_name")?></label>
                   <input class="form-control square" name="first_name" type="text" value="<?=(!empty($user->first_name))? $user->first_name: ''?>">
                 </div>
               </div>
 
               <div class="col-md-6 col-sm-6 col-xs-6">
                   <div class="form-group">
-                    <label for="userinput5"><?=lang("last_name")?></label>
+                    <label for="userinput5"><?=lang("app.last_name")?></label>
                     <input class="form-control square" name="last_name" type="text" value="<?=(!empty($user->last_name))? $user->last_name: ''?>">
                   </div>
               </div> 
@@ -60,7 +60,7 @@
                 <div class="form-group">
                   <label for="projectinput5"><?=lang('Password')?></label>
                   <input class="form-control square" name="password" type="password">
-                  <small class="text-primary"><?=lang("note_if_you_dont_want_to_change_password_then_leave_these_password_fields_empty")?></small>
+                  <small class="text-primary"><?=lang("app.note_if_you_dont_want_to_change_password_then_leave_these_password_fields_empty")?></small>
                 </div>
               </div> 
 
@@ -88,7 +88,7 @@
   <div class="col-md-6">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("more_informations")?></h3>
+        <h3 class="card-title"><?=lang("app.more_informations")?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -132,7 +132,7 @@
 
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="form-group">
-                  <label for="projectinput5"><?=lang("whatsapp_number")?></label>
+                  <label for="projectinput5"><?=lang("app.whatsapp_number")?></label>
                   <input class="form-control square"  name="what_asap"  type="text" value="<?=(!empty($what_asap))? $what_asap: ''?>">
                 </div>
               </div>
@@ -141,19 +141,19 @@
                 <div class="form-group">
                   <label for="projectinput5"><?=lang('Address')?></label>
                   <input class="form-control square" name="address" type="text" value="<?=(!empty($address))? $address: ''?>">
-                  <small class="text-primary"><?=lang("note_if_you_dont_want_add_more_information_then_leave_these_informations_fields_empty")?></small>
+                  <small class="text-primary"><?=lang("app.note_if_you_dont_want_add_more_information_then_leave_these_informations_fields_empty")?></small>
                 </div>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="form-group">
                   <label for="projectinput5"><?=lang('Bank Account Number')?></label>
                   <input class="form-control square" name="account_number" type="text" value="<?=(!empty($account_number))? $account_number: ''?>">
-                  <!-- <small class="text-primary"><?=lang("note_if_you_dont_want_add_more_information_then_leave_these_informations_fields_empty")?></small> -->
+                  <!-- <small class="text-primary"><?=lang("app.note_if_you_dont_want_add_more_information_then_leave_these_informations_fields_empty")?></small> -->
                 </div>
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12 form-actions left">
                 <div class="p-l-10">
-                  <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1"><?=lang("Save")?></button>
+                  <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1"><?=lang("app.save")?></button>
                 </div>
               </div>
             </div>
@@ -183,7 +183,7 @@
             </div>
           </div>
           <div class="">
-            <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1"><?=lang("Generate_new")?></button>
+            <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1"><?=lang("app.generate_new")?></button>
           </div>
         </form>
       </div>

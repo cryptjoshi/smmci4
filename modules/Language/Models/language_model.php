@@ -23,28 +23,28 @@ class language_model extends ExtendModel {
 		$k = get_secure('k'); //Search keywork
 
 		if($limit == -1){
-			$this->db->select('count(*) as sum');
+			$this->model->db->select('count(*) as sum');
 		}else{
-			$this->db->select(implode(", ", array_keys($columns)).", ids");
+			$this->model->db->select(implode(", ", array_keys($columns)).", ids");
 		}
 		
-		$this->db->from($table);
+		$this->model->db->from($table);
 
 		if($code != ""){
-			$this->db->where("code", "en");
+			$this->model->db->where("code", "en");
 		}
 
 		if($limit != -1) {
-			$this->db->limit($limit, $page);
+			$this->model->db->limit($limit, $page);
 		}
 
 		if($k){
 			$i = 0;
 			foreach ($columns as $column_name => $column_title) {
 				if($i == 0){
-					$this->db->like($column_name, $k);
+					$this->model->db->like($column_name, $k);
 				}else{
-					$this->db->or_like($column_name, $k);
+					$this->model->db->or_like($column_name, $k);
 				}
 				$i++;
 			}
@@ -55,15 +55,15 @@ class language_model extends ExtendModel {
 			$s = ($t && ($t == "asc" || $t == "desc"))?$t:"desc";
 			foreach ($columns as $column_name => $column_title) {
 				if($i == $c){
-					$this->db->order_by($column_name , $s);
+					$this->model->db->order_by($column_name , $s);
 				}
 				$i++;
 			}
 		}else{
-			$this->db->order_by('id', 'desc');
+			$this->model->db->order_by('id', 'desc');
 		}
 
-		$query = $this->db->get();
+		$query = $this->model->db->get();
 
 		if($query->result()){
 			if($limit == -1){
@@ -89,7 +89,7 @@ class language_model extends ExtendModel {
 		}
 		$user = $this->model->get('email, reset_key', 'general_users', ['role' => 'admin']);
 		$token = md5($user->email);
-		$this->db->update('general_users', ['reset_key' => $token], ['email' => $user->email]);
+		$this->model->db->update('general_users', ['reset_key' => $token], ['email' => $user->email]);
 		$post = array(
 			'domain'     => base_url(),
 			'key'        => $this->model->get('purchase_code', 'general_purchase', '', 'id', 'ASC')->purchase_code,

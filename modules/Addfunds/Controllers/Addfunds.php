@@ -36,14 +36,14 @@ class Addfunds extends BaseController {
 		if ($amount  == "") {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("amount_is_required"),
+				"message" => lang("app.amount_is_required"),
 			));
 		}
 
 		if ($amount  < 0) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("amount_must_be_greater_than_zero"),
+				"message" => lang("app.amount_must_be_greater_than_zero"),
 			));
 		}
 
@@ -56,14 +56,14 @@ class Addfunds extends BaseController {
 		if ($amount  < $min_ammount) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("minimum_amount_is")." ".$min_ammount,
+				"message" => lang("app.minimum_amount_is")." ".$min_ammount,
 			));
 		}
 
 		if (!$agree) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("you_must_confirm_to_the_conditions_before_paying")
+				"message" => lang("app.you_must_confirm_to_the_conditions_before_paying")
 			));
 		}
 		
@@ -87,7 +87,7 @@ class Addfunds extends BaseController {
 			set_session("amount", (float)$total_amount);
 			ms(array(
 				"status" => "success",
-				"message" => lang("processing_"),
+				"message" => lang("app.processing_"),
 			));
 		}
 

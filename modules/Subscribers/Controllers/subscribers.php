@@ -25,7 +25,7 @@ class subscribers extends BaseController {
 			'email' 		 => lang('email'),
 			'ip' 		     => 'IP address',
 			'location' 		 => 'Location',
-			"created"        => lang("Created"),
+			"created"        => lang("app.created"),
 		);
 	}
 
@@ -81,14 +81,14 @@ class subscribers extends BaseController {
 		if($subject == ''){
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("subject_is_required"),
+				'message' => lang("app.subject_is_required"),
 			));
 		}
 
 		if($email_content == ''){
 			ms(array(
 				'status'  => 'error',
-				'message' => lang("message_is_required"),
+				'message' => lang("app.message_is_required"),
 			));
 		}
 
@@ -118,12 +118,12 @@ class subscribers extends BaseController {
 
 			ms(array(
 				"status"  => "success",
-				"message" => lang("your_email_has_been_successfully_sent_to_user"),
+				"message" => lang("app.your_email_has_been_successfully_sent_to_user"),
 			));
 		}else{
 			ms(array(
 				"status"  => "error",
-				"message" => lang("the_account_does_not_exists"),
+				"message" => lang("app.the_account_does_not_exists"),
 			));
 		}
 	}

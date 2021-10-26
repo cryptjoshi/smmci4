@@ -14,27 +14,29 @@ public function __construct()
    $this->model =  new \Modules\Services\Models\ServiceModel();
    helper('common');
    $this->columns = array(
-    "price"            => lang("rate_per_1000")."(".get_option("currency_symbol","").")",
-    "min_max"          => lang("min__max_order"),
-    "desc"             => lang("Description"),
+    "price"            => lang("app.rate_per_1000")."(".get_option("currency_symbol","").")",
+    "min_max"          => lang("app.min__max_order"),
+    "desc"             => lang("app.description"),
 );
 
 if (get_role("admin") || get_role("supporter")) {
     $this->columns = array(
         "provider"         => 'Provider',
-        "price"            => lang("rate_per_1000")."(".get_option("currency_symbol","").")",
-        "min_max"          => lang("min__max_order"),
-        "desc"             => lang("Description"),
-        "dripfeed"         => lang("dripfeed"),
-        "refill"		   => lang("refill"),
-        "status"           => lang("Status"),
+        "price"            => lang("app.rate_per_1000")."(".get_option("currency_symbol","").")",
+        "min_max"          => lang("app.min__max_order"),
+        "desc"             => lang("app.description"),
+        "dripfeed"         => lang("app.dripfeed"),
+        "refill"		   => lang("app.refill"),
+        "status"           => lang("app.status"),
     );
 }		
 }
 
     public function index(){
         
-        $this->cachePage(30);
+        //$this->cachePage(30);
+        
+        
         if (!session('uid') && get_option("enable_service_list_no_login") != 1) {
 			redirect(cn());
 		}
@@ -72,6 +74,7 @@ if (get_role("admin") || get_role("supporter")) {
                 return view('\Modules\Services\Views\client\index',$data,$options);
 				break;
 		}
+        
     //     $data = array(
 	// 		"module"       => get_class($this),
 	// 		"columns"      => $this->columns,

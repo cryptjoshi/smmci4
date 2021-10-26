@@ -4,23 +4,23 @@
       <div class="col-md-5">
         <div class="card">
           <div class="card-header d-flex align-items-center">
-            <h3 class="card-title text-uppercase"><?php echo lang("coinbase_confirm_form"); ?></h3>
+            <h3 class="card-title text-uppercase"><?php echo lang("app.coinbase_confirm_form"); ?></h3>
           </div>
           <div class="card-body">
             <div class="tab-content">
               <form method="post" action="<?php echo cn($module."/coinbase/create_payment"); ?>">
                 <div class="form-group">
-                  <label class="form-label"><?php echo lang("total_amount_usd_includes_fee"); ?></label>
+                  <label class="form-label"><?php echo lang("app.total_amount_usd_includes_fee"); ?></label>
                   <input type="text" class="form-control" value="<?=$amount?>" disabled>
                   <input type="hidden" class="form-control" name="amount" value="<?=$amount?>">
                 </div>
                 <div class="form-group">
-                  <p class="text-info"><?php echo lang("note"); ?> <?php echo lang('coinbase_confirm_form_note'); ?></p>
+                  <p class="text-info"><?php echo lang("app.note"); ?> <?php echo lang('coinbase_confirm_form_note'); ?></p>
                 </div>
 
                 <!-- submit button -->
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
-                <input type="submit" class="btn btn-primary btn-lg btn-block" name="PAYMENT_METHOD" value="<?php echo lang("Submit"); ?>">
+                <input type="submit" class="btn btn-primary btn-lg btn-block" name="PAYMENT_METHOD" value="<?php echo lang("app.submit"); ?>">
               </form>
             </div>
           </div>

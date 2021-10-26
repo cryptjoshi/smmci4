@@ -15,7 +15,7 @@
       <div class="col-md-5">
         <div class="card">
           <div class="card-header d-flex align-items-center">
-            <h3 class="card-title"><?=lang("razor_pay_creditdebit_card_payment")?></h3>
+            <h3 class="card-title"><?=lang("app.razor_pay_creditdebit_card_payment")?></h3>
           </div>
           <div class="card-body">
               <form action="<?=cn($module."/razor_pay/create_payment")?>" method="POST">

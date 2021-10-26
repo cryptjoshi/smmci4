@@ -21,7 +21,7 @@
             <td style="padding-left: 0;">
             <div class="form-group result-services" id="result_services">
                     <select name="mass_order[0][0]"  id="services_option_0" class="chosen-select massChangeService" data-url="<?=cn($module."/ajax_load_services/")?>">
-                    <option> <?=lang("choose_a_service")?></option>
+                    <option> <?=lang("app.choose_a_service")?></option>
                    <?php
                     if (!empty($massservice)) {
                     $service_item_default = $massservice[0];
@@ -78,7 +78,7 @@ function addrow(id){
     <td style="padding-left: 0;">
             <div class="form-group result-services" id="result_services_`+id+`}">
                     <select name="mass_order[`+id+`][0]"  id="services_option_`+id+`" class="chosen-select massChangeService" data-url="<?=cn($module."/ajax_load_services/")?>">
-                    <option> <?=lang("choose_a_service")?></option>
+                    <option> <?=lang("app.choose_a_service")?></option>
                    <?php
                     if (!empty($massservice)) {
                     $service_item_default = $massservice[0];

@@ -560,7 +560,7 @@ class Omise extends BaseController {
 						"transaction_id" => $check_item->transaction_id,
                         "token"=>  $this->security->get_csrf_hash(),
                         "redirect" => cn('add_funds/omise/successful'),
-						"message" => lang("{$check_item->transaction_id} Success")
+						"message" => lang("app.{$check_item->transaction_id} Success")
 					);
 					//push_message($message);
 					
@@ -570,7 +570,7 @@ class Omise extends BaseController {
 						"transaction_id" => $check_item->transaction_id,
                         "token"=>  $this->security->get_csrf_hash(),
                         "redirect" => cn('add_funds/omise/unsuccessful'),
-						"message" => lang("{$check_item->transaction_id} Not Success")
+						"message" => lang("app.{$check_item->transaction_id} Not Success")
 					);
                 }
                 // if($payment_type=="promptpay" && $payment_type == "offline"){

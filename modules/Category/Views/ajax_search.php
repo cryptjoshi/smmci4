@@ -2,7 +2,7 @@
 <div class="col-md-12 col-xl-12">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title"><?=lang("Lists")?></h3>
+      <h3 class="card-title"><?=lang("app.lists")?></h3>
       <div class="card-options">
         <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
         <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -24,7 +24,7 @@
               </div>
             </th>
             <?php }?>
-            <th class="text-center w-1"><?lang("No_")?></th>
+            <th class="text-center w-1"><?lang("app.no_")?></th>
             <?php if (!empty($columns)) {
               foreach ($columns as $key => $row) {
             ?>
@@ -34,7 +34,7 @@
             <?php
               if (get_role("admin") || get_role("supporter")) {
             ?>
-            <th class="text-center"><?=lang("Action")?></th>
+            <th class="text-center"><?=lang("app.action")?></th>
             <?php }?>
           </tr>
         </thead>
@@ -65,9 +65,9 @@
             <td><?=$row->sort?></td>
             <td>
               <?php if(!empty($row->status) && $row->status == 1){?>
-                <span class="badge badge-info"><?=lang("Active")?></span>
+                <span class="badge badge-info"><?=lang("app.active")?></span>
                 <?php }else{?>
-                <span class="badge badge-warning"><?=lang("Deactive")?></span>
+                <span class="badge badge-warning"><?=lang("app.deactive")?></span>
               <?php }?>
             </td>
 

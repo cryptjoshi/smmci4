@@ -21,13 +21,13 @@
 
                 <div class="col-md-6 col-sm-12 col-xs-12">
                   <div class="form-group">
-                    <label><?=lang("first_name")?></label>
+                    <label><?=lang("app.first_name")?></label>
                     <input type="text" class="form-control square" name="first_name" value="<?=(!empty($user->first_name) && $user->first_name != "") ? $user->first_name : ''?>">
                   </div>
                 </div> 
                 <div class="col-md-6 col-sm-12 col-xs-12">
                   <div class="form-group">
-                    <label><?=lang("last_name")?></label>
+                    <label><?=lang("app.last_name")?></label>
                     <input type="text" class="form-control square" name="last_name" value="<?=(!empty($user->last_name) && $user->last_name != "") ? $user->last_name : ''?>" disabled>
                   </div>
                 </div> 

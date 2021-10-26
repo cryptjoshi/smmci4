@@ -18,7 +18,7 @@
       <table class="table table-hover table-bordered table-vcenter card-table">
         <thead>
           <tr>
-            <th class="text-center w-1"><?=lang("No_")?></th>
+            <th class="text-center w-1"><?=lang("app.no_")?></th>
             <?php if (!empty($columns)) {
               foreach ($columns as $key => $row) {
             ?>
@@ -76,13 +76,13 @@
                   <?php
                     switch ($row->role) {
                       case 'admin':
-                          echo lang("admin");
+                          echo lang("app.admin");
                         break;
                       case 'supporter':
-                          echo lang("Supporter");
+                          echo lang("app.supporter");
                         break;
                       default:
-                        echo lang("regular_user");
+                        echo lang("app.regular_user");
                         break;
                     }
                   ?>
@@ -122,10 +122,10 @@
                   </a>
                   <?php }?>
                   <a class="dropdown-item ajaxModal" href="<?=cn("$module/mail/".$row->ids)?>">
-                    <i class="dropdown-icon fe fe-mail"></i> <?=lang("send_mail")?>
+                    <i class="dropdown-icon fe fe-mail"></i> <?=lang("app.send_mail")?>
                   </a>
                   <a class="dropdown-item ajaxModal" href="<?=cn("$module/add_funds_manual/".$row->ids)?>">
-                    <i class="dropdown-icon fe fe-dollar-sign"></i> <?=lang("Add_Funds")?>
+                    <i class="dropdown-icon fe fe-dollar-sign"></i> <?=lang("app.add_Funds")?>
                   </a>
                  
                 </div>

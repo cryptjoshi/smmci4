@@ -13,13 +13,13 @@
           </div>
         </th>
         <th class="text-center w-1">ID</th>
-        <th><?php echo lang("Name"); ?></th>
+        <th><?php echo lang("app.name"); ?></th>
         <?php if (!empty($columns)) {
           foreach ($columns as $key => $row) {
         ?>
         <th class="text-center"><?=$row?></th>
         <?php }}?>
-        <th><?=lang("Action")?></th>
+        <th><?=lang("app.action")?></th>
       </tr>
     </thead>
     <tbody>
@@ -72,18 +72,18 @@
         </td>
         <td class="text-center" style="width: 8%;"><?=$row->min?> / <?=$row->max?></td>
         <td style="width: 6%;">
-          <button class="btn btn-info btn-sm" type="button" class="dash-btn" data-toggle="modal" data-target="#<?php echo 'service-'.$row->id; ?>"><?=lang("Details")?></button>
+          <button class="btn btn-info btn-sm" type="button" class="dash-btn" data-toggle="modal" data-target="#<?php echo 'service-'.$row->id; ?>"><?=lang("app.details")?></button>
           <div id="<?php echo 'service-'.$row->id; ?>" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <?php
-              $this->load->view('descriptions', ['service' => $row]);
+              //echo view('Modules\Services\Views\descriptions', ['service' => $row]);
             ?>
           </div>
         </td>
         <td class="w-1 text-center">
           <?php if(!empty($row->dripfeed) && $row->dripfeed == 1){?>
-            <span class="badge badge-info"><?=lang("Active")?></span>
+            <span class="badge badge-info"><?=lang("app.active")?></span>
             <?php }else{?>
-            <span class="badge badge-warning"><?=lang("Deactive")?></span>
+            <span class="badge badge-warning"><?=lang("app.deactive")?></span>
           <?php }?>
         </td>
         <td class="w-1 text-center">
@@ -102,8 +102,8 @@
           <div class="item-action dropdown">
             <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
             <div class="dropdown-menu">
-              <a href="<?=cn("$module/update/".$row->ids)?>" class="dropdown-item ajaxModal"><i class="dropdown-icon fe fe-edit"></i> <?=lang('Edit')?> </a>
-              <a href="<?=cn("$module/ajax_delete_item/".$row->ids)?>" class="dropdown-item ajaxDeleteItem"><i class="dropdown-icon fe fe-trash"></i> <?=lang('Delete')?> </a>
+              <a href="<?=cn("$module/update/".$row->ids)?>" class="dropdown-item ajaxModal"><i class="dropdown-icon fe fe-edit"></i> <?=lang('app.edit')?> </a>
+              <a href="<?=cn("$module/ajax_delete_item/".$row->ids)?>" class="dropdown-item ajaxDeleteItem"><i class="dropdown-icon fe fe-trash"></i> <?=lang('app.delete')?> </a>
             </div>
           </div>
         </td>

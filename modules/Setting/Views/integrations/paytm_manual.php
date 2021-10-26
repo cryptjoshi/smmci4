@@ -1,7 +1,7 @@
 
     <div class="card content">
       <div class="card-header">
-        <h3 class="card-title"><i class="fe fe-credit-card"></i> <?=lang("Paytm_Integration")?></h3>
+        <h3 class="card-title"><i class="fe fe-credit-card"></i> <?=lang("app.paytm_Integration")?></h3>
       </div>
       <div class="card-body">
         <form class="actionForm" action="<?=cn("$module/ajax_general_settings")?>" method="POST" data-redirect="<?=cn($module."?t=".$tab)?>">
@@ -9,12 +9,12 @@
 
             <div class="col-md-12 col-lg-12">
               <div class="form-group">
-                <div class="form-label"><?=lang("Status")?></div>
+                <div class="form-label"><?=lang("app.status")?></div>
                 <div class="custom-controls-stacked">
                   <label class="custom-control custom-checkbox">
                     <input type="hidden" name="is_active_paytm" value="0">
                     <input type="checkbox" class="custom-control-input" name="is_active_paytm_manual" value="1" <?=(get_option('is_active_paytm_manual', "") == 1)? "checked" : ''?>>
-                    <span class="custom-control-label"><?=lang("Active")?></span>
+                    <span class="custom-control-label"><?=lang("app.active")?></span>
                   </label>
                 </div>
               </div>
@@ -40,7 +40,7 @@
             </div> 
             <div class="col-md-12 col-lg-12">
               <div class="form-footer">
-                <button class="btn btn-primary btn-min-width btn-lg text-uppercase"><?=lang("Save")?></button>
+                <button class="btn btn-primary btn-min-width btn-lg text-uppercase"><?=lang("app.save")?></button>
               </div>
             </div>
 

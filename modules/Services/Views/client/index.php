@@ -1,4 +1,3 @@
-
 <?= $this->extend('template/layout') ?>
 <?=$this->section('content');?>
 <style>
@@ -17,7 +16,7 @@
       <div class="col-md-2">
         <h1 class="page-title">
           <i class="fe fe-list" aria-hidden="true"> </i> 
-          <?=lang("Services")?>
+          <?=lang('app.services')?>
         </h1>
       </div>
       <div class="col-md-7">
@@ -25,11 +24,11 @@
           if (get_option("enable_explication_service_symbol")) {
         ?>
         <div class="btn-list">
-          <span class="btn round btn-secondary ">⭐ = <?=lang("__good_seller")?></span>
-          <span class="btn round btn-secondary ">⚡️ = <?=lang("__speed_level")?></span>
-          <span class="btn round btn-secondary ">🔥 = <?=lang("__hot_service")?></span>
-          <span class="btn round btn-secondary ">💎 = <?=lang("__best_service")?></span>
-          <span class="btn round btn-secondary ">💧 = <?=lang("__drip_feed")?></span>
+          <span class="btn round btn-secondary ">⭐ = <?=lang("app.__good_seller")?></span>
+          <span class="btn round btn-secondary ">⚡️ = <?=lang("app.__speed_level")?></span>
+          <span class="btn round btn-secondary ">🔥 = <?=lang("app.__hot_service")?></span>
+          <span class="btn round btn-secondary ">💎 = <?=lang("app.__best_service")?></span>
+          <span class="btn round btn-secondary ">💧 = <?=lang("app.__drip_feed")?></span>
         </div>
         <?php } ?>
       </div>
@@ -37,7 +36,7 @@
       <div class="col-md-3">
         <div class="form-group ">
           <select  name="status" class="form-control order_by ajaxChange" data-url="<?=cn($module."/ajax_service_sort_by_cate/")?>">
-            <option value="all"> <?=lang("sort_by")?></option>
+            <option value="all"> <?=lang("app.app.sort_by")?></option>
             <?php 
               if (!empty($categories)) {
                 foreach ($categories as $key => $category) {

@@ -10,25 +10,25 @@
               <img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="website-logo">
             </a>
           </div>
-          <h4><?=lang("new_password")?></h4>
+          <h4><?=lang("app.new_password")?></h4>
         </div>
         <div class="form-group">
           <div class="input-icon mb-5">
             <span class="input-icon-addon">
               <i class="fa fa-key"></i>
             </span>
-            <input type="password" class="form-control" name="password" placeholder="<?=lang("new_password")?>" required>
+            <input type="password" class="form-control" name="password" placeholder="<?=lang("app.new_password")?>" required>
           </div>    
           <div class="input-icon mb-5">
             <span class="input-icon-addon">
               <i class="fa fa-key"></i>
             </span>
-            <input type="password" class="form-control" name="re_password" placeholder="<?=lang("Confirm_password")?>" required>
+            <input type="password" class="form-control" name="re_password" placeholder="<?=lang("app.confirm_password")?>" required>
           </div>
         </div>
 
         <div class="form-footer">
-          <button type="submit" class="btn btn-pill btn-2 btn-block btn-submit btn-gradient"><?=lang("Submit")?></button>
+          <button type="submit" class="btn btn-pill btn-2 btn-block btn-submit btn-gradient"><?=lang("app.submit")?></button>
         </div>
       </div>
     </form>

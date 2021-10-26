@@ -24,48 +24,48 @@
             </div>
           </div>
           <div class="col-lg-8 m-t-30  mt-lg-0">
-            <h4 class="title"><?=lang("Quick_links")?></h4>
+            <h4 class="title"><?=lang("app.quick_links")?></h4>
             <div class="row">
               <div class="col-6 col-md-3  mt-lg-0">
                 <ul class="list-unstyled quick-link mb-0">
-                  <li><a href="<?=cn()?>"><?=lang("Home")?></a></li>
+                  <li><a href="<?=cn()?>"><?=lang("app.home")?></a></li>
                   <?php 
                     if (!session('uid')) {
                   ?>
-                  <li><a href="<?=cn('auth/login')?>"><?=lang("Login")?></a></li>
-                  <li><a href="<?=cn('auth/signup')?>"><?=lang("Sign_Up")?></a></li>
+                  <li><a href="<?=cn('auth/login')?>"><?=lang("app.login")?></a></li>
+                  <li><a href="<?=cn('auth/signup')?>"><?=lang("app.sign_Up")?></a></li>
                   <?php }else{?>
-                  <li><a href="<?=cn('services')?>"><?=lang("Services")?></a></li>
-                  <li><a href="<?=cn('tickets')?>"><?=lang("Tickets")?></a></li>  
+                  <li><a href="<?=cn('services')?>"><?=lang("app.services")?></a></li>
+                  <li><a href="<?=cn('tickets')?>"><?=lang("app.tickets")?></a></li>  
                   <?php }?>
                 </ul>
               </div>
               <div class="col-6 col-md-3">
                 <ul class="list-unstyled quick-link mb-0">
-                  <li><a href="<?=cn('terms')?>"><?=lang("terms__conditions")?></a></li>
+                  <li><a href="<?=cn('terms')?>"><?=lang("app.terms__conditions")?></a></li>
                   <?php 
                     if (get_option('is_cookie_policy_page')) {
                   ?>
-                  <li><a href="<?=cn('cookie-policy')?>"><?=lang("Cookie_Policy")?></a></li>
+                  <li><a href="<?=cn('cookie-policy')?>"><?=lang("app.cookie_Policy")?></a></li>
                   <?php }?>
                   <?php 
                     if (get_option('enable_api_tab')) {
                   ?>
-                  <li><a href="<?=cn('api/docs')?>"><?=lang("api_documentation")?></a></li>
+                  <li><a href="<?=cn('api/docs')?>"><?=lang("app.api_documentation")?></a></li>
                   <?php }?>
-                  <li><a href="<?=cn('faq')?>"><?=lang("FAQs")?></a></li>
+                  <li><a href="<?=cn('faq')?>"><?=lang("app.faqs")?></a></li>
                 </ul>
               </div>
             </div>
           </div>
           <div class="col-lg-4 m-t-30 mt-lg-0 subscribe-form">
-            <h4 class="title"><?=lang("subscribe_us")?></h4>
+            <h4 class="title"><?=lang("app.subscribe_us")?></h4>
             <form class="form actionFormWithoutToast" action="<?php echo cn("client/subscriber"); ?>" data-redirect="<?php echo cn(); ?>" method="POST">
               <div class="form-group">
                 <input type="email" name="email" class="form-control email" placeholder="Enter Your email" required>
               </div>
               <button class="form-control btn btn-pill btn-gradient btn-signin btn-submit" type="submit">
-                <?php echo lang("subscribe_now"); ?>
+                <?php echo lang("app.subscribe_now"); ?>
               </button>
               <div class="form-group m-t-20">
                 <div id="alert-message" class="alert-message-reponse"></div>

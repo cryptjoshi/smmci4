@@ -65,8 +65,8 @@
       var token = '<?=csrf_hash()?>',
           PATH  = '<?=APPPATH?>',
           BASE  = '<?=base_url()?>';
-      var    deleteItem = '<?=lang("Are_you_sure_you_want_to_delete_this_item")?>';
-      var    deleteItems = '<?=lang("Are_you_sure_you_want_to_delete_all_items")?>';
+      var    deleteItem = '<?=lang("app.are_you_sure_you_want_to_delete_this_item")?>';
+      var    deleteItems = '<?=lang("app.are_you_sure_you_want_to_delete_all_items")?>';
     </script>
   <?= htmlspecialchars_decode(get_option('embed_head_javascript', ''), ENT_QUOTES) ?>
 </head>

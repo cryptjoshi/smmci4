@@ -14,7 +14,7 @@
                 <div class="col-md-4">
                     <div class="footer-col first">
                         <h4><?php echo get_option('website_name'); ?></h4>
-                        <p class="p-small"><?php echo lang("all_user_information_is_kept_100_private_and_will_not_be_shared_with_anyone_always_remember_you_are_protected_with_our_panel__most_trusted_smm_panel"); ?></p>
+                        <p class="p-small"><?php echo lang("app.all_user_information_is_kept_100_private_and_will_not_be_shared_with_anyone_always_remember_you_are_protected_with_our_panel__most_trusted_smm_panel"); ?></p>
 
                         <?php
                             $redirect = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -34,18 +34,18 @@
                 </div> 
                 <div class="col-md-4">
                     <div class="footer-col middle">
-                        <h4><?=lang("Quick_links")?></h4>
+                        <h4><?=lang("app.quick_links")?></h4>
                         <ul class="list-unstyled li-space-lg p-small">
                             <?php 
                                 if (!session('uid')) {
                             ?>
                             <li class="media">
                                 <i class="fas fa-chevron-right"></i>
-                                <div class="media-body"> <a class="white" href="<?php echo cn()?>"><?php echo lang("Login"); ?></a></div>
+                                <div class="media-body"> <a class="white" href="<?php echo cn()?>"><?php echo lang("app.login"); ?></a></div>
                             </li>
                             <li class="media">
                                 <i class="fas fa-chevron-right"></i>
-                                <div class="media-body"> <a class="white" href="<?php echo cn('auth/signup'); ?>"><?php echo lang("Sign_Up"); ?></a></div>
+                                <div class="media-body"> <a class="white" href="<?php echo cn('auth/signup'); ?>"><?php echo lang("app.sign_Up"); ?></a></div>
                             </li>
                             <?php }?>
                             
@@ -59,12 +59,12 @@
                             
                             <li class="media">
                                 <i class="fas fa-chevron-right"></i>
-                                <div class="media-body"> <a class="white" href="<?php echo cn('terms'); ?>"><?php echo lang("terms__conditions"); ?></a></div>
+                                <div class="media-body"> <a class="white" href="<?php echo cn('terms'); ?>"><?php echo lang("app.terms__conditions"); ?></a></div>
                             </li>
                             
                             <li class="media">
                                 <i class="fas fa-chevron-right"></i>
-                                <div class="media-body"> <a class="white" href="<?php echo cn('faq'); ?>"><?php echo lang("FAQs"); ?></a></div>
+                                <div class="media-body"> <a class="white" href="<?php echo cn('faq'); ?>"><?php echo lang("app.faqs"); ?></a></div>
                             </li>
                             
                             <?php 
@@ -72,7 +72,7 @@
                             ?>
                             <li class="media">
                                 <i class="fas fa-chevron-right"></i>
-                                <div class="media-body"> <a class="white" href="<?php echo cn('api/docs')?>"><?php echo lang("api_documentation"); ?></a></div>
+                                <div class="media-body"> <a class="white" href="<?php echo cn('api/docs')?>"><?php echo lang("app.api_documentation"); ?></a></div>
                             </li>
                             <?php }?>
                             
@@ -161,7 +161,7 @@
           <div class="modal-content">
 
             <div class="modal-header">
-              <h4 class="modal-title"><i class="fe fe-bell"></i> <?=lang("Notification")?></h4>
+              <h4 class="modal-title"><i class="fe fe-bell"></i> <?=lang("app.notification")?></h4>
               <button type="button" class="close" data-dismiss="modal"></button>
             </div>
 
@@ -170,7 +170,7 @@
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal"><?=lang("Close")?></button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><?=lang("app.close")?></button>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title"><?php echo lang("top_newest_users"); ?></h3>
+    <h3 class="card-title"><?php echo lang("app.top_newest_users"); ?></h3>
     <div class="card-options">
       <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
       <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -47,7 +47,7 @@
                   if ($row->type == 'manual') {
                     echo lang($row->transaction_id);
                   }else{
-                    echo lang($row->transaction_id)." ".lang("transaction_id_was_sent_to_your_email");
+                    echo lang($row->transaction_id)." ".lang("app.transaction_id_was_sent_to_your_email");
                   }
                   break;
 
@@ -72,7 +72,7 @@
                   break;
 
                 case 0:
-                    echo '<span class="badge badge-warning">'.lang("waiting_for_buyer_funds").'</span>';
+                    echo '<span class="badge badge-warning">'.lang("app.waiting_for_buyer_funds").'</span>';
                   break; 
 
                 case -1:

@@ -44,14 +44,14 @@ class paytm_manual extends MX_Controller {
 		if ($amount  < 0) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("amount_must_be_greater_than_zero"),
+				"message" => lang("app.amount_must_be_greater_than_zero"),
 			));
 		}
 
 		if (!$agree) {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("you_must_confirm_to_the_conditions_before_paying")
+				"message" => lang("app.you_must_confirm_to_the_conditions_before_paying")
 			));
 		}
 		

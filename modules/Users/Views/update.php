@@ -21,7 +21,7 @@
   <div class="col-md-6">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?php echo lang("basic_information"); ?></h3>
+        <h3 class="card-title"><?php echo lang("app.basic_information"); ?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -33,13 +33,13 @@
             <div class="row">
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="form-group">
-                  <label for="projectinput5"><?php echo lang("first_name"); ?> <span class="form-required">*</span></label>
+                  <label for="projectinput5"><?php echo lang("app.first_name"); ?> <span class="form-required">*</span></label>
                   <input class="form-control square" name="first_name" type="text" value="<?php echo (!empty($user->first_name))? htmlspecialchars($user->first_name) : ''?>">
                 </div>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
                   <div class="form-group">
-                    <label for="userinput5"><?php echo lang("last_name"); ?> <span class="form-required">*</span></label>
+                    <label for="userinput5"><?php echo lang("app.last_name"); ?> <span class="form-required">*</span></label>
                     <input class="form-control square" name="last_name" type="text" value="<?php echo (!empty($user->last_name))? htmlspecialchars($user->last_name): ''?>">
                   </div>
               </div> 
@@ -52,9 +52,9 @@
 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
-                  <label for="projectinput5"><?php echo lang("account_type"); ?></label>
+                  <label for="projectinput5"><?php echo lang("app.account_type"); ?></label>
                   <select  name="role" class="form-control square">
-                    <option value="user" <?php echo (!empty($user->role) && $user->role == "user")? 'selected': ''?>><?php echo lang("regular_user"); ?></option>
+                    <option value="user" <?php echo (!empty($user->role) && $user->role == "user")? 'selected': ''?>><?php echo lang("app.regular_user"); ?></option>
                   </select>
 
                 </div>
@@ -89,7 +89,7 @@
                 <div class="form-group">
                   <label for="projectinput5"><?php echo lang('Password'); ?> <span class="required">*</span></label>
                   <input class="form-control square" name="password" type="password">
-                  <small class="text-primary"><?php echo lang("note_if_you_dont_want_to_change_password_then_leave_these_password_fields_empty"); ?></small>
+                  <small class="text-primary"><?php echo lang("app.note_if_you_dont_want_to_change_password_then_leave_these_password_fields_empty"); ?></small>
                 </div>
               </div> 
 
@@ -108,7 +108,7 @@
               </div>
 
               <div class="col-md-12 col-sm-12 col-xs-12 mb-5">
-                <h5 class="text-info"><i class="fe fe-link"></i> <?php echo lang("allowed_payment_methods"); ?></h5>
+                <h5 class="text-info"><i class="fe fe-link"></i> <?php echo lang("app.allowed_payment_methods"); ?></h5>
                 <div class="row">
                   <?php
                     
@@ -146,7 +146,7 @@
   <div class="col-md-6">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?php echo lang("more_informations"); ?></h3>
+        <h3 class="card-title"><?php echo lang("app.more_informations"); ?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -190,7 +190,7 @@
 
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="form-group">
-                  <label for="projectinput5"><?php echo lang("whatsapp_number"); ?></label>
+                  <label for="projectinput5"><?php echo lang("app.whatsapp_number"); ?></label>
                   <input class="form-control square"  name="what_asap"  type="text" value="<?php echo (!empty($what_asap))? $what_asap: ''?>">
                 </div>
               </div>
@@ -199,7 +199,7 @@
                 <div class="form-group">
                   <label for="projectinput5"><?php echo lang('Address'); ?></label>
                   <input class="form-control square" name="address" type="text" value="<?php echo (!empty($address))? $address: ''?>">
-                  <small class="text-primary"><?php echo lang("note_if_you_dont_want_add_more_information_then_leave_these_informations_fields_empty"); ?></small>
+                  <small class="text-primary"><?php echo lang("app.note_if_you_dont_want_add_more_information_then_leave_these_informations_fields_empty"); ?></small>
                 </div>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
@@ -227,7 +227,7 @@
   <div class="col-md-6">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?php echo lang("Add_Funds"); ?></h3>
+        <h3 class="card-title"><?php echo lang("app.add_Funds"); ?></h3>
         <div class="card-options">
           <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
           <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -236,12 +236,12 @@
       <div class="card-body">
         <form class="form actionForm" action="<?php echo cn($module."/ajax_update_fund/$ids"); ?>" data-redirect="<?php echo cn($module); ?>" method="POST">
           <div class="form-group">
-            <label for="projectinput5"><?php echo lang("Funds"); ?></label>
+            <label for="projectinput5"><?php echo lang("app.funds"); ?></label>
             <input class="form-control square" name="funds" type="text" value="<?php echo (!empty($user->balance))? $user->balance: 0 ?>">
           </div>
           <div class="">
             <input type="hidden" name="{csrf_token}" value="{csrf_hash}">
-            <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1"><?php echo lang("Submit"); ?></button>
+            <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1"><?php echo lang("app.submit"); ?></button>
           </div>
         </form>
       </div>

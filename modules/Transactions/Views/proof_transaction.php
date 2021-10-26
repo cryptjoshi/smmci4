@@ -5,7 +5,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel"><?=lang("show_slip")?></h5>
+        <h5 class="modal-title" id="staticBackdropLabel"><?=lang("app.show_slip")?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <!-- <span aria-hidden="true">&times;</span> -->
         </button>
@@ -15,8 +15,8 @@
       <img src="" name="transaction_slip" id="transaction_slip" class="transaction_slip" alt=""/>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?=lang("cancel")?></button>
-        <button type="button" class="proof btn btn-primary" data-redirect="<?=cn()?>transactions" data-url="<?=cn()?>transactions/ajax_update_slip"><?=lang("proof")?></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?=lang("app.cancel")?></button>
+        <button type="button" class="proof btn btn-primary" data-redirect="<?=cn()?>transactions" data-url="<?=cn()?>transactions/ajax_update_slip"><?=lang("app.proof")?></button>
       </div>
     </div>
   </div>

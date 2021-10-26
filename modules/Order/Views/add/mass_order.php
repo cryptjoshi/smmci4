@@ -7,12 +7,12 @@
     <thead>
         <tr>
       
-            <th>Id | Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Link</th>
+            <th><?=lang("app.id_name")?></th>
+            <th><?=lang("app.price")?></th>
+            <th><?=lang("app.quantity")?></th>
+            <th><?=lang("app.link")?></th>
 
-            <th>option</th>
+            <th><?=lang("app.option")?></th>
             <th></th>
         </tr>
     </thead>
@@ -24,7 +24,7 @@
             <td style="padding-left: 0;">
             <div class="form-group result-services" id="result_services">
                     <select name="mass_order[0][0]"  id="services_option_0" class="chosen-select massChangeService" data-url="<?=cn($module."/ajax_load_services/")?>">
-                    <option> <?=lang("choose_a_service")?></option>
+                    <option> <?=lang("app.choose_a_service")?></option>
                  
                 </select>
                   </div>
@@ -43,7 +43,7 @@
        
     </tbody>
     <tfoot>
-     <tr><td>Summary</td><td><p class="btn btn-success total_charge"> <span class="charge_number">$0</span></p></td></tr>
+     <tr><td><?=lang("app.summary")?></td><td><p class="btn btn-success total_charge"> <span class="charge_number">$0</span></p></td></tr>
     </tfoot>
 
 </table>
@@ -65,7 +65,7 @@ function addrow(id){
             <td style="padding-left: 0;">
                    <div class="form-group result-services" id="result_services_`+id+`}">
                            <select name="mass_order[`+id+`][0]"  id="services_option_`+id+`" class="chosen-select massChangeService" data-url="<?=cn($module."/ajax_load_services/")?>">
-                           <option> <?=lang("choose_a_service")?></option>
+                           <option> <?=lang("app.choose_a_service")?></option>
                           
                 </select>
                   </div>
@@ -88,64 +88,64 @@ function addrow(id){
             <div class="row d-none">
                     <div class="col-md-4  col-sm-12 col-xs-12">
                       <div class="form-group">
-                        <label><?=lang("minimum_amount")?></label>
+                        <label><?=lang("app.minimum_amount")?></label>
                         <input class="form-control square" name="service_min`+id+`" type="text" value="" readonly>
                       </div>
                     </div>
 
                     <div class="col-md-4  col-sm-12 col-xs-12">
                       <div class="form-group">
-                        <label><?=lang("maximum_amount")?></label>
+                        <label><?=lang("app.maximum_amount")?></label>
                         <input class="form-control square" name="service_max`+id+`" type="text" value="" readonly>
                       </div>
                     </div>
 
                     <div class="col-md-4  col-sm-12 col-xs-12">
                       <div class="form-group">
-                        <label><?=lang("price_per_1000")?></label>
+                        <label><?=lang("app.price_per_1000")?></label>
                         <input class="form-control square" name="service_price`+id+`" type="text" value="" readonly>
                       </div>
                     </div>
                   </div>
                   <div class="form-group order-comments d-none">
-                  <label class="order-comment-label" for=""><?=lang("Comments")?> <?php lang('1_per_line')?></label>
-                    <!-- <label for=""><?=lang("Comments")?> <?php lang('1_per_line')?></label> -->
+                  <label class="order-comment-label" for=""><?=lang("app.comments")?> <?php lang('app.1_per_line')?></label>
+                    <!-- <label for=""><?=lang("app.comments")?> <?php lang('app.1_per_line')?></label> -->
                     <textarea  rows="10" name="comments`+id+`" class="form-control square ajax_custom_comments"></textarea>
                   </div> 
 
                   <div class="form-group order-comments-custom-package d-none">
-                    <label for=""><?=lang("Comments")?> <?php lang('1_per_line')?></label>
+                    <label for=""><?=lang("app.comments")?> <?php lang('app.1_per_line')?></label>
                     <textarea  rows="10" name="comments_custom_package`+id+`" class="form-control square"></textarea>
                   </div>
 
                   <div class="form-group order-usernames d-none">
-                    <label for=""><?=lang("Usernames")?></label>
+                    <label for=""><?=lang("app.usernames")?></label>
                     <input type="text" class="form-control input-tags" name="usernames`+id+`" value="usenameA,usenameB,usenameC,usenameD">
                   </div>
 
                   <div class="form-group order-usernames-custom d-none">
-                    <label for=""><?=lang("Usernames")?> <?php lang('1_per_line')?></label>
+                    <label for=""><?=lang("app.usernames")?> <?php lang('1_per_line')?></label>
                     <textarea  rows="10" name="usernames_custom`+id+`" class="form-control square ajax_custom_lists"></textarea>
                   </div>
 
                   <div class="form-group order-hashtags d-none">
-                    <label for=""><?=lang("hashtags_format_hashtag")?></label>
+                    <label for=""><?=lang("app.hashtags_format_hashtag")?></label>
                     <input type="text" class="form-control input-tags" name="hashtags`+id+`" value="#goodphoto,#love,#nice,#sunny">
                   </div>
 
                   <div class="form-group order-hashtag d-none">
-                    <label for=""><?=lang("Hashtag")?> </label>
+                    <label for=""><?=lang("app.hashtag")?> </label>
                     <input class="form-control square" type="text" name="hashtag`+id+`">
                   </div>
 
                   <div class="form-group order-username d-none">
-                    <label for=""><?=lang("Username")?></label>
+                    <label for=""><?=lang("app.username")?></label>
                     <input class="form-control square" name="username`+id+`" type="text">
                   </div>   
                   
                   <!-- Mentions Media Likers -->
                   <div class="form-group order-media d-none">
-                    <label for=""><?=lang("Media_Url")?></label>
+                    <label for=""><?=lang("app.media_Url")?></label>
                     <input class="form-control square" name="media_url`+id+`" type="link">
                   </div>
 
@@ -154,36 +154,36 @@ function addrow(id){
 
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label><?=lang("Username")?></label>
+                        <label><?=lang("app.username")?></label>
                         <input class="form-control square" type="text" name="sub_username`+id+`">
                       </div>
                     </div>
 
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label><?=lang("New_posts")?></label>
-                        <input class="form-control square" type="number" placeholder="<?=lang("minimum_1_post")?>" name="sub_posts`+id+`">
+                        <label><?=lang("app.new_posts")?></label>
+                        <input class="form-control square" type="number" placeholder="<?=lang("app.minimum_1_post")?>" name="sub_posts`+id+`">
                       </div>
                     </div>
 
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label><?=lang("Quantity")?></label>
-                        <input class="form-control square" type="number" name="sub_min`+id+`" placeholder="<?=lang("min")?>">
+                        <label><?=lang("app.quantity")?></label>
+                        <input class="form-control square" type="number" name="sub_min`+id+`" placeholder="<?=lang("app.min")?>">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>&nbsp;</label>
-                        <input class="form-control square" type="number" name="sub_max`+id+`" placeholder="<?=lang("max")?>">
+                        <input class="form-control square" type="number" name="sub_max`+id+`" placeholder="<?=lang("app.max")?>">
                       </div>
                     </div>
 
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label><?=lang("Delay")?> (<?=lang("minutes")?>)</label>
+                        <label><?=lang("app.delay")?> (<?=lang("app.minutes")?>)</label>
                         <select name="sub_delay`+id+`" class="form-control square">
-                          <option value="0"><?=lang("")?><?=lang("No_delay")?></option>
+                          <option value="0"><?=lang("app.")?><?=lang("app.no_delay")?></option>
                           <option value="5">5</option>
                           <option value="10">10</option>
                           <option value="15">15</option>
@@ -196,7 +196,7 @@ function addrow(id){
 
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label><?=lang("Expiry")?></label>
+                        <label><?=lang("app.expiry")?></label>
                         <div class="input-group">
                           <input type="text" class="form-control datepicker" name="sub_expiry`+id+`" onkeydown="return false" name="expiry" placeholder="" id="expiry">
                           <span class="input-group-append">
@@ -213,9 +213,9 @@ function addrow(id){
                   <div class="row drip-feed-option d-none">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <div class="form-label"><?=lang("dripfeed")?> 
+                        <div class="form-label"><?=lang("app.dripfeed")?> 
                           <label class="custom-switch">
-                            <span class="custom-switch-description m-r-20"><i class="fa fa-question-circle" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="<?=lang("drip_feed_desc")?>" data-title="<?=lang("what_is_dripfeed")?>"></i></span>
+                            <span class="custom-switch-description m-r-20"><i class="fa fa-question-circle" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="<?=lang("app.drip_feed_desc")?>" data-title="<?=lang("app.what_is_dripfeed")?>"></i></span>
 
                             <input type="checkbox" name="is_drip_feed`+id+`" class="is_drip_feed custom-switch-input" data-toggle="collapse" data-target="#drip-feed" aria-expanded="false" aria-controls="drip-feed">
                             <span class="custom-switch-indicator"></span>
@@ -226,13 +226,13 @@ function addrow(id){
                       <div class="row collapse" id="drip-feed">
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label><?=lang("Runs")?></label>
+                            <label><?=lang("app.runs")?></label>
                             <input class="form-control square ajaxDripFeedRuns" type="number" name="runs`+id+`" value="<?=get_option("default_drip_feed_runs", "")?>">
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label><?=lang("interval_in_minutes")?></label>
+                            <label><?=lang("app.interval_in_minutes")?></label>
                             <select name="interval`+id+`" class="form-control square">
                               <?php
                                 for ($i = 1; $i <= 60; $i++) {
@@ -245,7 +245,7 @@ function addrow(id){
                         </div>
                         <div class="col-md-12">
                           <div class="form-group">
-                            <label><?=lang("total_quantity")?></label>
+                            <label><?=lang("app.total_quantity")?></label>
                             <input class="form-control square" name="total_quantity`+id+`" type="number" disabled>
                           </div>
                         </div>
@@ -256,16 +256,16 @@ function addrow(id){
                   <div class="form-group" id="result_total_charge`+id+`">
                     <input type="hidden" name="total_charge`+id+`" value="0.00">
                     <input type="hidden" name="currency_symbol`+id+`" value="<?=get_option("currency_symbol", "")?>">
-                    <p class="btn btn-info total_charge`+id+`"><?=lang("total_charge")?> <span class="charge_number">$0</span></p>
+                    <p class="btn btn-info total_charge`+id+`"><?=lang("app.total_charge")?> <span class="charge_number">$0</span></p>
                     
                     <?php
                       $user = $model->get("balance, custom_rate", 'general_users', ['id' => session('uid')]);
                       if ($user->custom_rate > 0 ) {
                     ?>
-                    <p class="small text-muted"><?=lang("custom_rate")?>: <span class="charge_number"><?=$user->custom_rate?>%</span></p>
+                    <p class="small text-muted"><?=lang("app.custom_rate")?>: <span class="charge_number"><?=$user->custom_rate?>%</span></p>
                     <?php }?>
                     <div class="alert alert-icon alert-danger d-none" role="alert">
-                      <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i><?=lang("order_amount_exceeds_available_funds")?>
+                      <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i><?=lang("app.order_amount_exceeds_available_funds")?>
                     </div>
                   </div>
                 </div>

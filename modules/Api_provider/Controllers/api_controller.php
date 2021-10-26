@@ -21,10 +21,10 @@ class api_provider extends MX_Controller {
 		$this->tb_api_providers   	= API_PROVIDERS;
 		$this->tb_orders     		= ORDER;
 		$this->columns = array(
-			"name"             => lang("Name"),
-			"balance"          => lang("Balance"),
-			"desc"             => lang("Description"),
-			"status"           => lang("Status"),
+			"name"             => lang("app.name"),
+			"balance"          => lang("app.balance"),
+			"desc"             => lang("app.description"),
+			"status"           => lang("app.status"),
 		);
 	}
 
@@ -67,21 +67,21 @@ class api_provider extends MX_Controller {
 		if($name == ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("name_is_required")
+				"message" => lang("app.name_is_required")
 			));
 		}
 
 		if($api_url == ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("api_url_is_required")
+				"message" => lang("app.api_url_is_required")
 			));
 		}
 
 		if($api_key == ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("api_key_is_required")
+				"message" => lang("app.api_key_is_required")
 			));
 		}
 
@@ -107,7 +107,7 @@ class api_provider extends MX_Controller {
 			if (empty($data_connect) || !isset($data_connect->balance)) {
 				ms(array(
 					"status"  => "error",
-					"message" => lang("there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again")
+					"message" => lang("app.there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again")
 				));
 			}else{
 				$data["balance"]  = $data_connect->balance;
@@ -127,7 +127,7 @@ class api_provider extends MX_Controller {
 		
 		ms(array(
 			"status"  => "success",
-			"message" => lang("Update_successfully")
+			"message" => lang("app.update_successfully")
 		));
 	}
 
@@ -148,7 +148,7 @@ class api_provider extends MX_Controller {
 				if (empty($data_connect) || !isset($data_connect->balance)) {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again")
+						"message" => lang("app.there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again")
 					));
 				}else{
 					$data = array(
@@ -160,14 +160,14 @@ class api_provider extends MX_Controller {
 
 					ms(array(
 						"status"  => "success",
-						"message" => lang("Update_successfully")
+						"message" => lang("app.update_successfully")
 					));
 				}
 
 			}else{
 				ms(array(
 					"status"  => "error",
-					"message" => lang("api_provider_does_not_exists")
+					"message" => lang("app.api_provider_does_not_exists")
 				));
 			}
 		}
@@ -229,7 +229,7 @@ class api_provider extends MX_Controller {
 		if ($price_percentage_increase === "") {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("price_percentage_increase_in_invalid_format")
+				"message" => lang("app.price_percentage_increase_in_invalid_format")
 			));
 		}
 
@@ -245,7 +245,7 @@ class api_provider extends MX_Controller {
 				if (empty($api_services) || !is_array($api_services)) {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again")
+						"message" => lang("app.there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again")
 					));
 				}
 
@@ -254,7 +254,7 @@ class api_provider extends MX_Controller {
 				if (empty($services) && !$request) {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("service_lists_are_empty_unable_to_sync_services")
+						"message" => lang("app.service_lists_are_empty_unable_to_sync_services")
 					));
 				}
 
@@ -283,14 +283,14 @@ class api_provider extends MX_Controller {
 			}else{
 				ms(array(
 					"status"  => "error",
-					"message" => lang("there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again")
+					"message" => lang("app.there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again")
 				));
 			}
 
 		}else{
 			ms(array(
 				"status"  => "error",
-				"message" => lang("api_provider_does_not_exists")
+				"message" => lang("app.api_provider_does_not_exists")
 			));
 		}
 	}
@@ -552,14 +552,14 @@ class api_provider extends MX_Controller {
 		if ($price_percentage_increase === "") {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("price_percentage_increase_in_invalid_format")
+				"message" => lang("app.price_percentage_increase_in_invalid_format")
 			));
 		}
 
 		if ($bulk_limit === "") {
 			ms(array(
 				"status"  => "error",
-				"message" => lang("bulk_add_limit_in_invalid_format")
+				"message" => lang("app.bulk_add_limit_in_invalid_format")
 			));
 		}
 
@@ -577,7 +577,7 @@ class api_provider extends MX_Controller {
 				if (empty($data_services) || !is_array($data_services)) {
 					ms(array(
 						"status"  => "error",
-						"message" => lang("there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again")
+						"message" => lang("app.there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again")
 					));
 				}
 				$i = 0;
@@ -675,19 +675,19 @@ class api_provider extends MX_Controller {
 				}
 				ms(array(
 					"status"  => "success",
-					"message" => lang("Update_successfully")
+					"message" => lang("app.update_successfully")
 				));
 			}else{
 				ms(array(
 					"status"  => "error",
-					"message" => lang("api_provider_does_not_exists")
+					"message" => lang("app.api_provider_does_not_exists")
 				));
 			}
 
 		}else{
 			ms(array(
 				"status"  => "error",
-				"message" => lang("api_provider_does_not_exists")
+				"message" => lang("app.api_provider_does_not_exists")
 			));
 		}
 	}
@@ -703,16 +703,16 @@ class api_provider extends MX_Controller {
 				$data_services = $this->connect_api($api->url, $data_post);
 				$data_services = json_decode($data_services);
 				if (empty($data_services) || !is_array($data_services)) {
-					$message = '<div class="alert alert-icon alert-danger" role="alert"> <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i> '.lang("there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again").'</div>';
+					$message = '<div class="alert alert-icon alert-danger" role="alert"> <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i> '.lang("app.there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again").'</div>';
 					echo $message;
 				}
 				$data_columns = array(
-					"service_id"       => lang("service_id"),
-					"name"             => lang("Name"),
-					"category"         => lang("Category"),
-					"price"            => lang("rate_per_1000"),
-					"min_max"          => lang("min__max_order"),
-					"drip_feed"        => lang("dripfeed"),
+					"service_id"       => lang("app.service_id"),
+					"name"             => lang("app.name"),
+					"category"         => lang("app.category"),
+					"price"            => lang("app.rate_per_1000"),
+					"min_max"          => lang("app.min__max_order"),
+					"drip_feed"        => lang("app.dripfeed"),
 				);
 				
 				$categories  = $this->model->fetch("*", $this->tb_categories, "status = 1", 'sort','ASC');
@@ -726,11 +726,11 @@ class api_provider extends MX_Controller {
 				);
 				$this->load->view("api/ajax_get_services", $data);
 			}else{
-				$message = '<div class="alert alert-icon alert-danger" role="alert"> <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i> '.lang("there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again").'</div>';
+				$message = '<div class="alert alert-icon alert-danger" role="alert"> <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i> '.lang("app.there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again").'</div>';
 				echo $message;
 			}
 		}else{
-			$message = '<div class="alert alert-icon alert-danger" role="alert"> <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i> '.lang("there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again").'</div>';
+			$message = '<div class="alert alert-icon alert-danger" role="alert"> <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i> '.lang("app.there_seems_to_be_an_issue_connecting_to_api_provider_please_check_api_key_and_token_again").'</div>';
 			echo $message;
 		}
 	}
@@ -764,42 +764,42 @@ class api_provider extends MX_Controller {
 		if($name == ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("name_is_required")
+				"message" => lang("app.name_is_required")
 			));
 		}
 
 		if($category == ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("category_is_required")
+				"message" => lang("app.category_is_required")
 			));
 		}
 
 		if($min == ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("min_order_is_required")
+				"message" => lang("app.min_order_is_required")
 			));
 		}
 
 		if($max == ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("max_order_is_required")
+				"message" => lang("app.max_order_is_required")
 			));
 		}
 
 		if($min > $max){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("max_order_must_to_be_greater_than_min_order")
+				"message" => lang("app.max_order_must_to_be_greater_than_min_order")
 			));
 		}
 
 		if($price == ""){
 			ms(array(
 				"status"  => "error",
-				"message" => lang("price_invalid")
+				"message" => lang("app.price_invalid")
 			));
 		}
 
@@ -839,7 +839,7 @@ class api_provider extends MX_Controller {
 
 		ms(array(
 			"status"  => "success",
-			"message" => lang("Update_successfully")
+			"message" => lang("app.update_successfully")
 		));
 		
 	}

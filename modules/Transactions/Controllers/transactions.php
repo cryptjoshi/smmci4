@@ -25,23 +25,23 @@ class Transactions extends BaseController {
 	 $this->tb_services           = SERVICES;
 	 $this->tb_transaction_logs   = TRANSACTION_LOGS;
 	 $this->columns = array(
-		 "uid"              => lang('User'),
-		 "transaction_id"   => lang('Transaction_ID'),
-		 "type"             => lang('Payment_method'),
-		 "amount"           => lang('Amount_includes_fee'),
+		 "uid"              => lang('app.user'),
+		 "transaction_id"   => lang('app.transaction_id'),
+		 "type"             => lang('app.payment_method'),
+		 "amount"           => lang('app.amount_includes_fee'),
 		 "txn_fee"          => 'Transaction fee',
 		 "note"             => 'Note',
-		 "created"          => lang('Created'),
-		 "status"           => lang('Status'),
+		 "created"          => lang('app.created'),
+		 "status"           => lang('app.status'),
 	 );
 
 	 if (!get_role("admin")) {
 		 $this->columns = array(
-			 "type"             => lang('Payment_method'),
-			 "amount"           => lang('Amount_includes_fee'),
+			 "type"             => lang('app.payment_method'),
+			 "amount"           => lang('app.amount_includes_fee'),
 			 "txn_fee"          => 'Transaction fee',
-			 "created"          => lang('Created'),
-			 "status"           => lang('Status'),
+			 "created"          => lang('app.created'),
+			 "status"           => lang('app.status'),
 		 );
 	 }
  }
@@ -148,7 +148,7 @@ class Transactions extends BaseController {
 		 if ($this->db->affected_rows() > 0) {
 			 ms(array(
 				 "status"  => "success",
-				 "message" => lang("Update_successfully")
+				 "message" => lang("app.update_successfully")
 			 ));
 			 
 		  
@@ -186,7 +186,7 @@ class Transactions extends BaseController {
 	 if ($this->db->affected_rows() > 0) {
 		 ms(array(
 			 "status"  => "success",
-			 "message" => lang("Update_successfully")
+			 "message" => lang("app.update_successfully")
 		 ));
 		 echo_json_string(array(
 			 "status"=>"success"
@@ -195,7 +195,7 @@ class Transactions extends BaseController {
 	 {
 		 ms(array(
 			 "status"  => "error",
-			 "message" => lang("Update_not_successfully")
+			 "message" => lang("app.update_not_successfully")
 		 ));
 		 echo_json_string(array(
 			 "status"=>"error"

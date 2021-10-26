@@ -3,7 +3,7 @@
 <div class="col-md-12 col-xl-12">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title"><?=(isset($cate_name)) ? $cate_name : lang("Lists")?></h3>
+      <h3 class="card-title"><?=(isset($cate_name)) ? $cate_name : lang("app.lists")?></h3>
       <div class="card-options">
         <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
         <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -17,7 +17,7 @@
         <thead>
           <tr>
             <th class="text-center w-1">ID</th>
-            <th><?php echo lang("Name"); ?></th>
+            <th><?php echo lang("app.name"); ?></th>
             <?php if (!empty($columns)) {
               foreach ($columns as $key => $row) {
             ?>
@@ -50,10 +50,10 @@
             </td>
             <td class="text-center" style="width: 8%;"><?=$row->min?> / <?=$row->max?></td>
             <td style="width: 6%;">
-              <button class="btn btn-info btn-sm" type="button" class="dash-btn" data-toggle="modal" data-target="#service-<?php echo $row->id; ?>"><?=lang("Details")?></button>
+              <button class="btn btn-info btn-sm" type="button" class="dash-btn" data-toggle="modal" data-target="#service-<?php echo $row->id; ?>"><?=lang("app.details")?></button>
               <div id="<?php echo 'service-' . $row->id; ?>" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                 <?php
-                  $this->load->view('descriptions', ['service' => $row]);
+                  echo view('Modules\Services\Views\descriptions', ['service' => $row]);
                 ?>
               </div>
             </td>
@@ -67,5 +67,5 @@
   </div>
 </div>
 <?php }else{
-  echo view("Modules\Blocks\Views\\empty_data");
+  echo view("Modules\Blocks\Views\empty_data");
 }?>

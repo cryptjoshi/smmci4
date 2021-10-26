@@ -2,8 +2,8 @@
 <?=$this->section('content');?>
 <div class="page-header">
   <h1 class="page-title">
-    <a href="<?=cn("$module/update")?>" class=""><span class="add-new" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<?=lang("add_new")?>"><i class="fa fa-plus-square text-primary" aria-hidden="true"></i></span></a> 
-    <?=lang("users")?>
+    <a href="<?=cn("$module/update")?>" class=""><span class="add-new" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<?=lang("app.add_new")?>"><i class="fa fa-plus-square text-primary" aria-hidden="true"></i></span></a> 
+    <?=lang("app.users")?>
   </h1>
 </div>
 
@@ -13,7 +13,7 @@
   <div class="col-md-12 col-xl-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title"><?=lang("Lists")?></h3>
+        <h3 class="card-title"><?=lang("app.lists")?></h3>
         <div class="card-options">
           <div class="dropdown">
             <button type="button" class="btn btn-outline-info  dropdown-toggle" data-toggle="dropdown">
@@ -30,7 +30,7 @@
         <table class="table table-hover table-bordered table-vcenter card-table">
           <thead>
             <tr>
-              <th class="text-center w-1"><?=lang("No_")?></th>
+              <th class="text-center w-1"><?=lang("app.no_")?></th>
               <?php if (!empty($columns)) {
                 foreach ($columns as $key => $row) {
               ?>
@@ -89,13 +89,13 @@
                     <?php
                       switch ($row->role) {
                         case 'admin':
-                            echo lang("admin");
+                            echo lang("app.admin");
                           break;
                         case 'supporter':
-                            echo lang("Supporter");
+                            echo lang("app.supporter");
                           break;
                         default:
-                          echo lang("regular_user");
+                          echo lang("app.regular_user");
                           break;
                       }
                     ?>
@@ -137,12 +137,12 @@
                     <?php }?>
 
                     <a class="dropdown-item ajaxModal" href="<?=cn("$module/mail/".$row->ids)?>">
-                      <i class="dropdown-icon fe fe-mail"></i> <?=lang("send_mail")?>
+                      <i class="dropdown-icon fe fe-mail"></i> <?=lang("app.send_mail")?>
                     </a>
                     
 
                     <a class="dropdown-item ajaxModal" href="<?=cn("$module/add_funds_manual/".$row->ids)?>">
-                      <i class="dropdown-icon fe fe-dollar-sign"></i> <?=lang("Add_Funds")?>
+                      <i class="dropdown-icon fe fe-dollar-sign"></i> <?=lang("app.add_Funds")?>
                     </a>
                   </div>
                 </div>

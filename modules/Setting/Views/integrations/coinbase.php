@@ -8,12 +8,12 @@
 
             <div class="col-md-12 col-lg-12">
               <div class="form-group">
-                <div class="form-label"><?=lang("Status")?></div>
+                <div class="form-label"><?=lang("app.status")?></div>
                 <div class="custom-controls-stacked">
                   <label class="custom-control custom-checkbox">
                     <input type="hidden" name="is_active_coinbase" value="0">
                     <input type="checkbox" class="custom-control-input" name="is_active_coinbase" value="1" <?=(get_option('is_active_coinbase', "") == 1)? "checked" : ''?>>
-                    <span class="custom-control-label"><?=lang("Active")?></span>
+                    <span class="custom-control-label"><?=lang("app.active")?></span>
                   </label>
                 </div>
               </div>
@@ -21,7 +21,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="form-label"><?=lang("transaction_fee")?></label>
+                    <label class="form-label"><?=lang("app.transaction_fee")?></label>
                     <select name="coinbase_chagre_fee" class="form-control square">
                       <?php
                         for ($i = 0; $i <= 30; $i++) {
@@ -34,7 +34,7 @@
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="form-label"><?=lang("minimum_amount")?></label>
+                    <label class="form-label"><?=lang("app.minimum_amount")?></label>
                     <input class="form-control" name="coinbase_payment_transaction_min" value="<?=get_option("coinbase_payment_transaction_min", 10)?>">
                   </div>
                 </div>
@@ -57,7 +57,7 @@
             </div> 
             <div class="col-md-12 col-lg-12">
               <div class="form-footer">
-                <button class="btn btn-primary btn-min-width btn-lg text-uppercase"><?=lang("Save")?></button>
+                <button class="btn btn-primary btn-min-width btn-lg text-uppercase"><?=lang("app.save")?></button>
               </div>
             </div>
 

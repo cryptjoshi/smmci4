@@ -3,13 +3,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                  <h1><?=lang("forgot_password")?></h1>
-                  <p class="text-white"><?=lang("enter_your_registration_email_address_to_receive_password_reset_instructions")?></p>
+                  <h1><?=lang("app.forgot_password")?></h1>
+                  <p class="text-white"><?=lang("app.enter_your_registration_email_address_to_receive_password_reset_instructions")?></p>
                   <div class="form-container">
                       <form class="actionFormWithoutToast" action="<?=cn("auth/ajax_forgot_password")?>" data-redirect="<?=cn('auth/login')?>" method="POST" id="signUpForm" data-focus="false">
                         <div class="form-group">
                           <input type="email" class="form-control-input" name="email" required>
-                          <label class="label-control" for="semail"><?php echo lang("Email"); ?></label>
+                          <label class="label-control" for="semail"><?php echo lang("app.email"); ?></label>
                         </div>
 
                         <div class="form-group mt-20">
@@ -25,7 +25,7 @@
                         <?php } ?> 
 
                         <div class="form-group">
-                            <button type="submit" class="form-control-submit-button btn-submit"><?=lang("Submit")?></button>
+                            <button type="submit" class="form-control-submit-button btn-submit"><?=lang("app.submit")?></button>
                         </div>
                           
                       </form>

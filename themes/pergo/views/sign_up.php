@@ -9,7 +9,7 @@
               <img src="<?=get_option('website_logo', BASE."assets/images/logo.png")?>" alt="website-logo">
             </a>
           </div>
-          <h4><?=lang("register_now")?></h4>
+          <h4><?=lang("app.register_now")?></h4>
         </div>
         <div class="form-group">
           <div class="row">
@@ -18,7 +18,7 @@
                 <span class="input-icon-addon">
                   <i class="fe fe-user"></i>
                 </span>
-                <input type="text" class="form-control" name="first_name" placeholder="<?=lang("first_name")?>"  required>
+                <input type="text" class="form-control" name="first_name" placeholder="<?=lang("app.first_name")?>"  required>
               </div>
             </div>
             <div class="col-md-6">
@@ -26,7 +26,7 @@
                 <span class="input-icon-addon">
                   <i class="fe fe-user"></i>
                 </span>
-                <input type="text" class="form-control" name="last_name" placeholder="<?=lang("last_name")?>" required>
+                <input type="text" class="form-control" name="last_name" placeholder="<?=lang("app.last_name")?>" required>
               </div>  
             </div>
           </div>
@@ -35,7 +35,7 @@
             <span class="input-icon-addon">
               <i class="fe fe-mail"></i>
             </span>
-            <input type="email" class="form-control" name="email" placeholder="<?=lang("Email")?>" required>
+            <input type="email" class="form-control" name="email" placeholder="<?=lang("app.email")?>" required>
           </div>  
           
           <?php
@@ -45,21 +45,21 @@
             <span class="input-icon-addon">
               <i class="fa fa-skype"></i>
             </span>
-            <input type="text" class="form-control" name="skype_id" placeholder="<?=lang("Skype_id")?>" required>
+            <input type="text" class="form-control" name="skype_id" placeholder="<?=lang("app.skype_id")?>" required>
           </div>    
           <?php } ?>      
           <div class="input-icon mb-3">
             <span class="input-icon-addon">
               <i class="fa fa-key"></i>
             </span>
-            <input type="password" class="form-control" name="password" placeholder="<?=lang("Password")?>" required>
+            <input type="password" class="form-control" name="password" placeholder="<?=lang("app.password")?>" required>
           </div>    
 
           <div class="input-icon mb-3">
             <span class="input-icon-addon">
               <i class="fa fa-key"></i>
             </span>
-            <input type="password" class="form-control" name="re_password" placeholder="<?=lang("Confirm_password")?>" required>
+            <input type="password" class="form-control" name="re_password" placeholder="<?=lang("app.confirm_password")?>" required>
           </div>
           <?php 
           if(get_option("enable_affiliate") == "1"){?>
@@ -68,7 +68,7 @@
               <span class="input-icon-addon">
                 <i class="fa fa-handshake-o"></i>
               </span>
-              <input type="text" class="form-control" name="referral" placeholder="<?=lang("Referral_id_(optional)")?>" value="<?=session("referral")?>">
+              <input type="text" class="form-control" name="referral" placeholder="<?=lang("app.referral_id_(optional)")?>" value="<?=session("referral")?>">
           </div>
           <?php }?>
           <div class="input-icon mb-3">
@@ -102,17 +102,17 @@
         <div class="form-group">
           <label class="custom-control custom-checkbox">
             <input type="checkbox" name="terms" class="custom-control-input" />
-            <span class="custom-control-label"><?=lang("i_agree_the")?> <a href="<?=cn('terms')?>"><?=lang("terms__policy")?></a></span>
+            <span class="custom-control-label"><?=lang("app.i_agree_the")?> <a href="<?=cn('terms')?>"><?=lang("app.terms__policy")?></a></span>
           </label>
         </div>
 
         <div class="form-footer">
-          <button type="submit" class="btn btn-pill btn-2 btn-block btn-submit btn-gradient"><?=lang("create_new_account")?></button>
+          <button type="submit" class="btn btn-pill btn-2 btn-block btn-submit btn-gradient"><?=lang("app.create_new_account")?></button>
         </div>
       </div>
     </form>
     <div class="text-center text-muted m-t-20">
-      <?=lang("already_have_account")?> <a href="<?=cn('auth/login')?>"><?=lang("Login")?></a>
+      <?=lang("app.already_have_account")?> <a href="<?=cn('auth/login')?>"><?=lang("app.login")?></a>
     </div>
   </div>
 </div>

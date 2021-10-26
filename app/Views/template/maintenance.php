@@ -51,10 +51,10 @@
                 <img src="<?=get_option('website_logo_white', BASE."assets/images/logo-white.png")?>" alt="website-logo">
               </div>
               <h1 class="m-b-50 m-t-50">
-                <?=lang("the_website_is_in_maintenance_mode")?>
+                <?=lang("app.the_website_is_in_maintenance_mode")?>
               </h1>
               <div class="desc">
-                <?=lang("were_undergoing_a_bit_of_scheduled_maintenance_sorry_for_the_inconvenience_well_be_backup_and_running_as_fast_as_possible")?>
+                <?=lang("app.were_undergoing_a_bit_of_scheduled_maintenance_sorry_for_the_inconvenience_well_be_backup_and_running_as_fast_as_possible")?>
               </div>
             </div>
           </div>

@@ -1,3 +1,5 @@
+<?= $this->extend('template/layout') ?>
+<?=$this->section('content');?>
 <?php
   $ids = (!empty($lang->ids))? $lang->ids: '';
   if ($ids != "") {
@@ -12,7 +14,7 @@
     <form class="form actionForm" action="<?=$url?>" data-redirect="<?php echo get_current_url(); ?>" method="POST">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title"><?=lang("Language")?></h3>
+                <h3 class="card-title"><?=lang("app.language")?></h3>
                 <div class="card-options">
                   <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                   <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -23,9 +25,9 @@
                     <div class="row">
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class=""><?=lang("language_code")?></label>
+                          <label class=""><?=lang("app.language_code")?></label>
                           <select name="language_code" class="form-control">
-                            <option value="0"><?=lang("choose_a_language_code")?></option>
+                            <option value="0"><?=lang("app.choose_a_language_code")?></option>
                             <?php 
                               $data_languageCodes = language_codes();
                               if (is_array($data_languageCodes)) {
@@ -39,10 +41,10 @@
                         
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class=""><?=lang("Location")?></label>
+                          <label class=""><?=lang("app.location")?></label>
                           <input type="hidden" name="ids" value="<?=(isset($lang->ids))?$lang->ids:""?>">
                           <select name="country_code" class="form-control">
-                            <option value="0"><?=lang("choose_your_country")?></option>
+                            <option value="0"><?=lang("app.choose_your_country")?></option>
                             <?php 
                               $data_countryCodes = country_codes();
                               if (is_array($data_countryCodes)) {
@@ -56,20 +58,20 @@
                       
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class=""><?=lang("Status")?></label>
+                          <label class=""><?=lang("app.status")?></label>
                           <select name="status" class="form-control">
-                            <option value="1" <?=(isset($lang->status)&&$lang->status==1)?'Selected':''?>><?=lang("Active")?></option>
-                            <option value="0" <?=(isset($lang->status)&&$lang->status==0)?'Selected':''?>><?=lang("Deactive")?></option>
+                            <option value="1" <?=(isset($lang->status)&&$lang->status==1)?'Selected':''?>><?=lang("app.active")?></option>
+                            <option value="0" <?=(isset($lang->status)&&$lang->status==0)?'Selected':''?>><?=lang("app.deactive")?></option>
                           </select>
                         </div>
                       </div>   
 
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class=""><?=lang("Default")?></label>
+                          <label class=""><?=lang("app.default")?></label>
                           <select name="default" class="form-control">
-                            <option value="0" <?=(isset($lang->is_default)&&$lang->is_default == 0)?'Selected':''?>><?=lang("No")?></option>
-                            <option value="1" <?=(isset($lang->is_default)&&$lang->is_default == 1)?'Selected':''?>><?=lang("Yes")?></option>
+                            <option value="0" <?=(isset($lang->is_default)&&$lang->is_default == 0)?'Selected':''?>><?=lang("app.no")?></option>
+                            <option value="1" <?=(isset($lang->is_default)&&$lang->is_default == 1)?'Selected':''?>><?=lang("app.yes")?></option>
                           </select>
                         </div>
                       </div>
@@ -78,13 +80,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="title">
-                                <h3 class="card-title mb-3"><?=lang("translation_editor")?></h3>
+                                <h3 class="card-title mb-3"><?=lang("app.translation_editor")?></h3>
                             </div>
                             <table class="table table-hover table-bordered table-vcenter text-nowrap card-table">
                                 <thead>
                                   <tr>
-                                    <th class="table-plus datatable-nosort"><?=lang("Key")?></th>
-                                    <th class="datatable-nosort"><?=lang("Value")?></th>
+                                    <th class="table-plus datatable-nosort"><?=lang("app.key")?></th>
+                                    <th class="datatable-nosort"><?=lang("app.value")?></th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -113,7 +115,7 @@
                             </table>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12 m-t-20">
-                            <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1"><?=lang("Save")?></button>
+                            <button type="submit" class="btn round btn-primary btn-min-width mr-1 mb-1"><?=lang("app.save")?></button>
                         </div>
                     </div>
                 </div>
@@ -122,4 +124,4 @@
     </form>
   </div> 
 </div>
-  
+<?=$this->endSection()?>  

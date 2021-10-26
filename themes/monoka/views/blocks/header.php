@@ -26,8 +26,8 @@
       var token = '<?=$this->security->get_csrf_hash()?>',
           PATH  = '<?php echo PATH; ?>',
           BASE  = '<?php echo BASE; ?>';
-      var    deleteItem  = '<?php echo lang("Are_you_sure_you_want_to_delete_this_item"); ?>';
-      var    deleteItems = '<?php echo lang("Are_you_sure_you_want_to_delete_all_items"); ?>';
+      var    deleteItem  = '<?php echo lang("app.are_you_sure_you_want_to_delete_this_item"); ?>';
+      var    deleteItems = '<?php echo lang("app.are_you_sure_you_want_to_delete_all_items"); ?>';
     </script>
     <?php echo htmlspecialchars_decode(get_option('embed_head_javascript', ''), ENT_QUOTES); ?>
 </head>

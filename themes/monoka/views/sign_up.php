@@ -8,19 +8,19 @@
                         <form class="actionFormWithoutToast" action="<?=cn("auth/ajax_sign_up")?>" data-redirect="<?=cn('statistics')?>" method="POST" id="signUpForm" data-focus="false">
                             <div class="form-group">
                                 <input type="email" class="form-control-input" name="email" required>
-                                <label class="label-control" for="semail"><?php echo lang("Email"); ?></label>
+                                <label class="label-control" for="semail"><?php echo lang("app.email"); ?></label>
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group">
                                 <input type="text" class="form-control-input" name="first_name" required>
-                                <label class="label-control" for="sname"><?php echo lang("first_name"); ?></label>
+                                <label class="label-control" for="sname"><?php echo lang("app.first_name"); ?></label>
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group">
                                 <input type="text" class="form-control-input" name="last_name" required>
-                                <label class="label-control" for="sname"><?php echo lang("last_name"); ?></label>
+                                <label class="label-control" for="sname"><?php echo lang("app.last_name"); ?></label>
                                 <div class="help-block with-errors"></div>
                             </div>
 
@@ -30,19 +30,19 @@
 
                             <div class="form-group">
                                 <input type="text" class="form-control-input" name="skype_id" required>
-                                <label class="label-control" for="sname"><?php echo lang("Skype_id"); ?></label>
+                                <label class="label-control" for="sname"><?php echo lang("app.skype_id"); ?></label>
                             </div>
                             <?php } ?>
 
                             <div class="form-group">
                                 <input type="password" class="form-control-input" name="password" required>
-                                <label class="label-control" for="spassword"><?php echo lang("Password"); ?></label>
+                                <label class="label-control" for="spassword"><?php echo lang("app.password"); ?></label>
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group">
                                 <input type="password" class="form-control-input" name="re_password" required>
-                                <label class="label-control" for="spassword"><?php echo lang("Confirm_password"); ?></label>
+                                <label class="label-control" for="spassword"><?php echo lang("app.confirm_password"); ?></label>
                                 <div class="help-block with-errors"></div>
                             </div>
 
@@ -77,7 +77,7 @@
                             <div class="form-group">
                               <label class="custom-control custom-checkbox">
                                 <input type="checkbox" name="terms" class="custom-control-input" />
-                                <span class="custom-control-label"><?=lang("i_agree_the")?> <a href="<?=cn('terms')?>"><?=lang("terms__policy")?></a></span>
+                                <span class="custom-control-label"><?=lang("app.i_agree_the")?> <a href="<?=cn('terms')?>"><?=lang("app.terms__policy")?></a></span>
                               </label>
                             </div>
 
@@ -87,7 +87,7 @@
                             
                         </form>
                         <div class="text-center text-muted">
-                          <?=lang("already_have_account")?> <a href="<?=cn()?>"><?=lang("Login")?></a>
+                          <?=lang("app.already_have_account")?> <a href="<?=cn()?>"><?=lang("app.login")?></a>
                         </div>
                     </div>
 

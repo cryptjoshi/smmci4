@@ -55,11 +55,11 @@
 <form class="creditCardForm actionAddFundsStripeCheckoutForm" action="#" method="post" id="payment-form">
   <div class="for-group text-center">
     <img src="<?=BASE?>/assets/images/payments/stripe-dark.svg" alt="Stripe icon">
-    <p class="p-t-10"><small><?=sprintf(lang("you_can_deposit_funds_with_paypal_they_will_be_automaticly_added_into_your_account"), 'Stripe')?></small></p>
+    <p class="p-t-10"><small><?=sprintf(lang("app.you_can_deposit_funds_with_paypal_they_will_be_automaticly_added_into_your_account"), 'Stripe')?></small></p>
   </div>
   <fieldset class="form-fieldset m-t-10">
     <div class="form-group">
-      <label class="form-label"><?=sprintf(lang("amount_usd"), get_option("currency_code",'USD'))?></label>
+      <label class="form-label"><?=sprintf(lang("app.amount_usd"), get_option("currency_code",'USD'))?></label>
       <input type="text" name="amount" class="form-control">
     </div>
     <div class="form-row mt15">
@@ -72,18 +72,18 @@
       <img src="<?php echo BASE; ?>assets/images/payments/amex.jpg" id="amex">
     </div>
     <div class="form-group">
-      <label><?php echo lang("note"); ?></label>
+      <label><?php echo lang("app.note"); ?></label>
       <ul>
         <?php
           if ($tnx_fee > 0) {
         ?>
-        <li><?=lang("transaction_fee")?>: <strong><?php echo $tnx_fee; ?>%</strong></li>
+        <li><?=lang("app.transaction_fee")?>: <strong><?php echo $tnx_fee; ?>%</strong></li>
         <?php } ?>
-        <li><?=lang("Minimal_payment")?>: <strong><?php echo $currency_symbol.$min_amount; ?></strong></li>
+        <li><?=lang("app.minimal_payment")?>: <strong><?php echo $currency_symbol.$min_amount; ?></strong></li>
         <?php
           if ($max_amount > 0) {
         ?>
-        <li><?=lang("Maximal_payment")?>: <strong><?php echo $currency_symbol.$max_amount; ?></strong></li>
+        <li><?=lang("app.maximal_payment")?>: <strong><?php echo $currency_symbol.$max_amount; ?></strong></li>
         <?php } ?>
       </ul>
     </div>
@@ -91,7 +91,7 @@
     <div class="form-group">
       <label class="custom-control custom-checkbox">
         <input type="checkbox" class="custom-control-input" name="agree" value="1">
-        <span class="custom-control-label text-uppercase"><strong><?=lang("yes_i_understand_after_the_funds_added_i_will_not_ask_fraudulent_dispute_or_chargeback")?></strong></span>
+        <span class="custom-control-label text-uppercase"><strong><?=lang("app.yes_i_understand_after_the_funds_added_i_will_not_ask_fraudulent_dispute_or_chargeback")?></strong></span>
       </label>
     </div>
     <div class="form-group">
