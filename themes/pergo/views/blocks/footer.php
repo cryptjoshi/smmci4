@@ -33,7 +33,7 @@
                     if (!session('uid')) {
                   ?>
                   <li><a href="<?=cn('auth/login')?>"><?=lang("app.login")?></a></li>
-                  <li><a href="<?=cn('auth/signup')?>"><?=lang("app.sign_Up")?></a></li>
+                  <li><a href="<?=cn('auth/signup')?>"><?=lang("app.sign_up")?></a></li>
                   <?php }else{?>
                   <li><a href="<?=cn('services')?>"><?=lang("app.services")?></a></li>
                   <li><a href="<?=cn('tickets')?>"><?=lang("app.tickets")?></a></li>  

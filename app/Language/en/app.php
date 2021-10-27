@@ -640,6 +640,7 @@ return [
 "welcome_you_have_signed_up_successfully" => "Welcome! you have signed up successfully.",
 "your_account_has_not_been_activated" => "Your account has not been activated",
 "login_successfully" => "Login successfully",
+"login_unsuccessfully" => "Login unsuccessfully",
 "email_address_and_password_that_you_entered_doesnt_match_any_account_please_check_your_account_again" => "Email address and password that You entered doesn't match any account. Please check your account again",
 "we_have_send_you_a_link_to_reset_password_and_get_back_into_your_account_please_check_your_email" => "We have send you a link to reset password and get back into your account. Please check your email",
 "your_password_has_been_successfully_changed" => "Your password has been successfully changed",
@@ -757,5 +758,7 @@ return [
 "refill_logs"=>"Refill Logs",
 "default_action"=>"Button Action",
 "default_button_text"=>"Button Text",
-"description_show"=>"Descriptions"
+"description_show"=>"Descriptions",
+"load_more"=>"Load More",
+"save_changes"=>"Save"
 ];

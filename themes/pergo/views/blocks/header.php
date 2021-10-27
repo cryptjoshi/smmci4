@@ -102,7 +102,7 @@
               ?>
               <a class="link btn-login" href="<?=cn('auth/login')?>"><?=lang("app.login")?></a>
               <?php if(!get_option('disable_signup_page')){ ?>
-              <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-outline-primary sign-up"><?=lang("app.sign_Up")?></a>
+              <a href="<?=cn('auth/signup')?>" class="btn btn-pill btn-outline-primary sign-up"><?=lang("app.sign_up")?></a>
               <?php }; ?>
               <?php }else{?>
               <a href="<?=cn('statistics')?>" class="btn btn-pill btn-outline-primary btn-statistics text-uppercase"><?=lang("app.statistics")?></a>

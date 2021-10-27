@@ -3,6 +3,9 @@ namespace Modules\Auth\Controllers;
 
 use App\Controllers\BaseController;
 use Modules\Auth\Models\AuthModel;
+
+use function PHPUnit\Framework\isEmpty;
+
 require APPPATH.'./libraries/google/autoload.php';
 
 class Auth extends BaseController{
@@ -71,8 +74,10 @@ public function ajax_sign_in(){
     }
     $this->auth = new \Modules\Auth\Models\AuthModel();
     $builder = $this->auth->db->table(USERS)->select("id, status, ids, email, password, role, first_name, last_name, timezone")->where("email",$email)->orderBy("id");
-    $user = $builder->get()->getResult()[0];
-
+    $user = $builder->get()->getResult();
+    //print_r(is_array($user));
+    if(is_array($user)){
+        $user = $user[0];
     if ($user->password == md5($this->request->getPostGet("password"))) {
         // update new password_hash
         $this->auth->db->update(USERS, ['password' => $this->model->app_password_hash(post("password"))] , ['id' => $user->id]);
@@ -102,7 +107,7 @@ public function ajax_sign_in(){
 			);
 			set_session('user_current_info', $data_session);
             $this->model->history_ip($user->id);
-			/*----------  Insert User logs  ----------*/
+			
 			$this->insert_user_activity_logs();
 			
 			if($remember){
@@ -124,7 +129,13 @@ public function ajax_sign_in(){
 			 	"message" => lang("app.login_successfully")
 			 ));
 	 
-    // echo_json_string($user);
+
+            }else {
+                ms(array(
+					"status"  => "error",
+					"message" => lang("app.login_unsuccessfully")
+				));
+            }
 }
 
  

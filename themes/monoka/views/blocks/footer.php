@@ -45,7 +45,7 @@
                             </li>
                             <li class="media">
                                 <i class="fas fa-chevron-right"></i>
-                                <div class="media-body"> <a class="white" href="<?php echo cn('auth/signup'); ?>"><?php echo lang("app.sign_Up"); ?></a></div>
+                                <div class="media-body"> <a class="white" href="<?php echo cn('auth/signup'); ?>"><?php echo lang("app.sign_up"); ?></a></div>
                             </li>
                             <?php }?>
                             

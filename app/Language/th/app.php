@@ -640,6 +640,7 @@ return [
 "welcome_you_have_signed_up_successfully" => "ยินดีต้อนรับ! คุณได้ลงทะเบียนเรียบร้อยแล้ว",
 "your_account_has_not_been_activated" => "บัญชีของคุณยังไม่ได้เปิดใช้งาน",
 "login_successfully" => "เข้าสู่ระบบสำเร็จ",
+"login_unsuccessfully" => "เข้าสู่ระบบไม่สำเร็จ",
 "email_address_and_password_that_you_entered_doesnt_match_any_account_please_check_your_account_again" => "ที่อยู่อีเมลและรหัสผ่านที่คุณป้อนไม่ตรงกับบัญชีใดๆ โปรดตรวจสอบบัญชีของคุณอีกครั้ง",
 "we_have_send_you_a_link_to_reset_password_and_get_back_into_your_account_please_check_your_email" => "เราได้ส่งลิงก์สำหรับรีเซ็ตรหัสผ่านและกลับเข้าสู่บัญชีของคุณแล้ว กรุณาตรวจสอบอีเมลของคุณ",
 "your_password_has_been_successfully_changed" => "รหัสผ่านของคุณถูกเปลี่ยนเรียบร้อยแล้ว",
@@ -791,5 +792,7 @@ return [
 "refill_logs"=>"การเติม",
 "default_action"=>"การทำงาน",
 "default_button_text"=>"ข้อความปุ่ม",
-"description_show"=>"คำอธิบาย"
+"description_show"=>"คำอธิบาย",
+"load_more"=>"เพิ่มเติม",
+"save_changes"=>"บันทึก"
 ];

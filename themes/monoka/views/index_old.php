@@ -32,7 +32,7 @@
                   ?>
                   <?php if(!get_option('disable_signup_page')){ ?>
                   
-                  <a class="btn-outline-sm" href="<?=cn('auth/signup')?>"><?=lang("app.sign_Up")?></a>
+                  <a class="btn-outline-sm" href="<?=cn('auth/signup')?>"><?=lang("app.sign_up")?></a>
                   <?php }; ?>
                   <?php }else{?>
                     <a class="btn-outline-sm" href="<?=cn('statistics')?>"><?=lang("app.dashboard")?></a>
@@ -108,7 +108,7 @@
 
                                 <?php if(!get_option('disable_signup_page') && !session('uid')){ ?>
                                 <div class="form-group">
-                                    <p><?=lang("app.dont_have_account_yet")?> <a class="white" href="<?=cn('auth/signup')?>"><?=lang("app.sign_Up")?></a></p>
+                                    <p><?=lang("app.dont_have_account_yet")?> <a class="white" href="<?=cn('auth/signup')?>"><?=lang("app.sign_up")?></a></p>
                                 </div>
                                 <?php }; ?>
                             </form>

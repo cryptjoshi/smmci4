@@ -52,7 +52,7 @@
     </form>
     <?php if(!get_option('disable_signup_page')){ ?>
     <div class="text-center text-muted m-t-20">
-      <?=lang("app.dont_have_account_yet")?> <a href="<?=cn('auth/signup')?>"><?=lang("app.sign_Up")?></a>
+      <?=lang("app.dont_have_account_yet")?> <a href="<?=cn('auth/signup')?>"><?=lang("app.sign_up")?></a>
     </div>
     <?php }; ?>
   </div>

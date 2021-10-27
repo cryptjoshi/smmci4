@@ -16,7 +16,10 @@ class Locale implements FilterInterface
         else
         {
             // Save locale to session
+            if(!is_null(session(('langCurrent'))))
             session()->set('locale',session('langCurrent')->code );
+            else
+            session()->set('locale','en');
             //service('language')->getLocale());
         }
     }

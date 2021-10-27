@@ -52,7 +52,7 @@
       </div>
     </form>
     <div class="text-center text-muted">
-      <?=lang("app.dont_have_account_yet")?> <a href="<?=cn('auth/signup')?>"><?=lang("app.sign_Up")?></a>
+      <?=lang("app.dont_have_account_yet")?> <a href="<?=cn('auth/signup')?>"><?=lang("app.sign_up")?></a>
     </div>
   </div>
 </div>
