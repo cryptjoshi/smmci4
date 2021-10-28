@@ -416,19 +416,23 @@ class Omise extends BaseController {
 
          
             set_session("transaction_id", $transaction_id);
-           // $result = $this->model->get("*", $this->tb_transaction_logs, "id = '{$transaction_id}'");
-            //$data["transaction"]= $result;
+            $result = $this->model->get("*", $this->tb_transaction_logs, "id = '{$transaction_id}'");
+            $data["transaction"]= $result;
            // echo cn("add_funds/omise/success");
-            //redirect()->to(cn("add_funds/omise/success"));
-
-           // if($result->status==1){
+            
+            // print_r($result);
+            if($result){
+               // echo base_url("add_funds/omise/success");
+                echo view('Modules\Addfunds\Views\omise\successful', $data); 
+                //redirect()->to(base_url("add_funds/omise/success"));
             //print_r($data);
            //return view('Modules\Addfunds\Views\payment_successfully', $data);        
-           ms(array(
-            "status"  => "succuss",
-            "message" => "Offline payment success!",
+        //    ms(array(
+        //     "status"  => "succuss",
+        //     "message" => "Offline payment success!",
             
-        ));
+        // ));
+            }
         } else {
             ms(array(
 				"status"  => "error",

@@ -18,7 +18,7 @@
                                 <input type="text" id="omise_phonenumber" class="form-control" name="omise_phonenumber">
                                 <input type="hidden" name="payment_method" value="<?=$payment_method?>" />
                                 <button id="submit" class="btn btn-primary"><b><?=lang("app.send_now")?></b></button>
-                                <?=lang( 'one_time' ); ?>
+                                <?=lang( 'app.one_time' ); ?>
                             </div>
                          
                         </div>

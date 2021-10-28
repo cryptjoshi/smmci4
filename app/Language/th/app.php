@@ -794,5 +794,8 @@ return [
 "default_button_text"=>"ข้อความปุ่ม",
 "description_show"=>"คำอธิบาย",
 "load_more"=>"เพิ่มเติม",
-"save_changes"=>"บันทึก"
+"save_changes"=>"บันทึก",
+"omise"=>"Omise",
+"creditcard"=>"เครดิตการ์ด",
+"offline_pay"=>"ออฟไลน์"
 ];

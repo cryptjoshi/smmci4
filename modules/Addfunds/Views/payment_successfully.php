@@ -1,3 +1,5 @@
+<?=$this->extend('template/layout');?>
+<?=$this->section('content');?>
 <section class="add-funds m-t-50">   
   <div class="container-fluid">
     <div class="row justify-content-md-center">
@@ -32,4 +34,4 @@
     </div>
   </div>
 </section>
-
+<?=$this->endSection()?>

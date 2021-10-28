@@ -75,12 +75,12 @@ public function ajax_sign_in(){
     $this->auth = new \Modules\Auth\Models\AuthModel();
     $builder = $this->auth->db->table(USERS)->select("id, status, ids, email, password, role, first_name, last_name, timezone")->where("email",$email)->orderBy("id");
     $user = $builder->get()->getResult();
-    //print_r(is_array($user));
-    if(is_array($user)){
+    
+    if(is_array($user) && count($user)>0){
         $user = $user[0];
     if ($user->password == md5($this->request->getPostGet("password"))) {
         // update new password_hash
-        $this->auth->db->update(USERS, ['password' => $this->model->app_password_hash(post("password"))] , ['id' => $user->id]);
+        $this->auth->model->common_update(USERS, ['password' => $this->model->app_password_hash(post("password"))] , ['id' => $user->id]);
         $error = false;
     }else{
         // check the last hash password

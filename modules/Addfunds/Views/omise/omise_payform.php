@@ -15,7 +15,7 @@
 
                         <div class="d-flex flex-row align-items-center">
                             <label
-                                class="form-label"><?=sprintf(lang("app.total_amount_XX_includes_fee"), get_option('currency_code'))?></label>
+                                class="form-label"><?=sprintf(lang("app.total_amount_xx_includes_fee"), get_option('currency_code'))?></label>
                             <input title="TXN_AMOUNT" tabindex="10" type="hidden" name="TXN_AMOUNT"
                                 value="<?=$amount?>">
                             <input type="text" class="form-control taxamount" value="<?=$amount?>" disabled>
@@ -52,7 +52,7 @@
                     <div class="card-header d-flex align-items-center">
                         <input type="radio" class="mr-5" id="payment_method2" value="creditcard" name="payment_method">
                         <h1 class="page-title"><i class="fa fa-credit-card fa-2x text-primary" aria-hidden="true"></i>
-                            <?=lang("app.credit Card")?>
+                            <?=lang("app.creditcard")?>
                         </h1>
                     </div>
                     <?php if(count($creditcards)==0):?>
@@ -63,7 +63,7 @@
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLongTitle"><i
                                             class="fa fa-credit-card fa-2x text-primary"
-                                            aria-hidden="true"></i>&nbsp&nbsp<?=lang("app.credit Card")?></h5>
+                                            aria-hidden="true"></i>&nbsp&nbsp<?=lang("app.creditcard")?></h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
                                     </button>
@@ -179,7 +179,7 @@
                         <div class="card-header d-flex align-items-center">
                             <input type="radio" class="mr-5" value="offline" id="payment_method4" name="payment_method">
                             <h1 class="page-title"><i class="pr-2 fa fa-bank fa-2x text-primary" aria-hidden="true"></i>
-                                <?=lang("app.offline pay")?></h1>
+                                <?=lang("app.offline_pay")?></h1>
                         </div>
 
                     </div>
