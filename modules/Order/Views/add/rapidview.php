@@ -209,17 +209,17 @@
                 mediatype = $("input[name='mediatype']").val()
                 username = $("#inputUsername").val()
                 
-                var _action = "https://<?=RAPID_ENDPOINT?>/get-user",
+                var _action = "https://<?=RAPID_ENDPOINT?>/"+mediatype.toLocaleLowerCase()+"/"+username,
                 //var _action = "<?=cn('rapid')?>/facebook/getmockup",
                     _token = '<?php //echo strip_tags($this->security->get_csrf_hash()); ?>',
                     _data={
-                        "key":mediatype.toLocaleLowerCase(),
-                        "account":username,
+                    //    "key":mediatype.toLocaleLowerCase(),
+                        "username":username,
                         "cursor":_arrcursor[index],
                         "token":_token
                     }
-                $.post(_action, _data, function(_result) {
-                    var response =  JSON.parse(_result.data);
+                $.get(_action, function(_result) {
+                    var response =  JSON.parse(_result);
                     
                     
                  if(_arrcursor.indexOf(_result.cursor_str)==-1) 
@@ -227,11 +227,11 @@
                     //_current =  _result.cursor_str
                     $(`input[name="cursor_str"]`).prop("value",_result.cursor_str)
                      $.each(response,(key,element) =>  {
-                       
+                      
                         // $("#likes-posts-illustration").append(`<div class="tl post"><img  id="views-post-tl-canvas-`+element.id+`" src="`+element.thumbnail_src+`" size=150 /><option value="`+element.shortcode+`"></option></div>`)
                          $("#post-list").append(`<label class="attribsRadioButton four" for="attrib-${element.shortcode}"><input type="radio" name="post-it" value="${element.shortcode}" id="attrib-${element.shortcode}" ><a href="javascript:addlink('`+element.shortcode+`')" class="post" >
                             <figure class="post-image">
-                            <img src="`+element.thumbnail_src+`" alt="">
+                            <img src="`+element.cover_src+`" alt="">
                             </figure>
                             <span class="post-overlay">
                                 <span class="post-likes"></span>
@@ -248,7 +248,7 @@
         }
        
       });
-
+     
 // $('.btn').on('click', function() {
 //     var $this = $(this);
 //   $this.button('loading');

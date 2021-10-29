@@ -797,5 +797,7 @@ return [
 "save_changes"=>"บันทึก",
 "omise"=>"Omise",
 "creditcard"=>"เครดิตการ์ด",
-"offline_pay"=>"ออฟไลน์"
+"offline_pay"=>"ออฟไลน์",
+"childpanel_setting"=>"Childpanel Setting",
+"affiliate_setting"=>"Affiliate Setting"
 ];

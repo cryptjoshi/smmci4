@@ -797,5 +797,7 @@ return [
 "save_changes"=>"Save",
 "omise"=>"Omise",
 "creditcard"=>"Credit Card",
-"offline_pay"=>"Offline Pay"
+"offline_pay"=>"Offline Pay",
+"childpanel_setting"=>"Childpanel Setting",
+"affiliate_setting"=>"Affiliate Setting"
 ];
