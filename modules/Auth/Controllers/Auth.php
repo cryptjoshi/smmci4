@@ -29,7 +29,6 @@ public function __construct()
     if (get_option("enable_goolge_recapcha", '')  &&  get_option('google_capcha_site_key') != "" && get_option('google_capcha_secret_key') != "") {
         $this->recaptcha = new \ReCaptcha\ReCaptcha(get_option('google_capcha_secret_key'));
     }
-
     if(session("uid") && segment(2) != 'logout'){
         redirect()->to("statistics");
     }
@@ -182,5 +181,10 @@ public function logout(){
         delete_cookie("verify_maintenance_mode");
     }
     return redirect()->to(BASE);
+}
+public function signup(){
+    $data = array();
+    //echo "signup";
+    return view('App\Views\template\blank_page',array("view"=>'Themes\\'.get_theme().'\Views\sign_up',"data"=>$data));
 }
 }

@@ -37,7 +37,7 @@ class Filters extends BaseConfig
              'locale'
         ],
         'after' => [
-            'toolbar',
+            //'toolbar',
              'honeypot',
         ],
     ];

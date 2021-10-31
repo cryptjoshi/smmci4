@@ -11,7 +11,7 @@
               <div class="row">
 
                 <div class="col-md-6">
-                  <h5 class="text-info"><i class="fe fe-link"></i> <?=lang('app.default_Homepage')?></h5>
+                  <h5 class="text-info"><i class="fe fe-link"></i> <?=lang('app.default_homepage')?></h5>
                   <div class="form-group">
                     <select  name="default_home_page" class="form-control square">
                       <?php

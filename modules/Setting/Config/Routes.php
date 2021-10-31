@@ -1,6 +1,8 @@
 <?php 
  $routes->group('setting',['filter' => 'auth','namespace' => 'Modules\Setting\Controllers'], function ($routes) {
      $routes->add('', 'Setting::index');
+     $routes->get('(:any)', 'Setting::index/$1',['namespace' => 'Modules\Setting\Controllers']);
+     $routes->post('ajax_general_settings','Setting::ajax_general_settings',['namespace' => 'Modules\Setting\Controllers']);
 //     $routes->add('website_setting', 'Setting::index');
 //     $routes->add('website_logo', 'Setting::index');
 //     $routes->add('cookie_policy', 'Setting::cookie_policy');
@@ -16,5 +18,3 @@
 
  });
 
-$routes->get('setting/(:any)', 'Setting::index',['namespace' => 'Modules\Setting\Controllers']);
-$routes->post('setting/ajax_general_settings','Setting::ajax_general_settings',['namespace' => 'Modules\Setting\Controllers']);

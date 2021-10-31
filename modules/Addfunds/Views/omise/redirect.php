@@ -15,12 +15,7 @@
 
 <form action="<?=$authorize_uri?>" method="GET" name="f1">
     
-    <?php
-        // foreach($paramList as $name => $value) {
-        //   echo '<input type="hidden" name="' . $name .'" value="' . $value . '">';
-        // }
-    ?>
-
+   
     <script type="text/javascript">
         document.f1.submit();
     </script>

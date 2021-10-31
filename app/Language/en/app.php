@@ -799,5 +799,10 @@ return [
 "creditcard"=>"Credit Card",
 "offline_pay"=>"Offline Pay",
 "childpanel_setting"=>"Childpanel Setting",
-"affiliate_setting"=>"Affiliate Setting"
+"affiliate_setting"=>"Affiliate Setting",
+"refill_expiry_days"=>"Refill Expiry Days",
+"disable_refill_option_from_and_order_after_X_days"=>"Disable Refill Option From and order after X days",
+"signup"=>"signup",
+"transaction"=>"transaction",
+"addfunds"=>"addfunds"
 ];

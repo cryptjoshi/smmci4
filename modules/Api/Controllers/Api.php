@@ -2,6 +2,7 @@
 namespace Modules\Api\Controllers;
 
 use App\Controllers\BaseController;
+use Modules\Api\Models\ApiModel;
 
 class Api extends BaseController
 {
@@ -37,6 +38,7 @@ class Api extends BaseController
 		$this->tb_user_logs   		= USER_LOGS;
 		$this->tb_user_block_ip   	= USER_BLOCK_IP;
 		$this->superkey             = SUPER_KEY;
+		$this->model = new ApiModel();
     }
 
     public function index()
@@ -501,9 +503,7 @@ class Api extends BaseController
 		 
 		$size = post('size');
 		$page = post('page');
-		 
-		//$this->model->get_order_logs_list(false, $order_status, $limit_per_page, $page * $limit_per_page);
-
+		
 		$transactions = $this->model->get_transaction_byid($this->uid,false,$size, $page * $size);
 		echo_json_string($transactions);
 		// echo_json_string(array(

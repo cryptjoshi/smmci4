@@ -2,6 +2,7 @@
 $routes->group('api',['namespace' => 'Modules\Api\Controllers'], function ($routes) {
     $routes->add('/', 'Api::index');
     $routes->add('docs', 'Api::docs');
+    $routes->post('v1', 'Api::v1');
     //$routes->post('ajax_sign_in', 'Auth::ajax_sign_in');
     //$routes->add('signin','Auth::signin');
     //$routes->add('login','Auth::login');
