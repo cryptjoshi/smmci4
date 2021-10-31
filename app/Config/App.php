@@ -23,7 +23,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'https://smm-dev.com/';
+    public $baseURL = 'https://itplaygroundci4.herokuapp.com/' //'https://smm-dev.com/';
 
     /**
      * --------------------------------------------------------------------------
