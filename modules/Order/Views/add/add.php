@@ -44,9 +44,6 @@
                   </div>
                   
                   <!-- Modal -->
-                 
-                       
-                   
                           
                   <div class="form-group" id="result_onChange">
                     <label><?=lang("app.order_service")?></label>
