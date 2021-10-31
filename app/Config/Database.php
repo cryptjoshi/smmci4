@@ -32,7 +32,7 @@ class Database extends Config
      */
     public $default = [
         'DSN'      => '',
-        'hostname' => 'b_mysql',//'db.quicktle.com',
+        'hostname' => 'db.quicktle.com',
         'username' => 'root',
         'password' => 'lFtdiC8DQR37ab551LCBWbnufh1',
         'database' => 'panel-quicktle',
@@ -47,7 +47,7 @@ class Database extends Config
         'compress' => false,
         'strictOn' => false,
         'failover' => [],
-        'port'     => 3306,//5001,
+        'port'     => 5001,
     ];
     
     /**
