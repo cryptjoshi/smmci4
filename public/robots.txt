@@ -1,2 +1,3 @@
-User-agent: *
-Disallow: 
+User-Agent: *
+Disallow:
+Sitemap: https://simmmple.com
