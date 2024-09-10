@@ -38,26 +38,26 @@ const fetcher = (url:string) => fetch(url,{ method: 'GET',
 }).then((res) => res.json());
 
 
-async function safeFetchData(url) {
-  try {
-      const response = await fetch(url);
-      if (!response.ok) {
-          throw new Error('Network response was not ok');
-      }
-      return await response.json();
-  } catch (error) {
-    //@ts-ignore
-      if (error instanceof NetworkError) {
-          // handle network error
-          //@ts-ignore
-      } else if (error instanceof ApiError) {
-          // handle API-specific error
-      } else {
-          // handle generic errors
-      }
-      // Possibly return a fallback value or re-throw the error
-  }
-}
+// async function safeFetchData(url:string) {
+//   try {
+//       const response = await fetch(url);
+//       if (!response.ok) {
+//           throw new Error('Network response was not ok');
+//       }
+//       return await response.json();
+//   } catch (error) {
+//     //@ts-ignore
+//       if (error instanceof NetworkError) {
+//           // handle network error
+//           //@ts-ignore
+//       } else if (error instanceof ApiError) {
+//           // handle API-specific error
+//       } else {
+//           // handle generic errors
+//       }
+//       // Possibly return a fallback value or re-throw the error
+//   }
+// }
 
 async function getData(id:string){
  // console.log(`https://report.tsxbet.net/reports/sumwinloss/${id}`)
@@ -98,15 +98,16 @@ export default async function  Page({ params }: { params: { id: string } }){
   // );
   
 
-// if (error) return "An error has occurred.";
-// if (isLoading) return "Loading...";
+// if (error) return An error has occurred.`;
+// if (isLoading) return `Loading...`;
 // if(!isLoading){
 // //  setProfit(data)
 // }
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2  ">
     <div  style={{paddingTop:80+'px'}}>
-    <div style={{marginBottom: 20 + 'px'}} >
+    <div style={{marginBottom: 20 + 'px'}}
+    >
           <SumWinlossDetail transfers={data}  />
          </div>
       </div>

@@ -1,4 +1,4 @@
-'use client';
+ 
 
 // Chakra imports
 import { Flex, Grid, useColorModeValue } from '@chakra-ui/react';
@@ -22,8 +22,9 @@ import Banktransfer from 'components/admin/dashboards/default/Banktransfer';
 import NewCustomer from 'components/admin/dashboards/default/Newcutomer';
 import TransactionTable from 'components/admin/dashboards/default/TransactionsTable';
 import WinlossTable from 'components/admin/dashboards/default/WinlossTable';
-
-
+import PageContent from 'components/PageContent';
+import { getSession } from 'app/actions/auth';
+ 
 const fetcher = (url: string) => fetch(url, {
   method: 'GET',
   headers: {
@@ -48,47 +49,52 @@ const fetcher = (url: string) => fetch(url, {
 //   return  res.json();  
 // }
 
+async function getData() {
+  const token = "";//localStorage.getItem('token');
+  const session = await getSession()
+  const res = await fetch('https://report.tsxbet.net/reports/sumwinloss', { cache: 'no-store' ,
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+    body: JSON.stringify({ "startdate": new Date(new Date().setDate(new Date().getDate())).toJSON().slice(0, 10), "stopdate": new Date(new Date().setDate(new Date().getDate())).toJSON().slice(0, 10), "prefix": session.prefix, "statement_type": "all", "status": "all" })
 
-export default function Page() {
+  });
+  return res.json();
+}
+export  default async function Page() {
   // Chakra Color Mode
-  const paleGray = useColorModeValue('secondaryGray.400', 'whiteAlpha.100');
-  // const [TopUps, setTopUps] = React.useState([]);
+  // const paleGray = useColorModeValue('secondaryGray.400', 'whiteAlpha.100');
+  // // const [TopUps, setTopUps] = React.useState([]);
 
-  // const [TopUpm, setTopUpm] = React.useState([]);
-  // const [WinLoss,setWinLoss] = React.useState([])
-  const [Profit, setProfit] = React.useState([{ "name": "", "sum": 0 }])
-  // const [newusers, setnewusers] = React.useState(0);
-  const router = useRouter()
-  const { data, error, isLoading } = useSWR(
-    "https://report.tsxbet.net/reports",
-    fetcher
-  );
+  // // const [TopUpm, setTopUpm] = React.useState([]);
+  // // const [WinLoss,setWinLoss] = React.useState([])
+  // const [Profit, setProfit] = React.useState([{ "name": "", "sum": 0 }])
+  // // const [newusers, setnewusers] = React.useState(0);
+  // const router = useRouter()
+  // const { data, error, isLoading } = useSWR(
+  //   "https://report.tsxbet.net/reports",
+  //   fetcher
+  // );
 
 
-  if (error) return <>"An error has occurred."</>;
-  if (isLoading) return <>"Loading..."</>;
-  if (!isLoading) {
-    //  setProfit(data)
-  }
+  // if (error) return <>An error has occurred.`</>;
+  // if (isLoading) return <>`Loading...`</>;
+  // if (!isLoading) {
+  //   //  setProfit(data)
+  // }
+  const data = await getData()
   return (
-    <Flex
-      direction={{ base: 'column', xl: 'row' }}
-      pt={{ base: '130px', md: '80px', xl: '80px' }}
-    >
-      <Flex direction="column" width="stretch">
-
-
-        <Grid
-          mb="20px"
-          gridTemplateColumns={{ base: 'repeat(2, 1fr)', '2xl': '100%' }}
-          gap="20px"
-          display={{ base: 'block', lg: 'grid' }}
-        >
-          <Flex gridArea={{ base: '1 / 1 / 2 / 3', '2xl': '1 / 1 / 2 / 2' }}>
-            <WinlossTable tableData={tableDataMostVisited} />
-          </Flex>
-        </Grid>
-      </Flex>
-    </Flex>
+    <PageContent title="รายงานยอดได้เสียแบบละเอียด">
+    <div className="flex items-center gap-2" >
+      <div style={{ paddingTop: 10 + 'px' }}>
+        <div style={{ marginBottom: 20 + 'px'}}   >
+            <WinlossTable tableData={data} />
+        </div>
+        </div>
+        </div>
+    </PageContent>
   );
 }

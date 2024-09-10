@@ -17,71 +17,7 @@ export default function ProfitEstimation(props: { [x: string]: any }) {
   const cardColor = useColorModeValue('white', 'navy.700');
 	const router = useRouter()
   const [users,setUsers] = useState<any>({})
-  //const Profit = rest
-  //const {data:Profit} = rest
-  
-	//useEffect(() => {
-     
-	// 	let isLoaded = false;
-
-	// 	const checkData = async () => {
-	// 		const token = localStorage.getItem('token');
-		   
-	// 		if(!token){
-	// 		  router.replace('/auth/sign-in')
-	// 	  } else 
-	// 	  {
-			
-	// 		   // console.log(new Date().format('yyyy-MM-dd'))
-	// 			const today = new Date().toJSON().slice(0, 10);
-	// 			//const raw = JSON.stringify({"startdate":today,"stopdate":today});
-	// 			let data;
-			 
-	// 		  let res = await fetch('https://report.tsxbet.net/reports/count/userstatus', { method: 'POST',
-	// 		  headers: {
-	// 			'Accept': 'application/json',
-	// 			'Content-Type': 'application/json',
-	// 			'Authorization': 'Bearer ' +  token
-	// 		  },
-	// 	 // body: raw
-	// 	  });
-	// 	  data = await res.json();
-     
-	// 	  if(data.status){
-			 
-			 
-	// 		   setUsers(data.data)
-	// 		  // const sumtotal = data.data.data.reduce((accumulator:any, current:any) => accumulator + current)
-		 
-	// 		  // setTotal(data.data[0].sum.toFixed(2).toString())
-  //       // lineChartOptionsOverallRevenue.xaxis.categories = data.data.dayArray;
-	// 		 //  lineChartDataOverallRevenue.xaxis.categories = data.data.daysArray;
-		 
-	// 		 // setAuthenticated(true)
-	// 	  } else {
-	// 	//	router.replace('/auth/sign-in')
-	// 	  } 
-			  
-	// 		}
-	// 	}
-
-	// 	 const timeout = setTimeout(() => {
-	// 	 	//setMounted(true);
-	// 	 	isLoaded = true;
-	// 	}, 3000);
-
- 
-	// //	checkData()
-  
-	// 	return () => {
-	// 		//isLoaded = true;
-	// 	//	checkData();
-	// 	 	clearTimeout(timeout);
-	// 	 };
-
-
-		
-//  }, []);
+   
 
 
   return (
@@ -118,7 +54,7 @@ export default function ProfitEstimation(props: { [x: string]: any }) {
         mb="8px"
       />
       <Box w="140px" mx="auto" mb="10px" mt="10px">
-         <CircularProgress title="ลูกค้า Actived" percentage={ parseFloat(((rest.data[0].sum/(rest.data[0].sum+rest.data[1].sum))*100).toFixed(2))} />     
+         <CircularProgress title="ลูกค้า Actived" percentage={ isNaN(parseFloat(((rest.data[0].sum/(rest.data[1].sum))*100).toFixed(2)))?0:parseFloat(((rest.data[0].sum/(rest.data[1].sum))*100).toFixed(2)) } />     
           
       </Box>
       <Card bg={cardColor} flexDirection="row" p="15px" px="20px" mt="auto">

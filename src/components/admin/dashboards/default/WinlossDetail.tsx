@@ -54,11 +54,13 @@ import { getToken } from 'app/actions/userInfof';
   // Assets
   
   type RowObj = {
+    id:string;
     createdAt:string;
     MemberID:string;
     MemberName:string;
     GameID:string;
     GameRoundID:string;
+    GameProvide:string;
     BeforeBalance:string;
     BetAmount:number;
     PayoutAmount:number;
@@ -69,6 +71,9 @@ import { getToken } from 'app/actions/userInfof';
     loss:number;
     turnover:number;
     month:number;
+    TURNOVER:number;
+    WINLOSS:number;
+
   };
   //const startdate =  new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10);
    // const stopdate =  new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10);
@@ -76,20 +81,13 @@ import { getToken } from 'app/actions/userInfof';
     //const raw = JSON.stringify({"startdate":startdate,"stopdate":stopdate,"prefix":"all","statement_type":"all","status":"all"});
       
   const columnHelper = createColumnHelper<RowObj>();
-  const fetcher = (url:string,id:string) => fetch(url,{ method: 'POST',
-    headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' +  getToken() //localStorage.getItem('token')
-    },
-   body: JSON.stringify({"startdate":new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10),"stopdate":new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10),"prefix":"all","statement_type":"all","status":"all","userid":id})
-  }).then((res) => res.json());
+
   // const columns = columnsDataCheck;
   export default function WinlossDetail(props:any) {
     // const { tableData } = props;
     //const params = useParams()
     const params = useParams();
-    const {id} = params
+    const {id,startDate,endDate} = params
  
   
     const [sorting, setSorting] = useState<SortingState>([]);
@@ -112,7 +110,15 @@ import { getToken } from 'app/actions/userInfof';
           pageIndex: 0,
           pageSize: 50,
       });
-
+      const fetcher = (url:string) => fetch(url,{ method: 'POST',
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' +  getToken() //localStorage.getItem('token')
+      },
+     body: JSON.stringify({"startdate":startDate,"stopdate":endDate,"prefix":"all","statement_type":"all","status":"all","userid":""})
+    }).then((res) => res.json());
+    
     const { data:transfers, error, isLoading } = useSWR(id ? `https://report.tsxbet.net/reports/winloss/${id}` : null,
     fetcher
   );
@@ -365,30 +371,7 @@ import { getToken } from 'app/actions/userInfof';
           </Text>
         ),
       }),
-      // columnHelper.accessor('PayoutAmount', {
-      //   id: 'PayoutAmount',
-      //   header: () => (
-      //     <Text
-      //       justifyContent="space-between"
-      //       align="center"
-      //       fontSize={{ sm: '10px', lg: '12px' }}
-      //       color="gray.400"
-      //     >
-      //      {"ยอดจ่าย"}
-      //     </Text>
-      //   ),
-      //   cell: (info:any) => (
-      //     <Text color={
-      //       info.getValue() >0
-      //     ? 'green.500'
-      //     : 'red.500'
-              
-      //     }  
-      //       fontSize="sm" fontWeight="600">
-      //       {info.getValue().toFixed(2)}
-      //     </Text>
-      //   ),
-      // }),
+      
       columnHelper.accessor('WINLOSS', {
         id: 'WINLOSS',
         header: () => (
@@ -429,29 +412,7 @@ import { getToken } from 'app/actions/userInfof';
           </Text>
         ),
       }),
-      // columnHelper.accessor('LOSS', {
-      //   id: 'LOSS',
-      //   header: () => (
-      //     <Text
-      //       justifyContent="space-between"
-      //       align="center"
-      //       fontSize={{ sm: '10px', lg: '12px' }}
-      //       color="gray.400"
-      //     >
-      //      {"เสีย"}
-      //     </Text>
-      //   ),
-      //   cell: (info:any) => (
-      //     <Text 
-      //     color={
-      //       info.getValue() <0
-      //           ? 'red.500'
-      //           : 'gray.200'
-      //     }  fontSize="sm" fontWeight="600">
-      //       {info.getValue().toFixed(2)}
-      //     </Text>
-      //   ),
-      // }),
+       
       columnHelper.accessor('TURNOVER', {
         id: 'TURNOVER',
         header: () => (

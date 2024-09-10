@@ -37,17 +37,7 @@ export const cleatToken = async ()=>{
 export const getToken = async () => {
  
   return  "";//cookies().get('token') & await cookies().get('token').value;
- // const token = localStorage.getItem('token');
- // const isLogged = localStorage.getItem('isLogged')
-//   const  res = await fetch('https://report.tsxbet.net/reports/count/userstatus', { method: 'POST',
-//     headers: {
-//     'Accept': 'application/json',
-//     'Content-Type': 'application/json',
-//     'Authorization': 'Bearer ' +  token
-//     },
-//  // body: raw
-//   });
-//   return  res.json();  
+ 
  
 };
 export const getIsLogged = async () => {
@@ -60,7 +50,7 @@ export const setToken = async  (val:string) => {
 }
 
 export const setIsLogged = async (val:boolean) =>{
-  return await cookies().set('IsLogged',val)
+  return await cookies().set('IsLogged',`${val}`)
 }
 export const getAccount = async () => {
 //   const username = formData.get('username');

@@ -48,9 +48,12 @@ import { useEffect, useState } from 'react';
 import Transfer from '../../../dataDisplay/Transfer';
 import { convertDate } from 'utils';
 import { getToken } from 'app/actions/userInfof';
+import { getSession } from 'app/actions/auth';
 // Assets
 
 type RowObj = {
+  id:string;
+  username:string;
   fullname: string;
   bankname: string;
   banknumber:string;
@@ -59,7 +62,14 @@ type RowObj = {
 };
 
 const columnHelper = createColumnHelper<RowObj>();
-
+const CircleIcon = (props:any) => (
+  <Icon viewBox="0 0 200 200" {...props}>
+    <path
+      fill="currentColor"
+      d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
+    />
+  </Icon>
+)
 // const columns = columnsDataCheck;
 export default function MembersTable(props: { tableData: any }) {
   const { tableData } = props;
@@ -113,7 +123,7 @@ export default function MembersTable(props: { tableData: any }) {
 			  router.replace('/auth/sign-in')
 		  } else 
 		  {
-			
+			  const session = await getSession() 
 			   // console.log(new Date().format('yyyy-MM-dd'))
 				const today = new Date().toJSON().slice(0, 10);
 				//const raw = JSON.stringify({"startdate":today,"stopdate":today});
@@ -125,30 +135,23 @@ export default function MembersTable(props: { tableData: any }) {
 				'Content-Type': 'application/json',
 				'Authorization': 'Bearer ' +  token
 			  },
-		 // body: raw
+		  body: JSON.stringify({prefix:session.prefix})
 		  });
 		  data = await res.json();
-     // console.log(data)
+    
 		  if(data.status){
 			 
-		//	if(!isLoaded){
+	 
 			   setTransfers(data.data)
          setData(data.data)
          setLoading(false)
-			  // const sumtotal = data.data.data.reduce((accumulator:any, current:any) => accumulator + current)
-		 
-			  // setTotal(data.data[0].sum.toFixed(2).toString())
-        // lineChartOptionsOverallRevenue.xaxis.categories = data.data.dayArray;
-			 //  lineChartDataOverallRevenue.xaxis.categories = data.data.daysArray;
-			//}
-			 // setAuthenticated(true)
+			 
 		  } else {
-		//	router.replace('/auth/sign-in')
-		  } 
+	 
 			  
 			}
 		}
-
+    }
 		 const timeout = setTimeout(() => {
 		 	//setMounted(true);
 		 	isLoaded = true;
@@ -162,7 +165,7 @@ export default function MembersTable(props: { tableData: any }) {
 		//	checkData();
 		 	clearTimeout(timeout);
 		 };
-
+    
 
 		
 	}, []);
@@ -207,6 +210,7 @@ export default function MembersTable(props: { tableData: any }) {
         <Text color={textColor} fontSize="sm" fontWeight="600">
           {info.getValue()}
         </Text>
+        <CircleIcon boxSize={8} color={ info.row.original.status=="1"?'green.500' : 'red.500'}/>
         </Button>
         </Link>
       ),

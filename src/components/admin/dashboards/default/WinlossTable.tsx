@@ -1,5 +1,5 @@
 /* eslint-disable */
-
+'use client'
 import {
   Badge,
   Box,
@@ -15,8 +15,11 @@ import {
   Th,
   Thead,
   Tr,
+  Tfoot,
   useColorModeValue,
-  Stack
+  Stack,
+  HStack,
+  VStack
    
 } from '@chakra-ui/react';
 
@@ -39,13 +42,20 @@ import {
 } from '@tanstack/react-table';
 
 import { MdOutlineCalendarToday,MdChevronLeft,MdChevronRight } from 'react-icons/md';
+
+import { InputLabel } from 'components/InputLabel';
+import { SingleDatepicker } from 'components/Datepicker/DayzedDatepicker';
+
+
 import useSWR from "swr";
 // Assets
 import { SearchBar } from 'components/navbar/searchBar/SearchBar';
  
 import MiniCalendar from 'components/calendar/MiniCalendar';
 
-
+import Swal from 'sweetalert2'
+ 
+import withReactContent from 'sweetalert2-react-content';
 // Custom components
 import Card from 'components/card/Card';
 import * as React from 'react';
@@ -54,9 +64,11 @@ import { useEffect, useState } from 'react';
 import Transfer from '../../../dataDisplay/Transfer';
 import { convertDate } from 'utils';
 import { getToken } from 'app/actions/userInfof';
+import { getData } from 'app/actions/auth';
 // Assets
 
 type RowObj = {
+  id:string;
   createdAt:string;
   MemberID:string;
   MemberName:string;
@@ -71,6 +83,9 @@ type RowObj = {
   loss:number;
   turnover:number;
   month:number;
+  WINLOSS:number;
+  TURNOVER:number;
+
 };
 //const startdate =  new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10);
  // const stopdate =  new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10);
@@ -78,15 +93,31 @@ type RowObj = {
   //const raw = JSON.stringify({"startdate":startdate,"stopdate":stopdate,"prefix":"all","statement_type":"all","status":"all"});
 	
 const columnHelper = createColumnHelper<RowObj>();
-const fetcher = (url:string) => fetch(url,{ method: 'POST',
-  headers: {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json',
-  'Authorization': 'Bearer ' +  getToken()// localStorage.getItem('token')
-  },
- body: JSON.stringify({"startdate":new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10),"stopdate":new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10),"prefix":"all","statement_type":"all","status":"all"})
-}).then((res) => res.json());
+// const fetcher = (url:string) => fetch(url,{ method: 'POST',
+//   headers: {
+//   'Accept': 'application/json',
+//   'Content-Type': 'application/json',
+//   'Authorization': 'Bearer ' +  getToken()// localStorage.getItem('token')
+//   },
+//  body: JSON.stringify({"startdate":new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10),"stopdate":new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10),"prefix":"all","statement_type":"all","status":"all"})
+// }).then((res) => res.json());
 // const columns = columnsDataCheck;
+
+
+
+const MySwal = withReactContent(Swal);
+const compareDate = (date1:any, date2:any) =>{
+  const d1 = new Date(date1);
+  const d2 = new Date(date2);
+
+  // เปรียบเทียบวันที่ ถ้า date2 น้อยกว่า date1 ให้แสดง false
+  if (d2 < d1) {
+    return false;
+  }
+  return true;
+}
+
+
 export default function WinlossTable(props: { tableData: any }) {
   const { tableData } = props;
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -97,20 +128,23 @@ export default function WinlossTable(props: { tableData: any }) {
 
   const brandColor = useColorModeValue('brand.500', 'brand.400');
   const router = useRouter()
-  //const [transfers,setTransfers] = useState<RowObj[]>([])
+  const [transfers,setTransfers] = useState(tableData)
    
   //const [data, setData] =  useState(() => [...transfers]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
  
   const [globalFilter, setGlobalFilter] =  useState('');
-  
+  const [endDate, setEndDate] = useState(new Date());
+  const [startDate,setStartDate] = useState(new Date());
   		
-  const { data:transfers, error, isLoading } = useSWR(
-    "https://report.tsxbet.net/reports/sumwinloss",
-    fetcher
-  );
-  //const [data, setData] =  useState([...transfers]);
-  //const [transfers, setTransfer] = useState<RowObj[]>(() => [...data]);
+  // const { data:transfers, error, isLoading } = useSWR(
+  //   "https://report.tsxbet.net/reports/sumwinloss",
+  //   fetcher
+  // );
+
+
+  
+
   const [{ pageIndex, pageSize }, setPagination] =
     useState<PaginationState>({
         pageIndex: 0,
@@ -135,100 +169,8 @@ const createPages = (count: number) => {
   return arrPageCount;
 };
 
-	// useEffect(() => {
-	// 	let isLoaded = false;
-
-	// 	const checkData = async () => {
-	// 		const token = localStorage.getItem('token');
-		   
-	// 		if(!token){
-	// 		  router.replace('/auth/sign-in')
-	// 	  } else 
-	// 	  {
-			
-	// 		   // console.log(new Date().format('yyyy-MM-dd'))
-	// 			const today = new Date().toJSON().slice(0, 10);
-      
-        
-  //       const startdate =  new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10);
-				
-  //       const stopdate =  new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10);
-	// 			const raw = JSON.stringify({"startdate":startdate,"stopdate":stopdate,"prefix":"all","statement_type":"all","status":"all"});
-				
-			 
-	// 		let res = await fetch('https://report.tsxbet.net/reports/winloss', { method: 'POST',
-	// 		  headers: {
-	// 			'Accept': 'application/json',
-	// 			'Content-Type': 'application/json',
-	// 			'Authorization': 'Bearer ' +  token
-	// 		  },
-	// 	  body: raw
-	// 	  });
-	// 	  let xdata = await res.json();
-     
-	// 	  if(xdata.status){
-			 
-	// 	//	if(!isLoaded){
-	// 		   setTransfers(xdata.data)
-  //        setData(xdata.data)
-  //        setLoading(false)
-	// 		  // const sumtotal = data.data.data.reduce((accumulator:any, current:any) => accumulator + current)
-		 
-	// 		  // setTotal(data.data[0].sum.toFixed(2).toString())
-  //       // lineChartOptionsOverallRevenue.xaxis.categories = data.data.dayArray;
-	// 		 //  lineChartDataOverallRevenue.xaxis.categories = data.data.daysArray;
-	// 		//}
-	// 		 // setAuthenticated(true)
-	// 	  } else {
-	// 	//	router.replace('/auth/sign-in')
-	// 	  } 
-			  
-	// 		}
-	// 	}
-
-	// 	 const timeout = setTimeout(() => {
-	// 	 	//setMounted(true);
-	// 	 	isLoaded = true;
-	// 	}, 3000);
-
- 
-	// 	checkData()
-  
-	// 	return () => {
-	// 		//isLoaded = true;
-	// 	//	checkData();
-	// 	 	clearTimeout(timeout);
-	// 	 };
-
-
-		
-	// }, []);
-
-  
   const columns = [
-   
-    // columnHelper.accessor('MemberID', {
-    //   id: 'MemberID',
-    //   header: () => (
-    //     <Text
-    //       justifyContent="space-between"
-    //       align="center"
-    //       fontSize={{ sm: '10px', lg: '12px' }}
-    //       color="gray.400"
-    //     >
-    //       {"รหัสสมาชิก"}
-    //     </Text>
-    //   ),
-    //   cell: (info: any) => (
-    //     <Button >
-    //     <Text color='blue.500' fontSize="sm" fontWeight="600"  >
-    //     {info.getValue()}
-    //     </Text>
-    //     </Button>
-     
-  
-    //   ),
-    // }),
+    columnHelper.accessor('id', { header: () => 'ID', cell: (info:any) => parseInt(info.row.id) + 1, }),
     columnHelper.accessor('MemberName', {
       id: 'MemberName',
       header: () => (
@@ -242,7 +184,7 @@ const createPages = (count: number) => {
         </Text>
       ),
       cell: (info:any) => (
-      <Link href={`/admin/winloss/detail/${info.getValue()}`}>
+      <Link href={`/admin/winloss/detail/${info.getValue()}/${new Date(startDate).toJSON().slice(0, 10)}/${new Date(endDate).toJSON().slice(0, 10)}`}>
       <Button >
         <Text color={textColor} fontSize="sm" fontWeight="600">
           {info.getValue()}
@@ -251,60 +193,7 @@ const createPages = (count: number) => {
         </Link>
       ),
     }),
-    // columnHelper.accessor('createdAt', {
-    //   id: 'createdAt',
-    //   header: () => (
-    //     <Text
-    //       justifyContent="space-between"
-    //       align="center"
-    //       fontSize={{ sm: '10px', lg: '12px' }}
-    //       color="gray.400"
-    //     >
-    //      {"วันที่"}
-    //     </Text>
-    //   ),
-    //   cell: (info:any) => (
-    //     <Text color={textColor} fontSize="sm" fontWeight="700">
-    //       {convertDate(info.getValue())}
-    //     </Text>
-    //   ),
-    // }),
-    // columnHelper.accessor('GameID', {
-    //   id: 'GameID',
-    //   header: () => (
-    //     <Text
-    //       justifyContent="space-between"
-    //       align="left"
-    //       fontSize={{ sm: '10px', lg: '12px' }}
-    //       color="gray.400"
-    //     >
-    //      {"รหัสเกมส์"}
-    //     </Text>
-    //   ),
-    //   cell: (info:any) => (
-    //     <Text color={textColor} fontSize="sm" fontWeight="600">
-    //       {info.getValue()}
-    //     </Text>
-    //   ),
-    // }),
-    // columnHelper.accessor('GameRoundID', {
-    //   id: 'GameRoundID',
-    //   header: () => (
-    //     <Text
-    //       justifyContent="space-between"
-    //       align="left"
-    //       fontSize={{ sm: '10px', lg: '12px' }}
-    //       color="gray.400"
-    //     >
-    //      {"รอบเกมส์"}
-    //     </Text>
-    //   ),
-    //   cell: (info:any) => (
-    //     <Text color={textColor} fontSize="sm" fontWeight="600">
-    //       {info.getValue()}
-    //     </Text>
-    //   ),
-    // }),
+     
     columnHelper.accessor('BetAmount', {
       id: 'BetAmount',
       header: () => (
@@ -322,6 +211,18 @@ const createPages = (count: number) => {
           {info.getValue()?info.getValue().toFixed(2):0}
         </Text>
       ),
+      footer: ({ table }:any) => {
+        const total = table
+          .getRowModel()
+          .rows.reduce((sum:any, row:any) => row.original.BetAmount + sum, 0);
+          return (  <Text color={
+          total >0
+        ? 'green.500'
+        : 'red.500'
+            
+        }  
+        fontSize="md" fontWeight="800">{total.toFixed(2)}</Text>)
+      },
     }),
     columnHelper.accessor('PayoutAmount', {
       id: 'PayoutAmount',
@@ -346,6 +247,18 @@ const createPages = (count: number) => {
           {info.getValue()?info.getValue().toFixed(2):0}
         </Text>
       ),
+      footer: ({ table }:any) => {
+        const total = table
+          .getRowModel()
+          .rows.reduce((sum:any, row:any) => row.original.PayoutAmount + sum, 0);
+          return (  <Text color={
+          total >0
+        ? 'green.500'
+        : 'red.500'
+            
+        }  
+        fontSize="md" fontWeight="800">{total.toFixed(2)}</Text>)
+      },
     }),
     columnHelper.accessor('WINLOSS', {
       id: 'WINLOSS',
@@ -368,31 +281,20 @@ const createPages = (count: number) => {
           {info.getValue()?info.getValue().toFixed(2):0}
         </Text>
       ),
+      footer: ({ table }:any) => {
+        const total = table
+          .getRowModel()
+          .rows.reduce((sum:any, row:any) => row.original.WINLOSS + sum, 0);
+          return (  <Text color={
+          total >0
+        ? 'green.500'
+        : 'red.500'
+            
+        }  
+        fontSize="md" fontWeight="800">{total.toFixed(2)}</Text>)
+      },
     }),
-   
-    // columnHelper.accessor('LOSS', {
-    //   id: 'LOSS',
-    //   header: () => (
-    //     <Text
-    //       justifyContent="space-between"
-    //       align="center"
-    //       fontSize={{ sm: '10px', lg: '12px' }}
-    //       color="gray.400"
-    //     >
-    //      {"เสีย"}
-    //     </Text>
-    //   ),
-    //   cell: (info:any) => (
-    //     <Text 
-    //     color={
-    //       info.getValue() <0
-    //           ? 'red.500'
-    //           : 'gray.200'
-    //     }  fontSize="sm" fontWeight="600">
-    //        {info.getValue().toFixed(2)}
-    //     </Text>
-    //   ),
-    // }),
+    
     columnHelper.accessor('TURNOVER', {
       id: 'TURNOVER',
       header: () => (
@@ -410,12 +312,22 @@ const createPages = (count: number) => {
           {info.getValue()?info.getValue().toFixed(2):0}
         </Text>
       ),
+      footer: ({ table }:any) => {
+        const total = table
+          .getRowModel()
+          .rows.reduce((sum:any, row:any) => row.original.TURNOVER + sum, 0);
+          return (  <Text color={
+          total >0
+        ? 'green.500'
+        : 'red.500'
+            
+        }  
+        fontSize="md" fontWeight="800">{total.toFixed(2)}</Text>)
+      },
     }),
  
   ];
   
- 
-
   const table = useReactTable({
     ...transfers,
     columns,
@@ -441,34 +353,35 @@ const createPages = (count: number) => {
     onSortingChange: setSorting
   });
 
-  //let defaultData = tableData;
-  if (error) return <>"An error has occurred."</>;
-  if (isLoading) return <>"Loading..."</>;
-  if(!isLoading){
-   // set(data)
+  const fetchData =  () =>{
+    //console.log('transaction:'+compareDate(startDate,endDate))
+    if(compareDate(startDate,endDate))
+    {
+    getData(startDate.toString(),endDate.toString()).then((result)=>{
+      
+      setTransfers(result)
+      
+      }).catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  }  else {
+    MySwal.fire({
+      title: 'ผืดพลาด',
+      text: 'วันที่สิ้นสุด น้อยกว่าวันที่เริ่มต้น !',
+      icon: 'error',
+      confirmButtonText: 'ตกลง',
+      
+    });
   }
+    //  .then((result:any)=>{
+     
+    //   settableData(result.data)
+    //   table.data = result.data
+    // })
+   }
   return (
     <>
-     {/* <Card
-              alignItems="center"
-              flexDirection="column"
-              gridArea="1 / 2 / 2 / 3"
-              w="100%"
-          >
-              <Grid
-                  templateColumns={{ md: 'repeat(2, 1fr)', lg: '1fr' }}
-                  w={'100%'}
-                  justifyContent={'center'}
-              >
-                  <MiniCalendar
-                      gridArea={{ md: '1 / 1 / 2 / 2;', lg: '1 / 1 / 2 / 2' }}
-                      selectRange={false}
-                      mb="20px"
-                  />
-                
-                 
-              </Grid>
-          </Card> */}
+     
     <Card
       flexDirection="column"
       w="100%"
@@ -483,26 +396,13 @@ const createPages = (count: number) => {
           lineHeight="100%"
           ml="5"
         >
-          {"รายงานยอดได้เสีย"}
+          {/* {"รายงานยอดได้เสีย"} */}
         </Text>
-        {/* <Button
-          bg={boxBg}
-          fontSize="sm"
-          fontWeight="500"
-          color={textColorSecondary}
-          borderRadius="7px"
-        >
-          <Icon
-            as={MdOutlineCalendarToday}
-            color={textColorSecondary}
-            me="4px"
-          />
-          This month
-        </Button> */}
+      
         
       </Flex>
       
-      <Box>
+      <Box minH={`calc(45vh)`}>
       <Flex
                 align={{ sm: 'flex-start', lg: 'flex-start' }}
                 justify={{ sm: 'flex-start', lg: 'flex-start' }}
@@ -516,8 +416,42 @@ const createPages = (count: number) => {
                     className="p-2 font-lg shadow border border-block"
                     placeholder="Search..."
                 />
+                       <Flex 
+             align={{ sm: 'flex-end', lg: 'flex-end' }}
+             justify={{ sm: 'flex-end', lg: 'flex-end' }}
+             w="100%"
+             
+            > 
+                   <HStack>
+        <VStack alignItems="flex-start">
+          <InputLabel>วันที่เริ่มต้น</InputLabel>
+          <SingleDatepicker
+            name="date-start"
+            date={startDate}
+      
+            onDateChange={setStartDate}
+          />
+    
+        </VStack>
+        <VStack alignItems="flex-start">
+          {/* <InputLabel>react-datepicker</InputLabel>
+          <DatePicker2 selectedDate={endDate} onChange={setEndDate} /> */}
+           <InputLabel>วันที่สิ้นสุด</InputLabel>
+          <SingleDatepicker
+            name="date-end"
+            date={endDate}
+          
+            onDateChange={setEndDate}
+          />
+        </VStack>
+        <VStack alignItems="flex-start"  >
+        <InputLabel>&nbsp;</InputLabel>
+        <Button colorScheme='blue' onClick={fetchData}>แสดงรายการ</Button>
+        </VStack>
+      </HStack>
+      </Flex>
             </Flex>
-        <Table variant="simple" color="gray.500" mt="12px">
+        <Table variant="simple" color="gray.500" mt="12px"  >
           <Thead>
             {table.getHeaderGroups().map((headerGroup:any) => (
               <Tr key={headerGroup.id}>
@@ -578,6 +512,21 @@ const createPages = (count: number) => {
                 );
               })}
           </Tbody>
+          <Tfoot>
+            {table.getFooterGroups().map((footerGroup:any) => (
+            <Tr key={footerGroup.id} className="border-solid md:border-dotted">
+               {footerGroup.headers.map((header:any) => (
+              <Th> {header.isPlaceholder
+                ? null
+                : flexRender(
+                    header.column.columnDef.footer,
+                    header.getContext()
+                  )}</Th>
+ 
+               ))}
+              </Tr>
+            ))}
+          </Tfoot>
         </Table>
         <Flex w="100%" justify="space-between" px="20px" pt="10px" pb="5px">
                 {/* SET ROW NUMBER */}

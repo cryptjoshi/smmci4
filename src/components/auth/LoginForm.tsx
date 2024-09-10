@@ -12,11 +12,15 @@ import { Flex,Box,Heading,
   FormControl,
   FormLabel,
   Button,
+  Center,
   Icon,
+  Image,
   Input,
   InputGroup,
   InputRightElement,
   Text,
+  VStack,
+  Stack,
   useColorModeValue, } from '@chakra-ui/react'
 
   import { FcGoogle } from 'react-icons/fc';
@@ -108,20 +112,30 @@ export default  function LoginForm() {
       mt={{ base: '40px', md: '14vh' }}
       flexDirection="column"
     >
-      <Box me="auto">
+     
+ <Flex 
+  w="100%"
+  mx={{ base: 'auto', lg: '0px' }}
+  me="auto"
+
+  alignItems="start"
+  justifyContent="center"
+ >
         <Heading color={textColor} fontSize="36px" mb="20px">
-          Sign In
+        <Image
+				boxSize='100px'
+				objectFit='cover'
+				src= '/img/layout/human.jfif'
+				alt='Dan Abramov'
+				mb='20px'
+			/>
         </Heading>
-        {/* <Text
-          mb="36px"
-          ms="4px"
-          color={textColorSecondary}
-          fontWeight="400"
-          fontSize="md"
-        >
-          Enter your email and password to sign in!
-        </Text> */}
-      </Box>
+        
+        </Flex>
+      
+      
+ 
+     
       <Flex
         zIndex="2"
         direction="column"

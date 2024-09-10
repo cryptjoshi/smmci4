@@ -13,13 +13,13 @@ interface AppWrappersProps {
   children: ReactNode;
 }
 
-export default function AppWrappers({ role,children }: { role:string,children: ReactNode }) {
+export default function AppWrappers<AppWrappersProps>({ role,children }: { role:string,children: ReactNode }) {
  
   return (
     <CacheProvider>
       <ChakraProvider theme={theme} >
       {React.Children.toArray(children).map((child:any) => 
-              React.isValidElement(child) ? React.cloneElement(child, { role }) : child
+              React.isValidElement(child) ? React.cloneElement(child, role) : child
             )}
         </ChakraProvider> 
     </CacheProvider>

@@ -69,7 +69,7 @@ import {
 import banner from 'img/auth/banner.png';
 import avatar from 'img/avatars/avatar4.png';
 import { getToken } from 'app/actions/userInfof';
-import { insertAdmin } from 'app/actions/auth';
+import { getPrefixs, insertAdmin } from 'app/actions/auth';
 import Swal from 'sweetalert2'
   // Assets
   type Authens = {
@@ -78,11 +78,16 @@ import Swal from 'sweetalert2'
     banknumber:string
     bankname:string
     password: string
+    repassword:string;
     balance:number;
+    prefix:string;
+    role:string;
     provider_password:string
+    status:string;
   }
   
   type RowObj = {
+    id:string;
     createdAt:string;
     MemberID:string;
     MemberName:string;
@@ -148,14 +153,12 @@ import Swal from 'sweetalert2'
 
     const [error, setError] = useState<string | null>(null);
 
-    //const [transfers,setTransfers] = useState<RowObj[]>([])
      
-    //const [data, setData] =  useState(() => [...transfers]);
     
     const [show, setShow] = React.useState(false);
     const [showx, setShowx] = React.useState(false);
     const [status,setStatus] = React.useState(false);
-    const handleClick = () => setShow(!show);
+    //const handleClick = () => setShow(!show);
     const {
       register,
       handleSubmit,
@@ -163,9 +166,18 @@ import Swal from 'sweetalert2'
       formState: { errors },
     } = useForm<Authens>()
 
-
- 
-  
+    type Option = {
+      value: string;
+      label: string;
+    };
+   
+    // const handleChange = () => {
+    //   setStatus(!!status)
+    //   // do the rest here
+    // } 
+    const handleChange = (e:any) => {
+      setStatus(!!status);
+    };
 
     const onSubmit: SubmitHandler<Authens> = (data:any) =>{ 
   
@@ -217,8 +229,10 @@ import Swal from 'sweetalert2'
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
    
     const [globalFilter, setGlobalFilter] =  useState('');
+
+    const [prefixs,setPrefixs] = useState([])
     
-  //   const { data, error, isLoading } = useSWR<Authens[]>(id ? `https://report.tsxbet.net/reports/users/${id}` : null,
+  //   const { data, error, isLoading } = useSWR(id ? `https://report.tsxbet.net/reports/users/${id}` : null,
   //   fetcher
   // );
 
@@ -231,6 +245,14 @@ import Swal from 'sweetalert2'
     // }
     //console.log(data.data[0])
 
+    useEffect(()=>{
+      const getprefixs = async ()=>{
+        const prefixx = await getPrefixs()
+        console.log(prefixx.data)
+        setPrefixs(prefixx.data)
+      }
+      getprefixs()
+    },[])
 
     return (
       <>
@@ -262,11 +284,12 @@ import Swal from 'sweetalert2'
           gridArea="1 / 1 / 2 / 2"
           banner={banner}
           avatar={avatar}
-          //name={data.data[0].username}
-          // balance={data.data[0].balance?data.data[0].balance.toLocaleString():0}
-          // turnover={data.data[0].turnover?data.data[0].turnover.toLocaleString():0}
-          // betamount={data.data[0].betamount?data.data[0].betamount.toLocaleString():"0.00"}
-          // payout={data.data[0].win?data.data[0].win.toLocaleString():data.data[0].loss.toLocaleString()}
+          name={""}
+          balance={0}
+          turnover={0}
+          betamount={"0.00"}
+          payout={"0.00"}
+          role={""}
           
         />
             </HStack>
@@ -275,6 +298,29 @@ import Swal from 'sweetalert2'
                 <FormControl id="fullname" isRequired>
                   <FormLabel>คำนำหน้า</FormLabel>
                   <Input type="text"  {...register("prefix", { disabled: false })} />
+                  {/* <Select
+                                      fontSize="sm"
+                                      id="color"
+                                      variant="main"
+                                      h="44px"
+                                      maxH="44px"
+                                      fontWeight="400"
+                                      me="20px"
+                                      defaultValue="dark_grey"
+                                      {...register("role", { disabled: false })}
+                                  >
+                                 { 
+                                   prefixs.forEach((element:any) => {
+                                    <option value={element.name}>{element.name}</option>
+                                  }) 
+                          
+                                
+                              
+                                  
+                                 }   
+                                    
+                                      
+                                  </Select> */}
                 </FormControl>
               </Box>
               {/* <Box>
@@ -365,7 +411,7 @@ import Swal from 'sweetalert2'
               <Input type="text"   defaultValue={data.data[0].balance.toFixed(2)}  {...register("balance", { disabled: true })}/>
             </FormControl> */}
             <Stack spacing={10} pt={2}>
-            <SwitchField reversed={true}   onChange={(e:any) => setStatus(e.target.value)} {...register("status")}   color={textColorPrimary} fontSize='sm' mb='20px' id='2' label={'ไม่ทำงาน'} />
+            <SwitchField reversed={true}   onChange={handleChange} {...register("status")}   color={textColorPrimary} fontSize='sm' mb='20px' id='2' label={'ไม่ทำงาน'} />
               <Button
                 loadingText="กำลังบันทึก"
                 size="lg"

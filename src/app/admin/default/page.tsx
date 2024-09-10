@@ -1,3 +1,4 @@
+//@ts-nocheck
 'use client';
 import { cookies } from 'next/headers';
 // Chakra imports
@@ -21,7 +22,8 @@ import { useRouter,redirect } from 'next/navigation';
 import Banktransfer from 'components/admin/dashboards/default/Banktransfer';
 import NewCustomer from 'components/admin/dashboards/default/Newcutomer';
 import { getAccount, getIsLogged, getToken } from 'app/actions/userInfof';
-
+import PageContent from 'components/PageContent';
+import { getSession, getUserstatus } from 'app/actions/auth';
  
 const fetcher = (url:string) => fetch(url,{ method: 'POST',
   headers: {
@@ -29,7 +31,7 @@ const fetcher = (url:string) => fetch(url,{ method: 'POST',
   'Content-Type': 'application/json',
   'Authorization': 'Bearer ' +  localStorage.getItem('token')
   },
-// body: raw
+ body: JSON.stringify({"prefix": getSession().then((session)=>session)})
 }).then((res) => res.json());
 
 
@@ -51,19 +53,32 @@ async function getData(){
 export default function Page() {
   // Chakra Color Mode
   const paleGray = useColorModeValue('secondaryGray.400', 'whiteAlpha.100');
-  const { data, error, isLoading } = useSWR(
-    "https://report.tsxbet.net/reports/count/userstatus",
-    fetcher
-  );
   
+  
+  const [data, setData] = React.useState(null)
+ 
+  useEffect(() => {
+    async function fetchPosts() {
+      let session = await getSession()
+      let res = await fetch('https://report.tsxbet.net/reports/count/userstatus',{ method: 'POST',
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' +  session.accessToken
+      },
+    body: JSON.stringify({"prefix":session.prefix})
+    })
+      let data = await res.json()
+      setData(data)
+    }
+    fetchPosts()
+  }, [])
+ 
+  if (!data) return <div>Loading...</div>
+ 
 
-if (error) return <>"An error has occurred."</>;
-if (isLoading) return <>"Loading..."</>;
-if(!isLoading){
-//  setProfit(data)
-}
   return (
-    
+    <PageContent title="">
     <Flex
       direction={{ base: 'column', xl: 'row' }}
       pt={{ base: '130px', md: '80px', xl: '80px' }}
@@ -95,7 +110,7 @@ if(!isLoading){
           <OverallRevenue />
           </Flex>
           <Flex gridArea={{ base: '2 / 1 / 3 / 3', '2xl': '1 / 2 / 2 / 3' }}>
-              <ProfitEstimation {...data} />
+              <ProfitEstimation  {...data} />
           </Flex>
         </Grid>
         <Grid
@@ -132,5 +147,6 @@ if(!isLoading){
         maxH={{ base: '100%', xl: '1170px', '2xl': '100%' }}
       />
     </Flex>
+    </PageContent>
   );
 }

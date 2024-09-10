@@ -56,8 +56,12 @@ export default function ProfileOverview() {
           gridArea="1 / 1 / 2 / 2"
           banner={banner}
           avatar={avatar}
-          name="Adela Parkson"
-          job="Product Designer"
+          role={""}
+          betamount={0}
+          turnover={0}
+          balance={0}
+          name={"Adela Parkson"}
+          job={"Product Designer"}
           posts="17"
           followers="9.7k"
           following="274"

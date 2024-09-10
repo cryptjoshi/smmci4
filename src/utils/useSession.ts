@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export type Role = "admin" | "user" | "sa";
 export interface User {
-
+    user:any
     username: string;
     role: Role;
   }

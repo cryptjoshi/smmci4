@@ -1,0 +1,10 @@
+
+div[class*=-picker__calendar] {
+    box-shadow: var(--shadow);
+    border-radius: var(--rounded-corners);
+    border-top-left-radius: 0
+}
+
+div[class*=-picker__calendar] .react-calendar {
+    border-top-left-radius: 0
+}

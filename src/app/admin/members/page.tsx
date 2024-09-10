@@ -22,18 +22,35 @@ import Banktransfer from 'components/admin/dashboards/default/Banktransfer';
 import NewCustomer from 'components/admin/dashboards/default/Newcutomer';
 import TransactionTable from 'components/admin/dashboards/default/TransactionsTable';
 import MembersTable from 'components/admin/dashboards/default/Members';
+import { getData, getSession } from 'app/actions/auth';
 
- 
-const fetcher = (url:string) => fetch(url,{ method: 'POST',
+
+
+const fetcher = (url:string,raw:string) => fetch(url,{ method: 'POST',
   headers: {
   'Accept': 'application/json',
   'Content-Type': 'application/json',
   'Authorization': 'Bearer ' +  localStorage.getItem('token')
   },
-// body: raw
+ body: raw
 }).then((res) => res.json());
 
+function getPrefix() {
 
+  const getdata = async () =>{
+    const session = await getSession()
+    return session.prefix;
+    // if (!session.isLoggedIn) {
+    //   session.isLoggedIn = defaultSession.isLoggedIn;
+    // }
+  }
+ return getdata().then(prefix=>prefix)
+  // If user visits for the first time session returns an empty object.
+  // Let's add the isLoggedIn property to this object and its value will be the default value which is false
+ 
+
+   
+}
 
 export default function Page() {
   // Chakra Color Mode
@@ -43,19 +60,47 @@ export default function Page() {
   // const [TopUpm, setTopUpm] = React.useState([]);
   // const [WinLoss,setWinLoss] = React.useState([])
   const [Profit,setProfit] = React.useState([{"name":"","sum":0}])
+  //const [data,setData] = React.useState()
   // const [newusers, setnewusers] = React.useState(0);
   const router = useRouter()
-  const { data, error, isLoading } = useSWR(
-    "https://report.tsxbet.net/reports/members",
-    fetcher
-  );
-  
+  //const session = await getSession()
 
-if (error) return <>"An error has occurred."</>;
-if (isLoading) return <>"Loading..."</>;
-if(!isLoading){
-//  setProfit(data)
-}
+ // const prefix = getPrefix()
+ 
+  // const { data, error, isLoading } = useSWR(
+  //   "https://report.tsxbet.net/reports/members",JSON.stringify({prefix:prefix}),
+  //   fetcher
+  // );
+  
+//   useEffect(()=>{
+   
+//    const getdata = async ()=>{
+
+//     const session = await getSession()
+
+//     let res = await fetch('https://report.tsxbet.net/reports/members', { method: 'POST',
+//     headers: {
+//     'Accept': 'application/json',
+//     'Content-Type': 'application/json',
+//     'Authorization': 'Bearer ' +   session.accessToken
+//     },
+//     body: JSON.stringify({prefix:session.prefix})
+//     });
+//     let data = await res.json();
+ 
+//   if(data.status){}
+//  // setData(data.data)
+//   }
+
+//  // getdata()
+
+//   },[])
+
+// if (error) return <>`An error has occurred.`</>;
+// if (isLoading) return <>`Loading...`</>;
+// if(!isLoading){
+// //  setProfit(data)
+// }
   return (
     <Flex
       direction={{ base: 'column', xl: 'row' }}
@@ -71,7 +116,7 @@ if(!isLoading){
           display={{ base: 'block', lg: 'grid' }}
         >
           <Flex gridArea={{ base: '1 / 1 / 2 / 3', '2xl': '1 / 1 / 2 / 2' }}>
-            <MembersTable tableData={data}  />
+            <MembersTable tableData={[]}  />
           </Flex>
         </Grid>
       </Flex>

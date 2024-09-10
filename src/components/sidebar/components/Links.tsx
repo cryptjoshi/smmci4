@@ -8,10 +8,18 @@ import { usePathname } from 'next/navigation';
 import { useCallback } from 'react';
 import { getMenuItems } from 'app/actions/getMenu';
 import {useEffect,useState} from 'react'
-import { useSession } from 'utils/useSession';
+import { User, useSession } from 'utils/useSession';
 interface SidebarLinksProps {
   routes: IRoute[];
   //role: string;
+}
+
+interface  AdminUser  {
+  accessToken:string;
+ isLoggedIn:boolean ;
+  prefix:string
+  role:string
+  username:string
 }
 
 export  function SidebarLinks(props: SidebarLinksProps) {
@@ -41,16 +49,20 @@ export  function SidebarLinks(props: SidebarLinksProps) {
   );
 
   // this function creates the links from the secondary accordions (for example auth -> sign-in -> default)
-  const createLinks = (routes: IRoute[],role:string) => {
-     
+  const createLinks = (routes: IRoute[],user:AdminUser) => {
+    
+    const role = user.role
+    //console.log(routes.filter(route => {console.log(route,role)}))
     return routes.filter(route => route.roles.includes(role)).map((route, index: number) => {
+       
       if (
         route.layout === '/admin' ||
-        route.layout === '/dashboard' ||
-        route.sublayout == '/dashboard' ||
-        route.layout === '/auth' ||
-        route.layout === '/rtl' 
+      //  route.layout === '/dashboard' ||
+        route.sublayout == '/dashboard' //||
+      //  route.layout === '/auth' ||
+      //  route.layout === '/rtl' 
       ) {
+   
         return (
           <Link key={index} href={role=='sa'?route.layout + route.path:route.sublayout+route.path}>
             {route.icon ? (
@@ -133,8 +145,7 @@ export  function SidebarLinks(props: SidebarLinksProps) {
     });
   };
   //  BRAND
-
-  return <>{createLinks(routes,user?.user?.role)}</>;
+  return <>{ user && createLinks(routes,user.user)}</>;
 }
 
 export default SidebarLinks;

@@ -12,8 +12,8 @@ export type sweettype = {
 }
 
 const MySwal = withReactContent(Swal);
-
-const AlertButton: React.FC = (props:sweettype) => {
+//@ts-ignore
+const AlertButton: React.FC<sweettype> = (props:sweettype) => {
     const {title,text,icon,showCancelButton,confirmButtonText,cancelButtonText} = props
   const handleClick = () => {
     MySwal.fire({
@@ -23,22 +23,22 @@ const AlertButton: React.FC = (props:sweettype) => {
       showCancelButton: true,
       confirmButtonText: 'Yes, continue!',
       cancelButtonText: 'No, cancel!',
-      customClass: {
-        container: 'swal2-container',
-        popup: 'swal2-popup',
-        header: 'swal2-header',
-        title: 'swal2-title',
-        closeButton: 'swal2-close-button',
-        icon: 'swal2-icon',
-        image: 'swal2-image',
-        content: 'swal2-content',
-        input: 'swal2-input',
-        actions: 'swal2-actions',
-        confirmButton: 'swal2-confirm-button',
-        cancelButton: 'swal2-cancel-button',
-        footer: 'swal2-footer',
-      },
-    }).then((result) => {
+      // customClass: {
+      //   container: 'swal2-container',
+      //   popup: 'swal2-popup',
+      //  // header: 'swal2-header',
+      //   title: 'swal2-title',
+      //   closeButton: 'swal2-close-button',
+      //   icon: 'swal2-icon',
+      //   image: 'swal2-image',
+      //   content: 'swal2-content',
+      //   input: 'swal2-input',
+      //   actions: 'swal2-actions',
+      //   confirmButton: 'swal2-confirm-button',
+      //   cancelButton: 'swal2-cancel-button',
+      //   footer: 'swal2-footer',
+      // },
+    }).then((result:any) => {
       if (result.isConfirmed) {
         MySwal.fire('Confirmed!', 'Your action was successful.', 'success');
       } else if (result.isDismissed) {

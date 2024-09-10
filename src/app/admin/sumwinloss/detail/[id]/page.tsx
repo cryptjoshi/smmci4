@@ -25,6 +25,7 @@ import TransactionTable from 'components/admin/dashboards/default/TransactionsTa
 import WinlossTable from 'components/admin/dashboards/default/WinlossTable';
 //import SumWinlossDetail from 'components/admin/dashboards/default/SumWinlossDetail';
 import dynamic from 'next/dynamic'
+import { getSession } from 'app/actions/auth';
 //import SumWinlossDetail from 'components/admin/dashboards/default/SumWinlossDetail';
 const SumWinlossDetail = dynamic(() => import('components/admin/dashboards/default/SumWinlossDetail'), { ssr: false })
  
@@ -38,38 +39,41 @@ const fetcher = (url:string) => fetch(url,{ method: 'GET',
 }).then((res) => res.json());
 
 
-async function safeFetchData(url) {
-  try {
-      const response = await fetch(url);
-      if (!response.ok) {
-          throw new Error('Network response was not ok');
-      }
-      return await response.json();
-  } catch (error) {
-    //@ts-ignore
-      if (error instanceof NetworkError) {
-          // handle network error
-          //@ts-ignore
-      } else if (error instanceof ApiError) {
-          // handle API-specific error
-      } else {
-          // handle generic errors
-      }
-      // Possibly return a fallback value or re-throw the error
-  }
-}
+// async function safeFetchData(url:string) {
+//   try {
+//       const response = await fetch(url);
+//       if (!response.ok) {
+//           throw new Error('Network response was not ok');
+//       }
+//       return await response.json();
+//   } catch (error) {
+//     //@ts-ignore
+//       if (error instanceof NetworkError) {
+//           // handle network error
+//           //@ts-ignore
+//       } else if (error instanceof ApiError) {
+//           // handle API-specific error
+//       } else {
+//           // handle generic errors
+//       }
+//       // Possibly return a fallback value or re-throw the error
+//   }
+// }
 
 async function getData(id:string){
  // console.log(`https://report.tsxbet.net/reports/sumwinloss/${id}`)
  // console.log( JSON.stringify({"startdate":new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10),"stopdate":new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10),"prefix":"all","statement_type":"all","status":"all"}))
   const token = ""//localStorage.getItem('token');
+
+  const session = await getSession()
+
   const  res = await fetch(`https://report.tsxbet.net/reports/sumwinloss/${id}`, {   cache: 'no-store'  ,method: 'POST',
     headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' +  token
     },
-    body: JSON.stringify({"startdate":new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10),"stopdate":new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10),"prefix":"all","statement_type":"all","status":"all"})
+    body: JSON.stringify({"startdate":new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10),"stopdate":new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10),"prefix":session.prefix,"statement_type":"all","status":"all"})
     
   });
   return  res.json();  
@@ -98,15 +102,16 @@ export default async function  Page({ params }: { params: { id: string } }){
   // );
   
 
-// if (error) return "An error has occurred.";
-// if (isLoading) return "Loading...";
+// if (error) return An error has occurred.`;
+// if (isLoading) return `Loading...`;
 // if(!isLoading){
 // //  setProfit(data)
 // }
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2  ">
     <div  style={{paddingTop:80+'px'}}>
-    <div style={{marginBottom: 20 + 'px'}} >
+    <div style={{marginBottom: 20 + 'px'}}
+    >
           <SumWinlossDetail transfers={data}  />
          </div>
       </div>

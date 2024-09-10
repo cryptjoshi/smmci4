@@ -48,7 +48,7 @@ export async function middleware(req: NextRequest) {
 
     // กำหนดการเข้าถึงเฉพาะเส้นทางที่ต้องการ
     if (url.pathname.startsWith('/admin') && role !== 'sa') {
-        return NextResponse.redirect(new URL('/dashboard/default', req.url));
+        return NextResponse.redirect(new URL('/dashboard/firsttrans', req.url));
     } 
     // else {
     //     return NextResponse.redirect(new URL('/dashboard', req.url));

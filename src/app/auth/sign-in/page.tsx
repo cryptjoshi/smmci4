@@ -10,7 +10,10 @@ const LoginPage = async () => {
   const session = await getSession()
 
   if (session.isLoggedIn) {
+   // if(session.role=='sa')
     redirect("/");
+  //  else
+ //   redirect("/dashboard/firsttrans")
   }
 
   return (

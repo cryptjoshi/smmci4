@@ -17,11 +17,15 @@ import {
   Tr,
   Tfoot,
   useColorModeValue,
-  Stack
+  HStack,
+  Stack,
+  VStack
    
 } from '@chakra-ui/react';
 
+import Swal from 'sweetalert2'
  
+import withReactContent from 'sweetalert2-react-content';
  
 import {
   PaginationState,
@@ -44,8 +48,19 @@ import useSWR from "swr";
 // Assets
 import { SearchBar } from 'components/navbar/searchBar/SearchBar';
  
-import MiniCalendar from 'components/calendar/MiniCalendar';
+// import MiniCalendar from 'components/calendar/MiniCalendar';
+//import DateTimePicker from 'react-datetime-picker'
 
+
+// import DateRangePicker from '@wojtekmaj/react-daterange-picker';
+
+//  import '@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css';
+//  import 'react-calendar/dist/Calendar.css';
+  
+ 
+//import 'react-datetime-picker/dist/DateTimePicker.css';
+//import 'react-calendar/dist/Calendar.css';
+//import 'react-clock/dist/Clock.css';
 
 // Custom components
 import Card from 'components/card/Card';
@@ -56,8 +71,16 @@ import Transfer from '../../../dataDisplay/Transfer';
 import { convertDate } from 'utils';
 import { getToken } from 'app/actions/userInfof';
 // Assets
-
+//import { Datepicker } from 'components/Datepicker';
+import { InputLabel } from 'components/InputLabel';
+import { SingleDatepicker } from 'components/Datepicker/DayzedDatepicker';
+import DatePicker2 from 'components/Datepicker/ReactDatePicker';
+import { DatepickerPropsData } from 'components/Datepicker';
+import { getData,compareDates } from 'app/actions/auth';
+import routes from 'routes';
+import { usePathname } from 'next/navigation'
 type RowObj = {
+  id:string;
   createdAt:string;
   MemberID:string;
   MemberName:string;
@@ -72,12 +95,14 @@ type RowObj = {
   loss:number;
   turnover:number;
   month:number;
+  WINLOSS:number;
+  TURNOVER:number;
 };
 //const startdate =  new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10);
  // const stopdate =  new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10);
   //const token = localStorage.getItem('token');
   //const raw = JSON.stringify({"startdate":startdate,"stopdate":stopdate,"prefix":"all","statement_type":"all","status":"all"});
-	
+
 const columnHelper = createColumnHelper<RowObj>();
 const fetcher = (url:string) => fetch(url,{ method: 'POST',
   headers: {
@@ -88,8 +113,32 @@ const fetcher = (url:string) => fetch(url,{ method: 'POST',
  body: JSON.stringify({"startdate":new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10),"stopdate":new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10),"prefix":"all","statement_type":"all","status":"all"})
 }).then((res) => res.json());
 // const columns = columnsDataCheck;
-export default function SumWinlossTable(props: { tableData: any }) {
-  const { tableData } = props;
+
+type ValuePiece = Date | null;
+
+type DateValue = ValuePiece | [ValuePiece, ValuePiece];
+
+const now = new Date();
+const yesterdayBegin = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+const todayEnd = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+
+
+const MySwal = withReactContent(Swal);
+
+  const compareDate = (date1:any, date2:any) =>{
+  const d1 = new Date(date1);
+  const d2 = new Date(date2);
+
+  // เปรียบเทียบวันที่ ถ้า date2 น้อยกว่า date1 ให้แสดง false
+  if (d2 < d1) {
+    return false;
+  }
+  return true;
+}
+
+export default function SumWinlossTable(props: DatepickerPropsData) {
+  const { Data } = props;
+ 
   const [sorting, setSorting] = useState<SortingState>([]);
   const textColor = useColorModeValue('secondaryGray.900', 'white');
   const textColorSecondary = useColorModeValue('secondaryGray.600', 'white');
@@ -100,114 +149,45 @@ export default function SumWinlossTable(props: { tableData: any }) {
   const router = useRouter()
   //const [transfers,setTransfers] = useState<RowObj[]>([])
    
-  //const [data, setData] =  useState(() => [...transfers]);
+  const [tableData, settableData] =  useState(Data);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
  
   const [globalFilter, setGlobalFilter] =  useState('');
-  
+  const [daterage, onDateChange] = useState<DateValue>(new Date());
   		
-  // const { data:transfers, error, isLoading } = useSWR(
-  //   "https://report.tsxbet.net/reports/sumwinloss",
-  //   fetcher
-  // );
-  //const [data, setData] =  useState([...transfers]);
-  //const [transfers, setTransfer] = useState<RowObj[]>(() => [...data]);
+  const { position = "relative", startDateIcon, endDateIcon } = props;
+  const [date, setDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [startDate,setStartDate] = useState(new Date());
+
   const [{ pageIndex, pageSize }, setPagination] =
     useState<PaginationState>({
         pageIndex: 0,
         pageSize: 20,
     });
-
-const pagination = React.useMemo(
-  () => ({
-      pageIndex,
-      pageSize,
-  }),
-  [pageIndex, pageSize]
-);
- 
-const createPages = (count: number) => {
-  let arrPageCount = [];
-
-  for (let i = 1; i <= count; i++) {
-      arrPageCount.push(i);
-  }
-
-  return arrPageCount;
-};
-
-	// useEffect(() => {
-	// 	let isLoaded = false;
-
-	// 	const checkData = async () => {
-	// 		const token = localStorage.getItem('token');
-		   
-	// 		if(!token){
-	// 		  router.replace('/auth/sign-in')
-	// 	  } else 
-	// 	  {
-			
-	// 		   // console.log(new Date().format('yyyy-MM-dd'))
-	// 			const today = new Date().toJSON().slice(0, 10);
-      
-        
-  //       const startdate =  new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10);
-				
-  //       const stopdate =  new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10);
-	// 			const raw = JSON.stringify({"startdate":startdate,"stopdate":stopdate,"prefix":"all","statement_type":"all","status":"all"});
-				
-			 
-	// 		let res = await fetch('https://report.tsxbet.net/reports/winloss', { method: 'POST',
-	// 		  headers: {
-	// 			'Accept': 'application/json',
-	// 			'Content-Type': 'application/json',
-	// 			'Authorization': 'Bearer ' +  token
-	// 		  },
-	// 	  body: raw
-	// 	  });
-	// 	  let xdata = await res.json();
-     
-	// 	  if(xdata.status){
-			 
-	// 	//	if(!isLoaded){
-	// 		   setTransfers(xdata.data)
-  //        setData(xdata.data)
-  //        setLoading(false)
-	// 		  // const sumtotal = data.data.data.reduce((accumulator:any, current:any) => accumulator + current)
-		 
-	// 		  // setTotal(data.data[0].sum.toFixed(2).toString())
-  //       // lineChartOptionsOverallRevenue.xaxis.categories = data.data.dayArray;
-	// 		 //  lineChartDataOverallRevenue.xaxis.categories = data.data.daysArray;
-	// 		//}
-	// 		 // setAuthenticated(true)
-	// 	  } else {
-	// 	//	router.replace('/auth/sign-in')
-	// 	  } 
-			  
-	// 		}
-	// 	}
-
-	// 	 const timeout = setTimeout(() => {
-	// 	 	//setMounted(true);
-	// 	 	isLoaded = true;
-	// 	}, 3000);
-
- 
-	// 	checkData()
+    const paths = usePathname()
+    const pathNames = paths.split('/').filter( (path:any) => path )[0]
   
-	// 	return () => {
-	// 		//isLoaded = true;
-	// 	//	checkData();
-	// 	 	clearTimeout(timeout);
-	// 	 };
-
-
-		
-	// }, []);
-
+  const pagination = React.useMemo(
+    () => ({
+        pageIndex,
+        pageSize,
+    }),
+    [pageIndex, pageSize]
+  );
   
+  const createPages = (count: number) => {
+    let arrPageCount = [];
+
+    for (let i = 1; i <= count; i++) {
+        arrPageCount.push(i);
+    }
+
+    return arrPageCount;
+  };
+ 
   const columns = [
-   
+    
     
     columnHelper.accessor('id', { header: () => 'ID', cell: (info:any) => parseInt(info.row.id) + 1, }),
     columnHelper.accessor('MemberName', {
@@ -219,11 +199,11 @@ const createPages = (count: number) => {
           fontSize={{ sm: '10px', lg: '12px' }}
           color="gray.400"
         >
-         {"ชื่อสมาชิก"}
+          {"ชื่อสมาชิก"}
         </Text>
       ),
       cell: (info:any) => (
-      <Link href={`/admin/sumwinloss/detail/${info.getValue()}`}>
+      <Link href={`/${pathNames}/sumwinloss/detail/${info.getValue()}`}>
       <Button >
         <Text color={textColor} fontSize="sm" fontWeight="600">
           {info.getValue()}
@@ -241,7 +221,7 @@ const createPages = (count: number) => {
           fontSize={{ sm: '10px', lg: '12px' }}
           color="gray.400"
         >
-         {"ยอดแทง"}
+          {"ยอดแทง"}
         </Text>
       ),
       cell: (info:any) => (
@@ -253,7 +233,7 @@ const createPages = (count: number) => {
         const total = table
           .getRowModel()
           .rows.reduce((sum:any, row:any) => row.original.BetAmount + sum, 0);
-         return (  <Text color={
+          return (  <Text color={
           total >0
         ? 'green.500'
         : 'red.500'
@@ -262,7 +242,7 @@ const createPages = (count: number) => {
         fontSize="md" fontWeight="800">{total.toFixed(2)}</Text>)
       },
     }),
-     
+      
     columnHelper.accessor('WINLOSS', {
       id: 'WINLOSS',
       header: () => (
@@ -272,7 +252,7 @@ const createPages = (count: number) => {
           fontSize={{ sm: '10px', lg: '12px' }}
           color="gray.400"
         >
-         {"ได้/เสีย"}
+          {"ได้/เสีย"}
         </Text>
       ),
       cell: (info:any) => (
@@ -288,7 +268,7 @@ const createPages = (count: number) => {
         const total = table
           .getRowModel()
           .rows.reduce((sum:any, row:any) => row.original.WINLOSS + sum, 0);
-         return (  <Text color={
+          return (  <Text color={
           total >0
         ? 'green.500'
         : 'red.500'
@@ -307,7 +287,7 @@ const createPages = (count: number) => {
           fontSize={{ sm: '10px', lg: '12px' }}
           color="gray.400"
         >
-         {"เทิร์น"}
+          {"เทิร์น"}
         </Text>
       ),
       cell: (info:any) => (
@@ -319,7 +299,7 @@ const createPages = (count: number) => {
         const total = table
           .getRowModel()
           .rows.reduce((sum:any, row:any) => row.original.TURNOVER + sum, 0);
-         return (  <Text color={
+          return (  <Text color={
           total >0
         ? 'green.500'
         : 'red.500'
@@ -328,69 +308,86 @@ const createPages = (count: number) => {
         fontSize="md" fontWeight="800">{total.toFixed(2)}</Text>)
       },
     }),
- 
+
   ];
-  
  
 
-  const table = useReactTable({
-    ...tableData,
-    columns,
-    state: {
-      sorting,
-      columnFilters,
-      globalFilter,
-      pagination,
-    },
-    onPaginationChange: setPagination,
-    onColumnFiltersChange: setColumnFilters,
-    onGlobalFilterChange: setGlobalFilter,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
-    getFacetedMinMaxValues: getFacetedMinMaxValues(),
-    debugTable: true,
-    debugHeaders: true,
-    debugColumns: false,
-    onSortingChange: setSorting
-  });
+  const fetchData =  () =>{
+    // console.log('winloss:'+compareDate(startDate,endDate))
+    if(compareDate(startDate,endDate))
+    {
+      getData(startDate.toString(),endDate.toString()).then((result)=>{
+      //console.log(result)
+      settableData(result)
+   
+    }).catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  }  else {
+    MySwal.fire({
+      title: 'ผืดพลาด',
+      text: 'วันที่สิ้นสุด น้อยกว่าวันที่เริ่มต้น !',
+      icon: 'error',
+      confirmButtonText: 'ตกลง',
+      
+    });
+  }
+    //  .then((result:any)=>{
+     
+    //   settableData(result.data)
+    //   table.data = result.data
+    // })
+   }
 
-  //let defaultData = tableData;
-  // if (error) return <>"An error has occurred."</>;
-  // if (isLoading) return <>"Loading..."</>;
-  // if(!isLoading){
-  //  // set(data)
-  // }
+ 
+ 
+ useEffect(() => {
+  try {
+  fetchData(); 
+  
+  }
+  catch(err){
+    console.log(err)
+  }
+}, []);
+
+ const table = useReactTable({
+  ...tableData,
+  columns,
+  state: {
+    sorting,
+    columnFilters,
+    globalFilter,
+    pagination,
+  },
+  onPaginationChange: setPagination,
+  onColumnFiltersChange: setColumnFilters,
+  onGlobalFilterChange: setGlobalFilter,
+  getCoreRowModel: getCoreRowModel(),
+  getFilteredRowModel: getFilteredRowModel(),
+  getSortedRowModel: getSortedRowModel(),
+  getPaginationRowModel: getPaginationRowModel(),
+  getFacetedRowModel: getFacetedRowModel(),
+  getFacetedUniqueValues: getFacetedUniqueValues(),
+  getFacetedMinMaxValues: getFacetedMinMaxValues(),
+  debugTable: true,
+  debugHeaders: true,
+  debugColumns: false,
+  onSortingChange: setSorting
+});
+
+ 
+
+ 
   return (
     <>
-     {/* <Card
-              alignItems="center"
-              flexDirection="column"
-              gridArea="1 / 2 / 2 / 3"
-              w="100%"
-          >
-              <Grid
-                  templateColumns={{ md: 'repeat(2, 1fr)', lg: '1fr' }}
-                  w={'100%'}
-                  justifyContent={'center'}
-              >
-                  <MiniCalendar
-                      gridArea={{ md: '1 / 1 / 2 / 2;', lg: '1 / 1 / 2 / 2' }}
-                      selectRange={false}
-                      mb="20px"
-                  />
-                
-                 
-              </Grid>
-          </Card> */}
+ 
     <Card
       flexDirection="column"
       w="100%"
       px="0px"
       overflowX={{ sm: 'scroll', lg: 'hidden' }}
+     
     >
       <Flex align="center" justify="space-between" w="100%" px="10px" mb="20px">
         <Text
@@ -400,13 +397,13 @@ const createPages = (count: number) => {
           lineHeight="100%"
           ml="5"
         >
-          {"รายงานยอดได้เสีย"}
+          {/* {"รายงานยอดได้เสีย"} */}
         </Text>
-        
+     
         
       </Flex>
       
-      <Box>
+      <Box minH={`calc(45vh)`}>
       <Flex
                 align={{ sm: 'flex-start', lg: 'flex-start' }}
                 justify={{ sm: 'flex-start', lg: 'flex-start' }}
@@ -420,8 +417,45 @@ const createPages = (count: number) => {
                     className="p-2 font-lg shadow border border-block"
                     placeholder="Search..."
                 />
+                   <Flex 
+             align={{ sm: 'flex-end', lg: 'flex-end' }}
+             justify={{ sm: 'flex-end', lg: 'flex-end' }}
+             w="100%"
+             
+            >
+           
+           <HStack>
+        <VStack alignItems="flex-start">
+          <InputLabel>วันที่เริ่มต้น</InputLabel>
+          <SingleDatepicker
+            name="date-start"
+            date={startDate}
+      
+            onDateChange={setStartDate}
+          />
+    
+        </VStack>
+        <VStack alignItems="flex-start">
+          {/* <InputLabel>react-datepicker</InputLabel>
+          <DatePicker2 selectedDate={endDate} onChange={setEndDate} /> */}
+           <InputLabel>วันที่สิ้นสุด</InputLabel>
+          <SingleDatepicker
+            name="date-end"
+            date={endDate}
+          
+            onDateChange={setEndDate}
+          />
+        </VStack>
+        <VStack alignItems="flex-start"  >
+        <InputLabel>&nbsp;</InputLabel>
+        <Button colorScheme='blue' onClick={fetchData}>แสดงรายการ</Button>
+        </VStack>
+      </HStack>
+            
             </Flex>
-        <Table variant="striped" color="gray.500" mt="12px">
+            </Flex>
+           
+        <Table variant="striped" color="gray.500" mt="12px"  >
           <Thead>
             {table.getHeaderGroups().map((headerGroup:any) => (
               <Tr key={headerGroup.id}>
@@ -457,12 +491,12 @@ const createPages = (count: number) => {
             ))}
           </Thead>
           <Tbody>
-            {table
+            { table
               .getRowModel()
               .rows.slice(0, pageSize+1)
-              .map((row:any) => {
+              .map((row:any,index:number) => {
                 return (
-                  <Tr key={row.id}>
+                  <Tr key={index}>
                     {row.getVisibleCells().map((cell:any) => {
                       return (
                         <Td
@@ -499,7 +533,7 @@ const createPages = (count: number) => {
           </Tfoot>
         </Table>
         <Flex w="100%" justify="space-between" px="20px" pt="10px" pb="5px">
-                {/* SET ROW NUMBER */}
+             
                 <Text
                     fontSize="sm"
                     color="gray.500"
@@ -512,7 +546,7 @@ const createPages = (count: number) => {
                         : tableData.data.length}{' '}
                     of {tableData.data.length} entries
                 </Text>
-                {/* PAGINATION BUTTONS */}
+                
                 <div className="flex items-center gap-2">
                     <Stack
                         direction="row"
@@ -629,7 +663,7 @@ const createPages = (count: number) => {
                         </Button>
                     </Stack>
                 </div>
-            </Flex>
+        </Flex>
       </Box>
      
     </Card>

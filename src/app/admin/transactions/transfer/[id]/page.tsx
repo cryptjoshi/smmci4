@@ -113,7 +113,7 @@ import WinlossTable from 'components/admin/dashboards/default/WinlossTable';
 import WinlossDetail from 'components/admin/dashboards/default/WinlossDetail';
 import MembersDetail from 'components/admin/dashboards/default/MembersDetail';
 import StatementsDetail from 'components/admin/dashboards/default/StatementDetail';
-
+import PageContent from 'components/PageContent';
  
 const fetcher = (url:string) => fetch(url,{ method: 'GET',
   headers: {
@@ -157,12 +157,13 @@ export default function Page() {
 //   );
   
 
-// if (error) return "An error has occurred.";
-// if (isLoading) return "Loading...";
+// if (error) return An error has occurred.`;
+// if (isLoading) return `Loading...`;
 // if(!isLoading){
 // //  setProfit(data)
 // }
   return (
+    <PageContent title="">
     <Flex
       direction={{ base: 'column', xl: 'row' }}
       pt={{ base: '130px', md: '80px', xl: '80px' }}
@@ -182,5 +183,6 @@ export default function Page() {
         </Grid>
       </Flex>
     </Flex>
+    </PageContent>
   );
 }

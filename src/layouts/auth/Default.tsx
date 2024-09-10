@@ -81,7 +81,7 @@ function AuthIllustration(props: {
         </Box> */}
         {/* <Footer mb={{ xl: '3vh' }} /> */}
       </Flex>
-      <FixedPlugin />
+      {/* <FixedPlugin /> */}
       </Center>
     </Flex>
   );

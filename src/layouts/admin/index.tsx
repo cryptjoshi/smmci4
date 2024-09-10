@@ -22,7 +22,7 @@ interface DashboardLayoutProps extends PropsWithChildren {
 export default function AdminLayout (props: DashboardLayoutProps) {
   const { children,role, ...rest } = props
 
-  console.log(role)
+  
   // states and functions
   const [fixed] = useState(false)
   const [toggleSidebar, setToggleSidebar] = useState(false)

@@ -43,7 +43,7 @@ export default async function SidebarDocs() {
         top="-47px"
         transform="translate(-50%, 0%)"
       >
-        <Image alt="" src={logoWhite.src} w="40px" h="40px" />
+        {/* <Image alt="" src={logoWhite.src} w="40px" h="40px" /> */}
       </Flex>
       <Flex
         direction="column"

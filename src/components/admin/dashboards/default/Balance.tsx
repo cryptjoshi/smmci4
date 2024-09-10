@@ -148,7 +148,7 @@ export default function Balance(props: { [x: string]: any }) {
                           fontWeight="700"
                           lineHeight="100%"
                       >
-                          {parseFloat(sumTotal.total).toFixed(2)}
+                          {parseFloat(sumTotal.total).toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2})}
                       </Text>
                   </Flex>
                   <Flex
@@ -305,7 +305,7 @@ export default function Balance(props: { [x: string]: any }) {
                     mb="20px"
                     name={item.gateway_name}
                     date="Today, 16:36"
-                    sum={item.balance}
+                    sum={ parseFloat(item.balance).toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2})}
                     icon={
                         <Icon as={MdDomain} color={blueIcon} w="20px" h="18px" />
                     }

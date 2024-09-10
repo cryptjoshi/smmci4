@@ -79,6 +79,13 @@ import withReactContent from 'sweetalert2-react-content';
     password: string
     balance:number;
     provider_password:string
+    id:string;
+    createdAt: string;
+    status: string;
+    prefix:string;
+    role:string;
+    newpassword:string;
+    repassword:string;
   }
   
   type RowObj = {
@@ -162,7 +169,7 @@ import withReactContent from 'sweetalert2-react-content';
    
     const [globalFilter, setGlobalFilter] =  useState('');
     
-    const { data, error, isLoading } = useSWR<Authens[]>(id ? `https://report.tsxbet.net/reports/users/${id}` : null,
+    const { data, error, isLoading } = useSWR(id ? `https://report.tsxbet.net/reports/admin/${id}` : null,
     fetcher
   );
 
@@ -259,10 +266,11 @@ import withReactContent from 'sweetalert2-react-content';
           banner={banner}
           avatar={avatar}
           name={data.data[0].username}
-          // balance={data.data[0].balance?data.data[0].balance.toLocaleString():0}
-          // turnover={data.data[0].turnover?data.data[0].turnover.toLocaleString():0}
-          // betamount={data.data[0].betamount?data.data[0].betamount.toLocaleString():"0.00"}
-          // payout={data.data[0].win?data.data[0].win.toLocaleString():data.data[0].loss.toLocaleString()}
+          balance={0}
+          turnover={0}
+          betamount={"0.00"}
+          payout={"0.00"}
+          role={""}
           
         />
             </HStack>
@@ -295,7 +303,7 @@ import withReactContent from 'sweetalert2-react-content';
             <FormControl id="password" >
               <FormLabel>รหัสผ่าน</FormLabel>
               <InputGroup>
-                <Input type={show ? 'text' : 'password'} defaultValue={data.data[0].password.slice(0,6)}  {...register("password", { disabled: true }, { required: true })} />
+                <Input type={show ? 'text' : 'password'} defaultValue={data.data[0].password.slice(0,6)}  {...register("password", { disabled: true , required: true })} />
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}

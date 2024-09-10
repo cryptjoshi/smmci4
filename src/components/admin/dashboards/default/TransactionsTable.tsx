@@ -1,5 +1,5 @@
 /* eslint-disable */
-
+'use client'
 import {
   Badge,
   Box,
@@ -15,11 +15,15 @@ import {
   Thead,
   Tr,
   useColorModeValue,
-  Stack
+  Stack,
+  VStack,
+  HStack
    
 } from '@chakra-ui/react';
 
+import Swal from 'sweetalert2'
  
+import withReactContent from 'sweetalert2-react-content';
  
 import {
   PaginationState,
@@ -37,17 +41,20 @@ import {
   flexRender,
 } from '@tanstack/react-table';
 
-import { MdOutlineCalendarToday,MdChevronLeft,MdChevronRight } from 'react-icons/md';
+import { MdChevronLeft,MdChevronRight } from 'react-icons/md';
 import { SearchBar } from 'components/navbar/searchBar/SearchBar';
-// Custom components
+
 import Card from 'components/card/Card';
 import * as React from 'react';
-import { useRouter,redirect } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import Transfer from '../../../dataDisplay/Transfer';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { convertDate } from 'utils';
-import { getToken } from 'app/actions/userInfof';
+
 // Assets
+import { InputLabel } from 'components/InputLabel';
+import { SingleDatepicker } from 'components/Datepicker/DayzedDatepicker';
+import { getTransaction } from 'app/actions/auth';
+
 
 type RowObj = {
   uid: string;
@@ -60,8 +67,17 @@ type RowObj = {
 };
 
 const columnHelper = createColumnHelper<RowObj>();
+const MySwal = withReactContent(Swal);
+const compareDate = (date1:any, date2:any) =>{
+  const d1 = new Date(date1);
+  const d2 = new Date(date2);
 
-// const columns = columnsDataCheck;
+  // เปรียบเทียบวันที่ ถ้า date2 น้อยกว่า date1 ให้แสดง false
+  if (d2 < d1) {
+    return false;
+  }
+  return true;
+}
 export default function TransactionTable(props: { tableData: any }) {
   
   const { tableData } = props;
@@ -73,12 +89,14 @@ export default function TransactionTable(props: { tableData: any }) {
 
   const brandColor = useColorModeValue('brand.500', 'brand.400');
   const router = useRouter()
-  const [transfers,setTransfers] = useState<RowObj[]>([])
+  const [transfers,setTransfers] = useState(tableData)
   const [loading, setLoading] = useState(true);
-  const [data, setData] =  useState(() => [...transfers]);
+  const [data, setData] =  useState(tableData);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] =  useState('');
   const [{ pageIndex, pageSize }, setPagination] =useState<PaginationState>({pageIndex: 0,pageSize: 6});
+  const [endDate, setEndDate] = useState(new Date());
+  const [startDate,setStartDate] = useState(new Date());
 
 const pagination = React.useMemo(() => ({pageIndex,pageSize}),[pageIndex, pageSize]);
  
@@ -93,82 +111,34 @@ const createPages = (count: number) => {
   return arrPageCount;
 };
 
-useEffect(() => {
-		let isLoaded = false;
-
-		const checkData = async () => {
-			const token =  getToken() //localStorage.getItem('token');
-		   
-			if(!token){
-			  router.replace('/auth/sign-in')
-		  } else 
-		  {
-			
-			   // console.log(new Date().format('yyyy-MM-dd'))
-				const today = new Date().toJSON().slice(0, 10);
-        const startdate =  new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10);
-				
-        const stopdate =  new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10);
-				const raw = JSON.stringify({"startdate":startdate,"stopdate":stopdate,"prefix":"all","statement_type":"all","status":"all"});
-				let data;
-			 
-			let res = await fetch('https://report.tsxbet.net/reports/all/statement', { method: 'POST',
-			  headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				'Authorization': 'Bearer ' +  token
-			  },
-		  body: raw
-		  });
-		  data = await res.json();
-     
-		  if(data.status){
-		 
-		//	if(!isLoaded){
-			   setTransfers(data.data)
-         setData(data.data)
-         setLoading(false)
-			  // const sumtotal = data.data.data.reduce((accumulator:any, current:any) => accumulator + current)
-		 
-			  // setTotal(data.data[0].sum.toFixed(2).toString())
-        // lineChartOptionsOverallRevenue.xaxis.categories = data.data.dayArray;
-			 //  lineChartDataOverallRevenue.xaxis.categories = data.data.daysArray;
-			//}
-			 // setAuthenticated(true)
-		  } else {
-		//	router.replace('/auth/sign-in')
-		  } 
-			  
-			}
-		}
-
-		 const timeout = setTimeout(() => {
-		 	//setMounted(true);
-		 	isLoaded = true;
-		}, 3000);
-
- 
-		checkData()
-  
-		return () => {
-			//isLoaded = true;
-		//	checkData();
-		 	clearTimeout(timeout);
-		 };
-
-
-		
-	}, []);
-
-
-  const showdetail= (e:any,uid:string) =>{
-    e.preventDefault()
-   // router.replace(`/admin/transactions/transfer/${uid}`)
-    router.push(`/admin/transactions/transfer/${uid}`)
+const fetchData =  () =>{
+    //console.log('transaction:'+compareDate(startDate,endDate))
+    if(compareDate(startDate,endDate))
+    {
+    getTransaction(startDate.toString(),endDate.toString()).then((result)=>{
+      
+      setTransfers(result.data)
+      setData(result.data)
+      }).catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  }  else {
+    MySwal.fire({
+      title: 'ผืดพลาด',
+      text: 'วันที่สิ้นสุด น้อยกว่าวันที่เริ่มต้น !',
+      icon: 'error',
+      confirmButtonText: 'ตกลง',
+      
+    });
   }
-  
-  const href = {pathname:'/admin/transactions/transfer/'}
-  const columns = [
+    //  .then((result:any)=>{
+     
+    //   settableData(result.data)
+    //   table.data = result.data
+    // })
+   }
+
+const columns = [
     columnHelper.accessor('uid', {
       id: 'uid',
       header: () => (
@@ -352,9 +322,7 @@ useEffect(() => {
  
   ];
   
-  //const [data, setData] = React.useState(() => [...transfers]);
-
-  const table = useReactTable({
+const table = useReactTable({
     data,
     columns,
     state: {
@@ -379,14 +347,6 @@ useEffect(() => {
     onSortingChange: setSorting
   });
 
-  //let defaultData = tableData;
-  if(loading){
-    return <p>Loading...</p>
-  }
-   
- if(!transfers){
-   return <p>No data available</p>
- }
 
   return (
     <>
@@ -396,7 +356,7 @@ useEffect(() => {
       px="0px"
       overflowX={{ sm: 'scroll', lg: 'hidden' }}
     >
-      <Flex align="center" justify="space-between" w="100%" px="10px" mb="20px">
+      {/* <Flex align="center" justify="space-between" w="100%" px="10px" mb="20px">
         <Text
           color={textColor}
           fontSize="lg"
@@ -406,22 +366,9 @@ useEffect(() => {
         >
           {"รายการเคลื่อนไหว"}
         </Text>
-        {/* <Button
-          bg={boxBg}
-          fontSize="sm"
-          fontWeight="500"
-          color={textColorSecondary}
-          borderRadius="7px"
-        >
-          <Icon
-            as={MdOutlineCalendarToday}
-            color={textColorSecondary}
-            me="4px"
-          />
-          This month
-        </Button> */}
-      </Flex>
-      <Box>
+
+      </Flex> */}
+      <Box minH={`calc(45vh)`}>
       <Flex
                 align={{ sm: 'flex-start', lg: 'flex-start' }}
                 justify={{ sm: 'flex-start', lg: 'flex-start' }}
@@ -435,8 +382,42 @@ useEffect(() => {
                     className="p-2 font-lg shadow border border-block"
                     placeholder="Search..."
                 />
+                 <Flex 
+             align={{ sm: 'flex-end', lg: 'flex-end' }}
+             justify={{ sm: 'flex-end', lg: 'flex-end' }}
+             w="100%"
+             
+            > 
+                   <HStack>
+        <VStack alignItems="flex-start">
+          <InputLabel>วันที่เริ่มต้น</InputLabel>
+          <SingleDatepicker
+            name="date-start"
+            date={startDate}
+      
+            onDateChange={setStartDate}
+          />
+    
+        </VStack>
+        <VStack alignItems="flex-start">
+          {/* <InputLabel>react-datepicker</InputLabel>
+          <DatePicker2 selectedDate={endDate} onChange={setEndDate} /> */}
+           <InputLabel>วันที่สิ้นสุด</InputLabel>
+          <SingleDatepicker
+            name="date-end"
+            date={endDate}
+          
+            onDateChange={setEndDate}
+          />
+        </VStack>
+        <VStack alignItems="flex-start"  >
+        <InputLabel>&nbsp;</InputLabel>
+        <Button colorScheme='blue' onClick={fetchData}>แสดงรายการ</Button>
+        </VStack>
+      </HStack>
+      </Flex>
             </Flex>
-        <Table variant="simple" color="gray.500" mt="12px">
+        <Table variant="simple" color="gray.500" mt="12px" >
           <Thead>
             {table.getHeaderGroups().map((headerGroup:any) => (
               <Tr key={headerGroup.id}>

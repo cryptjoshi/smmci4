@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import axios from 'axios';
 import { Box, Button, Input, Text, VStack, Image } from '@chakra-ui/react';
 
 interface GenerateResponse {
@@ -73,7 +72,7 @@ export default function Home() {
     'Content-Type': 'application/json',
     //'Authorization': 'Bearer ' +  token
     },
-    body: JSON.stringify({ token: otp, amount: parseInt(amount),userid:userid })
+    body: JSON.stringify({ token: otp, amount: amount,userid:userid })
   })
 
   const res = await response.json();
@@ -89,7 +88,7 @@ export default function Home() {
   return (
     <VStack spacing={4} p={8} align="center">
       <Text fontSize="2xl" fontWeight="bold">2FA with Google Authenticator</Text>
-      <Input placeholder="Userid" value={userid} onChange={(e) => setUserid(e.target.value)} />
+      <Input placeholder="Userid" value={userid} onChange={(e) => setUserid(parseInt(e.target.value))} />
       <Button colorScheme="teal" onClick={generateQrCode}>Generate QR Code</Button>
       {qrcode && (
         <Box>

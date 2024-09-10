@@ -40,15 +40,15 @@ const fetcher = (url:string) => fetch(url,{ method: 'GET',
 
 
 async function getData(round:string){
-  const token = "";//localStorage.getItem('token');
-  
-  const  res = await fetch(`https://report.tsxbet.net/reports/winloss/game/${round}`, { cache: 'no-store' ,method: 'POST',
+  const token =  ""
+  const raw = JSON.stringify({"startdate":new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10),"stopdate":new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10),"prefix":"all","statement_type":"all","status":"all","userid":round})
+  const  res = await fetch(`https://report.tsxbet.net/reports/winloss/game/${round}`, { cache: 'no-store',method: 'POST',
     headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' +  token
+    'Authorization': 'Bearer ' 
     },
-    body: JSON.stringify({"startdate":new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10),"stopdate":new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10),"prefix":"all","statement_type":"all","status":"all","userid":round})
+    body:   raw
 
   });
   return  res.json();  
@@ -75,8 +75,8 @@ export default async function Page({ params }: { params: {round: string } }){
 //     fetcher
 //   );
  
-// if (error) return "An error has occurred.";
-// if (isLoading) return "Loading...";
+// if (error) return An error has occurred.`;
+// if (isLoading) return `Loading...`;
 // if(!isLoading){
 // //  setProfit(data)
 // }

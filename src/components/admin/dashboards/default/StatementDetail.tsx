@@ -66,10 +66,12 @@ import { getToken } from 'app/actions/userInfof';
     password: string
     balance:number;
     provider_password:string
+    createdAt:string;
+    transactionamount:string
   }
 
       
-  const columnHelper = createColumnHelper<RowObj>();
+  //const columnHelper = createColumnHelper<RowObj>();
   const fetcher = (url:string) => fetch(url,{ method: 'POST',
     headers: {
     'Accept': 'application/json',
@@ -125,7 +127,7 @@ import { getToken } from 'app/actions/userInfof';
 
     const {id} = params
 
-    const { data, error, isLoading } = useSWR<Authens[]>(id ? `https://report.tsxbet.net/reports/transactions/${id}` : null,
+    const { data, error, isLoading } = useSWR(id ? `https://report.tsxbet.net/reports/transactions/${id}` : null,
     fetcher
     );
 

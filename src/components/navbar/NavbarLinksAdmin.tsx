@@ -266,9 +266,17 @@ export default function HeaderLinks(props: {
             borderRadius={'50%'}
           />
           <Center top={0} left={0} position={'absolute'} w={'100%'} h={'100%'}>
-            <Text fontSize={'xs'} fontWeight="bold" color={'white'}>
+            {/* <Text fontSize={'xs'} fontWeight="bold" color={'white'}>
               {user?.user?.role}
-            </Text>
+            </Text> */}
+            <Image
+            borderRadius='full'
+            boxSize='50px'
+            objectFit='cover'
+            src= '/img/layout/tiger.jfif'
+            alt='Dan Abramov'
+           
+          />
           </Center>
         </MenuButton>
         <MenuList

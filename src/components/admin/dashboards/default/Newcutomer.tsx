@@ -35,6 +35,7 @@ import { getToken } from 'app/actions/userInfof';
 // Assets
 
 type RowObj = {
+  id:string;
   fullname: string;
   bankname: string;
   banknumber:string;

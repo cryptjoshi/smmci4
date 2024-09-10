@@ -5,7 +5,7 @@ export default function Default(props: {
 	id: string;
 	label?: string;
 	isChecked?: boolean;
-	onChange?: () => void;
+	onChange?: (e:any) => void;
 	desc?: string;
 	textWidth?: string | number;
 	reversed?: boolean;

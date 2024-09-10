@@ -56,6 +56,7 @@ import { getToken } from 'app/actions/userInfof';
   // Assets
   
   type RowObj = {
+    id:string;
     createdAt:string;
     MemberID:string;
     MemberName:string;
@@ -69,8 +70,9 @@ import { getToken } from 'app/actions/userInfof';
     win:number;
     winloss:number;
     loss:number;
-    turnover:number;
+    TURNOVER:number;
     month:number;
+    TransactionID:string;
   };
   //const startdate =  new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10);
    // const stopdate =  new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10);
@@ -78,14 +80,14 @@ import { getToken } from 'app/actions/userInfof';
     //const raw = JSON.stringify({"startdate":startdate,"stopdate":stopdate,"prefix":"all","statement_type":"all","status":"all"});
       
   const columnHelper = createColumnHelper<RowObj>();
-  const fetcher = (url:string,id:string) => fetch(url,{ method: 'POST',
-    headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' +  getToken() //localStorage.getItem('token')
-    },
-   body: JSON.stringify({"startdate":new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10),"stopdate":new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10),"prefix":"all","statement_type":"all","status":"all","userid":id})
-  }).then((res) => res.json());
+  // const fetcher = (url:string) => fetch(url,{ method: 'POST',
+  //   headers: {
+  //   'Accept': 'application/json',
+  //   'Content-Type': 'application/json',
+  //   'Authorization': 'Bearer ' +  getToken() //localStorage.getItem('token')
+  //   },
+  //  body: JSON.stringify({"startdate":new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10),"stopdate":new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10),"prefix":"all","statement_type":"all","status":"all","userid":""})
+  // }).then((res) => res.json());
   // const columns = columnsDataCheck;
   export default function SumGameDetail(props:any) {
      const { transfers } = props;

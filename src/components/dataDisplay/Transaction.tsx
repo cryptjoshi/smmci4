@@ -28,7 +28,7 @@ export default function Transaction(props: {
 				</Text>
 			</Flex>
 			<Text ms='auto'  color={parseFloat(sum)>0?'green.500' : 'red.500'} fontSize='sm' me='6px' fontWeight='700'>
-			{parseFloat(sum)>0?"+ "+sum + " บาท":"- "+sum+ " บาท"}
+			{parseFloat(sum)>0?"+ "+sum + " บาท":""+sum+ " บาท"}
       
 			</Text>
 		</Flex>

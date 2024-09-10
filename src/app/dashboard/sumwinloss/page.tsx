@@ -22,8 +22,8 @@ import Banktransfer from 'components/admin/dashboards/default/Banktransfer';
 import NewCustomer from 'components/admin/dashboards/default/Newcutomer';
 import TransactionTable from 'components/admin/dashboards/default/TransactionsTable';
 import SumWinlossTable from 'components/admin/dashboards/default/SumWinlossTable';
-
-
+import PageContent from 'components/PageContent';
+import { getData } from 'app/actions/auth';
 // const fetcher = (url:string) => fetch(url,{ method: 'GET',
 //   headers: {
 //   'Accept': 'application/json',
@@ -35,20 +35,21 @@ import SumWinlossTable from 'components/admin/dashboards/default/SumWinlossTable
 
 
 
-async function getData() {
-  const token = "";//localStorage.getItem('token');
-  const res = await fetch('https://report.tsxbet.net/reports/sumwinloss', { cache: 'no-store' ,
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token
-    },
-    body: JSON.stringify({ "startdate": new Date(new Date().setDate(new Date().getDate() - 7)).toJSON().slice(0, 10), "stopdate": new Date(new Date().setDate(new Date().getDate() + 7)).toJSON().slice(0, 10), "prefix": "all", "statement_type": "all", "status": "all" })
+// async function getData() {
+//   const token = "";//localStorage.getItem('token');
+//   const res = await fetch('https://report.tsxbet.net/reports/sumwinloss', { cache: 'no-store' ,
+//     method: 'POST',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//       'Authorization': 'Bearer ' + token
+//     },
+//     body: JSON.stringify({ "startdate": new Date(new Date().setDate(new Date().getDate())).toJSON().slice(0, 10), "stopdate": new Date(new Date().setDate(new Date().getDate())).toJSON().slice(0, 10), "prefix": "all", "statement_type": "all", "status": "all" })
 
-  });
-  return res.json();
-}
+//   });
+//   console.log(JSON.stringify(res.json()))
+//   return res.json();
+// }
 
 
 export default async function Page() {
@@ -66,23 +67,25 @@ export default async function Page() {
   //   fetcher
   // );
 
-
-
-  // if (error) return <>"An error has occurred."</>;
-  // if (isLoading) return <>"Loading..."</>;
+  // if (error) return <>An error has occurred.`</>;
+  // if (isLoading) return <>`Loading...`</>;
   //if(!isLoading){
   //  setProfit(data)
   //}
-  const data = await getData()
+  const data = await getData( new Date(new Date().setDate(new Date().getDate())).toJSON().slice(0, 10), new Date(new Date().setDate(new Date().getDate())).toJSON().slice(0, 10)).catch((err)=>console.log(err))
+  //console.log(JSON.stringify({ "startdate": "", "stopdate": "", "prefix": "all", "statement_type": "all", "status": "all" }))
   return (
-    <div className="flex items-center gap-2">
-      <div style={{ paddingTop: 80 + 'px' }}>
-        <div style={{ marginBottom: 20 + 'px' }} >
+    
+     <PageContent title="รายงานยอดได้เสีย">
+    <div className="flex items-center gap-2" >
+      <div style={{ paddingTop: 10 + 'px' }}>
+        <div style={{ marginBottom: 20 + 'px'}}   >
 
-          <SumWinlossTable tableData={data} />
+         { data && <SumWinlossTable Data={data}  /> }
 
         </div>
       </div>
     </div>
+    </PageContent>
   );
 }

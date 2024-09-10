@@ -134,7 +134,7 @@ export default function AdminNavbar (props: {
             </BreadcrumbItem>
             {pathNames.map((name:string, index:number) => {
               let href = `/${pathNames.slice(0, index + 1).join('/')}`
-              if(index>2) 
+              if(index>2 && index<4) 
               return (
 
               <BreadcrumbItem key={index}  color={secondaryText} fontSize='sm'>

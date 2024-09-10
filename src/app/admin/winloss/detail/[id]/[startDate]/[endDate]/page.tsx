@@ -50,6 +50,8 @@ const fetcher = (url:string) => fetch(url,{ method: 'GET',
 
 
 export default function Page() {
+
+
   // Chakra Color Mode
   const paleGray = useColorModeValue('secondaryGray.400', 'whiteAlpha.100');
   // const [TopUps, setTopUps] = React.useState([]);
@@ -61,17 +63,17 @@ export default function Page() {
   const router = useRouter();
   
 
-  const { data, error, isLoading } = useSWR(
-    "https://report.tsxbet.net/reports",
-    fetcher
-  );
+//   const { data, error, isLoading } = useSWR(
+//     "https://report.tsxbet.net/reports",
+//     fetcher
+//   );
   
 
-if (error) return "An error has occurred.";
-if (isLoading) return "Loading...";
-if(!isLoading){
-//  setProfit(data)
-}
+// if (error) return An error has occurred.`;
+// if (isLoading) return `Loading...`;
+// if(!isLoading){
+// //  setProfit(data)
+// }
   return (
     <Flex
       direction={{ base: 'column', xl: 'row' }}
@@ -87,7 +89,7 @@ if(!isLoading){
           display={{ base: 'block', lg: 'grid' }}
         >
           <Flex gridArea={{ base: '1 / 1 / 2 / 3', '2xl': '1 / 1 / 2 / 2' }}>
-          <WinlossDetail  />
+          <WinlossDetail   />
           </Flex>
         </Grid>
       </Flex>

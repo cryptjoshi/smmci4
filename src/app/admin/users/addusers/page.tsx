@@ -51,8 +51,8 @@ export default function Page() {
 //   );
   
 
-// if (error) return <>"An error has occurred."</>;
-// if (isLoading) return <>"Loading..."</>;
+// if (error) return <>An error has occurred.`</>;
+// if (isLoading) return <>`Loading...`</>;
 // if(!isLoading){
 // //  setProfit(data)
 // }

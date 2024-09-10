@@ -38,7 +38,7 @@ export default function OverallRevenue(props: { [x: string]: any }) {
 	const [sumMonth, setMonth] = useState([]);
 	const [sumTotal, setTotal] = useState("");
   const [loading, setLoading] = useState(true);
-  const [mode,setMode] = useState() 
+  const [mode,setMode] = useState("") 
   const [options, setOptions] = useState(newOptions);
 
   useEffect(()=>{
@@ -71,14 +71,15 @@ export default function OverallRevenue(props: { [x: string]: any }) {
         body: JSON.stringify({"mode":mode})
 		  });
 		  const data = await res.json();
-     // console.log(data)
+      //console.log(data)
 
 		  if(data.status){
 			 
 			//if(!isLoaded){
 			   setMonth(data.data)
 			   // const sumtotal = data.data.data.reduce((accumulator:any, current:any) => accumulator + current)
-        //console.log(data.data)
+        //console.log(data.data[0])
+       
 			   setTotal(data.data[0].sum.toFixed(2).toString())
          setLoading(false)
 
@@ -156,7 +157,7 @@ if (!sumMonth) {
               fontWeight="700"
               lineHeight="100%"
             >
-             {sumTotal}
+             {parseFloat(sumTotal).toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2})}
             </Text>
             <Text
               color="secondaryGray.600"

@@ -21,6 +21,8 @@ import { RiArrowUpSFill } from 'react-icons/ri';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getToken } from 'app/actions/userInfof';
+import { getSession } from 'app/actions/auth';
+import { SessionData } from 'lib';
 
 export default function Banktransfer(props: { [x: string]: any }) {
   const { ...rest } = props;
@@ -31,6 +33,7 @@ export default function Banktransfer(props: { [x: string]: any }) {
     // colors: ['var(--chakra-colors-brand-500)', '#39B8FF'],
   };
 
+  
   // Chakra Color Mode
   const textColor = useColorModeValue('secondaryGray.900', 'white');
 	const router = useRouter()
@@ -38,11 +41,12 @@ export default function Banktransfer(props: { [x: string]: any }) {
 	const [sumMonth, setMonth] = useState([]);
 	const [sumTotal, setTotal] = useState("");
   const [loading, setLoading] = useState(true);
-  const [mode,setMode] = useState() 
+  const [mode,setMode] = useState("") 
   const [options, setOptions] = useState(newOptions);
-
+  
   useEffect(()=>{
     setMode("daily")
+   
   },[])
 
 
@@ -52,7 +56,8 @@ export default function Banktransfer(props: { [x: string]: any }) {
 
 		const checkData = async () => {
 			const token =  getToken() // localStorage.getItem('token');
-		   
+		 
+      
 			if(!token){
 			  router.replace('/auth/sign-in')
 		  } else 
@@ -61,14 +66,15 @@ export default function Banktransfer(props: { [x: string]: any }) {
 			   // console.log(new Date().format('yyyy-MM-dd'))
 				const today = new Date().toJSON().slice(0, 10);
 				//const raw = JSON.stringify({"startdate":today,"stopdate":today});
-			  
+        const session = await getSession() 
+
 			let res = await fetch('https://report.tsxbet.net/reports/count/transfermonthly', { method: 'POST',
 			  headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 				'Authorization': 'Bearer ' +  token
 			  },
-		  body: JSON.stringify({"mode":mode})
+		  body: JSON.stringify({"mode":mode,"prefix":session.prefix})
 		  });
 		  const data = await res.json();
      
@@ -77,7 +83,7 @@ export default function Banktransfer(props: { [x: string]: any }) {
 			//if(!isLoaded){
 			   setMonth(data.data)
 			  // const sumtotal = data.data.data.reduce((accumulator:any, current:any) => accumulator + current)
-		    
+		   // console.log(data)
 			  setTotal(data.data[0].sum.toFixed(2).toString())
         setLoading(false)
        
@@ -146,7 +152,7 @@ if (!sumMonth) {
               fontWeight="700"
               lineHeight="100%"
             >
-             {sumTotal}
+             {parseFloat(sumTotal).toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2})}
             </Text>
             <Text
               color="secondaryGray.600"

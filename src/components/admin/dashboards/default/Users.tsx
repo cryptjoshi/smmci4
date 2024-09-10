@@ -51,11 +51,15 @@ import { getToken } from 'app/actions/userInfof';
 // Assets
 
 type RowObj = {
+  id:string;
+  username:string;
   fullname: string;
   bankname: string;
   banknumber:string;
   createdAt: string;
   status: string;
+  prefix:string;
+  role:string;
 };
 
 const columnHelper = createColumnHelper<RowObj>();
